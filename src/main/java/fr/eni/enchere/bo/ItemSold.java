@@ -153,5 +153,4 @@ this.nbCategory = nbCategory;
 	                ", noCategorie=" + nbCategory +
 	                '}';
 	 }
-
 }
