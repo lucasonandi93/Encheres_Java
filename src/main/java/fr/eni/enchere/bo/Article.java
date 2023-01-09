@@ -16,61 +16,54 @@ public class Article implements Serializable{
 	private String saleStatus;
 	private int noUser;
 	private int noCategory;
-	private List<Article> articleList;
-	private List<Article> auctionList;
 	private Withdrawal withdrawal;
 	
 	public Article() {
-		
+		this.setOriginalPrice(0);
+		this.setSellingPrice(0);
 	}
 	
-	 public Article(int nbArticle,
-             String nameArticle,
-             String description,
-             Date auctionStartDate,
-             Date auctionEndDate,
-             int originalPrice,
-             int sellingPrice,
-             String saleStatus,
-             int nbUser,
-             int nbCategory) {
-				this.setNbArticle(nbArticle);
-				this.setNameArticle(nameArticle);
-				this.setDescription(description);
-				this.setAuctionStartDate(auctionStartDate);
-				this.setAuctionEndDate(auctionEndDate);
-				this.setOriginalPrice(originalPrice);
-				this.setSellingPrice(sellingPrice);
-				this.setSaleStatus(saleStatus);
-				this.setNbUser(nbUser);
-				this.setNbCategory(nbCategory);
-}
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory) {
+		this();
+		this.setNameArticle(nameArticle);
+		this.setDescription(description);
+		this.setAuctionStartDate(auctionStartDate);
+		this.setAuctionEndDate(auctionEndDate);
+		this.setNoUser(noUser);
+		this.setNoCategory(noCategory);
+	}
 	
-	 public Article(String nameArticle,
-             String description,
-             Date auctionStartDate,
-             Date auctionEndDate,
-             int originalPrice,
-             int sellingPrice,
-             String saleStatus,
-             int nbUser,
-             int nbCategory) {
-		 	this.setNameArticle(nameArticle);
-			this.setDescription(description);
-			this.setAuctionStartDate(auctionStartDate);
-			this.setAuctionEndDate(auctionEndDate);
-			this.setOriginalPrice(originalPrice);
-			this.setSellingPrice(sellingPrice);
-			this.setSaleStatus(saleStatus);
-			this.setNbUser(nbUser);
-			this.setNbCategory(nbCategory);
-}
-
-	public int getNbArticle() {
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+		this.setOriginalPrice(originalPrice);
+	}
+	
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory);
+		this.setSellingPrice(sellingPrice);
+	}
+	
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+		this.setNoArticle(noArticle);
+	}
+	
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory);
+		this.setNoArticle(noArticle);
+	}
+	
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, noUser, noCategory);
+		this.setNoArticle(noArticle);
+	}
+	
+	
+	public int getNoArticle() {
 		return noArticle;
 	}
 
-	public void setNbArticle(int nbArticle) {
+	public void setNoArticle(int nbArticle) {
 		this.noArticle = nbArticle;
 	}
 
@@ -130,21 +123,30 @@ public class Article implements Serializable{
 		this.saleStatus = saleStatus;
 	}
 
-	public int getNbUser() {
+	public int getNoUser() {
 		return noUser;
 	}
 
-	public void setNbUser(int nbUser) {
+	public void setNoUser(int nbUser) {
 		this.noUser = nbUser;
 	}
 
-	public int getNbCategory() {
+	public int getNoCategory() {
 		return noCategory;
 	}
 
-	public void setNbCategory(int nbCategory) {
+	public void setNoCategory(int nbCategory) {
 		this.noCategory = nbCategory;
 	}
+	
+	public Withdrawal getWithdrawal() {
+		return withdrawal;
+	}
+
+	public void setWithdrawal(Withdrawal withdrawal) {
+		this.withdrawal = withdrawal;
+	}
+	
 	 @Override
 	    public String toString() {
 	        return "ArticleVendu{" +
@@ -160,12 +162,4 @@ public class Article implements Serializable{
 	                ", noCategorie=" + noCategory +
 	                '}';
 	 }
-
-	public Withdrawal getWithdrawal() {
-		return withdrawal;
-	}
-
-	public void setWithdrawal(Withdrawal withdrawal) {
-		this.withdrawal = withdrawal;
-	}
 } 
