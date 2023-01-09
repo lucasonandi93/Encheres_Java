@@ -32,7 +32,7 @@ public class Category implements Serializable {
 	@Override
 	public String toString() {
 		return "Categorie [noCategorie=" + nbCategory + ", libelle=" + wording + "]";
-	}
+	} 
 
 	
     

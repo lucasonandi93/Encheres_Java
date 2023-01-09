@@ -154,4 +154,4 @@ this.nbCategory = nbCategory;
 	                '}';
 	 }
 }
-
+ 
