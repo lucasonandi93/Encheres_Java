@@ -191,5 +191,3 @@ this.administrator = administrator;
                 '}';
     }
 }
-
- 
