@@ -6,6 +6,7 @@ package fr.eni.enchere.dal.jdbc;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Classe en charge de 
@@ -23,31 +24,31 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	@Override
-	public List<Article> selectAll() throws DALException {
+	public List<Article> selectAll() throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Article selectById(Integer id) throws DALException {
+	public Article selectById(Integer id) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insert(Article data) throws DALException {
+	public void insert(Article data) throws BusinessException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(Article data) throws DALException {
+	public void update(Article data) throws BusinessException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void delete(Integer id) throws DALException {
+	public void delete(Integer id) throws BusinessException {
 		// TODO Auto-generated method stub
 
 	}
