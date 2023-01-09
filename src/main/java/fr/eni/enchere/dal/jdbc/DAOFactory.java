@@ -10,7 +10,15 @@ package fr.eni.enchere.dal.jdbc;
  * @version ENI_Encheres - v0.1
  */
 public class DAOFactory {
-	public static ListeEnchereDAO getListeEnchereDAO() {
-		return new ListeEnchereDAOJdbcImpl();
+	public static UserDAO getUserDAO() {
+		return new UserDAOJdbcImpl();
+	}
+	
+	public static AuctionDAO getAuctionDAO() {
+		return new AuctionDAOJdbcImpl();
+	}
+	
+	public static ArticleDAO getArticleDAO() {
+		return new ArticleDAOJdbcImpl();
 	}
 }
