@@ -1,6 +1,7 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Article implements Serializable{
 	
@@ -15,6 +16,9 @@ public class Article implements Serializable{
 	private String saleStatus;
 	private int nbUser;
 	private int nbCategory;
+	List<Article> articleList;
+	List<Article> auctionList;
+	private Withdrawal withdrawal;
 	
 	public Article() {
 		
@@ -156,4 +160,12 @@ this.nbCategory = nbCategory;
 	                ", noCategorie=" + nbCategory +
 	                '}';
 	 }
+
+	public Withdrawal getWithdrawal() {
+		return withdrawal;
+	}
+
+	public void setWithdrawal(Withdrawal withdrawal) {
+		this.withdrawal = withdrawal;
+	}
 }

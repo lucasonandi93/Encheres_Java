@@ -1,6 +1,7 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Auction implements Serializable{
 	
@@ -9,6 +10,7 @@ public class Auction implements Serializable{
 	private int nbArticle;
 	private Date auctionDate;
 	private int auctionAmount;
+	List<Article> auctionList;
 	
 	public Auction() {
     }

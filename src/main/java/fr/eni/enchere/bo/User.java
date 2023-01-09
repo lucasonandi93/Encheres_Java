@@ -1,5 +1,6 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -16,7 +17,8 @@ public class User implements Serializable {
     private String  password;
     private int     credit;
     private boolean administrator;
-
+    List<Article> articleList;
+    List<Article> auctionList;
     /**
      * Empty constructor
      */
