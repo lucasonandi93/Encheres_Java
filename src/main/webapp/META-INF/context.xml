@@ -6,7 +6,7 @@
 		type="javax.sql.DataSource"
 		
 		url="jdbc:sqlserver://localhost:1433;databasename=ENCHERES"
-		username="sa"
+		username="utilisateurBDD"
 		password="Pa$$w0rd"
 		
 		maxTotal="100"
