@@ -154,3 +154,4 @@ this.nbCategory = nbCategory;
 	                '}';
 	 }
 }
+
