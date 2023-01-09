@@ -26,7 +26,7 @@ public class Article implements Serializable{
 		this.listAuction = new ArrayList<>();
 	}
 	
-	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory) {
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory,  Withdrawal withdrawal) {
 		this();
 		this.setNameArticle(nameArticle);
 		this.setDescription(description);
@@ -34,30 +34,31 @@ public class Article implements Serializable{
 		this.setAuctionEndDate(auctionEndDate);
 		this.setNoUser(noUser);
 		this.setNoCategory(noCategory);
+		this.setWithdrawal(withdrawal);
 	}
 	
-	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory, withdrawal);
 		this.setOriginalPrice(originalPrice);
 	}
 	
-	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory);
+	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory, withdrawal);
 		this.setSellingPrice(sellingPrice);
 	}
 	
-	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	
-	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory);
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice, int noUser, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	
-	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, noUser, noCategory);
+	public Article(int noArticle, String nameArticle, String description, Date auctionStartDate, Date auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, noUser, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	

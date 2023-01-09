@@ -92,6 +92,18 @@ public class ArticleManager implements Manager<Article, Integer>{
 		if (data.getNoCategory()==0) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_CATEGORY_ERROR);
 		}
+		
+		if (data.getWithdrawal().getStreet()==null || data.getWithdrawal().getStreet().equalsIgnoreCase("") || data.getWithdrawal().getStreet().length() > 30) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
+		}
+		
+		if (data.getWithdrawal().getCp()==null || data.getWithdrawal().getCp().equalsIgnoreCase("") || data.getWithdrawal().getCp().length() > 10) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
+		}
+		
+		if (data.getWithdrawal().getCity()==null || data.getWithdrawal().getCity().equalsIgnoreCase("") || data.getWithdrawal().getCity().length() > 30) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
+		}
 	}
 
 	
