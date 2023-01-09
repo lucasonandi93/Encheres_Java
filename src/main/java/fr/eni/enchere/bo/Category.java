@@ -11,8 +11,8 @@ public class Category implements Serializable {
     }
     
     public Category(int nbCategory, String wording) {
-    	this.nbCategory = nbCategory;
-    	this.wording = wording;
+    	this.setNbCategory(nbCategory);
+    	this.setWording(wording);
     }
     
     public int getNbCategory() {

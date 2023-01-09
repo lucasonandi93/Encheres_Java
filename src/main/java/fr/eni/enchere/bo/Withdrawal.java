@@ -15,10 +15,10 @@ public class Withdrawal implements Serializable{
 	}
 	 
 	 public Withdrawal(int nbArticle, String street, String cp, String city) {
-	        this.nbArticle = nbArticle;
-	        this.street = street;
-	        this.cp = cp;
-	        this.city = city;
+	        this.setNbArticle(nbArticle);
+	        this.setStreet(street);
+	        this.setCp(cp);
+	        this.setCity(city);
 	    }
 
 	    public int getNbArticle() {

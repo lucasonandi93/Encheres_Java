@@ -37,17 +37,17 @@ public class User implements Serializable {
             int credit,
             boolean administrator) {
 
-this.pseudo = pseudo;
-this.name = name;
-this.firstName = firstName;
-this.email = email;
-this.phone = phone;
-this.street = street;
-this.cp = cp;
-this.city = city;
-this.password = password;
-this.credit = credit;
-this.administrator = administrator;
+this.setPseudo(pseudo);
+this.setName(name);
+this.setFirstName(firstName);
+this.setEmail(email);
+this.setPhone(phone);
+this.setStreet(street);
+this.setCp(cp);
+this.setCity(city);
+this.setPassword(password);
+this.setCredit(credit);
+this.setAdministrator(administrator);
 }
     
     public User(int nbUser,
@@ -63,18 +63,18 @@ this.administrator = administrator;
             int credit,
             boolean administrator) {
     	
-this.nbUser = nbUser;
-this.pseudo = pseudo;
-this.name = name;
-this.firstName = firstName;
-this.email = email;
-this.phone = phone;
-this.street = street;
-this.cp = cp;
-this.city = city;
-this.password = password;
-this.credit = credit;
-this.administrator = administrator;
+			this.setNbUser(nbUser);
+			this.setPseudo(pseudo);
+			this.setName(name);
+			this.setFirstName(firstName);
+			this.setEmail(email);
+			this.setPhone(phone);
+			this.setStreet(street);
+			this.setCp(cp);
+			this.setCity(city);
+			this.setPassword(password);
+			this.setCredit(credit);
+			this.setAdministrator(administrator);
 }
     
     public int getNbUser() {
@@ -97,7 +97,7 @@ this.administrator = administrator;
         return name;
     }
 
-    public void setNom(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -125,11 +125,11 @@ this.administrator = administrator;
         this.phone = phone;
     }
 
-    public String getRue() {
+    public String getStreet() {
         return street;
     }
 
-    public void setRue(String street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
@@ -145,7 +145,7 @@ this.administrator = administrator;
         return city;
     }
 
-    public void setVille(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 

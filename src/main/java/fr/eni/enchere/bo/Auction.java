@@ -16,10 +16,10 @@ public class Auction implements Serializable{
     }
 	
 	 public Auction(int nbUser, int nbArticle, Date auctionDate, int auctionAmount) {
-	        this.nbUser = nbUser;
-	        this.nbArticle = nbArticle;
-	        this.auctionDate = auctionDate;
-	        this.auctionAmount = auctionAmount;
+	        this.setNbUser(nbUser);
+	        this.setNbArticle(nbArticle);
+	        this.setAuctionDate(auctionDate);
+	        this.setAuctionAmount(auctionAmount);
 	    }
 
 	    public int getNbUser() {

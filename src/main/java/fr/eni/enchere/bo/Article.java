@@ -34,16 +34,16 @@ public class Article implements Serializable{
              String saleStatus,
              int nbUser,
              int nbCategory) {
-this.nbArticle = nbArticle;
-this.nameArticle = nameArticle;
-this.description = description;
-this.auctionStartDate = auctionStartDate;
-this.auctionEndDate = auctionEndDate;
-this.originalPrice = originalPrice;
-this.sellingPrice = sellingPrice;
-this.saleStatus = saleStatus;
-this.nbUser = nbUser;
-this.nbCategory = nbCategory;
+				this.setNbArticle(nbArticle);
+				this.setNameArticle(nameArticle);
+				this.setDescription(description);
+				this.setAuctionStartDate(auctionStartDate);
+				this.setAuctionEndDate(auctionEndDate);
+				this.setOriginalPrice(originalPrice);
+				this.setSellingPrice(sellingPrice);
+				this.setSaleStatus(saleStatus);
+				this.setNbUser(nbUser);
+				this.setNbCategory(nbCategory);
 }
 	
 	 public Article(String nameArticle,
@@ -55,15 +55,15 @@ this.nbCategory = nbCategory;
              String saleStatus,
              int nbUser,
              int nbCategory) {
-this.nameArticle = nameArticle;
-this.description = description;
-this.auctionStartDate = auctionStartDate;
-this.auctionEndDate = auctionEndDate;
-this.originalPrice = originalPrice;
-this.sellingPrice = sellingPrice;
-this.saleStatus = saleStatus;
-this.nbUser = nbUser;
-this.nbCategory = nbCategory;
+		 	this.setNameArticle(nameArticle);
+			this.setDescription(description);
+			this.setAuctionStartDate(auctionStartDate);
+			this.setAuctionEndDate(auctionEndDate);
+			this.setOriginalPrice(originalPrice);
+			this.setSellingPrice(sellingPrice);
+			this.setSaleStatus(saleStatus);
+			this.setNbUser(nbUser);
+			this.setNbCategory(nbCategory);
 }
 
 	public int getNbArticle() {
