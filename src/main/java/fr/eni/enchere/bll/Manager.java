@@ -58,6 +58,6 @@ public interface Manager <T, U>{
 	 * @param data
 	 * @throws BusinessException
 	 */
-	public void validateData(T data) throws BusinessException;
+	public void validateData(T data, BusinessException businessException) throws BusinessException;
 	
 }

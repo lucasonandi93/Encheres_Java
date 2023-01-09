@@ -1,88 +1,83 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -2579992292596511238L;
-	private int     nbUser;
-    private String  pseudo;
-    private String  name;
-    private String  firstName;
-    private String  email;
-    private String  phone;
-    private String  street;
-    private String  cp;
-    private String  city;
-    private String  password;
-    private int     credit;
+	private int noUser;
+    private String pseudo;
+    private String name;
+    private String firstName;
+    private String email;
+    private String phone;
+    private String street;
+    private String cp;
+    private String city;
+    private String password;
+    private int credit;
     private boolean administrator;
-    List<Article> articleList;
-    List<Article> auctionList;
+    private List<Article> articleList;
+    private List<Auction> auctionList;
+    
     /**
      * Empty constructor
      */
     public User() {
+    	this.articleList = new ArrayList<>();
+    	this.auctionList = new ArrayList<>();
+    	this.setCredit(0);
+    	this.setAdministrator(false);
+    }
+    
+
+    public User(String pseudo, String name, String firstName, String email, String street, String cp, String city, String password) {
+		this();
+		this.setPseudo(pseudo);
+		this.setName(name);
+		this.setFirstName(firstName);
+		this.setEmail(email);
+		this.setStreet(street);
+		this.setCp(cp);
+		this.setCity(city);
+		this.setPassword(password);
+	}
+    
+    
+    public User(String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password) {
+		this(pseudo, name, firstName, email, street, cp, city, password);
+		this.setPhone(phone);
+	}
+    
+    public User(String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password, int credit, boolean administrator) {
+		this(pseudo, name, firstName, email, phone, street, cp, city, password);
+		this.setCredit(credit);
+		this.setAdministrator(administrator);
+	}
+    
+    public User(int noUser, String pseudo, String name, String firstName, String email, String street, String cp, String city, String password) {
+		this(pseudo, name, firstName, email, street, cp, city, password);
+		this.setNoUser(noUser);
+	}
+    
+    public User(int noUser, String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password) {
+		this(pseudo, name, firstName, email, phone, street, cp, city, password);
+		this.setNoUser(noUser);
+	}
+    
+    public User(int noUser, String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password, int credit, boolean administrator) {
+		this(pseudo, name, firstName, email, phone, street, cp, city, password, credit, administrator);
+		this.setNoUser(noUser);
+	}
+    
+    
+    public int getNoUser() {
+        return noUser;
     }
 
-    public User(String pseudo,
-            String name,
-            String firstName,
-            String email,
-            String phone,
-            String street,
-            String cp,
-            String city,
-            String password,
-            int credit,
-            boolean administrator) {
-
-this.setPseudo(pseudo);
-this.setName(name);
-this.setFirstName(firstName);
-this.setEmail(email);
-this.setPhone(phone);
-this.setStreet(street);
-this.setCp(cp);
-this.setCity(city);
-this.setPassword(password);
-this.setCredit(credit);
-this.setAdministrator(administrator);
-}
-    
-    public User(int nbUser,
-            String pseudo,
-            String name,
-            String firstName,
-            String email,
-            String phone,
-            String street,
-            String cp,
-            String city,
-            String password,
-            int credit,
-            boolean administrator) {
-    	
-			this.setNbUser(nbUser);
-			this.setPseudo(pseudo);
-			this.setName(name);
-			this.setFirstName(firstName);
-			this.setEmail(email);
-			this.setPhone(phone);
-			this.setStreet(street);
-			this.setCp(cp);
-			this.setCity(city);
-			this.setPassword(password);
-			this.setCredit(credit);
-			this.setAdministrator(administrator);
-}
-    
-    public int getNbUser() {
-        return nbUser;
-    }
-
-    public void setNbUser(int nbUser) {
-        this.nbUser = nbUser;
+    public void setNoUser(int nbUser) {
+        this.noUser = nbUser;
     }
 
     public String getPseudo() {
@@ -173,10 +168,27 @@ this.setAdministrator(administrator);
         this.administrator = administrator;
     }
     
-    @Override
+    
+    public List<Article> getArticleList() {
+		return articleList;
+	}
+
+	public void setArticleList(List<Article> articleList) {
+		this.articleList = articleList;
+	}
+
+	public List<Auction> getAuctionList() {
+		return auctionList;
+	}
+
+	public void setAuctionList(List<Auction> auctionList) {
+		this.auctionList = auctionList;
+	}
+
+	@Override
     public String toString() {
         return "Utilisateur{" +
-                "noUtilisateur=" + nbUser +
+                "noUtilisateur=" + noUser +
                 ", pseudo='" + pseudo + '\'' +
                 ", nom='" + name + '\'' +
                 ", prenom='" + firstName+ '\'' +

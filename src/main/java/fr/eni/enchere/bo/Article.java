@@ -6,7 +6,7 @@ import java.util.List;
 public class Article implements Serializable{
 	
 	private static final long serialVersionUID = 7478601074654648439L;
-	private int nbArticle;
+	private int noArticle;
 	private String nameArticle;
 	private String description;
 	private Date auctionStartDate;
@@ -14,10 +14,10 @@ public class Article implements Serializable{
 	private int originalPrice;
 	private int sellingPrice;
 	private String saleStatus;
-	private int nbUser;
-	private int nbCategory;
-	List<Article> articleList;
-	List<Article> auctionList;
+	private int noUser;
+	private int noCategory;
+	private List<Article> articleList;
+	private List<Article> auctionList;
 	private Withdrawal withdrawal;
 	
 	public Article() {
@@ -67,11 +67,11 @@ public class Article implements Serializable{
 }
 
 	public int getNbArticle() {
-		return nbArticle;
+		return noArticle;
 	}
 
 	public void setNbArticle(int nbArticle) {
-		this.nbArticle = nbArticle;
+		this.noArticle = nbArticle;
 	}
 
 	public String getNameArticle() {
@@ -131,24 +131,24 @@ public class Article implements Serializable{
 	}
 
 	public int getNbUser() {
-		return nbUser;
+		return noUser;
 	}
 
 	public void setNbUser(int nbUser) {
-		this.nbUser = nbUser;
+		this.noUser = nbUser;
 	}
 
 	public int getNbCategory() {
-		return nbCategory;
+		return noCategory;
 	}
 
 	public void setNbCategory(int nbCategory) {
-		this.nbCategory = nbCategory;
+		this.noCategory = nbCategory;
 	}
 	 @Override
 	    public String toString() {
 	        return "ArticleVendu{" +
-	                "noArticle=" + nbArticle +
+	                "noArticle=" + noArticle +
 	                ", nomArticle='" + nameArticle + '\'' +
 	                ", description='" + description + '\'' +
 	                ", dateDebutEncheres=" + auctionStartDate +
@@ -156,8 +156,8 @@ public class Article implements Serializable{
 	                ", prixInitial=" + originalPrice +
 	                ", prixVente=" + sellingPrice +
 	                ", etatVente='" + saleStatus + '\'' +
-	                ", noUtilisateur=" + nbUser +
-	                ", noCategorie=" + nbCategory +
+	                ", noUtilisateur=" + noUser +
+	                ", noCategorie=" + noCategory +
 	                '}';
 	 }
 

@@ -31,7 +31,7 @@ public class ArticleManager implements Manager<Article, Integer>{
 	public void addData(Article data) throws BusinessException {
 		
 		BusinessException businessException = new BusinessException();
-		this.validateData(data);
+		this.validateData(data, businessException);
 		if (!businessException.hasErrors()) {
 			this.articleDAO.insert(data);
 		}else {
@@ -47,7 +47,7 @@ public class ArticleManager implements Manager<Article, Integer>{
 	@Override
 	public void updateData(Article data) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		this.validateData(data);
+		this.validateData(data, businessException);
 		if (!businessException.hasErrors()) {
 			this.articleDAO.update(data);
 		}else {
@@ -66,9 +66,11 @@ public class ArticleManager implements Manager<Article, Integer>{
 	}
 
 	@Override
-	public void validateData(Article data) throws BusinessException {
+	public void validateData(Article data, BusinessException businessException) throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

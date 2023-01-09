@@ -30,7 +30,7 @@ public class AuctionManager implements Manager<Auction, Integer>{
 	@Override
 	public void addData(Auction data) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		this.validateData(data);
+		this.validateData(data, businessException);
 		if (!businessException.hasErrors()) {
 			this.auctionDAO.insert(data);
 		}else {
@@ -46,7 +46,7 @@ public class AuctionManager implements Manager<Auction, Integer>{
 	@Override
 	public void updateData(Auction data) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		this.validateData(data);
+		this.validateData(data, businessException);
 		if (!businessException.hasErrors()) {
 			this.auctionDAO.update(data);
 		}else {
@@ -66,8 +66,10 @@ public class AuctionManager implements Manager<Auction, Integer>{
 	}
 
 	@Override
-	public void validateData(Auction data) throws BusinessException {
+	public void validateData(Auction data, BusinessException businessException) throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
