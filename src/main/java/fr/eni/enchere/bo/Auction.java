@@ -1,41 +1,41 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Auction implements Serializable{
 	
 	private static final long serialVersionUID = -5398583469104095201L;
-	private int nbUser;
-	private int nbArticle;
+	private int noUser;
+	private int noArticle;
 	private Date auctionDate;
 	private int auctionAmount;
-	List<Article> auctionList;
 	
 	public Auction() {
+		this.auctionDate = new Date();
     }
 	
-	 public Auction(int nbUser, int nbArticle, Date auctionDate, int auctionAmount) {
-	        this.setNbUser(nbUser);
-	        this.setNbArticle(nbArticle);
-	        this.setAuctionDate(auctionDate);
-	        this.setAuctionAmount(auctionAmount);
+	
+	 public Auction(int noUser, int noArticle, int auctionAmount) {
+		 this();
+		 this.setNoUser(noUser);
+		 this.setNoArticle(noArticle);
+		 this.setAuctionAmount(auctionAmount);
+	  }
+
+	    public int getNoUser() {
+	        return noUser;
 	    }
 
-	    public int getNbUser() {
-	        return nbUser;
-	    }
-
-	    public void setNbUser(int nbUser) {
-	        this.nbUser = nbUser;
+	    public void setNoUser(int nbUser) {
+	        this.noUser = nbUser;
 	    }
 
 	    public int getNoArticle() {
-	        return nbArticle;
+	        return noArticle;
 	    }
 
-	    public void setNbArticle(int nbArticle) {
-	        this.nbArticle = nbArticle;
+	    public void setNoArticle(int nbArticle) {
+	        this.noArticle = nbArticle;
 	    }
 
 	    public Date getAuctionDate() {
@@ -57,8 +57,8 @@ public class Auction implements Serializable{
 	    @Override
 	    public String toString() {
 	        return "Enchere{" +
-	                "noUtilisateur=" + nbUser +
-	                ", noArticle=" + nbArticle +
+	                "noUtilisateur=" + noUser +
+	                ", noArticle=" + noArticle +
 	                ", dateEnchere=" + auctionDate +
 	                ", montantEnchere=" + auctionAmount +
 	                '}';

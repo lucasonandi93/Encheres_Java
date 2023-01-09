@@ -1,6 +1,8 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Article implements Serializable{
 	
@@ -16,10 +18,12 @@ public class Article implements Serializable{
 	private int noUser;
 	private int noCategory;
 	private Withdrawal withdrawal;
+	private List<Auction> listAuction;
 	
 	public Article() {
 		this.setOriginalPrice(0);
 		this.setSellingPrice(0);
+		this.listAuction = new ArrayList<>();
 	}
 	
 	public Article(String nameArticle, String description, Date auctionStartDate, Date auctionEndDate, int noUser, int noCategory) {
@@ -146,7 +150,11 @@ public class Article implements Serializable{
 		this.withdrawal = withdrawal;
 	}
 	
-	 @Override
+	 public List<Auction> getListAuction() {
+		return listAuction;
+	}
+
+	@Override
 	    public String toString() {
 	        return "ArticleVendu{" +
 	                "noArticle=" + noArticle +

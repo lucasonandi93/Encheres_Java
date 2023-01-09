@@ -11,7 +11,7 @@ package fr.eni.enchere.bll;
 */
 public abstract class CodesResultatBLL {
 	
-	//BLL USER ERROR
+	//BLL USER ERRORS
 	public static final int RULE_USER_PSEUDO_ERROR=20000;
 	
 	public static final int RULE_USER_NAME_ERROR=20001;
@@ -28,7 +28,7 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_USER_PASSWORD_ERROR=20007;
 	
-	//BLL ARTICLE ERROR
+	//BLL ARTICLE ERRORS
 	public static final int RULE_ARTICLE_NAME_ERROR=20010;
 	
 	public static final int RULE_ARTICLE_DECRIPTION_ERROR=20011;
@@ -41,6 +41,12 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_ARTICLE_NO_CATEGORY_ERROR=20015;
 	
+	//BLL AUCTION ERRORS
+	public static final int	RULE_AUCTION_NO_USER_ERROR=20020;
+	
+	public static final int RULE_AUCTION_NO_ARTICLE_ERROR=20021;
+	
+	public static final int RULE_AUCTION_AMOUNT_ERROR=20022;
 	
 	
 

@@ -67,8 +67,23 @@ public class AuctionManager implements Manager<Auction, Integer>{
 
 	@Override
 	public void validateData(Auction data, BusinessException businessException) throws BusinessException {
-		// TODO Auto-generated method stub
 		
+		ArticleManager articleManager = new ArticleManager();
+		
+		if (data.getNoUser()==0) {
+			businessException.addError(CodesResultatBLL.RULE_AUCTION_NO_USER_ERROR);
+		}
+		
+		if (data.getNoArticle()==0) {
+			businessException.addError(CodesResultatBLL.RULE_AUCTION_NO_ARTICLE_ERROR);
+		}
+		
+		for (Auction auction : articleManager.selectById(data.getNoArticle()).getListAuction()) {
+			if (auction.getAuctionAmount() > data.getAuctionAmount()) {
+				businessException.addError(CodesResultatBLL.RULE_AUCTION_AMOUNT_ERROR);
+				break;
+			}
+		}
 	}
 
 	
