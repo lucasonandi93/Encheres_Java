@@ -1,7 +1,10 @@
 package fr.eni.enchere.bo;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+public class Article implements Serializable{
+	
+	private static final long serialVersionUID = 7478601074654648439L;
 	private int nbArticle;
 	private String nameArticle;
 	private String description;

@@ -1,7 +1,10 @@
 package fr.eni.enchere.bo;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Auction {
+public class Auction implements Serializable{
+	
+	private static final long serialVersionUID = -5398583469104095201L;
 	private int nbUser;
 	private int nbArticle;
 	private Date auctionDate;

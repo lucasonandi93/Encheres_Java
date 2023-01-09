@@ -2,7 +2,9 @@ package fr.eni.enchere.bo;
 import java.io.Serializable;
 
 public class Category implements Serializable {
-    private int nbCategory;
+   
+	private static final long serialVersionUID = 3933976282091788722L;
+	private int nbCategory;
     private String wording;
 
     public Category() {

@@ -1,10 +1,14 @@
 package fr.eni.enchere.bo;
 
-public class Withdrawal {
-	 private int nbArticle;
-	 private String street;
-	 private String cp;
-	 private String city;
+import java.io.Serializable;
+
+public class Withdrawal implements Serializable{
+
+	private static final long serialVersionUID = 2981037157673879720L;
+	private int nbArticle;
+	private String street;
+	private String cp;
+	private String city;
 	 
 	 public Withdrawal() {
 		
