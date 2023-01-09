@@ -29,7 +29,13 @@ public class UserManager implements Manager<User, Integer>{
 	
 	@Override
 	public void addData(User data) throws BusinessException {
-		// TODO Auto-generated method stub
+		BusinessException businessException = new BusinessException();
+		this.validateData(data);
+		if (!businessException.hasErrors()) {
+			this.userDAO.insert(data);
+		}else {
+			throw businessException;
+		}
 		
 	}
 
@@ -40,8 +46,13 @@ public class UserManager implements Manager<User, Integer>{
 
 	@Override
 	public void updateData(User data) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		BusinessException businessException = new BusinessException();
+		this.validateData(data);
+		if (!businessException.hasErrors()) {
+			this.userDAO.update(data);
+		}else {
+			throw businessException;
+		}
 	}
 
 	@Override

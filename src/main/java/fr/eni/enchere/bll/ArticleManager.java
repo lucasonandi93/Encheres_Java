@@ -29,8 +29,14 @@ public class ArticleManager implements Manager<Article, Integer>{
 
 	@Override
 	public void addData(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
 		
+		BusinessException businessException = new BusinessException();
+		this.validateData(data);
+		if (!businessException.hasErrors()) {
+			this.articleDAO.insert(data);
+		}else {
+			throw businessException;
+		}
 	}
 
 	@Override
@@ -40,8 +46,13 @@ public class ArticleManager implements Manager<Article, Integer>{
 
 	@Override
 	public void updateData(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		BusinessException businessException = new BusinessException();
+		this.validateData(data);
+		if (!businessException.hasErrors()) {
+			this.articleDAO.update(data);
+		}else {
+			throw businessException;
+		}
 	}
 
 	@Override
