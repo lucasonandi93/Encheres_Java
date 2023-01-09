@@ -1,7 +1,7 @@
 package fr.eni.enchere.bo;
 import java.util.Date;
 
-public class ItemSold {
+public class Article {
 	private int nbArticle;
 	private String nameArticle;
 	private String description;
@@ -13,11 +13,11 @@ public class ItemSold {
 	private int nbUser;
 	private int nbCategory;
 	
-	public ItemSold() {
+	public Article() {
 		
 	}
 	
-	 public ItemSold(int nbArticle,
+	 public Article(int nbArticle,
              String nameArticle,
              String description,
              Date auctionStartDate,
@@ -39,7 +39,7 @@ this.nbUser = nbUser;
 this.nbCategory = nbCategory;
 }
 	
-	 public ItemSold(String nameArticle,
+	 public Article(String nameArticle,
              String description,
              Date auctionStartDate,
              Date auctionEndDate,
