@@ -6,6 +6,8 @@ package fr.eni.enchere.bll;
 import java.util.List;
 
 import fr.eni.enchere.bo.Auction;
+import fr.eni.enchere.dal.jdbc.AuctionDAO;
+import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -16,6 +18,15 @@ import fr.eni.enchere.exceptions.BusinessException;
 */
 public class AuctionManager implements Manager<Auction, Integer>{
 
+	private AuctionDAO auctionDAO;
+	
+	/**
+	 * Constructeur
+	 */
+	public AuctionManager() {
+		this.auctionDAO = DAOFactory.getAuctionDAO();
+	}
+	
 	@Override
 	public void addData(Auction data) throws BusinessException {
 		// TODO Auto-generated method stub
@@ -24,8 +35,7 @@ public class AuctionManager implements Manager<Auction, Integer>{
 
 	@Override
 	public void deleteData(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		this.auctionDAO.delete(id);
 	}
 
 	@Override
@@ -36,14 +46,12 @@ public class AuctionManager implements Manager<Auction, Integer>{
 
 	@Override
 	public List<Auction> selectAll() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.auctionDAO.selectAll();
 	}
 
 	@Override
 	public Auction selectById(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.auctionDAO.selectById(id);
 	}
 
 

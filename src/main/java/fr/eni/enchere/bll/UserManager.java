@@ -6,6 +6,8 @@ package fr.eni.enchere.bll;
 import java.util.List;
 
 import fr.eni.enchere.bo.User;
+import fr.eni.enchere.dal.jdbc.DAOFactory;
+import fr.eni.enchere.dal.jdbc.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -16,6 +18,15 @@ import fr.eni.enchere.exceptions.BusinessException;
 */
 public class UserManager implements Manager<User, Integer>{
 
+	private UserDAO userDAO;
+	
+	/**
+	 * Constructeur
+	 */
+	public UserManager() {
+		this.userDAO = DAOFactory.getUserDAO();
+	}
+	
 	@Override
 	public void addData(User data) throws BusinessException {
 		// TODO Auto-generated method stub
@@ -24,8 +35,7 @@ public class UserManager implements Manager<User, Integer>{
 
 	@Override
 	public void deleteData(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		this.userDAO.delete(id);
 	}
 
 	@Override
@@ -36,14 +46,12 @@ public class UserManager implements Manager<User, Integer>{
 
 	@Override
 	public List<User> selectAll() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDAO.selectAll();
 	}
 
 	@Override
 	public User selectById(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDAO.selectById(id);
 	}
 
 }

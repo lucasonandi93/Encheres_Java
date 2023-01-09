@@ -6,6 +6,8 @@ package fr.eni.enchere.bll;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.dal.jdbc.ArticleDAO;
+import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -15,6 +17,15 @@ import fr.eni.enchere.exceptions.BusinessException;
 * @version ENI_Encheres - v0.1
 */
 public class ArticleManager implements Manager<Article, Integer>{
+	
+	private ArticleDAO articleDAO;
+	
+	/**
+	 * Constructeur
+	 */
+	public ArticleManager() {
+		this.articleDAO = DAOFactory.getArticleDAO();
+	}
 
 	@Override
 	public void addData(Article data) throws BusinessException {
@@ -24,8 +35,7 @@ public class ArticleManager implements Manager<Article, Integer>{
 
 	@Override
 	public void deleteData(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		this.articleDAO.delete(id);
 	}
 
 	@Override
@@ -36,14 +46,12 @@ public class ArticleManager implements Manager<Article, Integer>{
 
 	@Override
 	public List<Article> selectAll() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.articleDAO.selectAll();
 	}
 
 	@Override
 	public Article selectById(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.articleDAO.selectById(id);
 	}
 
 }
