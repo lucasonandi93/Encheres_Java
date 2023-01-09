@@ -54,6 +54,9 @@ public class AuctionManager implements Manager<Auction, Integer>{
 		return this.auctionDAO.selectById(id);
 	}
 
-
-
+	@Override
+	public void validateData(Auction data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
 }

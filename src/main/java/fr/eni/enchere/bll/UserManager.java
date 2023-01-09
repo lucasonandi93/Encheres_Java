@@ -54,4 +54,11 @@ public class UserManager implements Manager<User, Integer>{
 		return this.userDAO.selectById(id);
 	}
 
+	@Override
+	public void validateData(User data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 }

@@ -54,4 +54,10 @@ public class ArticleManager implements Manager<Article, Integer>{
 		return this.articleDAO.selectById(id);
 	}
 
+	@Override
+	public void validateData(Article data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

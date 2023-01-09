@@ -53,4 +53,11 @@ public interface Manager <T, U>{
 	 */
 	public T selectById(U id) throws BusinessException;
 	
+	/**
+	 * Méthode qui permet vérifier qu'un objet 
+	 * @param data
+	 * @throws BusinessException
+	 */
+	public void validateData(T data) throws BusinessException;
+	
 }
