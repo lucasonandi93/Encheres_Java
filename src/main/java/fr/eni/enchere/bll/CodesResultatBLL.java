@@ -28,6 +28,20 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_USER_PASSWORD_ERROR=20007;
 	
+	//BLL ARTICLE ERROR
+	public static final int RULE_ARTICLE_NAME_ERROR=20010;
+	
+	public static final int RULE_ARTICLE_DECRIPTION_ERROR=20011;
+	
+	public static final int RULE_ARTICLE_START_DATE_ERROR=20012;
+	
+	public static final int RULE_ARTICLE_END_DATE_ERROR=20013;
+	
+	public static final int RULE_ARTICLE_NO_USER_ERROR=20014;
+	
+	public static final int RULE_ARTICLE_NO_CATEGORY_ERROR=20015;
+	
+	
 	
 
 }

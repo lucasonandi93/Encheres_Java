@@ -3,6 +3,7 @@
  */
 package fr.eni.enchere.bll;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
@@ -67,8 +68,30 @@ public class ArticleManager implements Manager<Article, Integer>{
 
 	@Override
 	public void validateData(Article data, BusinessException businessException) throws BusinessException {
-		// TODO Auto-generated method stub
 		
+		if(data.getNameArticle()==null || data.getNameArticle().equalsIgnoreCase("") || data.getNameArticle().length() > 30) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NAME_ERROR);
+		}
+		
+		if(data.getDescription()==null || data.getDescription().equalsIgnoreCase("") || data.getDescription().length() > 300) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_DECRIPTION_ERROR);
+		}
+		
+		if (data.getAuctionStartDate().before(new Date()) || data.getAuctionStartDate()==null) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_START_DATE_ERROR);
+		}
+		
+		if (data.getAuctionEndDate().before(data.getAuctionStartDate()) || data.getAuctionEndDate()==null) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_END_DATE_ERROR);
+		}
+		
+		if (data.getNoUser()==0) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_USER_ERROR);
+		}
+		
+		if (data.getNoCategory()==0) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_CATEGORY_ERROR);
+		}
 	}
 
 	
