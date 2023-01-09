@@ -62,4 +62,4 @@ public class Withdrawal implements Serializable{
 	                ", ville='" + city + '\'' +
 	                '}';
 	    }
-}
+} 

@@ -36,6 +36,4 @@ public class Category implements Serializable {
 		return "Categorie [noCategorie=" + nbCategory + ", libelle=" + wording + "]";
 	} 
 
-	
-    
 }

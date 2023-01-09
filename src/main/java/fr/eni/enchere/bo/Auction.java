@@ -63,4 +63,4 @@ public class Auction implements Serializable{
 	                ", montantEnchere=" + auctionAmount +
 	                '}';
 	    }
-	}
+	} 

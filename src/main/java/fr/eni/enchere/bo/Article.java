@@ -168,4 +168,4 @@ public class Article implements Serializable{
 	public void setWithdrawal(Withdrawal withdrawal) {
 		this.withdrawal = withdrawal;
 	}
-}
+} 

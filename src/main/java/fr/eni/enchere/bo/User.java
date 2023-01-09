@@ -190,4 +190,4 @@ this.setAdministrator(administrator);
                 ", administrateur=" + administrator +
                 '}';
     }
-}
+} 
