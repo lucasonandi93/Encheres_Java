@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Withdrawal implements Serializable{
 
 	private static final long serialVersionUID = 2981037157673879720L;
-	private int nbArticle;
+	private int noArticle;
 	private String street;
 	private String cp;
 	private String city;
@@ -14,19 +14,19 @@ public class Withdrawal implements Serializable{
 		
 	}
 	 
-	 public Withdrawal(int nbArticle, String street, String cp, String city) {
-	        this.setNbArticle(nbArticle);
+	 public Withdrawal(int noArticle, String street, String cp, String city) {
+	        this.setNoArticle(noArticle);
 	        this.setStreet(street);
 	        this.setCp(cp);
 	        this.setCity(city);
 	    }
 
-	    public int getNbArticle() {
-	        return nbArticle;
+	    public int getNoArticle() {
+	        return noArticle;
 	    }
 
-	    public void setNbArticle(int nbArticle) {
-	        this.nbArticle = nbArticle;
+	    public void setNoArticle(int nbArticle) {
+	        this.noArticle = nbArticle;
 	    }
 
 	    public String getStreet() {
@@ -56,7 +56,7 @@ public class Withdrawal implements Serializable{
 	    @Override
 	    public String toString() {
 	        return "Retrait{" +
-	                "noArticle=" + nbArticle +
+	                "noArticle=" + noArticle +
 	                ", rue='" + street + '\'' +
 	                ", codePostal='" + cp + '\'' +
 	                ", ville='" + city + '\'' +
