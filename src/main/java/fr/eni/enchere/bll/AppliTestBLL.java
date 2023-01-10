@@ -13,7 +13,12 @@ public class AppliTestBLL {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		ArticleManager articleManager = new ArticleManager();
+		
+		
+		System.out.println(articleManager);
+		
 	}
 
 }
