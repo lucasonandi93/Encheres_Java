@@ -49,7 +49,4 @@ public class AppliTestBO {
 		System.out.println(withdrawal);
 		
 	}
-	
-	
-	
 }
