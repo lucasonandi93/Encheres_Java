@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.eni.enchere.dal.jdbc;
 
 import java.sql.Connection;
@@ -14,7 +11,7 @@ import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
- * Classe en charge de définir les requêtes sql
+ * Classe en charge de définir les requêtes sql pour l'objet user
  * @author slamire2022
  * @date 9 janv. 2023 - 15:32:30
  * @version ENI_Encheres - v0.1
@@ -49,74 +46,152 @@ public class UserDAOJdbcImpl implements UserDAO {
 			pstmt = cnx.prepareStatement(SQL_SELECT_ALL);
 			ResultSet rs= pstmt.executeQuery();
 			while(rs.next()) {
-				listeUsers.add(new User (rs.getInt("no_utilisateur"),rs.getString("pseudo"),rs.getString("nom"), rs.getString("prenom"), 
-						rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), 
-						rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur")));
+				listeUsers.add(new User(rs.getInt("no_utilisateur"),
+						rs.getString("pseudo"),
+						rs.getString("nom"), 
+						rs.getString("prenom"), 
+						rs.getString("email"), 
+						rs.getString("telephone"), 
+						rs.getString("rue"), 
+						rs.getString("code_postal"), 
+						rs.getString("ville"), 
+						rs.getString("mot_de_passe"), 
+						rs.getInt("credit"), 
+						rs.getBoolean("administrateur")));
 			}
-		}catch(Exception e) {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.LECTURE_LISTE_ECHEC);
 			throw businessException;
-		} finally {
-			try {
-				// Verifier si le statement n'est pas null
-				if (pstmt != null) {
-					// Si il est pas nul fermer le statement (Mettre fin à la requète)
-					pstmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			// Fermer la connection
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return listeUsers;
 	}
 
 	@Override
 	public User selectById(Integer no_utilisateur) throws BusinessException {
-//		PreparedStatement pstmt = null;
-//		User user = null;
-//		
-//		try (Connection cnx=ConnectionProvider.getConnection())
-//		{
-//			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
-//			// Setter les ? de la commande SQL
-//			pstmt.setInt(1, no_utilisateur);
-//			
-//			ResultSet rs= pstmt.executeQuery();
-//			if (rs.next()) {
-//				// si l'utilisateur existe
-//				
-//			}
-//			
-//			
-//		}
-		return null;
+		PreparedStatement pstmt = null;
+		User user = null;
+		
+		try (Connection cnx=ConnectionProvider.getConnection())
+		{
+			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
+			pstmt.setInt(1, no_utilisateur);
+			ResultSet rs= pstmt.executeQuery();
+		
+			if (rs.next()) {
+					user = new User (
+						rs.getInt("no_utilisateur"),
+						rs.getString("pseudo"), 
+						rs.getString("nom"),
+						rs.getString("prenom"), 
+						rs.getString("email"),
+						rs.getString("telephone"), 
+						rs.getString("rue"), 
+						rs.getString("code_postal"),
+						rs.getString("ville"), 
+						rs.getString("mot_de_passe"), 
+						rs.getInt("credit"), 
+						rs.getBoolean("administrateur"));
+			}
+			rs.close();
+			pstmt.close();
+			connection.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			throw businessException;
+		} 
+		return user;
 	}
 
 	@Override
-	public void insert(User data) throws BusinessException {
-		// TODO Auto-generated method stub
-
+	public void insert(User user) throws BusinessException {
+		if(user==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			throw businessException;
+		}
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			try
+			{
+				// gestion des commits
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt = cnx.prepareStatement(SQL_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+				ResultSet rs = pstmt.getGeneratedKeys();
+				if(rs.next())
+				{
+					user.setNoUser(rs.getInt(1));
+				}
+			rs.close();
+			pstmt.close();
+			} catch(Exception e)
+			{
+				e.printStackTrace();
+				cnx.rollback();
+				// propage potentielle exception en businessException dans catch suivant
+				throw e;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			// créer une businessException perso
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			throw businessException;
+		} 
 	}
 
 	@Override
 	public void update(User data) throws BusinessException {
-		// TODO Auto-generated method stub
-
+		PreparedStatement pstmt = null;
+		
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+				pstmt = cnx.prepareStatement(SQL_UPDATE);
+				
+				pstmt.setString(1, data.getPseudo());
+				pstmt.setString(2, data.getName());
+				pstmt.setString(3, data.getFirstName());
+				pstmt.setString(4, data.getEmail());
+				pstmt.setString(5, data.getPhone());
+				pstmt.setString(6, data.getStreet());
+				pstmt.setString(7, data.getCp());
+				pstmt.setString(8, data.getCity());
+				pstmt.setString(9, data.getPassword());
+				pstmt.setInt(10, data.getCredit());
+				pstmt.setBoolean(11, data.isAdministrator());
+				
+				pstmt.executeUpdate();
+				pstmt.close();
+				connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void delete(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-
+		try (Connection cnx=ConnectionProvider.getConnection())
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(SQL_DELETE);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			connection.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			// transforme la SQLException en businessException
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.SUPPRESSION_USER_ERREUR);
+			throw businessException;
+		}
 	}
-
 }

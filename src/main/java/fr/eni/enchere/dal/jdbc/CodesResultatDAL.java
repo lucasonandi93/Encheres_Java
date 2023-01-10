@@ -41,4 +41,9 @@ public abstract class CodesResultatDAL {
 	 */
 	public static final int SUPPRESSION_LISTE_ERREUR=10006;
 	
+	/**
+	 * Echec à la suppression d'un utilisateur
+	 */
+	public static final int SUPPRESSION_USER_ERREUR=10006;
+	
 }

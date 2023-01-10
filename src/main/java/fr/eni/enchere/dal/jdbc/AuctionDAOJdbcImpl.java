@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.eni.enchere.dal.jdbc;
 
 import java.util.List;
@@ -9,7 +6,7 @@ import fr.eni.enchere.bo.Auction;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
- * Classe en charge de 
+ * Classe en charge de de définir les requêtes sql pour l'objet auction
  * @author slamire2022
  * @date 9 janv. 2023 - 15:32:43
  * @version ENI_Encheres - v0.1
