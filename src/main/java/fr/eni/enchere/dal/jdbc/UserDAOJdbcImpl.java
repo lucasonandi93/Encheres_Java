@@ -42,7 +42,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	@Override
 	public List<User> selectAll() throws BusinessException {
 		//Déclaration d'une liste d'utilisateurs
-		List<User> listeUsers = new ArrayList<>();
+		List<User> listUsers = new ArrayList<>();
 		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;
 		//Récupération d'une connection à la BDD	
@@ -61,7 +61,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 					//Générer un User à partir des infos de la BDD
 					userOngoing = userBuilder(rs);
 					//Ajouter ce User à la liste de User
-					listeUsers.add(userOngoing);
+					listUsers.add(userOngoing);
 				}
 			}
 			//Fermer le ResultSet
@@ -80,7 +80,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			throw businessException;
 		}
 		//Return la liste de tous les utilisateurs
-		return listeUsers;
+		return listUsers;
 	}
 
 	@Override

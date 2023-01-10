@@ -33,7 +33,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 	@Override
 	public List<Auction> selectAll() throws BusinessException {
 		//Déclaration d'une liste d'utilisateurs
-		List<Auction> listeAuctions = new ArrayList<>();
+		List<Auction> listAuctions = new ArrayList<>();
 		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;
 		//Récupération d'une connection à la BDD	
@@ -51,7 +51,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 						//Générer une Auction à partir des infos de la BDD
 						auctionOngoing = auctionBuilder(rs);
 						//Ajouter cette Auction à la liste de Auction
-						listeAuctions.add(auctionOngoing);
+						listAuctions.add(auctionOngoing);
 					}
 				}
 			//Fermer le ResultSet
@@ -70,7 +70,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			throw businessException;
 		}
 		//Return la liste de tous les utilisateurs
-		return listeAuctions;
+		return listAuctions;
 	}
 
 	@Override
