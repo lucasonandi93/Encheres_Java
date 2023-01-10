@@ -7,6 +7,7 @@ package fr.eni.enchere.dal.jdbc;
  */
 public abstract class CodesResultatDAL {
 	
+	// ERROR_USER
 	public static final int SELECT_LIST_USER_FAILED=10000;
 	
 	public static final int SELECT_USER_ID_FAILED=10001;
@@ -25,6 +26,21 @@ public abstract class CodesResultatDAL {
 	
 	public static final int INSERT_ID_USER_NULL=10009;
 	
+	//ERROR_ARTICLE
+	public static final int SELECT_LIST_ARTICLE_FAILED=10010;
 	
+	public static final int SELECT_ARTICLE_ID_FAILED=10011;
+	
+	public static final int INSERT_ARTICLE_FAILED=10012;
+	
+	public static final int	UPDATE_ARTICLE_FAILED=10013;
+	
+	public static final int DELETE_ARTICLE_FAILED=10014;
+	
+	public static final int INSERT_ARTICLE_TO_WITHDRAWAL_FAILED=10015;
+
+	public static final int INSERT_ARTICLE_NULL=10016;
+	
+	public static final int DELETE_ID_ARTICLE_NULL=10017;
 	
 }

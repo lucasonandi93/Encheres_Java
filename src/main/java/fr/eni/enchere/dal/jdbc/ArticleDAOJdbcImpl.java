@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Withdrawal;
@@ -74,7 +75,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.LECTURE_LISTE_ECHEC);
+			businessException.addError(CodesResultatDAL.SELECT_LIST_ARTICLE_FAILED);
 			throw businessException;
 		}
 		return listeArticles;
@@ -100,7 +101,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.SELECT_ARTICLE_ID_FAILED);
 			throw businessException;
 		} 
 		return articleOnGoing;
@@ -110,7 +111,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public void insert(Article article) throws BusinessException {
 		if(article==null) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
 			throw businessException;
 		}
 		try(Connection cnx = ConnectionProvider.getConnection())
@@ -147,28 +148,135 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			e.printStackTrace();
 			// créer une businessException perso
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_FAILED);
 			throw businessException;
 		} 
 	
 	}
 
 	@Override
-	public void update(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
-
+	public void update(Article article) throws BusinessException {
+		if(article==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
+			throw businessException;
+		}
+		
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			cnx.setAutoCommit(false);
+			PreparedStatement pstmt = null;
+			
+			try {
+				cnx.setAutoCommit(false);
+				pstmt = cnx.prepareStatement(SQL_UPDATE);
+				
+				pstmt.setString(1, article.getNameArticle());
+				pstmt.setString(2, article.getDescription());
+				// conversion LocalDate en date sql
+				pstmt.setDate(3, java.sql.Date.valueOf(article.getAuctionStartDate()));
+				pstmt.setDate(4, java.sql.Date.valueOf(article.getAuctionEndDate()));
+				pstmt.setInt(5, article.getOriginalPrice());
+				pstmt.setInt(6, article.getSellingPrice());
+				pstmt.setInt(7, article.getNoUser());
+				pstmt.setInt(8, article.getNoCategory());
+				pstmt.setInt(9, article.getNoUser());
+				
+				pstmt.executeUpdate();
+				pstmt.close();
+				cnx.commit();
+				cnx.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				cnx.rollback();
+				throw e;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.UPDATE_ARTICLE_FAILED);
+			throw businessException;
+		}
 	}
 
 	@Override
 	public void delete(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-
+		if(id==null || id==0)	{
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.DELETE_ID_ARTICLE_NULL);
+			throw businessException;
+		}
+		
+		try (Connection cnx=ConnectionProvider.getConnection())
+		{
+			PreparedStatement pstmt = null;
+			cnx.prepareStatement(SQL_DELETE);
+			
+			try {
+				cnx.setAutoCommit(false);
+				pstmt = cnx.prepareStatement(SQL_DELETE);
+				pstmt.setInt(1, id);
+				pstmt.executeUpdate();
+				
+				pstmt.close();
+				cnx.commit();
+				cnx.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				cnx.rollback();
+				throw e;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			// transforme la SQLException en businessException
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.DELETE_ARTICLE_FAILED);
+			throw businessException;
+		}
 	}
 
 	@Override
-	public void insertToWithdrawal(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+	public void insertToWithdrawal(Article article) throws BusinessException {
+		if(article==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
+			throw businessException;
+		}
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			try
+			{
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt = null ;
+				ResultSet rs = null;
+				
+				if (article.getNoArticle()==0) {
+					pstmt.setInt(1, article.getNoArticle());
+				}
+				if(rs.next())
+				{
+					article.setNoArticle(rs.getInt(1));
+				}
+			rs.close();
+			pstmt.close();
+			cnx.commit();
+			cnx.close();
+			} catch(Exception e)
+			{
+				e.printStackTrace();
+				cnx.rollback();
+				throw e;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_TO_WITHDRAWAL_FAILED);
+			throw businessException;
+		} 
 	}
 
 	@Override
@@ -193,8 +301,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				rs.getInt("no_article"),
 				rs.getString("nom_article"),
 				rs.getString("description"),
-				rs.getDate("date_debut_encheres"),
-				rs.getDate("date_fin_encheres"),
+				// conversion date sql en LocalDate
+				rs.getDate("date_debut_encheres").toLocalDate(),
+				rs.getDate("date_fin_encheres").toLocalDate(),
 				rs.getInt("prix_initial"),
 				rs.getInt("prix_vente"),
 				rs.getInt("no_utilisateur"),
