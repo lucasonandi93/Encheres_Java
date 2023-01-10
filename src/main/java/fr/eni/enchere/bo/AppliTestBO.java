@@ -6,8 +6,6 @@ public class AppliTestBO {
 
 	public static void main(String[] args) {
 		
-		
-		
 		Article article1 = new Article("name", "desc", new Date(), new Date(), 1, 1, new Withdrawal());
 		Article article2 = new Article("name", "desc", new Date(), new Date(), 1, 1, 1, new Withdrawal());
 		Article article3 = new Article("name", "desc", new Date(), new Date(), 1, 1, 1, 1, new Withdrawal());
@@ -39,25 +37,37 @@ public class AppliTestBO {
 		
 		article1.getListAuction().add(auction);
 		
+		
+		System.out.println("=========================================================");
 		System.out.println(article1);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(article2);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(article3);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(article4);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(article5);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(article6);
-		
+		System.out.println("=========================================================");
 		System.out.println(auction);
-		
+		System.out.println("=========================================================");
 		System.out.println(category);
-		
+		System.out.println("=========================================================");
 		System.out.println(user1);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(user2);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(user3);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(user4);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(user5);
+		System.out.println("---------------------------------------------------------");
 		System.out.println(user6);
-		
+		System.out.println("=========================================================");
 		System.out.println(withdrawal);
-		
+		System.out.println("=========================================================");
 	}
 }

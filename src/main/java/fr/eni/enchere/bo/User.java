@@ -3,6 +3,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* POJO User
+* @author ldupont2022
+* @date 10 janv. 2023 - 10:41:16
+* @version ENI_Encheres - v0.1
+*/
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -2579992292596511238L;
@@ -22,7 +28,7 @@ public class User implements Serializable {
     private List<Auction> auctionList;
     
     /**
-     * Empty constructor
+     * Constructeur
      */
     public User() {
     	this.articleList = new ArrayList<>();
@@ -31,7 +37,17 @@ public class User implements Serializable {
     	this.setAdministrator(false);
     }
     
-
+    /**
+     * Constructeur
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     */
     public User(String pseudo, String name, String firstName, String email, String street, String cp, String city, String password) {
 		this();
 		this.setPseudo(pseudo);
@@ -44,12 +60,37 @@ public class User implements Serializable {
 		this.setPassword(password);
 	}
     
-    
+    /**
+     * Constructeur
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param phone
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     */
     public User(String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password) {
 		this(pseudo, name, firstName, email, street, cp, city, password);
 		this.setPhone(phone);
 	}
     
+    /**
+     * Constructeur
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param phone
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     * @param credit
+     * @param administrator
+     */
     public User(String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password, int credit, boolean administrator) {
 		this(pseudo, name, firstName, email, phone, street, cp, city, password);
 		this.setCredit(credit);
@@ -61,145 +102,302 @@ public class User implements Serializable {
 		this.setNoUser(noUser);
 	}
     
+    /**
+     * Constructeur
+     * @param noUser
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param phone
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     */
     public User(int noUser, String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password) {
 		this(pseudo, name, firstName, email, phone, street, cp, city, password);
 		this.setNoUser(noUser);
 	}
     
+    /**
+     * Constructeur
+     * @param noUser
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param phone
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     * @param credit
+     * @param administrator
+     */
     public User(int noUser, String pseudo, String name, String firstName, String email, String phone, String street, String cp, String city, String password, int credit, boolean administrator) {
 		this(pseudo, name, firstName, email, phone, street, cp, city, password, credit, administrator);
 		this.setNoUser(noUser);
 	}
     
-    
-    public int getNoUser() {
-        return noUser;
-    }
+	/**
+	 * Getter pour noUser
+	 * @return the noUser
+	 */
+	public int getNoUser() {
+		return noUser;
+	}
 
-    public void setNoUser(int nbUser) {
-        this.noUser = nbUser;
-    }
+	/**
+	 * Setter pour noUser
+	 * @param noUser the noUser to set
+	 */
+	public void setNoUser(int noUser) {
+		this.noUser = noUser;
+	}
 
-    public String getPseudo() {
-        return pseudo;
-    }
+	/**
+	 * Getter pour pseudo
+	 * @return the pseudo
+	 */
+	public String getPseudo() {
+		return pseudo;
+	}
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
-    }
+	/**
+	 * Setter pour pseudo
+	 * @param pseudo the pseudo to set
+	 */
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Getter pour name
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Setter pour name
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	/**
+	 * Getter pour firstName
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	/**
+	 * Setter pour firstName
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	/**
+	 * Getter pour email
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	/**
+	 * Setter pour email
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	/**
+	 * Getter pour phone
+	 * @return the phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	/**
+	 * Setter pour phone
+	 * @param phone the phone to set
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getStreet() {
-        return street;
-    }
+	/**
+	 * Getter pour street
+	 * @return the street
+	 */
+	public String getStreet() {
+		return street;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	/**
+	 * Setter pour street
+	 * @param street the street to set
+	 */
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-    public String getCp() {
-        return cp;
-    }
+	/**
+	 * Getter pour cp
+	 * @return the cp
+	 */
+	public String getCp() {
+		return cp;
+	}
 
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
+	/**
+	 * Setter pour cp
+	 * @param cp the cp to set
+	 */
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	/**
+	 * Getter pour city
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	/**
+	 * Setter pour city
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * Getter pour password
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/**
+	 * Setter pour password
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public int getCredit() {
-        return credit;
-    }
+	/**
+	 * Getter pour credit
+	 * @return the credit
+	 */
+	public int getCredit() {
+		return credit;
+	}
 
-    public void setCredit(int credit) {
-        this.credit = credit;
-    }
+	/**
+	 * Setter pour credit
+	 * @param credit the credit to set
+	 */
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
 
-    public boolean isAdministrator() {
-        return administrator;
-    }
+	/**
+	 * Getter pour administrator
+	 * @return the administrator
+	 */
+	public boolean isAdministrator() {
+		return administrator;
+	}
 
-    public void setAdministrator(boolean administrator) {
-        this.administrator = administrator;
-    }
-    
-    
-    public List<Article> getArticleList() {
+	/**
+	 * Setter pour administrator
+	 * @param administrator the administrator to set
+	 */
+	public void setAdministrator(boolean administrator) {
+		this.administrator = administrator;
+	}
+
+	/**
+	 * Getter pour articleList
+	 * @return the articleList
+	 */
+	public List<Article> getArticleList() {
 		return articleList;
 	}
 
-	public void setArticleList(List<Article> articleList) {
-		this.articleList = articleList;
-	}
-
+	/**
+	 * Getter pour auctionList
+	 * @return the auctionList
+	 */
 	public List<Auction> getAuctionList() {
 		return auctionList;
 	}
 
-	public void setAuctionList(List<Auction> auctionList) {
-		this.auctionList = auctionList;
+	
+	/**
+	 * Méthode qui permet d'afficher le User
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" - User [getNoUser()=");
+		builder.append(getNoUser());
+		builder.append(", getPseudo()=");
+		builder.append(getPseudo());
+		builder.append(", getName()=");
+		builder.append(getName());
+		builder.append(", getFirstName()=");
+		builder.append(getFirstName());
+		builder.append(", getEmail()=");
+		builder.append(getEmail());
+		builder.append(", getPhone()=");
+		builder.append(getPhone());
+		builder.append(", getStreet()=");
+		builder.append(getStreet());
+		builder.append(", getCp()=");
+		builder.append(getCp());
+		builder.append(", getCity()=");
+		builder.append(getCity());
+		builder.append(", getPassword()=");
+		builder.append(getPassword());
+		builder.append(", getCredit()=");
+		builder.append(getCredit());
+		builder.append(", isAdministrator()=");
+		builder.append(isAdministrator());
+		builder.append("\n");
+		builder.append("ArticleList=");
+		
+		for (Article article : articleList) {
+			builder.append("\n");
+			builder.append(article);
+		}
+		
+		builder.append("\n");
+		builder.append("AuctionList=");
+		
+		for (Auction auction : auctionList) {
+			builder.append("\n");
+			builder.append(auction);
+		}
+		
+		builder.append("]");
+		return builder.toString();
 	}
 
-	@Override
-    public String toString() {
-        return "Utilisateur{" +
-                "noUtilisateur=" + noUser +
-                ", pseudo='" + pseudo + '\'' +
-                ", nom='" + name + '\'' +
-                ", prenom='" + firstName+ '\'' +
-                ", email='" + email + '\'' +
-                ", telephone='" + phone + '\'' +
-                ", rue='" + street + '\'' +
-                ", codePostal='" + cp + '\'' +
-                ", ville='" + city + '\'' +
-                ", motDePasse='" + password + '\'' +
-                ", credit=" + credit +
-                ", administrateur=" + administrator +
-                '}';
-    }
+	
 } 

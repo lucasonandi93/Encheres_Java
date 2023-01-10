@@ -2,6 +2,12 @@ package fr.eni.enchere.bo;
 
 import java.io.Serializable;
 
+/**
+* POJO Withdrawal
+* @author ldupont2022
+* @date 10 janv. 2023 - 10:49:33
+* @version ENI_Encheres - v0.1
+*/
 public class Withdrawal implements Serializable{
 
 	private static final long serialVersionUID = 2981037157673879720L;
@@ -10,56 +16,107 @@ public class Withdrawal implements Serializable{
 	private String cp;
 	private String city;
 	 
-	 public Withdrawal() {
-		
-	}
+	 /**
+	 * Constructeur
+	 */
+	public Withdrawal(){}
 	 
-	 public Withdrawal(int noArticle, String street, String cp, String city) {
-	        this.setNoArticle(noArticle);
-	        this.setStreet(street);
-	        this.setCp(cp);
-	        this.setCity(city);
-	    }
+	 /**
+	 * Constructeur
+	 * @param noArticle
+	 * @param street
+	 * @param cp
+	 * @param city
+	 */
+	public Withdrawal(int noArticle, String street, String cp, String city) {
+		this.setNoArticle(noArticle);
+		this.setStreet(street);
+		this.setCp(cp);
+		this.setCity(city);
+	}
 
-	    public int getNoArticle() {
-	        return noArticle;
-	    }
+	    /**
+	 * Getter pour noArticle
+	 * @return the noArticle
+	 */
+	public int getNoArticle() {
+		return noArticle;
+	}
 
-	    public void setNoArticle(int nbArticle) {
-	        this.noArticle = nbArticle;
-	    }
+	/**
+	 * Setter pour noArticle
+	 * @param noArticle the noArticle to set
+	 */
+	public void setNoArticle(int noArticle) {
+		this.noArticle = noArticle;
+	}
 
-	    public String getStreet() {
-	        return street;
-	    }
+	/**
+	 * Getter pour street
+	 * @return the street
+	 */
+	public String getStreet() {
+		return street;
+	}
 
-	    public void setStreet(String street) {
-	        this.street = street;
-	    }
+	/**
+	 * Setter pour street
+	 * @param street the street to set
+	 */
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-	    public String getCp() {
-	        return cp;
-	    }
+	/**
+	 * Getter pour cp
+	 * @return the cp
+	 */
+	public String getCp() {
+		return cp;
+	}
 
-	    public void setCp(String cp) {
-	        this.cp = cp;
-	    }
+	/**
+	 * Setter pour cp
+	 * @param cp the cp to set
+	 */
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
 
-	    public String getCity() {
-	        return city;
-	    }
+	/**
+	 * Getter pour city
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
 
-	    public void setCity(String city) {
-	        this.city = city;
-	    }
+	/**
+	 * Setter pour city
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-	    @Override
-	    public String toString() {
-	        return "Retrait{" +
-	                "noArticle=" + noArticle +
-	                ", rue='" + street + '\'' +
-	                ", codePostal='" + cp + '\'' +
-	                ", ville='" + city + '\'' +
-	                '}';
-	    }
+	
+	/**
+	 * Méthode qui permet d'afficher le Withdrawal
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" - Withdrawal [getNoArticle()=");
+		builder.append(getNoArticle());
+		builder.append(", getStreet()=");
+		builder.append(getStreet());
+		builder.append(", getCp()=");
+		builder.append(getCp());
+		builder.append(", getCity()=");
+		builder.append(getCity());
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 } 
