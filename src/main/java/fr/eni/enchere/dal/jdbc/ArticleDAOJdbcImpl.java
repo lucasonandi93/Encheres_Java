@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
-import fr.eni.enchere.bo.User;
 import fr.eni.enchere.bo.Withdrawal;
 import fr.eni.enchere.exceptions.BusinessException;
 
@@ -46,7 +45,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	
 	private static final String SQL_SELECT_BY_CHAR_NAME = 	"SELECT no_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie "
-															+ "FROM ARTICLES_VENDUS WHERE nom_article LIKE ? ";
+															+ "FROM ARTICLES_VENDUS WHERE nom_article LIKE %?% ";
 	
 	/**
 	 * Constructeur
@@ -56,7 +55,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	@Override
 	public List<Article> selectAll() throws BusinessException {
-		List<Article> listeArticles = new ArrayList<Article>();
+		List<Article> listeArticles = new ArrayList<>();
 		
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
@@ -205,7 +204,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public void delete(Integer id) throws BusinessException {
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.DELETE_ID_ARTICLE_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_ARTICLE_NULL);
 			throw businessException;
 		}
 		
@@ -283,19 +282,16 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	
-//	"SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
-//	+ "prix_initial, prix_vente, no_utilisateur"
-//	+ "FROM ARTICLES_VENDUS WHERE no_category=?";	
 	@Override
 	public List<Article> selectByNoCategory(Integer no_category) throws BusinessException {
 		//Vérification si le paramêtre est valide
 		if(no_category==null || no_category==0) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_ARTICLE_NULL);
 			throw businessException;
 		}
 		//Déclaration d'une liste d'articles
-		List<Article> listeArticles = new ArrayList<>();
+		List<Article> listArticles = new ArrayList<>();
 		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;	
 		
@@ -313,11 +309,62 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				//Déclaration et instanciation d'un User
 				Article articleOngoing = new Article();
 				//Sécurité
-				if (rs.getInt("no_utilisateur") != articleOngoing.getNoUser()) {
+				if (rs.getInt("no_article") != articleOngoing.getNoArticle()) {
 					//Générer un User à partir des infos de la BDD
 					articleOngoing = articleBuilder(rs);
 					//Ajouter ce User à la liste de User
-					listeArticles.add(articleOngoing);
+					listArticles.add(articleOngoing);
+				}
+			}
+			//Fermer le ResultSet
+			rs.close();
+			//Fermer le Statement
+			pstmt.close();
+			//Fermer la connection
+			cnx.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.SELECT_ARTICLE_CATEGORY_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		} 
+		return listArticles;
+	}
+	
+	@Override
+	public List<Article> selectByCharName(String contents) throws BusinessException {
+		//Vérification si le paramêtre est valide
+		if(contents==null || contents.equals("")) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_STRING_NULL);
+			throw businessException;
+		}
+		
+		//Déclaration d'une liste d'articles
+		List<Article> listArticles = new ArrayList<>();
+		//Déclaration d'un Prepared Statement et initialisation à null
+		PreparedStatement pstmt = null;	
+		try (Connection cnx=ConnectionProvider.getConnection())
+		{
+			//Passage de la requête au Prepared Statement
+			pstmt = cnx.prepareStatement(SQL_SELECT_BY_CHAR_NAME);
+			//Setter le paramètre de la requète SQL
+			pstmt.setString(1, contents);
+			//Récupération des informations dans un ResultSet
+			ResultSet rs= pstmt.executeQuery();
+			//Boucler tant qu'il y a une ligne suivante
+			while(rs.next()) {
+				//Déclaration et instanciation d'un User
+				Article articleOngoing = new Article();
+				//Sécurité
+				if (rs.getInt("no_article") != articleOngoing.getNoArticle()) {
+					//Générer un User à partir des infos de la BDD
+					articleOngoing = articleBuilder(rs);
+					//Ajouter ce User à la liste de User
+					listArticles.add(articleOngoing);
 				}
 			}
 			//Fermer le ResultSet
@@ -335,13 +382,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			//Envoyer l'exception
 			throw businessException;
 		} 
-		return listeArticles;
-	}
-	
-	@Override
-	public List<Article> selectByCharName(String data) throws BusinessException {
-		//TODO
-		return null;
+		return listArticles;
 	}
 	
 	/**
