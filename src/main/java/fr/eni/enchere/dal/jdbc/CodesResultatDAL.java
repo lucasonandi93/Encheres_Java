@@ -43,5 +43,19 @@ public abstract class CodesResultatDAL {
 	
 	public static final int DELETE_ID_ARTICLE_NULL=10017;
 	
+	//ERROR_AUCTION
+	public static final int SELECT_LIST_AUCTION_FAILED=10020;
+	
+	public static final int SELECT_AUCTION_ID_FAILED=10021;
+	
+	public static final int INSERT_AUCTION_FAILED=10022;
+	
+	public static final int UPDATE_AUCTION_FAILED=10023;
+	
+	public static final int DELETE_AUCTION_FAILED=10024;
+	
+	public static final int INSERT_AUCTION_NULL=10028;
+			
+	public static final int INSERT_ID_AUCTION_NULL=10029;
 	
 }

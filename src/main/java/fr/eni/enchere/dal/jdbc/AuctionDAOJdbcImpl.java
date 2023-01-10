@@ -65,7 +65,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
 			//Si il y a une erreur, ajouter l'erreur à la BusinessException
-			businessException.addError(CodesResultatDAL.SELECT_LIST_USER_FAILED);
+			businessException.addError(CodesResultatDAL.SELECT_LIST_AUCTION_FAILED);
 			//Envoyer l'exception
 			throw businessException;
 		}
@@ -78,7 +78,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 		//Vérification si le paramêtre est valide
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_AUCTION_NULL);
 			throw businessException;
 		}
 		//Déclaration d'un Prepared Statement et initialisation à null
@@ -109,7 +109,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
 			//Si il y a une erreur, ajouter l'erreur à la BusinessException
-			businessException.addError(CodesResultatDAL.SELECT_USER_ID_FAILED);
+			businessException.addError(CodesResultatDAL.SELECT_AUCTION_ID_FAILED);
 			//Envoyer l'exception
 			throw businessException;
 		} 
@@ -121,7 +121,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 		//Vérification si le paramêtre est valide
 		if(auction==null) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_AUCTION_NULL);
 			throw businessException;
 		}
 		//Récupération d'une connection à la BDD	
@@ -172,7 +172,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
 			//Si il y a une erreur, ajouter l'erreur à la BusinessException
-			businessException.addError(CodesResultatDAL.INSERT_USER_FAILED);
+			businessException.addError(CodesResultatDAL.INSERT_AUCTION_FAILED);
 			//Envoyer l'exception
 			throw businessException;
 		} 
@@ -184,7 +184,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 		//Vérification si le paramêtre est valide
 		if(auction==null) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_AUCTION_NULL);
 			throw businessException;
 		}
 		//Récupération d'une connection à la BDD	
@@ -223,7 +223,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
 			//Si il y a une erreur, ajouter l'erreur à la BusinessException
-			businessException.addError(CodesResultatDAL.UPDATE_USER_FAILED);
+			businessException.addError(CodesResultatDAL.UPDATE_AUCTION_FAILED);
 			//Envoyer l'exception
 			throw businessException;
 		}
@@ -234,7 +234,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 		//Vérification si le paramêtre est valide
 		if(id==null || id==0){
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_AUCTION_NULL);
 			throw businessException;
 		}
 		//Récupération d'une connection à la BDD	
@@ -269,7 +269,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
 			//Si il y a une erreur, ajouter l'erreur à la BusinessException
-			businessException.addError(CodesResultatDAL.DELETE_USER_FAILED);
+			businessException.addError(CodesResultatDAL.DELETE_AUCTION_FAILED);
 			//Envoyer l'exception
 			throw businessException;
 		}
