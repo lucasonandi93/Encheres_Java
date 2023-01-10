@@ -14,6 +14,8 @@ import fr.eni.enchere.config.Settings;
  * @version ENI_Encheres - v0.1
  */
 public class DAOFactory {
+	
+	
 	public static UserDAO getUserDAO() {
 		UserDAO userDAO = null;
 		try {
