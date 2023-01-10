@@ -11,6 +11,13 @@ import fr.eni.enchere.exceptions.BusinessException;
  */
 public interface UserDAO extends DAO<User, Integer>{
 	
+	/**
+	 * Méthode qui permet sélectionner un utilisateur dans une table de la BDD avec son pseudo et son mdp
+	 * @param pseudo
+	 * @param mdp
+	 * @return
+	 * @throws BusinessException
+	 */
 	public  User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException;
 	
 }

@@ -11,7 +11,7 @@ import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
- * Classe en charge de définir les requêtes sql pour l'objet User
+ * Classe en charge de communiquer avec la BDD et la Table UTILISATEURS
  * @author slamire2022
  * @date 9 janv. 2023 - 15:32:30
  * @version ENI_Encheres - v0.1
@@ -30,7 +30,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 													+ " ville=?, mot_de_passe=?, credit=?, administrateur=?"
 													+ "WHERE no_utilisateur=?";
 	private static final String SQL_DELETE = 		"DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
-	
 	
 	private static final String SQL_SELECT_BY_PSEUDO_MDP = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
 													+ "ville, mot_de_passe, credit, administrateur"
@@ -63,7 +62,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.LECTURE_LISTE_ECHEC);
+			businessException.addError(CodesResultatDAL.SELECT_LIST_USER_FAILED);
 			throw businessException;
 		}
 		return listeUsers;
@@ -73,7 +72,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public User selectById(Integer id) throws BusinessException {
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
 			throw businessException;
 		}
 		
@@ -93,7 +92,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.SELECT_USER_ID_FAILED);
 			throw businessException;
 		} 
 		return userOngoing;
@@ -103,7 +102,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public void insert(User user) throws BusinessException {
 		if(user==null) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
 			throw businessException;
 		}
 		try(Connection cnx = ConnectionProvider.getConnection())
@@ -149,7 +148,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		{
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.INSERT_USER_FAILED);
 			throw businessException;
 		} 
 	}
@@ -158,7 +157,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public void update(User user) throws BusinessException {
 		if(user==null) {
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
 			throw businessException;
 		}
 		
@@ -198,7 +197,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.UPDATE_USER_FAILED);
 			throw businessException;
 		}
 	}
@@ -208,7 +207,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
 			throw businessException;
 		}
 		
@@ -236,7 +235,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			e.printStackTrace();
 			// transforme la SQLException en businessException
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.SUPPRESSION_USER_ERREUR);
+			businessException.addError(CodesResultatDAL.DELETE_USER_FAILED);
 			throw businessException;
 		}
 	}
@@ -245,7 +244,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException {
 		if(pseudo==null || "".equals(pseudo) || mdp==null || "".equals(mdp))	{
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			businessException.addError(CodesResultatDAL.INSERT_PSEUDO_MDP_USER_NULL);
 			throw businessException;
 		}
 		PreparedStatement pstmt = null;	
@@ -265,12 +264,18 @@ public class UserDAOJdbcImpl implements UserDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			businessException.addError(CodesResultatDAL.SELECT_USER_PSEUDO_MDP_FAILED);
 			throw businessException;
 		} 
 		return userOngoing;
 	}
 	
+	/**
+	 * Méthode qui permet de générer un objet User à partir des infos de la BDD
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	private User userbuilder(ResultSet rs) throws SQLException{
 		return new User(
 				rs.getInt("no_utilisateur"),
