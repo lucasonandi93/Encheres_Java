@@ -11,7 +11,7 @@ import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
- * Classe en charge de définir les requêtes sql pour l'objet user
+ * Classe en charge de définir les requêtes sql pour l'objet User
  * @author slamire2022
  * @date 9 janv. 2023 - 15:32:30
  * @version ENI_Encheres - v0.1
