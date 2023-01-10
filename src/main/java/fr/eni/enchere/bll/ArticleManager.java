@@ -25,50 +25,95 @@ public class ArticleManager implements Manager<Article, Integer>{
 	 * Constructeur
 	 */
 	public ArticleManager() {
+		//Générer une instcane de ArticleDAO
 		this.articleDAO = DAOFactory.getArticleDAO();
 	}
 
+	/**
+	 * Méthode qui permet d'ajouter un Article à la BDD
+	 * @param data
+	 * @throws BusinessException
+	 */
 	@Override
 	public void addData(Article data) throws BusinessException {
-		
+		//Déclarer et instancier une BusinessException
 		BusinessException businessException = new BusinessException();
+		//Vérifier si l'article est valide et peut être insérer dans la BDD
 		this.validateData(data, businessException);
+		//Si la BusinessException ne contient pas d'erreurs
 		if (!businessException.hasErrors()) {
+			//Appelle la méthode insert de ArticleDAO et lui passer l'Article en paramètre
 			this.articleDAO.insert(data);
 		}else {
+			//Sinon remonter les erreurs
 			throw businessException;
 		}
 	}
 
+	/**
+	 * Méthode qui permet de supprimer un Article de la BDD
+	 * @param data
+	 * @throws BusinessException
+	 */
 	@Override
 	public void deleteData(Integer id) throws BusinessException {
+		//Appelle la méthode delete de ArticleDAO et lui passer un ID en paramètre
 		this.articleDAO.delete(id);
 	}
 
+	/**
+	 * Méthode qui permet de modifier un Article de la BDD
+	 * @param data
+	 * @throws BusinessException
+	 */
 	@Override
 	public void updateData(Article data) throws BusinessException {
+		//Déclarer et instancier une BusinessException
 		BusinessException businessException = new BusinessException();
+		//Vérifier si l'article est valide et peut être modifier dans la BDD
 		this.validateData(data, businessException);
+		//Si la BusinessException ne contient pas d'erreurs
 		if (!businessException.hasErrors()) {
+			//Appelle la méthode update de ArticleDAO et lui passer l'Article en paramètre
 			this.articleDAO.update(data);
 		}else {
+			//Sinon remonter les erreurs
 			throw businessException;
 		}
 	}
 
+	/**
+	 * Méthode qui permet de sélectionner tous les lignes de la table Article
+	 * @return
+	 * @throws BusinessException
+	 */
 	@Override
 	public List<Article> selectAll() throws BusinessException {
+		//Appelle la méthode selectAll de ArticleDAO
 		return this.articleDAO.selectAll();
 	}
 
+	/**
+	 * Méthode qui permet de sélectionner un Article avec son ID
+	 * @param id
+	 * @return
+	 * @throws BusinessException
+	 */
 	@Override
 	public Article selectById(Integer id) throws BusinessException {
+		//Appelle la méthode selectById de ArticleDAO  et lui passer un ID en paramètre
 		return this.articleDAO.selectById(id);
 	}
 
+	/**
+	 * Méthode qui permet vérifier qu'un Article peut être inséré ou modifié 
+	 * @param data
+	 * @throws BusinessException
+	 */
 	@Override
 	public void validateData(Article data, BusinessException businessException) throws BusinessException {
 		
+		//Vérification que le 
 		if(data.getNameArticle()==null || data.getNameArticle().equalsIgnoreCase("") || data.getNameArticle().length() > 30) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NAME_ERROR);
 		}
