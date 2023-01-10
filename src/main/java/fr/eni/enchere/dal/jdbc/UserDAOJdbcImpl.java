@@ -41,58 +41,87 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	@Override
 	public List<User> selectAll() throws BusinessException {
+		//Déclaration d'une liste d'utilisateurs
 		List<User> listeUsers = new ArrayList<>();
+		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;
-			
+		//Récupération d'une connection à la BDD	
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
+			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_ALL);
+			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();
+			//Boucler tant qu'il y a une ligne suivante
 			while(rs.next()) {
+				//Déclaration et instanciation d'un User
 				User userOngoing = new User();
-				
+				//Sécurité
 				if (rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
+					//Générer un User à partir des infos de la BDD
 					userOngoing = userbuilder(rs);
+					//Ajouter ce User à la liste de User
 					listeUsers.add(userOngoing);
 				}
 			}
+			//Fermer le ResultSet
 			rs.close();
+			//Fermer le Statement
 			pstmt.close();
+			//Fermer la connection
 			cnx.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.SELECT_LIST_USER_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		}
+		//Return la liste de tous les utilisateurs
 		return listeUsers;
 	}
 
 	@Override
 	public User selectById(Integer id) throws BusinessException {
+		//Vérification si le paramêtre est valide
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
 			throw businessException;
 		}
-		
+		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;	
+		//Déclaration et instanciation d'un User
 		User userOngoing = new User();
+		//Récupération d'une connection à la BDD	
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
+			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
+			//Setter les paramètre de la requète SQL
 			pstmt.setInt(1, id);
+			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();
+			//S'il y a une ligne suivante
 			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
+				//Générer un User à partir des infos de la BDD
 				userOngoing = userbuilder(rs);
 			}
+			//Fermer le ResultSet
 			rs.close();
+			//Fermer le Statement
 			pstmt.close();
+			//Fermer la connection
 			cnx.close();
 		}catch(Exception e) {
 			e.printStackTrace();
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.SELECT_USER_ID_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		} 
 		return userOngoing;
@@ -100,21 +129,28 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	@Override
 	public void insert(User user) throws BusinessException {
+		//Vérification si le paramêtre est valide
 		if(user==null) {
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
 			throw businessException;
 		}
+		//Récupération d'une connection à la BDD	
 		try(Connection cnx = ConnectionProvider.getConnection())
 		{
 			try
 			{
+				//Mettre l'autoCommit à false
 				cnx.setAutoCommit(false);
+				//Déclaration d'un Prepared Statement et initialisation à null
 				PreparedStatement pstmt = null ;
+				//Déclaration d'un ResultSet et initialisation à null
 				ResultSet rs = null;
-				
+				//Si le User n'a pas de no_utilisateur
 				if (user.getNoUser()==0) {
+					//Passage de la requête au Prepared Statement et récupérer la clé générée
 					pstmt = cnx.prepareStatement(SQL_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+					//Setter les paramètre de la requète SQL
 					pstmt.setString(1, user.getPseudo());
 					pstmt.setString(2, user.getName());
 					pstmt.setString(3, user.getFirstName());
@@ -126,51 +162,66 @@ public class UserDAOJdbcImpl implements UserDAO {
 					pstmt.setString(9, user.getPassword());
 					pstmt.setInt(10, user.getCredit());
 					pstmt.setBoolean(11, user.isAdministrator());
+					//Executer la requête
 					pstmt.executeUpdate();
+					//Récupérer la clé générée dans le  ResultSet
 					rs = pstmt.getGeneratedKeys();
 				}
+				//S'il y a une clé
 				if(rs.next())
 				{
+					//Setter le numéro d'utilisateur avec la clé
 					user.setNoUser(rs.getInt(1));
 				}
-			rs.close();
-			pstmt.close();
-			cnx.commit();
-			cnx.close();
+				//Fermer le ResultSet
+				rs.close();
+				//Fermer le Statement
+				pstmt.close();
+				//Commit
+				cnx.commit();
+				//Fermer la connection
+				cnx.close();
 			} catch(Exception e)
 			{
 				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
 				cnx.rollback();
+				//Envoyer l'exception
 				throw e;
 			}
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.INSERT_USER_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		} 
 	}
 
 	@Override
 	public void update(User user) throws BusinessException {
+		//Vérification si le paramêtre est valide
 		if(user==null) {
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
 			throw businessException;
 		}
-		
+		//Récupération d'une connection à la BDD	
 		try(Connection cnx = ConnectionProvider.getConnection())
 		{
-			
+			//Mettre l'autoCommit à false
 			cnx.setAutoCommit(false);
+			//Déclaration d'un Prepared Statement et initialisation à null
 			PreparedStatement pstmt = null;
 			
 			try {
-				cnx.setAutoCommit(false);
+				//Passage de la requête au Prepared Statement
 				pstmt = cnx.prepareStatement(SQL_UPDATE);
-				
+				//Setter les paramètre de la requète SQL
 				pstmt.setString(1, user.getPseudo());
 				pstmt.setString(2, user.getName());
 				pstmt.setString(3, user.getFirstName());
@@ -183,88 +234,121 @@ public class UserDAOJdbcImpl implements UserDAO {
 				pstmt.setInt(10, user.getCredit());
 				pstmt.setBoolean(11, user.isAdministrator());
 				pstmt.setInt(12, user.getNoUser());
-				
+				//Executer la requête
 				pstmt.executeUpdate();
+				
+				//Fermer le Statement
 				pstmt.close();
+				//Commit
 				cnx.commit();
+				//Fermer la connection
 				cnx.close();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
 				cnx.rollback();
+				//Envoyer l'exception
 				throw e;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.UPDATE_USER_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		}
 	}
 
 	@Override
 	public void delete(Integer id) throws BusinessException {
-		
+		//Vérification si le paramêtre est valide
 		if(id==null || id==0)	{
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
 			throw businessException;
 		}
-		
+		//Récupération d'une connection à la BDD	
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
+			//Mettre l'autoCommit à false
+			cnx.setAutoCommit(false);
+			//Déclaration d'un Prepared Statement et initialisation à null
 			PreparedStatement pstmt = null;
-			cnx.prepareStatement(SQL_DELETE);
 			
 			try {
-				cnx.setAutoCommit(false);
+				//Passage de la requête au Prepared Statement
 				pstmt = cnx.prepareStatement(SQL_DELETE);
+				//Setter les paramètre de la requète SQL
 				pstmt.setInt(1, id);
+				//Executer la requête
 				pstmt.executeUpdate();
 				
+				//Fermer le Statement
 				pstmt.close();
+				//Commit
 				cnx.commit();
+				//Fermer la connection
 				cnx.close();
-				
 			} catch (Exception e) {
 				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
 				cnx.rollback();
+				//Envoyer l'exception
 				throw e;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			// transforme la SQLException en businessException
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.DELETE_USER_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		}
 	}
 	
 	@Override
 	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException {
+		//Vérification si le paramêtre est valide
 		if(pseudo==null || "".equals(pseudo) || mdp==null || "".equals(mdp))	{
 			BusinessException businessException = new BusinessException();
 			businessException.addError(CodesResultatDAL.INSERT_PSEUDO_MDP_USER_NULL);
 			throw businessException;
 		}
+		//Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;	
+		//Déclaration et instanciation d'un User
 		User userOngoing = new User();
+		//Récupération d'une connection à la BDD	
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
+			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO_MDP);
+			//Setter les paramètre de la requète SQL
 			pstmt.setString(1, pseudo);
 			pstmt.setString(2, mdp);
+			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();
+			//Vérification si la requète à récupérer des infos
 			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
+				//Générer un User à partir des infos de la BDD
 				userOngoing = userbuilder(rs);
 			}
+			//Fermer le ResultSet
 			rs.close();
+			//Fermer le Statement
 			pstmt.close();
-			cnx.close();
+			//Fermer la connection
 		}catch(Exception e) {
 			e.printStackTrace();
+			//Déclarer une BusinessException
 			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
 			businessException.addError(CodesResultatDAL.SELECT_USER_PSEUDO_MDP_FAILED);
+			//Envoyer l'exception
 			throw businessException;
 		} 
 		return userOngoing;
@@ -277,6 +361,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	 * @throws SQLException
 	 */
 	private User userbuilder(ResultSet rs) throws SQLException{
+		//Retourne une instance de User avec les infos de la BDD
 		return new User(
 				rs.getInt("no_utilisateur"),
 				rs.getString("pseudo"), 
