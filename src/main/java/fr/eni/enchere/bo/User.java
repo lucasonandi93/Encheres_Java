@@ -54,8 +54,8 @@ public class User implements Serializable {
 		this(pseudo, name, firstName, email, phone, street, cp, city, password);
 		this.setCredit(credit);
 		this.setAdministrator(administrator);
-	}
-    
+	
+    }
     public User(int noUser, String pseudo, String name, String firstName, String email, String street, String cp, String city, String password) {
 		this(pseudo, name, firstName, email, street, cp, city, password);
 		this.setNoUser(noUser);

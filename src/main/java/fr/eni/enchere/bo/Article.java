@@ -156,18 +156,12 @@ public class Article implements Serializable{
 	}
 
 	@Override
-	    public String toString() {
-	        return "ArticleVendu{" +
-	                "noArticle=" + noArticle +
-	                ", nomArticle='" + nameArticle + '\'' +
-	                ", description='" + description + '\'' +
-	                ", dateDebutEncheres=" + auctionStartDate +
-	                ", dateFinEncheres=" + auctionEndDate +
-	                ", prixInitial=" + originalPrice +
-	                ", prixVente=" + sellingPrice +
-	                ", etatVente='" + saleStatus + '\'' +
-	                ", noUtilisateur=" + noUser +
-	                ", noCategorie=" + noCategory +
-	                '}';
-	 }
+	public String toString() {
+		return "Article [getNoArticle()=" + getNoArticle() + ", getNameArticle()=" + getNameArticle()
+				+ ", getDescription()=" + getDescription() + ", getAuctionStartDate()=" + getAuctionStartDate()
+				+ ", getAuctionEndDate()=" + getAuctionEndDate() + ", getOriginalPrice()=" + getOriginalPrice()
+				+ ", getSellingPrice()=" + getSellingPrice() + ", getSaleStatus()=" + getSaleStatus() + ", getNoUser()="
+				+ getNoUser() + ", getNoCategory()=" + getNoCategory() + ", getWithdrawal()=" + getWithdrawal()
+				+ ", getListAuction()=" + getListAuction() + "]";
+	}
 } 
