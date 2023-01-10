@@ -3,6 +3,7 @@
  */
 package fr.eni.enchere.bll;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -124,12 +125,12 @@ public class ArticleManager implements Manager<Article, Integer>{
 		}
 		
 		//Vérification que la date de début d'enchère de l'article est valide
-		if (data.getAuctionStartDate().before(new Date()) || data.getAuctionStartDate()==null) {
+		if (data.getAuctionStartDate().isBefore(LocalDate.now()) || data.getAuctionStartDate()==null) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_START_DATE_ERROR);
 		}
 		
 		//Vérification que la date de fin d'enchère de l'article est valide
-		if (data.getAuctionEndDate().before(data.getAuctionStartDate()) || data.getAuctionEndDate()==null) {
+		if (data.getAuctionEndDate().isBefore(data.getAuctionStartDate()) || data.getAuctionEndDate()==null) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_END_DATE_ERROR);
 		}
 		

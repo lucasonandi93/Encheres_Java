@@ -55,34 +55,128 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 						listeAuctions.add(auctionOngoing);
 					}
 				}
-					//Fermer le ResultSet
-					rs.close();
-					//Fermer le Statement
-					pstmt.close();
-					//Fermer la connection
-					cnx.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					//Déclarer une BusinessException
-					BusinessException businessException = new BusinessException();
-					//Si il y a une erreur, ajouter l'erreur à la BusinessException
-					businessException.addError(CodesResultatDAL.SELECT_LIST_USER_FAILED);
-					//Envoyer l'exception
-					throw businessException;
-				}
-				//Return la liste de tous les utilisateurs
-				return listeAuctions;
+			//Fermer le ResultSet
+			rs.close();
+			//Fermer le Statement
+			pstmt.close();
+			//Fermer la connection
+			cnx.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.SELECT_LIST_USER_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		}
+		//Return la liste de tous les utilisateurs
+		return listeAuctions;
 	}
 
 	@Override
 	public Auction selectById(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		//Vérification si le paramêtre est valide
+		if(id==null || id==0)	{
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
+			throw businessException;
+		}
+		//Déclaration d'un Prepared Statement et initialisation à null
+		PreparedStatement pstmt = null;	
+		//Déclaration et instanciation d'une Auction
+		Auction auctionOngoing = new Auction();
+		//Récupération d'une connection à la BDD	
+		try (Connection cnx=ConnectionProvider.getConnection()){
+			//Passage de la requête au Prepared Statement
+			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
+			//Setter les paramètre de la requète SQL
+			pstmt.setInt(1, id);
+			//Récupération des informations dans un ResultSet
+			ResultSet rs= pstmt.executeQuery();
+			//S'il y a une ligne suivante
+			if (rs.next() && rs.getInt("no_enchere") != auctionOngoing.getNoAuction()) {
+				//Générer une Auction à partir des infos de la BDD
+				auctionOngoing = auctionBuilder(rs);
+			}
+			//Fermer le ResultSet
+			rs.close();
+			//Fermer le Statement
+			pstmt.close();
+			//Fermer la connection
+			cnx.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.SELECT_USER_ID_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		} 
+		return auctionOngoing;
 	}
 
 	@Override
-	public void insert(Auction data) throws BusinessException {
-		// TODO Auto-generated method stub
+	public void insert(Auction auction) throws BusinessException {
+		//Vérification si le paramêtre est valide
+		if(auction==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
+			throw businessException;
+		}
+		//Récupération d'une connection à la BDD	
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			try{
+				//Mettre l'autoCommit à false
+				cnx.setAutoCommit(false);
+				//Déclaration d'un Prepared Statement et initialisation à null
+				PreparedStatement pstmt = null ;
+				//Déclaration d'un ResultSet et initialisation à null
+				ResultSet rs = null;
+				//Si le User n'a pas de no_utilisateur
+				if (auction.getNoAuction()==0) {
+					//Passage de la requête au Prepared Statement et récupérer la clé générée
+					pstmt = cnx.prepareStatement(SQL_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+					//Setter les paramètre de la requète SQL
+					pstmt.setDate(1, java.sql.Date.valueOf(auction.getAuctionDate()));
+					pstmt.setInt(2, auction.getAuctionAmount());
+					pstmt.setInt(3, auction.getNoArticle());
+					pstmt.setInt(4, auction.getNoUser());
+					//Executer la requête
+					pstmt.executeUpdate();
+					//Récupérer la clé générée dans le  ResultSet
+					rs = pstmt.getGeneratedKeys();
+				}
+				//S'il y a une clé
+				if(rs.next()){
+				//Setter le numéro d'utilisateur avec la clé
+				auction.setNoAuction(rs.getInt(1));
+				}
+				//Fermer le ResultSet
+				rs.close();
+				//Fermer le Statement
+				pstmt.close();
+				//Commit
+				cnx.commit();
+				//Fermer la connection
+				cnx.close();
+			} catch(Exception e){
+				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
+				cnx.rollback();
+				//Envoyer l'exception
+				throw e;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.INSERT_USER_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		} 
 
 	}
 

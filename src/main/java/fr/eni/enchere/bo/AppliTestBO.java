@@ -1,17 +1,17 @@
 package fr.eni.enchere.bo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class AppliTestBO {
 
 	public static void main(String[] args) {
 		
-		Article article1 = new Article("name", "desc", new Date(), new Date(), 1, 1, new Withdrawal());
-		Article article2 = new Article("name", "desc", new Date(), new Date(), 1, 1, 1, new Withdrawal());
-		Article article3 = new Article("name", "desc", new Date(), new Date(), 1, 1, 1, 1, new Withdrawal());
-		Article article4 = new Article( 1, "name", "desc", new Date(), new Date(), 1, 1, new Withdrawal());
-		Article article5 = new Article( 1, "name", "desc", new Date(), new Date(), 1, 1, 1, new Withdrawal());
-		Article article6 = new Article( 1, "name", "desc", new Date(), new Date(), 1, 1, 1, 1, new Withdrawal());
+		Article article1 = new Article("name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, new Withdrawal());
+		Article article2 = new Article("name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, 1, new Withdrawal());
+		Article article3 = new Article("name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, 1, 1, new Withdrawal());
+		Article article4 = new Article( 1, "name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, new Withdrawal());
+		Article article5 = new Article( 1, "name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, 1, new Withdrawal());
+		Article article6 = new Article( 1, "name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, 1, 1, new Withdrawal());
 		
 		Auction auction = new Auction(1,1,1);
 		
