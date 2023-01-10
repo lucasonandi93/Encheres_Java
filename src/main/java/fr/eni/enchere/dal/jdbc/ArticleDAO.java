@@ -17,9 +17,11 @@ public interface ArticleDAO extends DAO<Article, Integer>{
 	public void insertToWithdrawal (Article data) throws BusinessException;
 	
 	// sélectionner article par numéro de catégorie
-	public List<Article> selectByNoCategory (Integer data) throws BusinessException;
+	public List<Article> selectByNoCategory (Integer noCategory) throws BusinessException;
 	
 	// sélectionner article selon caractère contenu dans son nom
-	public List<Article> selectByCharName (String data) throws BusinessException;
+	public List<Article> selectByCharName (String contents) throws BusinessException;
+	
+	public List<Article> selectByNoCategoryAndCharName (Integer noCategory, String contents) throws BusinessException;
 	
 }
