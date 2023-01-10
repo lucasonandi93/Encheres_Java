@@ -59,7 +59,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 				//Sécurité
 				if (rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
 					//Générer un User à partir des infos de la BDD
-					userOngoing = userbuilder(rs);
+					userOngoing = userBuilder(rs);
 					//Ajouter ce User à la liste de User
 					listeUsers.add(userOngoing);
 				}
@@ -107,7 +107,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			//S'il y a une ligne suivante
 			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
 				//Générer un User à partir des infos de la BDD
-				userOngoing = userbuilder(rs);
+				userOngoing = userBuilder(rs);
 			}
 			//Fermer le ResultSet
 			rs.close();
@@ -335,7 +335,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			//Vérification si la requète à récupérer des infos
 			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
 				//Générer un User à partir des infos de la BDD
-				userOngoing = userbuilder(rs);
+				userOngoing = userBuilder(rs);
 			}
 			//Fermer le ResultSet
 			rs.close();
@@ -360,7 +360,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	private User userbuilder(ResultSet rs) throws SQLException{
+	private User userBuilder(ResultSet rs) throws SQLException{
 		//Retourne une instance de User avec les infos de la BDD
 		return new User(
 				rs.getInt("no_utilisateur"),

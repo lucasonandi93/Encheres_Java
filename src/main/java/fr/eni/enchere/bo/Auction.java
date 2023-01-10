@@ -1,6 +1,6 @@
 package fr.eni.enchere.bo;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
 * POJO Auction
@@ -11,18 +11,31 @@ import java.util.Date;
 public class Auction implements Serializable{
 	
 	private static final long serialVersionUID = -5398583469104095201L;
+	private int noAuction;
 	private int noUser;
 	private int noArticle;
-	private Date auctionDate;
+	private LocalDate auctionDate;
 	private int auctionAmount;
 	
 	/**
 	 * Constructeur
 	 */
 	public Auction() {
-		this.auctionDate = new Date();
-    }
+		this.auctionDate = LocalDate.now();
+	}
 	
+	/**
+	 * Constructeur
+	 * @param auctionAmount
+	 * @param noUser
+	 * @param noArticle
+	 */
+	public Auction(int auctionAmount, int noUser, int noArticle) {
+		this();
+		 this.setAuctionAmount(auctionAmount);
+		 this.setNoUser(noUser);
+		 this.setNoArticle(noArticle);
+	}
 	
 	 /**
 	 * Constructeur
@@ -30,14 +43,41 @@ public class Auction implements Serializable{
 	 * @param noArticle
 	 * @param auctionAmount
 	 */
-	public Auction(int noUser, int noArticle, int auctionAmount) {
-		 this();
-		 this.setNoUser(noUser);
-		 this.setNoArticle(noArticle);
-		 this.setAuctionAmount(auctionAmount);
+	public Auction(LocalDate auctionDate, int auctionAmount, int noUser, int noArticle) {
+		 this(auctionAmount, noUser, noArticle);
+		 this.setAuctionDate(auctionDate);
 	  }
-
+	
+	/**
+	 * Constructeur
+	 * @param noAuction
+	 * @param auctionDate
+	 * @param auctionAmount
+	 * @param noUser
+	 * @param noArticle
+	 */
+	public Auction(int noAuction, LocalDate auctionDate, int auctionAmount, int noUser, int noArticle) {
+		this(auctionDate, auctionAmount, noUser, noArticle);
+		this.setNoAuction(noAuction);
+	}
+	
 	    /**
+	 * Getter pour noAuction
+	 * @return the noAuction
+	 */
+	public int getNoAuction() {
+		return noAuction;
+	}
+
+	/**
+	 * Setter pour noAuction
+	 * @param noAuction the noAuction to set
+	 */
+	public void setNoAuction(int noAuction) {
+		this.noAuction = noAuction;
+	}
+
+		/**
 	 * Getter pour noUser
 	 * @return the noUser
 	 */
@@ -73,7 +113,7 @@ public class Auction implements Serializable{
 	 * Getter pour auctionDate
 	 * @return the auctionDate
 	 */
-	public Date getAuctionDate() {
+	public LocalDate getAuctionDate() {
 		return auctionDate;
 	}
 
@@ -81,7 +121,7 @@ public class Auction implements Serializable{
 	 * Setter pour auctionDate
 	 * @param auctionDate the auctionDate to set
 	 */
-	public void setAuctionDate(Date auctionDate) {
+	public void setAuctionDate(LocalDate auctionDate) {
 		this.auctionDate = auctionDate;
 	}
 
