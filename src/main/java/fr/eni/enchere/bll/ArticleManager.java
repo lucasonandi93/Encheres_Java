@@ -113,39 +113,47 @@ public class ArticleManager implements Manager<Article, Integer>{
 	@Override
 	public void validateData(Article data, BusinessException businessException) throws BusinessException {
 		
-		//Vérification que le 
+		//Vérification que le nom de l'article est valide
 		if(data.getNameArticle()==null || data.getNameArticle().equalsIgnoreCase("") || data.getNameArticle().length() > 30) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NAME_ERROR);
 		}
 		
+		//Vérification que la description de l'article est valide
 		if(data.getDescription()==null || data.getDescription().equalsIgnoreCase("") || data.getDescription().length() > 300) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_DECRIPTION_ERROR);
 		}
 		
+		//Vérification que la date de début d'enchère de l'article est valide
 		if (data.getAuctionStartDate().before(new Date()) || data.getAuctionStartDate()==null) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_START_DATE_ERROR);
 		}
 		
+		//Vérification que la date de fin d'enchère de l'article est valide
 		if (data.getAuctionEndDate().before(data.getAuctionStartDate()) || data.getAuctionEndDate()==null) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_END_DATE_ERROR);
 		}
 		
+		//Vérification que le numéro d'utilisateur est valide (VENDEUR)
 		if (data.getNoUser()==0) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_USER_ERROR);
 		}
 		
+		//Vérification que le numéro de catégorie de l'article est valide
 		if (data.getNoCategory()==0) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_CATEGORY_ERROR);
 		}
 		
+		//Vérification que le nom de rue du lieu de retrait de l'article est valide
 		if (data.getWithdrawal().getStreet()==null || data.getWithdrawal().getStreet().equalsIgnoreCase("") || data.getWithdrawal().getStreet().length() > 30) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
 		}
 		
+		//Vérification que le code postal du lieu de retrait de l'article est valide
 		if (data.getWithdrawal().getCp()==null || data.getWithdrawal().getCp().equalsIgnoreCase("") || data.getWithdrawal().getCp().length() > 10) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
 		}
 		
+		//Vérification que la ville du lieu de retrait de l'article est valide
 		if (data.getWithdrawal().getCity()==null || data.getWithdrawal().getCity().equalsIgnoreCase("") || data.getWithdrawal().getCity().length() > 30) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
 		}

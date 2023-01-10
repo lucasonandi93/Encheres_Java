@@ -30,6 +30,8 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_ARTICLE_WITHDRAWAL_ERROR=20008;
 	
+	public static final int RULE_USER_PHONE_ERROR=20009;
+	
 	//BLL ARTICLE ERRORS
 	public static final int RULE_ARTICLE_NAME_ERROR=20010;
 	
