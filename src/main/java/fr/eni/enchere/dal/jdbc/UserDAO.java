@@ -18,6 +18,6 @@ public interface UserDAO extends DAO<User, Integer>{
 	 * @return
 	 * @throws BusinessException
 	 */
-	public  User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException;
+	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException;
 	
 }

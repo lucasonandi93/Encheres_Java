@@ -1,5 +1,7 @@
 package fr.eni.enchere.dal.jdbc;
 
+import java.util.List;
+
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.exceptions.BusinessException;
 
@@ -15,9 +17,9 @@ public interface ArticleDAO extends DAO<Article, Integer>{
 	public void insertToWithdrawal (Article data) throws BusinessException;
 	
 	// sélectionner article par numéro de catégorie
-	public void selectByNoCategory (Article data) throws BusinessException;
+	public List<Article> selectByNoCategory (Integer data) throws BusinessException;
 	
 	// sélectionner article selon caractère contenu dans son nom
-	public void selectByCharName (Article data) throws BusinessException;
+	public List<Article> selectByCharName (String data) throws BusinessException;
 	
 }
