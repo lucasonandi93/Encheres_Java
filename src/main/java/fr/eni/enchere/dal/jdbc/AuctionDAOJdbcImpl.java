@@ -13,11 +13,12 @@ import fr.eni.enchere.exceptions.BusinessException;
  */
 public class AuctionDAOJdbcImpl implements AuctionDAO {
 
+	
+	
 	/**
 	 * Constructeur
 	 */
 	public AuctionDAOJdbcImpl() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

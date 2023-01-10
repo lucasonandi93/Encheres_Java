@@ -18,15 +18,18 @@ import fr.eni.enchere.exceptions.BusinessException;
  */
 public class UserDAOJdbcImpl implements UserDAO {
 
-	private static final String SQL_SELECT_ALL = 	"SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
-												+ "ville, mot_de_passe, credit, administrateur FROM UTILISATEURS";
-	private static final String SQL_SELECT_BY_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
-												+ "ville, mot_de_passe, credit, administrateur FROM UTILISATEURS WHERE no_utilisateur=?";
-	private static final String SQL_INSERT = 	"INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, "
-												+ "ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String SQL_UPDATE = 	"UPDATE UTILISATEURS SET pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?,"
-												+ " ville=?, mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
-	private static final String SQL_DELETE = 	"DELETE FROM UTILISATEURS where WHERE no_utilisateur=?";
+	private static final String SQL_SELECT_ALL =	"SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
+													+ "ville, mot_de_passe, credit, administrateur"
+													+ "FROM UTILISATEURS";
+	private static final String SQL_SELECT_BY_ID = 	"SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
+													+ "ville, mot_de_passe, credit, administrateur"
+													+ "FROM UTILISATEURS WHERE no_utilisateur=?";
+	private static final String SQL_INSERT = 		"INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, "
+													+ "ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String SQL_UPDATE = 		"UPDATE UTILISATEURS SET pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?,"
+													+ " ville=?, mot_de_passe=?, credit=?, administrateur=?"
+													+ "WHERE no_utilisateur=?";
+	private static final String SQL_DELETE = 		"DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
 	
 	private static Connection connection = null;
 	
@@ -61,7 +64,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 			}
 			rs.close();
 			pstmt.close();
-			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
