@@ -103,6 +103,11 @@ public class UserManager implements Manager<User, Integer>{
 		//Appelle la méthode selectById de AuctionDAO et lui passer un ID en paramètre
 		return this.userDAO.selectById(id);
 	}
+	
+	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException {
+		//Appelle la méthode selectByPseudoMdp de AuctionDAO
+		return this.userDAO.selectByPseudoMdp(pseudo, mdp);
+	}
 
 	/**
 	 * Méthode qui permet vérifier qu'un User peut être inséré ou modifié 

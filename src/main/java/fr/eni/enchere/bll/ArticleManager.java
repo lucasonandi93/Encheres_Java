@@ -92,6 +92,40 @@ public class ArticleManager implements Manager<Article, Integer>{
 		//Appelle la méthode selectAll de ArticleDAO
 		return this.articleDAO.selectAll();
 	}
+	
+	/**
+	 * Méthode qui permet de sélectionner les article d'une categorie
+	 * @param noCategory
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Article> selectByNoCategory(Integer noCategory) throws BusinessException{
+		//Appelle la méthode selectByNoCategory de ArticleDAO
+		return this.articleDAO.selectByNoCategory(noCategory);
+	}
+	
+	/**
+	 * Méthode qui permet de sélectionner les article dont le nom comporte une chaine de caractère spécifique
+	 * @param contents
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Article> selectByName(String contents) throws BusinessException{
+		//Appelle la méthode selectByCharName de ArticleDAO
+		return this.articleDAO.selectByCharName(contents);
+	}
+	
+	/**
+	 * Méthode qui permet de sélectionner les article d'une categorie dont le nom comporte une chaine de caractère spécifique
+	 * @param noCategory
+	 * @param contents
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Article> selectByNoCategoryAndName(Integer noCategory, String contents) throws BusinessException{
+		//Appelle la méthode selectByNoCategoryAndCharName de ArticleDAO
+		return this.articleDAO.selectByNoCategoryAndCharName(noCategory, contents);
+	}
 
 	/**
 	 * Méthode qui permet de sélectionner un Article avec son ID
