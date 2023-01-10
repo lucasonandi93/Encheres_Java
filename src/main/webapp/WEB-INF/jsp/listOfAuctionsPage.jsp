@@ -9,7 +9,7 @@
 </head>
 <body>
 <header>
-<a href="" class="connexion"><blockquote>S'inscrire - Se connecter</blockquote></a>
+<a href="" class="connexion">S'inscrire - Se connecter</a>
 </header>
 
 ENI-Encheres
@@ -36,6 +36,7 @@ Catégorie :
 </div>
 </div>
 
+<div class="boiteArticle"> Test</div>
 
 </body>
 </html>
