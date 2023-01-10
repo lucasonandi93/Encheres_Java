@@ -28,6 +28,17 @@ public class AppliTestBO {
 		
 		Withdrawal withdrawal = new Withdrawal(1, "street", "cp", "city");
 		
+		user1.getArticleList().add(article1);
+		user1.getArticleList().add(article2);
+		user1.getArticleList().add(article3);
+		user1.getArticleList().add(article4);
+		user1.getArticleList().add(article5);
+		user1.getArticleList().add(article6);
+		
+		user1.getAuctionList().add(auction);
+		
+		article1.getListAuction().add(auction);
+		
 		System.out.println(article1);
 		System.out.println(article2);
 		System.out.println(article3);
