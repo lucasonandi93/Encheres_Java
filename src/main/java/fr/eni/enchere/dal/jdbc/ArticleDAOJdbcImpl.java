@@ -51,4 +51,22 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	}
 
+	@Override
+	public void insertToWithdrawal(Article data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void selectByNoCategory(Article data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void selectByCharName(Article data) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
