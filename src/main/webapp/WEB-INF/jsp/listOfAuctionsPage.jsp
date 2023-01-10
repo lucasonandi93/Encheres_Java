@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
+<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet">
 <title>Liste des enchères</title>
 </head>
 <body>
@@ -17,6 +17,7 @@ ENI-Encheres
 
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
+  
   Filtres :
   <br>
     <input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search">
@@ -25,8 +26,9 @@ ENI-Encheres
 </nav>
  <div class= »bloc »>
 <div class= »select »>
+<br>
 Catégorie :
-<select>
+<select name="nom_select" onchange="loadImg(this.value);">
 <option>Toutes</option>
 <option value= »1″>Informatique</option>
 <option value= »2″>Ameublement</option>
@@ -36,7 +38,24 @@ Catégorie :
 </div>
 </div>
 
-<div class="boiteArticle"> Test</div>
+<br>
+<div class="boiteArticle">Test
+<img src="nom_select.png" id="id_img" />
+<script type="text/javascript">
+function loadImg(key) {
+    var arr = [
+        '1_10',
+        '2_10',
+        '3_10',
+        '1_30',
+        '2_30',
+        '3_30',
+        //.....
+    ];
+    document.getElementById('id_img').src = 'img/productImage/' + arr[key] + '.png';
+}
+</script>
+</div>
 
 </body>
 </html>

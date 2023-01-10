@@ -1,5 +1,23 @@
+.title{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+header{
+	text-align: right;
+}
+
 .boiteArticle{
 	
-	border-style: groove;
-	border: 2px;
+	width: 40%;     /* == half the body's width */
+ 	height: 200px;  /* Note: a percentage would be 0 */
+ 	background: lightgray;
+	border: solid black 2px;
+	float: left;
+}
+
+body{
+	background-color: teal;
+	
 }
