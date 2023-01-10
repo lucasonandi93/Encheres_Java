@@ -25,16 +25,16 @@ ENI-Encheres
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
 </nav>
- <div class= »bloc »>
-<div class= »select »>
+ <div class="bloc">
+<div class="select">
 <br>
 Catégorie :
 <select name="nom_select" onchange="loadImg(this.value);">
 <option>Toutes</option>
-<option value= »1″>Informatique</option>
-<option value= »2″>Ameublement</option>
-<option value= »3″>Vêtements</option>
-<option value= »4″>Sport&Loisirs</option>
+<option value= "1">Informatique</option>
+<option value= "2">Ameublement</option>
+<option value= "3">Vêtements</option>
+<option value= "4">Sport&Loisirs</option>
 </select>
 </div>
 </div>
