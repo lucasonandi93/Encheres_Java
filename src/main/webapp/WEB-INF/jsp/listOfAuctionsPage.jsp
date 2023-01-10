@@ -9,8 +9,9 @@
 </head>
 <body>
 <header>
-<a href="" class="connexion">S'inscrire - Se connecter</a>
-</header>
+<form action="<%=request.getContextPath() %>/ServletConnexionPage">S'inscrire
+<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="connexion">S'inscrire - Se connecter</a>
+</form></header>
 
 ENI-Encheres
 	<div class="title"><h2>Liste des enchères</h2></div>
