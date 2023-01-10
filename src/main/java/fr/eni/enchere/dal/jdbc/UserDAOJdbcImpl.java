@@ -70,13 +70,19 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}
 
 	@Override
-	public User selectById(Integer no_utilisateur) throws BusinessException {
+	public User selectById(Integer id) throws BusinessException {
+		if(id==null || id==0)	{
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			throw businessException;
+		}
+		
 		PreparedStatement pstmt = null;	
 		User userOngoing = new User();
 		try (Connection cnx=ConnectionProvider.getConnection())
 		{
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
-			pstmt.setInt(1, no_utilisateur);
+			pstmt.setInt(1, id);
 			ResultSet rs= pstmt.executeQuery();
 			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
 				userOngoing = userbuilder(rs);
@@ -235,6 +241,36 @@ public class UserDAOJdbcImpl implements UserDAO {
 		}
 	}
 	
+	@Override
+	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException {
+		if(pseudo==null || "".equals(pseudo) || mdp==null || "".equals(mdp))	{
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_NULL);
+			throw businessException;
+		}
+		PreparedStatement pstmt = null;	
+		User userOngoing = new User();
+		try (Connection cnx=ConnectionProvider.getConnection())
+		{
+			pstmt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO_MDP);
+			pstmt.setString(1, pseudo);
+			pstmt.setString(2, mdp);
+			ResultSet rs= pstmt.executeQuery();
+			if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
+				userOngoing = userbuilder(rs);
+			}
+			rs.close();
+			pstmt.close();
+			cnx.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_OBJET_ECHEC);
+			throw businessException;
+		} 
+		return userOngoing;
+	}
+	
 	private User userbuilder(ResultSet rs) throws SQLException{
 		return new User(
 				rs.getInt("no_utilisateur"),
@@ -251,4 +287,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 				rs.getBoolean("administrateur"));
 		
 	}
+
+	
 }
