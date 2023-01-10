@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Auction;
-import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -145,12 +144,12 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 					pstmt.setInt(4, auction.getNoUser());
 					//Executer la requête
 					pstmt.executeUpdate();
-					//Récupérer la clé générée dans le  ResultSet
+					//Récupérer la clé générée dans le ResultSet
 					rs = pstmt.getGeneratedKeys();
 				}
 				//S'il y a une clé
 				if(rs.next()){
-				//Setter le numéro d'utilisateur avec la clé
+				//Setter le numéro d'enchère avec la clé
 				auction.setNoAuction(rs.getInt(1));
 				}
 				//Fermer le ResultSet
@@ -181,17 +180,107 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 	}
 
 	@Override
-	public void update(Auction data) throws BusinessException {
-		// TODO Auto-generated method stub
-
+	public void update(Auction auction) throws BusinessException {
+		//Vérification si le paramêtre est valide
+		if(auction==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_USER_NULL);
+			throw businessException;
+		}
+		//Récupération d'une connection à la BDD	
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			//Mettre l'autoCommit à false
+			cnx.setAutoCommit(false);
+			//Déclaration d'un Prepared Statement et initialisation à null
+			PreparedStatement pstmt = null;	
+			try {
+				//Passage de la requête au Prepared Statement
+				pstmt = cnx.prepareStatement(SQL_UPDATE);
+				//Setter les paramètre de la requète SQL
+				pstmt.setDate(1, java.sql.Date.valueOf(auction.getAuctionDate()));
+				pstmt.setInt(2, auction.getAuctionAmount());
+				pstmt.setInt(3, auction.getNoArticle());
+				pstmt.setInt(4, auction.getNoUser());
+				pstmt.setInt(5, auction.getNoAuction());	
+				//Executer la requête
+				pstmt.executeUpdate();
+						
+				//Fermer le Statement
+				pstmt.close();
+				//Commit
+				cnx.commit();
+				//Fermer la connection
+				cnx.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
+				cnx.rollback();
+				//Envoyer l'exception
+				throw e;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.UPDATE_USER_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		}
 	}
 
 	@Override
 	public void delete(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-
+		//Vérification si le paramêtre est valide
+		if(id==null || id==0){
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ID_USER_NULL);
+			throw businessException;
+		}
+		//Récupération d'une connection à la BDD	
+		try (Connection cnx=ConnectionProvider.getConnection()){
+			//Mettre l'autoCommit à false
+			cnx.setAutoCommit(false);
+			//Déclaration d'un Prepared Statement et initialisation à null
+			PreparedStatement pstmt = null;
+			try {
+				//Passage de la requête au Prepared Statement
+				pstmt = cnx.prepareStatement(SQL_DELETE);
+				//Setter les paramètre de la requète SQL
+				pstmt.setInt(1, id);
+				//Executer la requête
+				pstmt.executeUpdate();
+						
+				//Fermer le Statement
+				pstmt.close();
+				//Commit
+				cnx.commit();
+				//Fermer la connection
+				cnx.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				//Si il y a une erreur rollback et la méthode n'est pas executée
+				cnx.rollback();
+				//Envoyer l'exception
+				throw e;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			//Déclarer une BusinessException
+			BusinessException businessException = new BusinessException();
+			//Si il y a une erreur, ajouter l'erreur à la BusinessException
+			businessException.addError(CodesResultatDAL.DELETE_USER_FAILED);
+			//Envoyer l'exception
+			throw businessException;
+		}
 	}
 	
+	/**
+	 * Méthode qui permet de générer un objet Auction à partir des infos de la BDD
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	private Auction auctionBuilder(ResultSet rs) throws SQLException{
 		return new Auction(
 				rs.getInt("no_enchere"),
