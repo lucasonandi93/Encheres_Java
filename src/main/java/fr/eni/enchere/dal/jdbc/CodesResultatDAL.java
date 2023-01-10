@@ -43,4 +43,5 @@ public abstract class CodesResultatDAL {
 	
 	public static final int DELETE_ID_ARTICLE_NULL=10017;
 	
+	
 }

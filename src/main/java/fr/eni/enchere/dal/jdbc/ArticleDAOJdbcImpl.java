@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Withdrawal;
@@ -130,6 +129,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 					if (rs.next()) {
 						article.setNoArticle(rs.getInt(1));
 					}
+					insertToWithdrawal(article);
 				}
 			rs.close();
 			pstmt.close();
@@ -249,9 +249,11 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			try
 			{
 				cnx.setAutoCommit(false);
-				PreparedStatement pstmt = null ;
+				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				
+				pstmt = cnx.prepareStatement(SQL_INSERT_TO_WITHDRAWAL);
+				rs= pstmt.executeQuery();
 				if (article.getNoArticle()==0) {
 					pstmt.setInt(1, article.getNoArticle());
 				}
@@ -279,11 +281,21 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} 
 	}
 
+	
+//	"SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
+//	+ "prix_initial, prix_vente, no_utilisateur"
+//	+ "FROM ARTICLES_VENDUS WHERE no_category=?";	
 	@Override
-	public void selectByNoCategory(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+	public void selectByNoCategory(Article article) throws BusinessException {
+		//Vérification si le paramêtre est valide
+		if(article==null) {
+			BusinessException businessException = new BusinessException();
+			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
+			throw businessException;
+		}
 	}
+	
+
 
 	@Override
 	public void selectByCharName(Article data) throws BusinessException {
