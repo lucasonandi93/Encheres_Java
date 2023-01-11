@@ -206,7 +206,5 @@ public class AppliTestDAL {
 			
 			e.printStackTrace();
 		}
-	
 	}
-
 }
