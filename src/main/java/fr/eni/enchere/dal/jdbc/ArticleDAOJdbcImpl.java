@@ -149,7 +149,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 					pstmt.setInt(6, article.getSellingPrice());
 					pstmt.setInt(7, article.getNoUser());
 					pstmt.setInt(8, article.getNoCategory());
-					pstmt.setInt(9, article.getNoUser());
 					//Executer la requête
 					pstmt.executeUpdate();
 					//Récupérer la clé générée dans le  ResultSet
@@ -283,11 +282,12 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				
-				pstmt = cnx.prepareStatement(SQL_INSERT_TO_WITHDRAWAL);
-				rs= pstmt.executeQuery();
+				pstmt = cnx.prepareStatement(SQL_INSERT_TO_WITHDRAWAL,PreparedStatement.RETURN_GENERATED_KEYS);
 				if (article.getNoArticle()==0) {
 					pstmt.setInt(1, article.getNoArticle());
 				}
+				pstmt.executeUpdate();
+				rs = pstmt.getGeneratedKeys();
 				if(rs.next())
 				{
 					article.setNoArticle(rs.getInt(1));
