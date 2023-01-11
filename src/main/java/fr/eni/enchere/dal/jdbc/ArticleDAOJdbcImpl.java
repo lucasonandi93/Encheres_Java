@@ -37,7 +37,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	
 	private static final String SQL_DELETE = 				"DELETE FROM ARTICLES_VENDUS WHERE no_article=?";
 
-	private static final String SQL_INSERT_TO_WITHDRAWAL = 	"INSERT INTO RETRAITS (no_article) values(?)";
+	private static final String SQL_INSERT_TO_WITHDRAWAL = 	"INSERT INTO RETRAITS (no_article, rue, code_postal, ville) values(?,?,?,?)";
 	
 	private static final String SQL_SELECT_BY_NO_CATEGORY = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur"
@@ -158,7 +158,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 						//Setter le numéro d'article avec la clé
 						article.setNoArticle(rs.getInt(1));
 					}
-					//Insérer le numéro d'article dans la table Retrait
+					
+					System.out.println(article);
+					
+					//Insérer le lieu de retrait dans la table Retrait
 					insertToWithdrawal(article);
 				}
 			rs.close();
@@ -276,23 +279,18 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}
 		try(Connection cnx = ConnectionProvider.getConnection())
 		{
+			cnx.setAutoCommit(false);
+			PreparedStatement pstmt = null;
 			try
-			{
-				cnx.setAutoCommit(false);
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				
-				pstmt = cnx.prepareStatement(SQL_INSERT_TO_WITHDRAWAL,PreparedStatement.RETURN_GENERATED_KEYS);
-				if (article.getNoArticle()==0) {
+			{	
+				pstmt = cnx.prepareStatement(SQL_INSERT_TO_WITHDRAWAL);
+				if (article.getNoArticle()!=0) {
 					pstmt.setInt(1, article.getNoArticle());
+					pstmt.setString(2, article.getWithdrawal().getStreet());
+					pstmt.setString(3, article.getWithdrawal().getCp());
+					pstmt.setString(4, article.getWithdrawal().getCity());
 				}
 				pstmt.executeUpdate();
-				rs = pstmt.getGeneratedKeys();
-				if(rs.next())
-				{
-					article.setNoArticle(rs.getInt(1));
-				}
-			rs.close();
 			pstmt.close();
 			cnx.commit();
 			cnx.close();
