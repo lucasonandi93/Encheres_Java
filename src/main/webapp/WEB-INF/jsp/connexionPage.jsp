@@ -8,7 +8,7 @@
 
 <link href="<%=request.getContextPath() %>/css/styleConnexion.css" rel="stylesheet">
 <title>Connexion</title>
-<link href="${pageContext.request.contextPath}/vendor/bootstrap-5.2.3-dist/css/bootstrap.css" rel="stylesheet">
+
 </head>
 <body>
 <header><h3>ENI-Enchères</h3></header>
