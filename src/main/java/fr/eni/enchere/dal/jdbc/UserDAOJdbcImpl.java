@@ -100,7 +100,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		{
 			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
-			//Setter les paramètre de la requète SQL
+			//Setter le paramètre de la requète SQL
 			pstmt.setInt(1, id);
 			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();

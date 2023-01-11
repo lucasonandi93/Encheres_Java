@@ -14,6 +14,8 @@ import fr.eni.enchere.config.Settings;
  * @version ENI_Encheres - v0.1
  */
 public class DAOFactory {
+	
+	
 	public static UserDAO getUserDAO() {
 		UserDAO userDAO = null;
 		try {
@@ -49,4 +51,17 @@ public class DAOFactory {
 		}
 		return articleDAO;
 	}
+	
+	public static CategoryDAO getCategoryDAO() {
+		CategoryDAO categoryDAO = null;
+		try {
+			categoryDAO = (CategoryDAO) Class.forName(Settings.getProperty("categorydaoimpl")).getDeclaredConstructor().newInstance();
+			
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return categoryDAO;
+	}
+	
 }
