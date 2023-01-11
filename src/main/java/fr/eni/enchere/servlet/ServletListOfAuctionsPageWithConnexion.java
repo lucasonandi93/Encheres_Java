@@ -10,13 +10,13 @@ import java.io.IOException;
 /**
  * Servlet implementation class ServletListOfAuctionsPageWithConnexion
  */
+@WebServlet("/ServletListOfAuctionsPageWithConnexion")
 public class ServletListOfAuctionsPageWithConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-	@WebServlet("/ServletListOfAuctionsPageWithConnexion")
     public ServletListOfAuctionsPageWithConnexion() {
         super();
         // TODO Auto-generated constructor stub
