@@ -4,14 +4,4 @@
   <welcome-file-list>
     <welcome-file>ServletListOfAuctionsPage</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>ServletProfilPage</display-name>
-    <servlet-name>ServletProfilPage</servlet-name>
-    <servlet-class>fr.eni.enchere.servlet.ServletProfilPage</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletProfilPage</servlet-name>
-    <url-pattern>/ServletProfilPage</url-pattern>
-  </servlet-mapping>
 </web-app>

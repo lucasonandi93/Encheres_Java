@@ -33,8 +33,8 @@
     <br><br>
    <a href="<%=request.getContextPath() %>/ServletRegistrationPage" class="forgotPassword">Mot de passe oublié</a>
    <br><br>
-   <form>
-  <button class="submit" formaction="<%=request.getContextPath() %>/ServletRegistrationPage">Créer un compte</button>
+   <form method="get" action="<%=request.getContextPath() %>/ServletRegistrationPage">
+  <button class="submit">Créer un cooompte</button>
 </form>
    </main>
 </body>

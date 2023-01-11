@@ -21,7 +21,7 @@ public class ServletRegistrationPage extends HttpServlet {
      */
     public ServletRegistrationPage() throws ServletException {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**

@@ -20,7 +20,7 @@ public class ServletProfilPage extends HttpServlet {
      */
     public ServletProfilPage() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
