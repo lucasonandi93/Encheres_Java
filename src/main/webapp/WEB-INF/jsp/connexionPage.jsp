@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- Bootstrap core CSS -->
+
 <link href="<%=request.getContextPath() %>/css/styleConnexion.css" rel="stylesheet">
 <title>Connexion</title>
+<link href="${pageContext.request.contextPath}/vendor/bootstrap-5.2.3-dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <header><h3>ENI-Enchères</h3></header>
@@ -23,14 +26,15 @@
     </div>
   </form>
   <br>
-	 <button class="button" formaction="<%=request.getContextPath() %>/ServletRegistrationPage">Connexion</button>
+  	 <a class="btn btn-primary" role="button" href="<%=request.getContextPath() %>/ServletProfilPage">Connexion</a>
+	
 	<input type="radio" id="Se souvenir de moi" name="connexion" value="connexion">
     <label for="connexion">Se souvenir de moi</label>
     <br><br>
-   <a href="<%=request.getContextPath() %>/ServletInnexistantePourLinstant" class="forgotPassword">Mot de passe oublié</a>
+   <a href="<%=request.getContextPath() %>/ServletRegistrationPage" class="forgotPassword">Mot de passe oublié</a>
    <br><br>
    <form>
-  <button class="button" formaction="<%=request.getContextPath() %>/ServletRegistrationPage">Créer un compte</button>
+  <button class="submit" formaction="<%=request.getContextPath() %>/ServletRegistrationPage">Créer un compte</button>
 </form>
    </main>
 </body>
