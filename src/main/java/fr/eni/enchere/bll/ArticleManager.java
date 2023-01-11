@@ -158,7 +158,4 @@ public class ArticleManager implements Manager<Article, Integer>{
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
 		}
 	}
-
-	
-
 }

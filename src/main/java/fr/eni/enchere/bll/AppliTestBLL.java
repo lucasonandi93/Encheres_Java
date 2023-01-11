@@ -15,10 +15,9 @@ public class AppliTestBLL {
 	public static void main(String[] args) {
 		
 		ArticleManager articleManager = new ArticleManager();
+		AuctionManager auctionManager = new AuctionManager();
+		UserManager userManager = new UserManager();
 		
-		
-		System.out.println(articleManager);
 		
 	}
-
 }
