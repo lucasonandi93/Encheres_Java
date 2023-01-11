@@ -9,8 +9,10 @@
 </head>
 <body>
 <header>
-
-<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="connexion">S'inscrire - Se connecter</a>
+<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="connexion">Enchères</a>
+<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="sell">Vendre un article</a>
+<a href="<%=request.getContextPath() %>/ServletProfilPage" class="profil">Mon profil</a>
+<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="disconnect">Déconnexion</a>
 </header>
 
 <h3>ENI-Encheres</h3>

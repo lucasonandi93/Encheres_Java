@@ -12,7 +12,7 @@
 <br>
 Mon profil
 <br><br>
-<form action="" method="get" class="formProfil">
+<form action="" method="post" class="formProfil">
 <div class="formProfil">
 <label for="pseudo">Pseudo :</label>
 <input type="text" id="pseudo" name="pseudo" required
