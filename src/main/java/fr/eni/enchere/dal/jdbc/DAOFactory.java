@@ -51,4 +51,17 @@ public class DAOFactory {
 		}
 		return articleDAO;
 	}
+	
+	public static CategoryDAO getCategoryDAO() {
+		CategoryDAO categoryDAO = null;
+		try {
+			categoryDAO = (CategoryDAO) Class.forName(Settings.getProperty("categorydaoimpl")).getDeclaredConstructor().newInstance();
+			
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return categoryDAO;
+	}
+	
 }
