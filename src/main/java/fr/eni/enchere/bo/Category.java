@@ -12,7 +12,7 @@ import java.util.List;
 public class Category implements Serializable {
    
 	private static final long serialVersionUID = 3933976282091788722L;
-	private int nbCategory;
+	private int noCategory;
     private String wording;
     private List<Article> listArticle;
 
@@ -25,29 +25,29 @@ public class Category implements Serializable {
     
     /**
      * Constructeur
-     * @param nbCategory
+     * @param noCategory
      * @param wording
      */
-    public Category(int nbCategory, String wording) {
+    public Category(int noCategory, String wording) {
     	this();
-    	this.setNbCategory(nbCategory);
+    	this.setnoCategory(noCategory);
     	this.setWording(wording);
     }
 
 	/**
-	 * Getter pour nbCategory
-	 * @return the nbCategory
+	 * Getter pour noCategory
+	 * @return the noCategory
 	 */
-	public int getNbCategory() {
-		return nbCategory;
+	public int getNoCategory() {
+		return noCategory;
 	}
 
 	/**
-	 * Setter pour nbCategory
-	 * @param nbCategory the nbCategory to set
+	 * Setter pour noCategory
+	 * @param noCategory the noCategory to set
 	 */
-	public void setNbCategory(int nbCategory) {
-		this.nbCategory = nbCategory;
+	public void setnoCategory(int noCategory) {
+		this.noCategory = noCategory;
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class Category implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" - Category [getNbCategory()=");
-		builder.append(getNbCategory());
+		builder.append(" - Category [getNoCategory()=");
+		builder.append(getNoCategory());
 		builder.append(", getWording()=");
 		builder.append(getWording());
 		builder.append(", getListArticle()=");

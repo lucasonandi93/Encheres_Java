@@ -6,7 +6,7 @@ import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
- * Classe en charge de 
+ * Interface en charge de transmettre les méthodes spécifiques à la classe ArticleDAOJdbcImpl
  * @author slamire2022
  * @date 9 janv. 2023 - 15:21:09
  * @version ENI_Encheres - v0.1
