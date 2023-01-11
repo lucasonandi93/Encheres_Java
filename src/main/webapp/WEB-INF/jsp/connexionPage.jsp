@@ -26,7 +26,7 @@
     </div>
   </form>
   <br>
-  	 <a class="btn btn-primary" role="button" href="<%=request.getContextPath() %>/ServletProfilPage">Connexion</a>
+  	 <a class="btn btn-primary" role="button" href="<%=request.getContextPath() %>/ServletListOfAuctionsPageWithConnexion">Connexion</a>
 	
 	<input type="radio" id="Se souvenir de moi" name="connexion" value="connexion">
     <label for="connexion">Se souvenir de moi</label>
@@ -34,7 +34,7 @@
    <a href="<%=request.getContextPath() %>/ServletRegistrationPage" class="forgotPassword">Mot de passe oublié</a>
    <br><br>
    <form method="get" action="<%=request.getContextPath() %>/ServletRegistrationPage">
-  <button class="submit">Créer un cooompte</button>
+  <button class="submit">Créer un compte</button>
 </form>
    </main>
 </body>
