@@ -5,6 +5,7 @@ package fr.eni.enchere.dal.jdbc;
 
 import java.util.List;
 
+import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -13,11 +14,11 @@ import fr.eni.enchere.exceptions.BusinessException;
  * @date 11 janv. 2023 - 09:20:14
  * @version ENI_Encheres - v0.1
  */
-public interface CategoryDAO <T, t> {
+public interface CategoryDAO {
 	/**
 	 * Méthode qui permet de sélectionner l'ensemble des lignes d'une table de la BDD
 	 * @return
 	 * @throws BusinessException
 	 */
-	public List<T> selectAll() throws BusinessException;
+	public List<Category> selectAll() throws BusinessException;
 }
