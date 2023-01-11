@@ -5,7 +5,6 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
-import fr.eni.enchere.bo.Auction;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.dal.jdbc.CategoryDAO;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
