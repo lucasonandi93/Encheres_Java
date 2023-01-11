@@ -89,7 +89,7 @@ public class ServletTestDAL extends HttpServlet {
 			userDAO.insert(luca);
 			userDAO.insert(alban);
 			// Test avec erreur
-
+			
 //			// Test de la méthode insert de articleDAO
 //			articleDAO.insert(pcGamer);
 //			articleDAO.insert(table);
