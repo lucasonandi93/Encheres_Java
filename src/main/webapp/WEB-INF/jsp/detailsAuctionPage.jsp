@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Détail vente</title>
 </head>
 <body>
+<header>ENI-Enchères</header>
 
+Détail Vente
 </body>
 </html>

@@ -1,6 +1,8 @@
 body{
 	text-align: center;
 	background-color: teal;
+background: rgb(102,40,122);
+background: linear-gradient(50deg, rgba(102,40,122,1) 25%, rgba(0,196,137,1) 75%);
 }
 
 header{
