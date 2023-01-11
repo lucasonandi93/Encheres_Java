@@ -62,4 +62,7 @@ public abstract class CodesResultatDAL {
 			
 	public static final int INSERT_ID_AUCTION_NULL=10029;
 	
+	//ERROR CATEGORY
+	public static final int SELECT_LIST_CATEGORY_FAILED=10030;
+	
 }
