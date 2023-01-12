@@ -35,11 +35,13 @@
 					</select>
 				</div>
 			</div>
+			<br>
 			<label for="avatar">Photo de l'article</label>
 			<div class="avatar">
 				<input type="file" id="avatar" name="avatar"
 					accept="image/png, image/jpeg">
 			</div>
+			<br>
 			<div class="form-group">
 				<label>Mise à prix :</label>
 				<div class="input-group">
@@ -55,11 +57,12 @@
 						<button id="up" class="btn btn-default" onclick="up('10')">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
+						<br>
 	<label for="beginAuction">Début de l'enchère :</label>
 	<input type="date" name="beginAuction">
 	<label for="endAuction">Fin de l'enchère :</label>
 	<input type="date" name="endAuction">
-
+<br>
 	<fieldset><legend>Retrait</legend>
 	Rue : <input type="text" name="street" size="25">
 	<br>
@@ -71,7 +74,9 @@
 					</div>
 				</div>
 			</div>
-	<input type="submit"
+			<br>
+	<input type="submit" value="create"> 
+<button type="cancel" onclick="<%=request.getContextPath() %>/ServletListOfAuctions">Annuler</button>
 		</form>
 	</fieldset>
 </body>
