@@ -30,7 +30,7 @@
 				<label for="categories">Catégorie:</label> 
 				<select name="categories" id="categories">
 					<c:forEach var="category" items="${categoryList}">
-						<option>Toutes</option>
+						<option value="Toutes">Toutes</option>
 			  			<option value="${category.getWording()}">${category.getWording()}>
 					</c:forEach>
 				</select>

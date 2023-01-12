@@ -37,4 +37,9 @@ public class CategoryManager {
 		return this.categoryDAO.selectAll();
 	}
 	
+	public Category selectByName(String libelle) throws BusinessException {
+		//Appelle la méthode selectAll de CategoryDAO
+		return this.categoryDAO.selectByName(libelle);
+	}
+	
 }

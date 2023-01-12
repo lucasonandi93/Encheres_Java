@@ -45,8 +45,22 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			categoryList = categoryManager.selectAll();
 			request.setAttribute("categoryList", categoryList);
 			
-			articleList = articleManager.selectAll();
-			request.setAttribute("articleList", articleList);
+			Category categoryOngoing = categoryManager.selectByName(request.getParameter("categories"));
+			
+			if (request.getParameter("content")==null || (request.getParameter("content")=="" && request.getParameter("categories")=="Toutes")) {
+				articleList = articleManager.selectAll();
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")==null || (request.getParameter("content")=="" && request.getParameter("categories")!="Toutes")) {
+				articleList = articleManager.selectByNoCategory(categoryOngoing.getNoCategory());
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")!=null || (request.getParameter("content")!="" && request.getParameter("categories")=="Toutes")){
+				articleList = articleManager.selectByName(request.getParameter("content"));
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")!=null || (request.getParameter("content")!="" && request.getParameter("categories")!="Toutes")) {
+				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(), request.getParameter("content"));
+			}else {
+				articleList = null;
+			}
 			
 		} catch (BusinessException e) {
 			e.printStackTrace();
