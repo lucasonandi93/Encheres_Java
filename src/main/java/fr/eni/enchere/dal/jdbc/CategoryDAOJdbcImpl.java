@@ -41,7 +41,7 @@ public class CategoryDAOJdbcImpl implements CategoryDAO {
 			while(rs.next()) {
 				Category categoryOnGoing = new Category();
 				if(rs.getInt("no_categorie")!= categoryOnGoing.getNoCategory()) {
-					categoryOnGoing = new Category(rs.getInt("no_category"), rs.getString("libelle"));
+					categoryOnGoing = new Category(rs.getInt("no_categorie"), rs.getString("libelle"));
 					listCategories.add(categoryOnGoing);
 				}
 			}
