@@ -61,7 +61,7 @@ public class ServletTestDAL extends HttpServlet {
 		User userError = null;
 		
 		//OK
-		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, 1, 2);
+		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, 1, 3);
 		Auction auction2 = new Auction(LocalDate.of(2023, 03, 11), 100, 1, 5);
 		Auction auction3 = new Auction(LocalDate.of(2023, 02, 01), 50, 2, 4);
 		Auction auction4 = new Auction(LocalDate.of(2023, 01, 26), 1000, 2, 3);
@@ -92,49 +92,50 @@ public class ServletTestDAL extends HttpServlet {
 		try {
 			// =======================================================================================================================================
 
-			// METHODES INSERT
-			// Test de la méthode insert de userDAO
-			userDAO.insert(alexandra);
-			userDAO.insert(luca);
-			userDAO.insert(alban);
-			// Test avec erreur
-			userDAO.insert(userError);
+//			// METHODES INSERT --> OK
+//			// Test de la méthode insert de userDAO --> OK
+//			userDAO.insert(alexandra);
+//			userDAO.insert(luca);
+//			userDAO.insert(alban);
+//			// Test avec erreur
+//			userDAO.insert(userError);
 //			
-//			// Test de la méthode insert de articleDAO
+//			// Test de la méthode insert de articleDAO --> OK
 //			articleDAO.insert(pcGamer);
 //			articleDAO.insert(table);
 //			articleDAO.insert(ballon);
 //			articleDAO.insert(slip);
 //			articleDAO.insert(souris);
 //			// Test avec erreur
-//
-//			// Test de la méthode insert de auctionDAO
+//			articleDAO.insert(articleError);
+//			
+//			// Test de la méthode insert de auctionDAO --> OK 
 //			auctionDAO.insert(auction1);
 //			auctionDAO.insert(auction2);
 //			auctionDAO.insert(auction3);
 //			auctionDAO.insert(auction4);
 //			auctionDAO.insert(auction5);
 //			// Test avec erreur
-//
+//			auctionDAO.insert(auctionError);
+//			
 //			// =======================================================================================================================================
-//			System.out.println(
-//					"============================================================================================");
+//			System.out.println("============================================================================================");
 //			// METHODES SELECTALL
-//			// Test de la méthode selectall de userDAO
+//			// Test de la méthode selectall de userDAO --> OK
 //			List<User> userList = userDAO.selectAll();
 //
 //			for (User user : userList) {
 //				System.out.println(user);
 //			}
 //
-//			// Test de la méthode selectall de articleDAO
+//			// Test de la méthode selectall de articleDAO --> OK
 //			List<Article> articleList = articleDAO.selectAll();
 //
 //			for (Article article : articleList) {
 //				System.out.println(article);
 //			}
 //
-//			// Test de la méthode selectall de auctionDAO
+			// Test de la méthode selectall de auctionDAO --> OK
 //			List<Auction> auctionList = auctionDAO.selectAll();
 //
 //			for (Auction auction : auctionList) {
@@ -144,23 +145,26 @@ public class ServletTestDAL extends HttpServlet {
 //			// =======================================================================================================================================
 //
 //			// METHODES UPDATE
-//			// Test de la méthode update de userDAO
-//			alexandra = new User("BB_Panda", "Boulay", "Alexandra", "alex.boulay@orange.fr", "07-85-66-90-96",
+//			// Test de la méthode update de userDAO --> OK
+//			alexandra = new User(52,"BB_Panda", "Boulay", "Alexandra", "alex.boulay@orange.fr", "07-85-66-90-96",
 //					"rue de la foret", "53540", "LAUBRIERES", "quiqui35", 1000, false);
 //			userDAO.update(alexandra);
 //			// Test avec erreur
-//
-//			// Test de la méthode update de articleDAO
-//			pcGamer = new Article("PC Gamer cassé", "Un super PC fixe avec de grosses performances",
+//			userDAO.update(userError);
+			
+//			// Test de la méthode update de articleDAO --> OK
+//			pcGamer = new Article(3, "PC Gamer cassé", "Un super PC fixe avec de grosses performances",
 //					LocalDate.of(2023, 01, 20), LocalDate.of(2023, 02, 01), 1, 1, withdrawal);
 //			articleDAO.update(pcGamer);
 //			// Test avec erreur
-//
-//			// Test de la méthode update de auctionDAO
-//			auction1 = new Auction(LocalDate.of(2023, 02, 23), 500, 1, 2);
-//			auctionDAO.update(auction1);
+//			articleDAO.update(articleError);
+			
+//			// Test de la méthode update de auctionDAO --> 
+			auction1 = new Auction(LocalDate.of(2023, 02, 23), 500, 1, 2);
+			auctionDAO.update(auction1);
 //			// Test avec erreur
-//
+//			auctionDAO.update(auctionError);
+			
 //			// =======================================================================================================================================
 //			System.out.println(
 //					"============================================================================================");

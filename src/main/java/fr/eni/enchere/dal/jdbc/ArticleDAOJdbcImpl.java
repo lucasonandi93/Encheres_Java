@@ -20,10 +20,10 @@ import fr.eni.enchere.exceptions.BusinessException;
  */
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 
-	private static final String SQL_SELECT_ALL = 			"SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres,"
+	private static final String SQL_SELECT_ALL = 			"SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
-															+ "FROM ARTICLES_VENDUS a "
-															+ "INNER JOIN RETRAITS r on a.no_article=r.no_article";
+															+ "FROM ARTICLES_VENDUS as a "
+															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article";
 	
 	private static final String SQL_SELECT_BY_ID = 			"SELECT no_article, nom_article, description,  date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie "
@@ -31,8 +31,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	
 	private static final String SQL_INSERT = 				"INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie) values (?,?,?,?,?,?,?,?)";
+	
 	private static final String SQL_UPDATE = 				"UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, "
-															+ "prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?"
+															+ "prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=? "
 															+ "WHERE no_article=?";
 	
 	private static final String SQL_DELETE = 				"DELETE FROM ARTICLES_VENDUS WHERE no_article=?";
@@ -214,7 +215,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				pstmt.setInt(6, article.getSellingPrice());
 				pstmt.setInt(7, article.getNoUser());
 				pstmt.setInt(8, article.getNoCategory());
-				pstmt.setInt(9, article.getNoUser());
+				pstmt.setInt(9, article.getNoArticle());
 				
 				pstmt.executeUpdate();
 				pstmt.close();
