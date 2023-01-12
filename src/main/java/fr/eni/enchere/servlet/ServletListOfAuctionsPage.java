@@ -1,7 +1,14 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bll.CategoryManager;
+import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Category;
+import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +32,40 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArticleManager articleManager = new ArticleManager();
+		CategoryManager categoryManager = new CategoryManager();
+		List<Article> articleList= null;
+		List<Category> categoryList= null;
+		
+		try {
+			categoryList = categoryManager.selectAll();
+			request.setAttribute("categoryList", categoryList);
+			
+			Category categoryOngoing = categoryManager.selectByName(request.getParameter("categories"));
+			
+			if (request.getParameter("content")==null || (request.getParameter("content")=="" && request.getParameter("categories")=="Toutes")) {
+				articleList = articleManager.selectAll();
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")==null || (request.getParameter("content")=="" && request.getParameter("categories")!="Toutes")) {
+				articleList = articleManager.selectByNoCategory(categoryOngoing.getNoCategory());
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")!=null || (request.getParameter("content")!="" && request.getParameter("categories")=="Toutes")){
+				articleList = articleManager.selectByName(request.getParameter("content"));
+				request.setAttribute("articleList", articleList);
+			}else if(request.getParameter("content")!=null || (request.getParameter("content")!="" && request.getParameter("categories")!="Toutes")) {
+				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(), request.getParameter("content"));
+			}else {
+				articleList = null;
+			}
+			
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
@@ -33,6 +73,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		doGet(request, response);
 	}
 

@@ -56,11 +56,6 @@ CREATE TABLE RETRAITS (
 )
 
 ALTER TABLE RETRAITS ADD constraint retrait_pk PRIMARY KEY  (no_article)
-ALTER TABLE RETRAITS
-    ADD CONSTRAINT retrait_article_fk FOREIGN KEY ( no_article ) REFERENCES  ARTICLES_VENDUS (no_article)
-ON DELETE NO ACTION 
-    ON UPDATE no action 
-
 
 CREATE TABLE ENCHERES(	
 	no_enchere  INTEGER IDENTITY(1,1) NOT NULL,
@@ -74,25 +69,28 @@ ALTER TABLE ENCHERES ADD constraint enchere_pk PRIMARY KEY ( no_enchere)
  
 ALTER TABLE ENCHERES
     ADD CONSTRAINT encheres_utilisateur_fk FOREIGN KEY ( no_utilisateur ) REFERENCES UTILISATEURS ( no_utilisateur )
-ON DELETE NO ACTION 
-    ON UPDATE no action 
+ON DELETE CASCADE 
+    ON UPDATE CASCADE 
 
 ALTER TABLE ENCHERES
     ADD CONSTRAINT encheres_no_article_fk FOREIGN KEY ( no_article ) REFERENCES ARTICLES_VENDUS ( no_article )
-ON DELETE NO ACTION 
-    ON UPDATE no action 
+ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 	
 
 ALTER TABLE ARTICLES_VENDUS
     ADD CONSTRAINT articles_vendus_categories_fk FOREIGN KEY ( no_categorie )
         REFERENCES categories ( no_categorie )
-ON DELETE NO ACTION 
-    ON UPDATE no action 
+ON DELETE CASCADE
+    ON UPDATE CASCADE
 
 ALTER TABLE ARTICLES_VENDUS
     ADD CONSTRAINT ventes_utilisateur_fk FOREIGN KEY ( no_utilisateur )
-        REFERENCES utilisateurs ( no_utilisateur )
-ON DELETE NO ACTION 
-    ON UPDATE no action 
+        REFERENCES UTILISATEURS ( no_utilisateur )
+ON DELETE CASCADE
+    ON UPDATE CASCADE
 
-
+ALTER TABLE RETRAITS
+    ADD CONSTRAINT retrait_article_fk FOREIGN KEY ( no_article ) REFERENCES  ARTICLES_VENDUS (no_article)
+ON DELETE CASCADE 
+    ON UPDATE CASCADE

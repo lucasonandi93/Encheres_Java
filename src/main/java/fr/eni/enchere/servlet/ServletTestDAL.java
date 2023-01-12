@@ -89,8 +89,9 @@ public class ServletTestDAL extends HttpServlet {
 				LocalDate.of(2023, 03, 10), LocalDate.of(2023, 03, 12), 2, 1, withdrawa5);
 		//ERREUR
 		Article articleError = null;
-		try {
-			// =======================================================================================================================================
+	
+//		try {
+//			// =======================================================================================================================================
 
 //			// METHODES INSERT --> OK
 //			// Test de la méthode insert de userDAO --> OK
@@ -159,9 +160,9 @@ public class ServletTestDAL extends HttpServlet {
 //			// Test avec erreur
 //			articleDAO.update(articleError);
 			
-//			// Test de la méthode update de auctionDAO --> 
-			auction1 = new Auction(LocalDate.of(2023, 02, 23), 500, 1, 2);
-			auctionDAO.update(auction1);
+//			// Test de la méthode update de auctionDAO --> OK
+//			auction1 = new Auction(2,LocalDate.of(2023, 02, 23), 500, 1, 3);
+//			auctionDAO.update(auction1);
 //			// Test avec erreur
 //			auctionDAO.update(auctionError);
 			
@@ -169,50 +170,51 @@ public class ServletTestDAL extends HttpServlet {
 //			System.out.println(
 //					"============================================================================================");
 //			// METHDES SELECTBYID
-//			// Test de la méthode selectbyid de userDAO
-//			User user = userDAO.selectById(1);
+//			// Test de la méthode selectbyid de userDAO --> OK
+//			User user = userDAO.selectById(52);
 //			System.out.println(user);
 //			// Test avec erreur
-//
-//			// Test de la méthode selectbyid de articleDAO
-//			Article article = articleDAO.selectById(1);
+//			User user = userDAO.selectById(0);
+			
+//			// Test de la méthode selectbyid de articleDAO ---> OK
+//			Article article = articleDAO.selectById(3);
 //			System.out.println(article);
 //			// Test avec erreur
-//
-//			// Test de la méthode selectbyid de auctionDAO
+//			Article article = articleDAO.selectById(0);
+			
+//			// Test de la méthode selectbyid de auctionDAO --> OK
 //			Auction auction = auctionDAO.selectById(1);
 //			System.out.println(auction);
 //			// Test avec erreur
-//
+//			Auction auction = auctionDAO.selectById(0);
+			
 //			// =======================================================================================================================================
 //
 //			// METHODES DELETE
-//			// Test de la méthode delete de userDAO
-//			userDAO.delete(3);
+//			// Test de la méthode delete de userDAO --> NON
+			//userDAO.delete(3);
 //			// Test avec erreur
 //
-//			// Test de la méthode delete de articleDAO
-//			articleDAO.delete(1);
+//			// Test de la méthode delete de articleDAO --> NON
+			// articleDAO.delete(1);
 //			// Test avec erreur
 //
-//			// Test de la méthode delete de auctionDAO
-//			auctionDAO.delete(1);
+//			// Test de la méthode delete de auctionDAO --> OK
+			// auctionDAO.delete(1);
 //			// Test avec erreur
 //
 //			// =======================================================================================================================================
 //
-//			// METHODE SELECTBYPSEUDOMDP USER
+//			// METHODE SELECTBYPSEUDOMDP USER --> OK
 //			User userConnexion = userDAO.selectByPseudoMdp("Iromega", "bidon25");
-//			System.out.println(
-//					"============================================================================================");
+//			System.out.println("============================================================================================");
 //			System.out.println(userConnexion);
 //			// =======================================================================================================================================
 //
 //			// METHODE SELECTBYNOCATEGORY ARTICLE
-//			// Test de la méthode selectByNoCategory de articleDAO
+//			// Test de la méthode selectByNoCategory de articleDAO	-->OK
 //			List<Article> articleListByNoCategory = articleDAO.selectByNoCategory(1);
-//			System.out.println(
-//					"============================================================================================");
+//			System.out.println("============================================================================================");
 //			for (Article article2 : articleListByNoCategory) {
 //				System.out.println(article2);
 //			}
@@ -221,10 +223,9 @@ public class ServletTestDAL extends HttpServlet {
 //			// =======================================================================================================================================
 //
 //			// METHODE SELECTBYCHARNAME ARTICLE
-//			// Test de la méthode selectByCharName de articleDAO
+//			// Test de la méthode selectByCharName de articleDAO --> NON : Syntaxe incorrecte vers '@P0' / L'index 1 est hors limites.
 //			List<Article> articleListCharName = articleDAO.selectByCharName("PC");
-//			System.out.println(
-//					"============================================================================================");
+//			System.out.println("============================================================================================");
 //			for (Article article3 : articleListCharName) {
 //				System.out.println(article3);
 //			}
@@ -245,17 +246,17 @@ public class ServletTestDAL extends HttpServlet {
 //			// =======================================================================================================================================
 //
 //			// METHODE SELECTALL CATEGORY
-//			// Test de la méthode selectAll de categoryDAO
+//			// Test de la méthode selectAll de categoryDAO --> OK
 //			List<Category> categoryList = categoryDAO.selectAll();
 //			System.out.println(
-//					"============================================================================================");
+////					"============================================================================================");
 //			for (Category category : categoryList) {
 //				System.out.println(category);
 //			}
-		} catch (BusinessException e) {
-
-			e.printStackTrace();
-		}
+//		} catch (BusinessException e) {
+//
+//			e.printStackTrace();
+//		}
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 

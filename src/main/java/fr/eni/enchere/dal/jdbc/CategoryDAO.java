@@ -21,4 +21,6 @@ public interface CategoryDAO {
 	 * @throws BusinessException
 	 */
 	public List<Category> selectAll() throws BusinessException;
+	
+	public Category selectByName(String libelle) throws BusinessException;
 }
