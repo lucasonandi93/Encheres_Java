@@ -48,17 +48,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
 															+ "WHERE no_categorie=?";
 	
-	private static final String SQL_SELECT_BY_CHAR_NAME = 	"SELECT a.no_article, description, date_debut_encheres, date_fin_encheres, "
+	private static final String SQL_SELECT_BY_CHAR_NAME = 	"SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
-															+ "WHERE nom_article LIKE '%?%' ";
+															+ "WHERE nom_article LIKE ? ";
 	
-	private static final String SQL_SELECT_BY_NO_CATEGORY_AND_CHAR_NAME = "SELECT a.no_article, description, date_debut_encheres, date_fin_encheres, "
+	private static final String SQL_SELECT_BY_NO_CATEGORY_AND_CHAR_NAME = "SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
-															+ "WHERE no_category=? AND nom_article LIKE '%?%'";
+															+ "WHERE no_categorie=? AND nom_article LIKE ? ";
 	
 	/**
 	 * Constructeur
@@ -389,7 +389,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_CHAR_NAME);
 			//Setter le paramètre de la requète SQL
-			pstmt.setString(1, contents);
+			pstmt.setString(1, ("%"+contents+"%"));
 			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();
 			//Boucler tant qu'il y a une ligne suivante
@@ -446,7 +446,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			//Passage de la requête au Prepared Statement
 			pstmt = cnx.prepareStatement(SQL_SELECT_BY_NO_CATEGORY_AND_CHAR_NAME);
 			//Setter le paramètre de la requète SQL
-			pstmt.setString(1, contents);
+			pstmt.setInt(1, noCategory);
+			pstmt.setString(2,"%"+contents+"%");
 			//Récupération des informations dans un ResultSet
 			ResultSet rs= pstmt.executeQuery();
 			//Boucler tant qu'il y a une ligne suivante

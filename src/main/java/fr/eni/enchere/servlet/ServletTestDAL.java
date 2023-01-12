@@ -223,7 +223,7 @@ public class ServletTestDAL extends HttpServlet {
 //			// =======================================================================================================================================
 //
 //			// METHODE SELECTBYCHARNAME ARTICLE
-//			// Test de la méthode selectByCharName de articleDAO --> NON : Syntaxe incorrecte vers '@P0' / L'index 1 est hors limites.
+//			// Test de la méthode selectByCharName de articleDAO --> OK
 //			List<Article> articleListCharName = articleDAO.selectByCharName("PC");
 //			System.out.println("============================================================================================");
 //			for (Article article3 : articleListCharName) {
@@ -257,7 +257,7 @@ public class ServletTestDAL extends HttpServlet {
 //
 //			e.printStackTrace();
 //		}
-		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
+//		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
 	/**
