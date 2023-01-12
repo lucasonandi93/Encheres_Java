@@ -168,8 +168,8 @@ public class ArticleManager implements Manager<Article, Integer>{
 		}
 		
 		//Vérification que le numéro d'utilisateur est valide (VENDEUR)
-		if (data.getNoUser()==0) {
-			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_USER_ERROR);
+		if (data.getUser()==null) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_USER_ERROR);
 		}
 		
 		//Vérification que le numéro de catégorie de l'article est valide

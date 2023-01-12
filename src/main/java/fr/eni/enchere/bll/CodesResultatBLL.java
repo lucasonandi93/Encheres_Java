@@ -41,7 +41,7 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_ARTICLE_END_DATE_ERROR=20013;
 	
-	public static final int RULE_ARTICLE_NO_USER_ERROR=20014;
+	public static final int RULE_ARTICLE_USER_ERROR=20014;
 	
 	public static final int RULE_ARTICLE_NO_CATEGORY_ERROR=20015;
 	

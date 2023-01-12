@@ -21,8 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class test
  */
-@WebServlet(name = "ServletListOfAuctionsPage", urlPatterns = "/ServletListOfAuctionsPage", initParams = {
-		@WebInitParam(name = "UserID", value = "") })
+@WebServlet("/ServletListOfAuctionsPage")
 public class ServletListOfAuctionsPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -79,8 +78,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-//		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-//		response.setHeader("Location", "/WEB-INF/jsp/listOfAuctionsPage.jsp");
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
