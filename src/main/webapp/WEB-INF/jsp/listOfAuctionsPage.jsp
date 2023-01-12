@@ -29,9 +29,9 @@
 				<input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search" name="content" value=""> 
 				<label for="categories">Catégorie:</label> 
 				<select name="categories" id="categories">
+				<option value="Toutes">Toutes</option>
 					<c:forEach var="category" items="${categoryList}">
-						<option value="Toutes">Toutes</option>
-			  			<option value="${category.getWording()}">${category.getWording()}>
+			  			<option value="${category.getWording()}">${category.getWording()}</option>
 					</c:forEach>
 				</select>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
