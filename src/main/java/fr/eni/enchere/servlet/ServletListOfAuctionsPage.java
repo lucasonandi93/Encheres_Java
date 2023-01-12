@@ -88,11 +88,21 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		System.out.println("doPost");
 		try {
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
-				String pseudo = request.getParameter("pseudo");
-				String password = request.getParameter("password");
-
-				User userOngoing;
-				userOngoing = userManager.selectByPseudoMdp(pseudo, password);
+				User userOngoing = null;
+				if (request.getParameter("name") != null) {
+					userOngoing = new User(request.getParameter("pseudo"),
+							request.getParameter("name"),
+							request.getParameter("firstName"),
+							request.getParameter("email"),
+							request.getParameter("street"),
+							request.getParameter("cp"),
+							request.getParameter("city"),
+							request.getParameter("password"));
+					userManager.addData(userOngoing);
+				}else {
+					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
+				}
+				
 				request.setAttribute("user", userOngoing);
 				System.out.println("UserConnected");
 			} else {
