@@ -1,11 +1,9 @@
-
-<%@page import="fr.eni.enchere.bll.UserManager"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <%-- <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet"> --%>
@@ -21,7 +19,9 @@
 					un article</a>
 				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Mon
 					profil</a>
-				<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
+				<form
+					action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
+					method="post">
 					<input type="hidden" name="deconnexion"> <a
 						href="<%=request.getContextPath()%>/ServletListOfAuctionsPage">Déconnexion</a>
 					</input>
@@ -40,7 +40,7 @@
 		</div>
 		<nav>
 			<h4>Filtres :</h4>
-			<form method="get"
+			<form method="post"
 				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<input type="search" placeholder="Le nom de l'article contient"
 					aria-label="Search" name="content" value=""> <label
@@ -70,7 +70,7 @@
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : <a
-									href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getNoUser()}</a></li>
+									href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getPseudo()}</a></li>
 							</ul>
 						</div>
 					</li>

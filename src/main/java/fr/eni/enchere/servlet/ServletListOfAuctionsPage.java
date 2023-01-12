@@ -44,37 +44,41 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		List<Article> articleList = null;
 		List<Category> categoryList = null;
 
-		
-		
 		try {
-			
 
 			categoryList = categoryManager.selectAll();
 			request.setAttribute("categoryList", categoryList);
 
 			Category categoryOngoing = categoryManager.selectByName(request.getParameter("categories"));
 
-			if (request.getParameter("content") == null
-					|| ("".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
+			if (request.getParameter("content") == null || ("".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
 				articleList = articleManager.selectAll();
 				request.setAttribute("articleList", articleList);
-			} else if (request.getParameter("content") == null
-					|| ("".equals(request.getParameter("content")) && !"Toutes".equals(request.getParameter("categories")))) {
+				System.out.println("A");
+			} else if (("".equals(request.getParameter("content"))
+					&& !("Toutes".equals(request.getParameter("categories"))))) {
 				articleList = articleManager.selectByNoCategory(categoryOngoing.getNoCategory());
 				request.setAttribute("articleList", articleList);
-			} else if (request.getParameter("content") != null
-					|| (!"".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
+				System.out.println("B");
+			} else if (!("".equals(request.getParameter("content")))
+					&& "Toutes".equals(request.getParameter("categories"))) {
 				articleList = articleManager.selectByName(request.getParameter("content"));
 				request.setAttribute("articleList", articleList);
-			} else if (request.getParameter("content") != null
-					|| (!"".equals(request.getParameter("content")) && !"Toutes".equals(request.getParameter("categories")))) {
+				System.out.println("C");
+			} else if ((!("".equals(request.getParameter("content")))
+					&& !("Toutes".equals(request.getParameter("categories"))))) {
 				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),
 						request.getParameter("content"));
 				request.setAttribute("articleList", articleList);
+				System.out.println("D");
 			} else {
 				articleList = null;
+				System.out.println("E");
 			}
-
+			
+			
+			System.out.println(request.getParameter("content"));
+			System.out.println(request.getParameter("categories"));
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
@@ -101,7 +105,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				userOngoing = userManager.selectByPseudoMdp(pseudo, password);
 				request.setAttribute("user", userOngoing);
 				System.out.println(userOngoing);
-			}else {
+			} else {
 				request.setAttribute("user", null);
 			}
 
