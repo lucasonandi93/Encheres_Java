@@ -1,6 +1,7 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
@@ -19,8 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class test
  */
-@WebServlet(name="UneServlet",
-			urlPatterns="/url/de/la/servlet",
+@WebServlet(name="ServletListOfAuctionsPage",
+			urlPatterns="/ServletListOfAuctionsPage",
 			initParams={
 					@WebInitParam( name="UserID", 
 							value="")
