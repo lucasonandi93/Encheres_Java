@@ -62,7 +62,7 @@ public class CategoryDAOJdbcImpl implements CategoryDAO {
 
 	@Override
 	public Category selectByName(String libelle) throws BusinessException {
-		// Vérification si le paramêtre est valide
+		
 		Category categoryOngoing = null;
 		// Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;
