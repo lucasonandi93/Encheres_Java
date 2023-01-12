@@ -1,63 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="winAuctionPage.js">  </script>
+<script type="text/javascript" src="winAuctionPage.js">
+	
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-<header>ENI-Enchères</header>
+	<header>ENI-Enchères</header>
 
-<h3>Nouvelle vente</h3>
+	<h3>Nouvelle vente</h3>
 
-<fieldset>
-			<form>
+	<fieldset>
+		<form>
+			<div class="form-group">
+				<label for="usr">Article : </label> <input type="text"
+					class="form-control" id="article"> <br><br>
 				<div class="form-group">
-					<label for="usr">Article : </label> <input type="text"
-						class="form-control" id="usr">
-						<br>
-						<div class="form-group">
 					<label for="usr">Description : </label> <input type="text"
-						class="form-control" id="usr">
-		<label
-					for="categories">Catégorie:</label> <select name="categories"
-					id="categories" selected="0">
-					<option value="0"></option>
-					<option value="1">Informatique</option>
-					<option value="2">Ameublement</option>
-					<option value="3">Vêtement</option>
-					<option value="4">Sport&Loisirs</option>
-					<c:forEach var="category" items="${categoryList}">
-						<option value="${category.getWording()}">${category.getWording()}</option>
-					</c:forEach>
-				</select>
-		</div>
-</div>
+						class="form-control" id="description" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';"> 
+						<label for="categories">Catégorie:</label>
+					<select name="categories" id="categories" selected="0">
+						<option value="0"></option>
+						<option value="1">Informatique</option>
+						<option value="2">Ameublement</option>
+						<option value="3">Vêtement</option>
+						<option value="4">Sport&Loisirs</option>
+						<c:forEach var="category" items="${categoryList}">
+							<option value="${category.getWording()}">${category.getWording()}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<label for="avatar">Photo de l'article</label>
+			<div class="avatar">
+				<input type="file" id="avatar" name="avatar"
+					accept="image/png, image/jpeg">
+			</div>
+			<div class="form-group">
+				<label>Mise à prix :</label>
+				<div class="input-group">
+					<div class="input-group-btn">
 
- <div class="form-group">
-        <label>Quantity: </label>
-        <div class="input-group">
-            <div class="input-group-btn">
-             
-                <button id="down" class="btn btn-default" onclick=" down('0')"><span class="glyphicon glyphicon-minus"></span></button>
-            </div>
-            <input type="text" id="myNumber" class="form-control input-number" value="1" />
-            <div class="input-group-btn">
-                <button id="up" class="btn btn-default" onclick="up('10')"><span class="glyphicon glyphicon-plus"></span></button>
-                
-<label for="avatar">Photo de l'article</label>             
-           <div class="avatar">RR<input type="file"
-       id="avatar" name="avatar"
-       accept="image/png, image/jpeg">
-       
-       </div>
-            </div>
-        </div> 
-    </div>
- 
-</form>
-</fieldset>				
+						<button id="down" class="btn btn-default" onclick=" down('0')">
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
+					</div>
+					<input type="text" id="myNumber" class="form-control input-number"
+						value="1" />
+					<div class="input-group-btn">
+						<button id="up" class="btn btn-default" onclick="up('10')">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+	<label for="beginAuction">Début de l'enchère :</label>
+	<input type="date" name="beginAuction">
+	<label for="endAuction">Fin de l'enchère :</label>
+	<input type="date" name="endAuction">
+
+	<fieldset><legend>Retrait</legend>
+	Rue : <input type="text" name="street" size="25">
+	<br>
+	Code postal : <input type="text" name="cp" size="18">
+	<br>
+	Ville : <input type="text" name="city" size="25">
+	</fieldset>
+
+					</div>
+				</div>
+			</div>
+	<input type="submit"
+		</form>
+	</fieldset>
 </body>
 </html>
