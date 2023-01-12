@@ -23,11 +23,6 @@ body {
 	margin-top: 3%;
 }
 
-shopping {
-	display: inline-block;
-	text-align: center;
-}
-
 form {
 	display: grid;
 	place-content: center;
@@ -91,4 +86,16 @@ input[type="radio"]:checked::before {
 input[type="radio"]:focus {
 	outline: max(2px, 0.15em) solid currentColor;
 	outline-offset: max(2px, 0.15em);
+}
+
+fieldset {
+	overflow: hidden;
+
+	text-align: center;
+	border-radius: 10px;
+}
+
+.shopping {
+	float: left;
+	clear: none;
 }
