@@ -19,12 +19,8 @@
 					un article</a>
 				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Mon
 					profil</a>
-				<form
-					action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
-					method="post">
-					<input type="hidden" name="deconnexion"> <a
-						href="<%=request.getContextPath()%>/ServletListOfAuctionsPage">Déconnexion</a>
-					</input>
+				<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
+					<input type="submit" name="deconnexion" value="deconnexion">
 				</form>
 			</c:when>
 			<c:otherwise>
@@ -53,7 +49,7 @@
 				</select>
 
 				<c:if test="${ user !=null}">
-					<%@include file="selectForm.jsp"%>
+					<%@include file="selectFormFragment.jsp"%>
 				</c:if>
 
 				<button type="submit">Rechercher</button>

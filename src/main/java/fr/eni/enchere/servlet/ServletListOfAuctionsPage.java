@@ -54,31 +54,23 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			if (request.getParameter("content") == null || ("".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
 				articleList = articleManager.selectAll();
 				request.setAttribute("articleList", articleList);
-				System.out.println("A");
 			} else if (("".equals(request.getParameter("content"))
 					&& !("Toutes".equals(request.getParameter("categories"))))) {
 				articleList = articleManager.selectByNoCategory(categoryOngoing.getNoCategory());
 				request.setAttribute("articleList", articleList);
-				System.out.println("B");
 			} else if (!("".equals(request.getParameter("content")))
 					&& "Toutes".equals(request.getParameter("categories"))) {
 				articleList = articleManager.selectByName(request.getParameter("content"));
 				request.setAttribute("articleList", articleList);
-				System.out.println("C");
 			} else if ((!("".equals(request.getParameter("content")))
 					&& !("Toutes".equals(request.getParameter("categories"))))) {
 				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),
 						request.getParameter("content"));
 				request.setAttribute("articleList", articleList);
-				System.out.println("D");
 			} else {
 				articleList = null;
-				System.out.println("E");
 			}
 			
-			
-			System.out.println(request.getParameter("content"));
-			System.out.println(request.getParameter("categories"));
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
@@ -95,20 +87,18 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		UserManager userManager = new UserManager();
 		System.out.println("doPost");
 		try {
-
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
 				String pseudo = request.getParameter("pseudo");
 				String password = request.getParameter("password");
 
 				User userOngoing;
-
 				userOngoing = userManager.selectByPseudoMdp(pseudo, password);
 				request.setAttribute("user", userOngoing);
-				System.out.println(userOngoing);
+				System.out.println("UserConnected");
 			} else {
 				request.setAttribute("user", null);
+				System.out.println("UserDisconnected");
 			}
-
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
