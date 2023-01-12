@@ -1,13 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<%-- <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet"> --%>
-<title>Insert title here</title>
-</head>
-<body>
+
 
 <form>
 <fieldset id="group1">
@@ -39,5 +30,3 @@
 </fieldset> 
 
   </form>
-</body>
-</html>

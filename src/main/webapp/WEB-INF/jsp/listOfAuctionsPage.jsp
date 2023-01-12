@@ -34,6 +34,12 @@
 						<option value="${category.getWording()}">${category.getWording()}</option>
 					</c:forEach>
 				</select>
+				
+				<c:if test="${ user !=null}">
+					<%@include file="selectForm.jsp" %>
+				
+				</c:if>
+				
 				<button type="submit">Rechercher</button>
 			</form>
 		</nav>

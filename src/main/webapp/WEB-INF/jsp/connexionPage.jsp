@@ -24,23 +24,24 @@
 	<main>
 		<br>
 		<fieldset>
-			<form>
+			<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<div class="form-group">
-					<label for="usr">Identifiant : </label> <input type="text"
-						class="form-control" id="usr">
+					<label for="usr">Identifiant : </label> 
+					<input type="text" name="pseudo" value="" class="form-control" id="usr">
 				</div>
 				<br>
 				<div class="form-group">
-					<label for="pwd">Mot de passe : </label> <input type="password"
-						class="form-control" id="pwd">
+					<label for="pwd">Mot de passe : </label>
+					<input type="password" name="password" value="" class="form-control" id="pwd">
 				</div>
+					<input type="submit" value="Connexion"></input>
+					<input type="checkbox" id="connexion" name="connexion" value="connexion"> 
+				<label for="connexion" value="Se souvenir de moi"></label>
+				
+				
+				
 			</form>
-			<br> <a class="btn btn-primary" role="button"
-				href="<%=request.getContextPath()%>/ServletListOfAuctionsPage">Connexion</a>
-
-			<input type="radio" id="Se souvenir de moi" name="connexion"
-				value="connexion"> <label for="connexion">Se
-				souvenir de moi</label> <br>
+	
 			<br> <a
 				href="<%=request.getContextPath()%>/ServletTestSelectForm"
 				class="forgotPassword">Mot de passe oublié</a> <br>
