@@ -28,7 +28,7 @@
 				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search" name="content" value=""> 
 				<label for="categories">Catégorie:</label> 
-				<select name="categories" id="categories">
+				<select name="categories" id="categories" selected="Toutes">
 					<option value="Toutes">Toutes</option>
 					<c:forEach var="category" items="${categoryList}">
 			  			<option value="${category.getWording()}">${category.getWording()}</option>
