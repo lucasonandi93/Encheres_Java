@@ -1,4 +1,5 @@
 
+<%@page import="fr.eni.enchere.bll.UserManager"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -46,8 +47,10 @@
 								<li>${article.getNameArticle()}</li>
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-								<li>Vendeur : <a
-									href="<%=request.getContextPath()%>/ServletProfilPage">${article.getNoUser()}</a></li>
+								<%
+									UserManager userManager = new UserManager();
+								%>
+								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">${userManager.selectById(article.getNoUser).getPseudo()}</a></li>
 							</ul>
 						</div>
 					</li>

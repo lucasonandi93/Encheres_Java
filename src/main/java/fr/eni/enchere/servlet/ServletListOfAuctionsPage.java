@@ -58,6 +58,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				request.setAttribute("articleList", articleList);
 			}else if(request.getParameter("content")!=null || (request.getParameter("content")!="" && request.getParameter("categories")!="Toutes")) {
 				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(), request.getParameter("content"));
+				request.setAttribute("articleList", articleList);
 			}else {
 				articleList = null;
 			}
