@@ -45,7 +45,7 @@
 							<img alt="IMAGE" src="" title="IMAGE">
 							<ul>
 								<li>${article.getNameArticle()}</li>
-								<li>Prix : ${article.getSellingPrice}</li>
+								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">${article.getNoUser()}</a></li>
 							</ul>
