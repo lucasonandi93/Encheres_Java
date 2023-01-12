@@ -24,7 +24,7 @@
 		</div>
 		<nav class="navbar navbar-light bg-light">
 			<h4>Filtres :</h4>
-			<form class="form-inline" method="post"
+			<form class="form-inline" method="get"
 				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search" name="content" value=""> 
 				<label for="categories">Catégorie:</label> 
