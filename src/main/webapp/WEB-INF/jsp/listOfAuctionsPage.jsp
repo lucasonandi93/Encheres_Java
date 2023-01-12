@@ -49,8 +49,9 @@
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<%
 									UserManager userManager = new UserManager();
+									
 								%>
-								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">${userManager.selectById(article.getNoUser).getPseudo()}</a></li>
+								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">${userManager.selectById(article.getNoUser()).getPseudo()}</a></li>
 							</ul>
 						</div>
 					</li>
