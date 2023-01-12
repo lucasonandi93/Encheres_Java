@@ -56,6 +56,51 @@
 		</ul>
 
 
+<<<<<<< HEAD
+<nav class="navbar navbar-light bg-light">
+  
+  
+  <h4>Filtres :</h4>
+  <br>
+    <input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+  
+</nav>
+ <div class="bloc">
+<div class="select">
+<br>
+Catégorie :
+<select name="nom_select" onchange="loadImg(this.value);">
+<option>Toutes</option>
+<option value= "1">Informatique</option>
+<option value= "2">Ameublement</option>
+<option value= "3">Vêtements</option>
+<option value= "4">Sport&Loisirs</option>
+</select>
+</div>
+</div>
+
+<br>
+<div class="boiteArticle">Test
+<img src="nom_select.png" id="id_img" />
+<script type="text/javascript">
+function loadImg(key) {
+    var arr = [
+        '1_10',
+        '2_10',
+        '3_10',
+        '1_30',
+        '2_30',
+        '3_30',
+        //.....
+    ];
+    document.getElementById('id_img').src = 'img/productImage/' + arr[key] + '.png';
+}
+</script>
+</div>
+
+=======
 	</main>
+>>>>>>> branch 'master' of https://github.com/LucaDUPONT3D/trocenchere.git
 </body>
 </html>
