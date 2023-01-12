@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="<%=request.getContextPath()%>/css/style.css"
-	rel="stylesheet">
+<%-- <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet"> --%>
 <title>Accueil</title>
 </head>
 <body>
@@ -22,10 +21,9 @@
 		<div>
 			<h3>Liste des enchères</h3>
 		</div>
-		<nav class="navbar navbar-light bg-light">
+		<nav>
 			<h4>Filtres :</h4>
-			<form method="get"
-				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+			<form method="get" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<input type="search" placeholder="Le nom de l'article contient"
 					aria-label="Search" name="content" value=""> <label
 					for="categories">Catégorie:</label> <select name="categories"
