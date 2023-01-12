@@ -1,15 +1,16 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.CategoryManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Category;
+import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,12 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class test
  */
-@WebServlet("/ServletListOfAuctionsPage")
+@WebServlet(name="UneServlet",
+			urlPatterns="/url/de/la/servlet",
+			initParams={
+					@WebInitParam( name="UserID", 
+							value="")
+			})
 public class ServletListOfAuctionsPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,6 +48,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		List<Category> categoryList= null;
 		
 		try {
+			
+			User userOngoing = (User) request.getAttribute("user");
+			
+			
 			categoryList = categoryManager.selectAll();
 			request.setAttribute("categoryList", categoryList);
 			
