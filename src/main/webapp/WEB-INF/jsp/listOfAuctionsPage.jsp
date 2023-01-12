@@ -17,13 +17,13 @@
 	<div class="title"><h3>Liste des enchères</h3></div>
 
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+  
   
   <h4>Filtres :</h4>
   <br>
     <input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-  </form>
+  
 </nav>
  <div class="bloc">
 <div class="select">
