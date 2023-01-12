@@ -1,7 +1,14 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bll.CategoryManager;
+import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Category;
+import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +32,26 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArticleManager articleManager = new ArticleManager();
+		CategoryManager categoryManager = new CategoryManager();
+		List<Article> articleList= null;
+		List<Category> categoryList= null;
+		
+		try {
+			categoryList = categoryManager.selectAll();
+			request.setAttribute("categoryList", categoryList);
+			
+			articleList = articleManager.selectAll();
+			request.setAttribute("articleList", articleList);
+			
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
@@ -33,6 +59,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		doGet(request, response);
 	}
 
