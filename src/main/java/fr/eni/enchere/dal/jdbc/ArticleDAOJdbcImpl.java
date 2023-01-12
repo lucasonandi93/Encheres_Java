@@ -156,7 +156,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 					pstmt.setDate(4, java.sql.Date.valueOf(article.getAuctionEndDate()));
 					pstmt.setInt(5, article.getOriginalPrice());
 					pstmt.setInt(6, article.getSellingPrice());
-					pstmt.setInt(7, article.getNoUser());
+					pstmt.setInt(7, article.getUser().getNoUser());
 					pstmt.setInt(8, article.getNoCategory());
 					//Executer la requête
 					pstmt.executeUpdate();
@@ -220,7 +220,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				pstmt.setDate(4, java.sql.Date.valueOf(article.getAuctionEndDate()));
 				pstmt.setInt(5, article.getOriginalPrice());
 				pstmt.setInt(6, article.getSellingPrice());
-				pstmt.setInt(7, article.getNoUser());
+				pstmt.setInt(7, article.getUser().getNoUser());
 				pstmt.setInt(8, article.getNoCategory());
 				pstmt.setInt(9, article.getNoArticle());
 				
@@ -484,8 +484,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	 * @param rs
 	 * @return
 	 * @throws SQLException
+	 * @throws BusinessException 
 	 */
-	private Article articleBuilder(ResultSet rs) throws SQLException {
+	private Article articleBuilder(ResultSet rs) throws SQLException, BusinessException {
 		Article articleOngoing = new Article(
 				rs.getInt("no_article"),
 				rs.getString("nom_article"),
@@ -495,7 +496,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				rs.getDate("date_fin_encheres").toLocalDate(),
 				rs.getInt("prix_initial"),
 				rs.getInt("prix_vente"),
-				rs.getInt("no_utilisateur"),
+				DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")),
 				rs.getInt("no_categorie"));
 		
 		Withdrawal withdrawalOngoing = new Withdrawal(

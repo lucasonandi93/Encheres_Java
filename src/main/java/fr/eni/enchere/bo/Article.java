@@ -21,7 +21,7 @@ public class Article implements Serializable{
 	private int originalPrice;
 	private int sellingPrice;
 	private String saleStatus;
-	private int noUser;
+	private User User;
 	private int noCategory;
 	private Withdrawal withdrawal;
 	private List<Auction> listAuction;
@@ -44,13 +44,13 @@ public class Article implements Serializable{
 	 * @param noUser
 	 * @param noCategory
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, int noUser, int noCategory) {
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, User user, int noCategory) {
 		this();
 		this.setNameArticle(nameArticle);
 		this.setDescription(description);
 		this.setAuctionStartDate(auctionStartDate);
 		this.setAuctionEndDate(auctionEndDate);
-		this.setNoUser(noUser);
+		this.setUser(user);
 		this.setNoCategory(noCategory);
 	}
 	
@@ -64,8 +64,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, int noUser, int noCategory,  Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, User user, int noCategory,  Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, user, noCategory);
 		this.setWithdrawal(withdrawal);
 	}
 	
@@ -79,8 +79,8 @@ public class Article implements Serializable{
 	 * @param noUser
 	 * @param noCategory
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory);
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, User user, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, user, noCategory);
 		this.setOriginalPrice(originalPrice);
 	}
 	
@@ -95,8 +95,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, int noUser, int noCategory, Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory, withdrawal);
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, User user, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, user, noCategory, withdrawal);
 		this.setOriginalPrice(originalPrice);
 	}
 	
@@ -111,8 +111,8 @@ public class Article implements Serializable{
 	 * @param noUser
 	 * @param noCategory
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory);
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, User user, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, user, noCategory);
 		this.setSellingPrice(sellingPrice);
 	}
 	
@@ -128,8 +128,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory, Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory, withdrawal);
+	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, User user, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, user, noCategory, withdrawal);
 		this.setSellingPrice(sellingPrice);
 	}
 	
@@ -144,8 +144,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, int noUser, int noCategory, Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, noUser, noCategory, withdrawal);
+	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate, User user, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, user, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	
@@ -161,8 +161,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, int noUser, int noCategory, Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, noUser, noCategory, withdrawal);
+	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice, User user, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, user, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	
@@ -178,8 +178,8 @@ public class Article implements Serializable{
 	 * @param noUser
 	 * @param noCategory
 	 */
-	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, noUser, noCategory);
+	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, User user, int noCategory) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, user, noCategory);
 		this.setNoArticle(noArticle);
 	}
 	
@@ -196,8 +196,8 @@ public class Article implements Serializable{
 	 * @param noCategory
 	 * @param withdrawal
 	 */
-	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, int noUser, int noCategory, Withdrawal withdrawal) {
-		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, noUser, noCategory, withdrawal);
+	public Article(int noArticle, String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,int originalPrice,int sellingPrice, User user, int noCategory, Withdrawal withdrawal) {
+		this(nameArticle, description, auctionStartDate, auctionEndDate, originalPrice, sellingPrice, user, noCategory, withdrawal);
 		this.setNoArticle(noArticle);
 	}
 	
@@ -239,6 +239,22 @@ public class Article implements Serializable{
 	 */
 	public String getDescription() {
 		return description;
+	}
+
+	/**
+	 * Getter pour user.
+	 * @return the user
+	 */
+	public User getUser() {
+		return User;
+	}
+
+	/**
+	 * Setter pour user
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		User = user;
 	}
 
 	/**
@@ -329,21 +345,6 @@ public class Article implements Serializable{
 		this.saleStatus = saleStatus;
 	}
 
-	/**
-	 * Getter pour noUser
-	 * @return the noUser
-	 */
-	public int getNoUser() {
-		return noUser;
-	}
-
-	/**
-	 * Setter pour noUser
-	 * @param noUser the noUser to set
-	 */
-	public void setNoUser(int noUser) {
-		this.noUser = noUser;
-	}
 
 	/**
 	 * Getter pour noCategory
@@ -408,8 +409,8 @@ public class Article implements Serializable{
 		builder.append(getSellingPrice());
 		builder.append(", getSaleStatus()=");
 		builder.append(getSaleStatus());
-		builder.append(", getNoUser()=");
-		builder.append(getNoUser());
+		builder.append(", getUser()=");
+		builder.append(getUser());
 		builder.append(", getNoCategory()=");
 		builder.append(getNoCategory());
 		builder.append("\n");

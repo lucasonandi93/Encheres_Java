@@ -45,6 +45,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		List<Article> articleList = null;
 		List<Category> categoryList = null;
 
+		
+		
 		try {
 			
 
@@ -77,7 +79,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-
+//		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+//		response.setHeader("Location", "/WEB-INF/jsp/listOfAuctionsPage.jsp");
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
@@ -89,7 +92,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserManager userManager = new UserManager();
-
+		System.out.println("doPost");
 		try {
 
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {

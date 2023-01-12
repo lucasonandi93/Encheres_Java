@@ -14,7 +14,24 @@
 <body>
 	<header>
 		<h3>ENI-Encheres</h3>
-		<a href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire - Se connecter</a>
+		<c:choose>
+			<c:when test="${ user !=null}">
+				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Enchères</a>
+				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Vendre
+					un article</a>
+				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Mon
+					profil</a>
+				<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
+					<input type="hidden" name="deconnexion"> <a
+						href="<%=request.getContextPath()%>/ServletListOfAuctionsPage">Déconnexion</a>
+					</input>
+				</form>
+			</c:when>
+			<c:otherwise>
+				<a href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
+					- Se connecter</a>
+			</c:otherwise>
+		</c:choose>
 	</header>
 
 	<main>
@@ -23,7 +40,8 @@
 		</div>
 		<nav>
 			<h4>Filtres :</h4>
-			<form method="get" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+			<form method="get"
+				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 				<input type="search" placeholder="Le nom de l'article contient"
 					aria-label="Search" name="content" value=""> <label
 					for="categories">Catégorie:</label> <select name="categories"
@@ -33,12 +51,11 @@
 						<option value="${category.getWording()}">${category.getWording()}</option>
 					</c:forEach>
 				</select>
-				
+
 				<c:if test="${ user !=null}">
-					<%@include file="selectForm.jsp" %>
-				
+					<%@include file="selectForm.jsp"%>
 				</c:if>
-				
+
 				<button type="submit">Rechercher</button>
 			</form>
 		</nav>
@@ -52,10 +69,8 @@
 								<li>${article.getNameArticle()}</li>
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-								<%
-									UserManager userManager = new UserManager();
-								%>
-								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">${userManager.selectById(article.getNoUser()).getPseudo()}</a></li>
+								<li>Vendeur : <a
+									href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getNoUser()}</a></li>
 							</ul>
 						</div>
 					</li>

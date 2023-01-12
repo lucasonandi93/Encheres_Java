@@ -78,15 +78,15 @@ public class ServletTestDAL extends HttpServlet {
 
 		//OK
 		Article pcGamer = new Article("PC Gamer 3000", "Un super PC fixe avec de grosses performances",
-				LocalDate.of(2023, 01, 20), LocalDate.of(2023, 02, 01), 1, 1, withdrawal);
+				LocalDate.of(2023, 01, 20), LocalDate.of(2023, 02, 01), alexandra, 1, withdrawal);
 		Article table = new Article("Table Ronde", "Une table ronde qui fait un mêtre de haut",
-				LocalDate.of(2023, 02, 20), LocalDate.of(2023, 02, 25), 2, 2, withdrawa2);
+				LocalDate.of(2023, 02, 20), LocalDate.of(2023, 02, 25), luca, 2, withdrawa2);
 		Article ballon = new Article("Ballon de foot", "Ballon de l'équipe de france signé par tous les joueurs",
-				LocalDate.of(2023, 01, 25), LocalDate.of(2023, 02, 03), 3, 4, withdrawa3);
+				LocalDate.of(2023, 01, 25), LocalDate.of(2023, 02, 03), alban, 4, withdrawa3);
 		Article slip = new Article("Slip sale", "Un slip avec une grosse trace de pneu", LocalDate.of(2023, 01, 29),
-				LocalDate.of(2023, 03, 02), 1, 3, withdrawa4);
+				LocalDate.of(2023, 03, 02), alexandra, 3, withdrawa4);
 		Article souris = new Article("Souris sans fil", "Une souris sans fil (Connection Bluetooth)",
-				LocalDate.of(2023, 03, 10), LocalDate.of(2023, 03, 12), 2, 1, withdrawa5);
+				LocalDate.of(2023, 03, 10), LocalDate.of(2023, 03, 12), luca, 1, withdrawa5);
 		//ERREUR
 		Article articleError = null;
 	
