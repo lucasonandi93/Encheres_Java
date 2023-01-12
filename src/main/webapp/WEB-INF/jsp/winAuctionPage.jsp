@@ -46,9 +46,15 @@
             <input type="text" id="myNumber" class="form-control input-number" value="1" />
             <div class="input-group-btn">
                 <button id="up" class="btn btn-default" onclick="up('10')"><span class="glyphicon glyphicon-plus"></span></button>
-              
+                
+<label for="avatar">Photo de l'article</label>             
+           <div class="avatar">RR<input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
+       
+       </div>
             </div>
-        </div>
+        </div> 
     </div>
  
 </form>
