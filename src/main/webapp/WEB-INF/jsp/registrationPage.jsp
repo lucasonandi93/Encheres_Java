@@ -57,8 +57,7 @@
 <div class="formProfil">
 <input type="submit" value="Créer"> 
 <button type="cancel" onclick="<%=request.getContextPath() %>/ServletListOfAuctions">Annuler</button>
-
-</div>      
-</form>           
+</div>
+</form>      
 </body>
 </html>

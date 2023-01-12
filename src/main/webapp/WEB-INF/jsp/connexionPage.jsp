@@ -8,10 +8,9 @@
 
 <link href="<%=request.getContextPath() %>/css/styleConnexion.css" rel="stylesheet">
 <title>Connexion</title>
-
 </head>
 <body>
-<header><h3>ENI-Enchères</h3></header>
+<header><h3>ENI-Enchères<img src="/medias/eniLogo.png" width="66" height="66"></h3></header>
 	<main>
 	<br>
 	<form>
@@ -26,12 +25,12 @@
     </div>
   </form>
   <br>
-  	 <a class="btn btn-primary" role="button" href="<%=request.getContextPath() %>/ServletListOfAuctionsPageWithConnexion">Connexion</a>
+  	 <a class="btn btn-primary" role="button" href="<%=request.getContextPath() %>/ServletListOfAuctionsPage">Connexion</a>
 	
 	<input type="radio" id="Se souvenir de moi" name="connexion" value="connexion">
     <label for="connexion">Se souvenir de moi</label>
     <br><br>
-   <a href="<%=request.getContextPath() %>/ServletRegistrationPage" class="forgotPassword">Mot de passe oublié</a>
+   <a href="<%=request.getContextPath() %>/ServletTestSelectForm" class="forgotPassword">Mot de passe oublié</a>
    <br><br>
    <a href="<%=request.getContextPath() %>/ServletRegistrationPage">
   <button class="submit">Créer un compte</button></a>

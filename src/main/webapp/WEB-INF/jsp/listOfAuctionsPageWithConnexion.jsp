@@ -5,60 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet">
-<title>Liste des enchères</title>
+<title>Encheres une fois connecté</title>
 </head>
 <body>
-<header>
-<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="connexion">Enchères</a>
-<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="sell">Vendre un article</a>
-<a href="<%=request.getContextPath() %>/ServletProfilPage" class="profil">Mon profil</a>
-<a href="<%=request.getContextPath() %>/ServletConnexionPage" class="disconnect">Déconnexion</a>
-</header>
 
-<h3>ENI-Encheres</h3>
-	<div class="title"><h3>Liste des enchères</h3></div>
-
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-  
-  <h4>Filtres :</h4>
-  <br>
-    <input class="form-control mr-sm-2" type="search" placeholder="Le nom de l'article contient" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-  </form>
-</nav>
- <div class="bloc">
-<div class="select">
-<br>
-Catégorie :
-<select name="nom_select" onchange="loadImg(this.value);">
-<option>Toutes</option>
-<option value= "1">Informatique</option>
-<option value= "2">Ameublement</option>
-<option value= "3">Vêtements</option>
-<option value= "4">Sport&Loisirs</option>
-</select>
+<fieldset>
+	  <div class="shopping">
+<input type="radio" id="shopping" name="shopping" value="shopping">
 </div>
+   <label for="shopping">Achats :</label>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Enchères ouvertes</label></div>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Mes enchères</label></div>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Mes enchères remportées</label></div>
+<div class="shopping">
+<input type="radio" id="shopping" name="shopping" value="shopping">
 </div>
+   <label for="shopping">Mes ventes :</label>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Mes ventes en cours</label></div>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Ventes non débutées</label></div>
+    <div><input type="radio" name="check" value="check" id="check">
+      <label for="check">Ventes terminées</label></div>
 
-<br>
-<div class="boiteArticle">Test
-<img src="nom_select.png" id="id_img" />
-<script type="text/javascript">
-function loadImg(key) {
-    var arr = [
-        '1_10',
-        '2_10',
-        '3_10',
-        '1_30',
-        '2_30',
-        '3_30',
-        //.....
-    ];
-    document.getElementById('id_img').src = 'img/productImage/' + arr[key] + '.png';
-}
-</script>
-</div>
 
+</fieldset>
 </body>
-</html>

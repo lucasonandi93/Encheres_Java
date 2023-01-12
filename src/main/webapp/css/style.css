@@ -18,6 +18,15 @@ header{
 }
 
 body{
-	background-image: url("https://thumbs.gfycat.com/ActivePastelBeaver-mobile.mp4");
-	background-size: repeat;
+	background-color: teal;
+	font-family: ‘Lato’, sans-serif;
+	margin-left: 3%;
+	margin-top: 3%;
 }
+
+shopping{
+	
+	display: inline-block;
+	text-align: center;
+}
+

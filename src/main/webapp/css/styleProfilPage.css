@@ -1,8 +1,10 @@
 body{
+	
 	text-align: center;
 	background-color: teal;
-background: rgb(102,40,122);
-background: linear-gradient(50deg, rgba(102,40,122,1) 25%, rgba(0,196,137,1) 75%);
+	background: rgb(102,40,122);
+	background: linear-gradient(50deg, rgba(102,40,122,1) 25%, rgba(0,196,137,1) 75%) no repeat;
+	
 }
 
 header{
@@ -13,7 +15,7 @@ header{
 
 form {
 	display: block;
-align-items: center;
+	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
 }
