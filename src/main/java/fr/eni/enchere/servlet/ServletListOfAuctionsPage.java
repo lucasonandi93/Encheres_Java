@@ -74,7 +74,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
+		System.out.println(articleList);
 	}
 
 	/**
