@@ -15,7 +15,7 @@
 
 	<p>Description : ${articleOngoing.getDescription()}</p>
 
-	<p>Catégorie : ${articleOngoing.getCategory()}</p>
+	<p>Catégorie : ${articleOngoing.getCategory().getWording()}</p>
 
 	<p>Meilleure offre : ${articleOngoing.getSellingPrice()}</p>
 
@@ -23,7 +23,7 @@
 
 	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p>
 
-	<p>Retrait : </p>
+	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
 	<p>Vendeur : </p>
 <hr>
