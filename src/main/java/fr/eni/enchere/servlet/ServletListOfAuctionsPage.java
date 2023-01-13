@@ -70,7 +70,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			} else {
 				articleList = null;
 			}
-			
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
