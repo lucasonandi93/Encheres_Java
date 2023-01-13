@@ -25,7 +25,7 @@ public class Article implements Serializable{
 	private Category category;
 	private Withdrawal withdrawal;
 	private List<Auction> listAuction;
-	
+	 
 	/**
 	 * Constructeur
 	 */
