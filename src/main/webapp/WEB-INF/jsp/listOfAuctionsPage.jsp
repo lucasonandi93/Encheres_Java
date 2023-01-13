@@ -19,9 +19,7 @@
 					un article</a>
 				<a href="<%=request.getContextPath()%>/ServletProfilPage">Mon
 					profil</a>
-				<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
-					<input type="submit" name="deconnexion" value="deconnexion">
-				</form>
+				<a href="<%=request.getContextPath()%>/ServletListOfAuctionsPage?deconnexion=true" >${article.getUser().getPseudo()}</a>
 			</c:when>
 			<c:otherwise>
 				<a href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
@@ -66,9 +64,6 @@
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : 
-									<%-- <form method="get" action="<%=request.getContextPath()%>/ServletProfilPage">
-										<input type="submit" name="userProfil" value="${article.getUser().getPseudo()}">${article.getUser().getPseudo()}</input>
-									</form> --%>
 									<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getPseudo()}" >${article.getUser().getPseudo()}</a>
 								</li>
 							</ul>
@@ -77,5 +72,6 @@
 				</div>
 			</c:forEach>
 		</ul>
+	</main>
 </body>
 </html>
