@@ -8,6 +8,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.exceptions.BusinessException;
+
 /**
  * Servlet implementation class ServletConnexionPage
  */
@@ -28,6 +32,18 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArticleManager articleManager = new ArticleManager();
+		
+		try {
+			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
+			
+			request.setAttribute("article", articleOngoing);
+		} catch (NumberFormatException | BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailsAuctionPage.jsp");
 		rd.forward(request, response);
 	}
