@@ -27,6 +27,13 @@ public class ServletProfilPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String pseudoProfil = request.getParameter("userProfil");
+		
+		
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profilPage.jsp");
 		rd.forward(request, response);
 	}
