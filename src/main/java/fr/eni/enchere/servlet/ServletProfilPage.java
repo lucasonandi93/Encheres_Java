@@ -30,7 +30,7 @@ public class ServletProfilPage extends HttpServlet {
 		
 		String pseudoProfil = request.getParameter("userProfil");
 		
-		
+		System.out.println(pseudoProfil);
 		
 		
 		
