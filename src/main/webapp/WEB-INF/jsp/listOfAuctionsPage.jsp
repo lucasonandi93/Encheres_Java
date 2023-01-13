@@ -19,7 +19,7 @@
 					un article</a>
 				<a href="<%=request.getContextPath()%>/ServletProfilPage">Mon
 					profil</a>
-				<a href="<%=request.getContextPath()%>/ServletListOfAuctionsPage?deconnexion=true" >${article.getUser().getPseudo()}</a>
+				<a href="<%=request.getContextPath()%>/ServletListOfAuctionsPage?deconnexion=true" >Deconnexion</a>
 			</c:when>
 			<c:otherwise>
 				<a href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
