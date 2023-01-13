@@ -22,7 +22,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
     public ServletDetailsAuctionPage() throws ServletException {
         super();
         
-    }
+    } 
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
