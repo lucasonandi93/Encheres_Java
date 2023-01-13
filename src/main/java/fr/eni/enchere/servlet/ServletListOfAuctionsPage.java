@@ -51,27 +51,27 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 			Category categoryOngoing = categoryManager.selectByName(request.getParameter("categories"));
 
-			if (request.getParameter("content") == null || ("".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
+			 String content = request.getParameter("content");
+
+			 String categories = request.getParameter("categories");
+
+			if (request.getParameter("content") == null || 
+					("".equals(content) &&  "Toutes".equals(categories))) {
 				articleList = articleManager.selectAll();
-				request.setAttribute("articleList", articleList);
-			} else if (("".equals(request.getParameter("content"))
-					&& !("Toutes".equals(request.getParameter("categories"))))) {
+			} else if (("".equals(content) && !("Toutes".equals(categories)))) {
 				articleList = articleManager.selectByNoCategory(categoryOngoing.getNoCategory());
-				request.setAttribute("articleList", articleList);
-			} else if (!("".equals(request.getParameter("content")))
-					&& "Toutes".equals(request.getParameter("categories"))) {
-				articleList = articleManager.selectByName(request.getParameter("content"));
-				request.setAttribute("articleList", articleList);
-			} else if ((!("".equals(request.getParameter("content")))
-					&& !("Toutes".equals(request.getParameter("categories"))))) {
-				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),
-						request.getParameter("content"));
-				request.setAttribute("articleList", articleList);
-			} else {
-				articleList = null;
+			} else if (!("".equals(content)) && "Toutes".equals(categories)) {
+				articleList = articleManager.selectByName(content);
+			} else if ((!("".equals(content)) && !("Toutes".equals(categories)))) {
+				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),content);
 			}
 		} catch (BusinessException e) {
 			e.printStackTrace();
+		}
+		
+		if  (articleList != null) {
+			System.out.println(articleList);
+			request.setAttribute("articleList", articleList);
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
