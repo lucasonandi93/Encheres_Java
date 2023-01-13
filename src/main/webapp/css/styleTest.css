@@ -84,3 +84,38 @@ li ul {
 li ul li {
     margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    header h3 {
+        width: 100%;
+        text-align: center;
+    }
+
+    header a {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    form {
+        flex-wrap: wrap;
+    }
+
+    form input[type="search"], form select, form button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    li {
+        flex-wrap: wrap;
+    }
+
+    li div {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+}

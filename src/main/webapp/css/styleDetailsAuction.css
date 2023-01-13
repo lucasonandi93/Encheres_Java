@@ -12,15 +12,24 @@ header {
     padding: 1em;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 2em;
+main {
+    margin: 2em;
 }
 
 form {
-    width: 80%;
-    margin: 2em auto;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    width: 25%;
 }
 
 label {
@@ -29,7 +38,7 @@ label {
     margin-right: 1em;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+input[type="text"], input[type="password"] {
     width: 70%;
     padding: 0.5em;
     margin: 0.5em;
@@ -47,14 +56,27 @@ input[type="submit"] {
     margin: 1em;
 }
 
-@media only screen and (max-width: 600px) {
-    label {
-        width: 40%;
-        text-align: left;
-        margin-right: 0.5em;
+.forgotPassword {
+    margin-top: 1em;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        flex-direction: column;
     }
 
-    input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
-        width: 60%;
+    .form-group {
+        width: 100%;
+    }
+
+    label {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
     }
 }

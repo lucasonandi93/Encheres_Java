@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <!-- Bootstrap core CSS -->
 
-<%-- <link href="<%=request.getContextPath()%>/css/styleConnexion.css"
-	rel="stylesheet"> --%>
+<link href="<%=request.getContextPath()%>/css/styleConnexion.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Connexion</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
 	
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<div class="form-group">
-				<label for="usr">Identifiant : </label> 
+				<br><label for="usr">Identifiant : </label> 
 				<%-- ${sessionScope.pseudo} récupère le pseudo si se souvenir de moi est coché --%>
 				<input type="text" name="pseudo" value="${sessionScope.pseudo}" class="form-control" id="usr" maxlength="30" >
 			</div>
