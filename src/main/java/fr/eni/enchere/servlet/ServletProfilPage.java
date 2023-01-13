@@ -37,9 +37,9 @@ public class ServletProfilPage extends HttpServlet {
 		try {
 			UserManager userManager= new UserManager();
 			
-			String pseudoProfil = request.getParameter("userProfil");
+			Integer noUser = Integer.parseInt(request.getParameter("userProfil"));
 			
-			User userProfil = userManager.selectByPseudo(pseudoProfil);
+			User userProfil = userManager.selectById(noUser);
 		
 			request.setAttribute("userProfil", userProfil);
 		

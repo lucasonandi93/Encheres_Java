@@ -13,30 +13,21 @@
 
 <h1>Mon profil</h1>
 <br>
-<form action="" method="post">
-<label for="pseudo">Pseudo :</label>
-<p id="pseudo" name="pseudo">${userProfil.getPseudo()}</p>
+<p>Pseudo : ${userProfil.getPseudo()}</p>
 <br>
-<label for="name">Nom :</label>
-<p id="name" name="name"></p>
+<p>Nom : ${userProfil.getName()</p>
 <br>
-<label for="firstName">Prénom :</label>
-<p id="firstName" name="firstName"></p>
+<p>Prénom : ${userProfil.getFirstName()</p>
 <br>     
-<label for="email">Email :</label>       
-<p id="email" name="email"></p>
+<p>Email : ${userProfil.getEmail()</p>
 <br>     
-<label for="phone">Téléphone :</label>
-<p id="phone" name="phone"></p>
+<p>Téléphone : ${userProfil.getPhone()</p>
 <br>     
-<label for="street">Rue :</label>
-<p id="street" name="street"></p>
+<p>Rue : ${userProfil.getStreet()</p>
 <br>     
-<label for="cp">Code postal :</label>
-<p id="cp" name="cp"></p>
+<p>Code postale : ${userProfil.getCp()</p>
 <br>
-<label for="city">Ville :</label>
-<p id="city" name="city"></p>
+<p>Ville : ${userProfil.getCity()</p>
 <br>
  
 <input type="submit" value="Modifier"> 

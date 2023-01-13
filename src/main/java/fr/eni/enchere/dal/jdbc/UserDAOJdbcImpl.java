@@ -358,48 +358,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 		return userOngoing;
 	}
 	
-	@Override
-	public User selectByPseudo(String pseudo) throws BusinessException {
-		//Vérification si le paramêtre est valide
-				if(pseudo==null || "".equals(pseudo))	{
-					BusinessException businessException = new BusinessException();
-					businessException.addError(CodesResultatDAL.INSERT_PSEUDO_MDP_USER_NULL);
-					throw businessException;
-				}
-				//Déclaration d'un Prepared Statement et initialisation à null
-				PreparedStatement pstmt = null;	
-				//Déclaration et instanciation d'un User
-				User userOngoing = new User();
-				//Récupération d'une connection à la BDD	
-				try (Connection cnx=ConnectionProvider.getConnection())
-				{
-					//Passage de la requête au Prepared Statement
-					pstmt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO);
-					//Setter les paramètre de la requète SQL
-					pstmt.setString(1, pseudo);
-					//Récupération des informations dans un ResultSet
-					ResultSet rs= pstmt.executeQuery();
-					//Vérification si la requète à récupérer des infos
-					if (rs.next() && rs.getInt("no_utilisateur") != userOngoing.getNoUser()) {
-						//Générer un User à partir des infos de la BDD
-						userOngoing = userBuilder(rs);
-					}
-					//Fermer le ResultSet
-					rs.close();
-					//Fermer le Statement
-					pstmt.close();
-					//Fermer la connection
-				}catch(Exception e) {
-					e.printStackTrace();
-					//Déclarer une BusinessException
-					BusinessException businessException = new BusinessException();
-					//Si il y a une erreur, ajouter l'erreur à la BusinessException
-					businessException.addError(CodesResultatDAL.SELECT_USER_PSEUDO_MDP_FAILED);
-					//Envoyer l'exception
-					throw businessException;
-				} 
-				return userOngoing;
-	}
 	
 	/**
 	 * Méthode qui permet de générer un objet User à partir des infos de la BDD
