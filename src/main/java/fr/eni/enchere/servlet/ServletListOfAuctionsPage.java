@@ -17,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class test
@@ -101,6 +102,14 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					userManager.addData(userOngoing);
 				}else {
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
+					
+					if (request.getParameter("session") != null) {
+						// création d'une session
+						HttpSession session = request.getSession();
+						// enregistrement du pseudo et du password dans le contexte de session
+						session.setAttribute("pseudo", request.getParameter("pseudo"));
+						session.setAttribute("password", request.getParameter("password"));
+					}
 				}
 				
 				request.setAttribute("user", userOngoing);

@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletConnexionPage
@@ -28,7 +29,15 @@ public class ServletConnexionPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+//		if (session.getAttribute("pseudo") != null || session.getAttribute("pseudo") != "" && session.getAttribute("password") != null || session.getAttribute("password") != "" ) {
+//			request.setAttribute("pseudo", session.getAttribute("pseudo"));
+//			request.setAttribute("password", session.getAttribute("password"));
+//		}
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/connexionPage.jsp").forward(request, response);
+	
 	}
 
 	/**
