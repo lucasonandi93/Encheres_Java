@@ -43,7 +43,7 @@ public abstract class CodesResultatBLL {
 	
 	public static final int RULE_ARTICLE_USER_ERROR=20014;
 	
-	public static final int RULE_ARTICLE_NO_CATEGORY_ERROR=20015;
+	public static final int RULE_ARTICLE_CATEGORY_ERROR=20015;
 	
 	//BLL AUCTION ERRORS
 	public static final int	RULE_AUCTION_NO_USER_ERROR=20020;

@@ -26,6 +26,7 @@ public class CategoryDAOJdbcImpl implements CategoryDAO {
 
 	private static final String SQL_SELECT_BY_LIBELLE = "SELECT no_categorie, libelle FROM CATEGORIES WHERE libelle = ?";
 
+	private static final String SQL_SELECT_BY_ID = "SELECT no_categorie, libelle FROM CATEGORIES WHERE no_categorie = ?";
 	/**
 	 * Constructeur
 	 */
@@ -97,6 +98,37 @@ public class CategoryDAOJdbcImpl implements CategoryDAO {
 			throw businessException;
 		}
 		return categoryOngoing;
+	}
+
+	@Override
+	public Category selectById(Integer id) throws BusinessException {
+		//Vérification si le paramêtre est valide
+				if(id==null || id==0) {
+					BusinessException businessException = new BusinessException();
+					businessException.addError(CodesResultatDAL.INSERT_ID_ARTICLE_NULL);
+					throw businessException;
+				}
+				
+				Category categoryOnGoing = null;
+				
+				try (Connection cnx=ConnectionProvider.getConnection())
+				{
+					PreparedStatement pstmt = cnx.prepareStatement(SQL_SELECT_BY_ID);
+					pstmt.setInt(1, id);
+					ResultSet rs= pstmt.executeQuery();
+					if (rs.next()) {
+						categoryOnGoing = new Category(rs.getInt("no_categorie"), rs.getString("libelle"));
+					}
+					rs.close();
+					pstmt.close();
+					cnx.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+					BusinessException businessException = new BusinessException();
+					businessException.addError(CodesResultatDAL.SELECT_CATEGORY_ID_FAILED);
+					throw businessException;
+				} 
+				return categoryOnGoing;
 	}
 
 }

@@ -173,8 +173,8 @@ public class ArticleManager implements Manager<Article, Integer>{
 		}
 		
 		//Vérification que le numéro de catégorie de l'article est valide
-		if (data.getNoCategory()==0) {
-			businessException.addError(CodesResultatBLL.RULE_ARTICLE_NO_CATEGORY_ERROR);
+		if (data.getCategory() == null) {
+			businessException.addError(CodesResultatBLL.RULE_ARTICLE_CATEGORY_ERROR);
 		}
 		
 		//Vérification que le nom de rue du lieu de retrait de l'article est valide

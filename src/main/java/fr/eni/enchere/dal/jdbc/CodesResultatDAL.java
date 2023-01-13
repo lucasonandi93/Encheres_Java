@@ -65,4 +65,6 @@ public abstract class CodesResultatDAL {
 	//ERROR CATEGORY
 	public static final int SELECT_LIST_CATEGORY_FAILED=10030;
 	
+	public static final int SELECT_CATEGORY_ID_FAILED=10031;
+	
 }

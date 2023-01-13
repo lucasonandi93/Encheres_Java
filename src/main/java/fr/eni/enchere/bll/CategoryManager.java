@@ -42,4 +42,9 @@ public class CategoryManager {
 		return this.categoryDAO.selectByName(libelle);
 	}
 	
+	public Category selectById(Integer id) throws BusinessException{
+		//Appelle la méthode selectAll de CategoryDAO
+				return this.categoryDAO.selectById(id);
+	}
+	
 }

@@ -157,7 +157,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 					pstmt.setInt(5, article.getOriginalPrice());
 					pstmt.setInt(6, article.getSellingPrice());
 					pstmt.setInt(7, article.getUser().getNoUser());
-					pstmt.setInt(8, article.getNoCategory());
+					pstmt.setInt(8, article.getCategory().getNoCategory());
 					//Executer la requête
 					pstmt.executeUpdate();
 					//Récupérer la clé générée dans le  ResultSet
@@ -221,7 +221,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				pstmt.setInt(5, article.getOriginalPrice());
 				pstmt.setInt(6, article.getSellingPrice());
 				pstmt.setInt(7, article.getUser().getNoUser());
-				pstmt.setInt(8, article.getNoCategory());
+				pstmt.setInt(8, article.getCategory().getNoCategory());
 				pstmt.setInt(9, article.getNoArticle());
 				
 				pstmt.executeUpdate();
@@ -497,7 +497,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				rs.getInt("prix_initial"),
 				rs.getInt("prix_vente"),
 				DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")),
-				rs.getInt("no_categorie"));
+				DAOFactory.getCategoryDAO().selectById(rs.getInt("no_categorie")));
 		
 		Withdrawal withdrawalOngoing = new Withdrawal(
 				rs.getInt("no_article"),
