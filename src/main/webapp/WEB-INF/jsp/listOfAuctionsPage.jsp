@@ -27,8 +27,6 @@
 			</c:otherwise>
 		</c:choose>
 	</header>
-
-	<main>
 		<div>
 			<h3>Liste des enchères</h3>
 		</div>
@@ -65,7 +63,7 @@
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : ${article.getUser().getPseudo()}
 								
-									<a href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getPseudo()}</a>
+									<%-- <a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getPseudo()}">${article.getUser().getPseudo()}</a> --%>
 								</li>
 							</ul>
 						</div>
@@ -73,6 +71,5 @@
 				</div>
 			</c:forEach>
 		</ul>
-	</main>
 </body>
 </html>
