@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
 <br>
 <form action="" method="post">
 <label for="pseudo">Pseudo :</label>
-<p id="pseudo" name="pseudo"></p>
+<p id="pseudo" name="pseudo">${userProfil.getPseudo()}</p>
 <br>
 <label for="name">Nom :</label>
 <p id="name" name="name"></p>
