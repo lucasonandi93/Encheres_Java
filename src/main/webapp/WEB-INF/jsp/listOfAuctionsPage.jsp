@@ -67,8 +67,7 @@
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : 
 									<form method="get" action="<%=request.getContextPath()%>/ServletProfilPage">
-										<input type="submit" name="userProfil" value="${article.getUser().getPseudo()}" hidden="">
-										<a href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getPseudo()}</a>
+										<input type="submit" name="userProfil" value="${article.getUser().getPseudo()}" hidden="">${article.getUser().getPseudo()}</input>
 									</form>
 								</li>
 							</ul>
