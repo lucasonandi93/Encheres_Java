@@ -64,7 +64,8 @@
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : 
-									<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getPseudo()}" >${article.getUser().getPseudo()}</a>
+									<input type="hidden" name="userProfil" value="${article.getUser().getPseudo()}">
+									<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getPseudo()}">${article.getUser().getPseudo()}</a>
 								</li>
 							</ul>
 						</div>
