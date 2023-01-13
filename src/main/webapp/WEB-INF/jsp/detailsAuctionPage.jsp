@@ -25,7 +25,7 @@
 
 	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
-	<p>Vendeur : </p>
+	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <hr>
 	<p>Ma proposition :</p>
 	<input type="number" step="1" value="1">
