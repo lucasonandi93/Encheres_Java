@@ -63,7 +63,8 @@
 								<li>${article.getNameArticle()}</li>
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-								<li>Vendeur : 
+								<li>Vendeur : ${article.getUser().getPseudo()}
+								
 									<a href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getPseudo()}</a>
 								</li>
 							</ul>
