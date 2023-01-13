@@ -70,6 +70,7 @@
 							</ul>
 						</div>
 					</li>
+					
 				</div>
 			</c:forEach>
 		</ul>
