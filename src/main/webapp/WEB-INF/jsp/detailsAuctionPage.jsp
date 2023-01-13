@@ -15,7 +15,7 @@
 
 	<p>Description : ${articleOngoing.getDescription()}</p>
 
-	<p>Catégorie : ${articleOngoing.getCategory().()}</p>
+	<p>Catégorie : ${articleOngoing.getCategory()}</p>
 
 	<p>Meilleure offre : ${articleOngoing.getSellingPrice()}</p>
 
