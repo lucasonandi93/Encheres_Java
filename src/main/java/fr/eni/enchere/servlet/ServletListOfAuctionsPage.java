@@ -12,7 +12,6 @@ import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
