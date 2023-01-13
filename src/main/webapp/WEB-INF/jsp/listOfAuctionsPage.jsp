@@ -14,10 +14,10 @@
 		<h3>ENI-Encheres</h3>
 		<c:choose>
 			<c:when test="${ user !=null}">
-				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Enchères</a>
-				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Vendre
+				<a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage">Enchères</a>
+				<a href="<%=request.getContextPath()%>/ServletNewArticle">Vendre
 					un article</a>
-				<a href="<%=request.getContextPath()%>/ServletConnexionPage">Mon
+				<a href="<%=request.getContextPath()%>/ServletProfilPage">Mon
 					profil</a>
 				<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
 					<input type="submit" name="deconnexion" value="deconnexion">

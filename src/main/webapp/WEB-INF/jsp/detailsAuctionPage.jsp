@@ -9,6 +9,9 @@
 <body>
 <header>ENI-Enchères</header>
 
-Détail Vente
+<h3>Détail Vente</h3>
+
+
+
 </body>
-</html>
+</html> 

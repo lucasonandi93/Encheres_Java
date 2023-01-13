@@ -1,4 +1,4 @@
-<div>
+
   <div>
   	<input type="radio" name="main" value="Achats" id="Achats">
   	<label for="Achats">Achats</label>
@@ -23,4 +23,3 @@
   		<label for="ventes terminées">ventes terminées</label>
   	</div>
   </div>
-</div>
