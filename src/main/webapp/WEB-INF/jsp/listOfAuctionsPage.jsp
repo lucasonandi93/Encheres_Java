@@ -61,8 +61,8 @@
 								<li><a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage">AAA</a></li>
-								${article.getUser().getPseudo()}
+								<!-- ${article.getUser().getPseudo()} -->
+								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage?idArticle=">${article.getUser()}</a></li>
 							</ul>
 						</div>
 					</li>

@@ -76,7 +76,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
-		System.out.println(articleList);
 	}
 
 	/**
