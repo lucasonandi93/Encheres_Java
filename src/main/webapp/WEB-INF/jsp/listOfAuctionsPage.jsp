@@ -58,10 +58,10 @@
 						<div>
 							<img alt="IMAGE" src="" title="IMAGE">
 							<ul>
-								<li><a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage">${article.getNameArticle()}</a></li>
+								<li><a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>
 								<li>Prix : ${article.getSellingPrice()}</li>
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-								<li>Vendeur : <a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=TEst">${article.getUser().getPseudo()}</a></li>
+								<li><a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=TEst">${article.getUser().getPseudo()}</a></li>
 							</ul>
 						</div>
 					</li>
