@@ -8,6 +8,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import fr.eni.enchere.bll.UserManager;
+import fr.eni.enchere.bo.User;
+import fr.eni.enchere.dal.jdbc.DAOFactory;
+import fr.eni.enchere.dal.jdbc.UserDAO;
+import fr.eni.enchere.exceptions.BusinessException;
+
 /**
  * Servlet implementation class ServletProfilPage
  */
@@ -27,11 +33,20 @@ public class ServletProfilPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		try {
+			UserManager userManager= new UserManager();
+			
+			String pseudoProfil = request.getParameter("userProfil");
+			
+			User userProfil = userManager.selectByPseudo(pseudoProfil);
 		
-		String pseudoProfil = request.getParameter("userProfil");
+			request.setAttribute("userProfil", userProfil);
 		
-		System.out.println(pseudoProfil);
-		
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profilPage.jsp");

@@ -108,6 +108,11 @@ public class UserManager implements Manager<User, Integer>{
 		//Appelle la méthode selectByPseudoMdp de AuctionDAO
 		return this.userDAO.selectByPseudoMdp(pseudo, mdp);
 	}
+	
+	
+	public User selectByPseudo(String pseudo) throws BusinessException{
+		return this.userDAO.selectByPseudo(pseudo);
+	}
 
 	/**
 	 * Méthode qui permet vérifier qu'un User peut être inséré ou modifié 

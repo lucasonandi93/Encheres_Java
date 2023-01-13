@@ -141,6 +141,24 @@ public class User implements Serializable {
 	}
     
 	/**
+	 * Constructeur
+	 * @param int1
+	 * @param string
+	 * @param string2
+	 * @param string3
+	 * @param string4
+	 * @param string5
+	 * @param string6
+	 * @param string7
+	 * @param string8
+	 * @param int2
+	 * @param boolean1
+	 */
+	public User(int noUser, String pseudo, String name, String firstName, String email, String phone, String street,
+			String cp, String city, int credit, boolean administrator) {
+	}
+
+	/**
 	 * Getter pour noUser
 	 * @return the noUser
 	 */
