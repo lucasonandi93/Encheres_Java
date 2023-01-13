@@ -1,0 +1,52 @@
+/* Mobile first */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 2em;
+}
+
+form {
+    width: 80%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+label {
+    text-align: left;
+    width: 20%;
+    margin-right: 1em;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="file"] {
+    width: 80%;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+select {
+    width: 80%;
+    padding: 0.5em;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    form {
+        width: 60%;
+    }
+}
+

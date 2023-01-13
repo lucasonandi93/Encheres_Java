@@ -7,8 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="<%=request.getContextPath()%>/css/styleNewArticle.css" rel="stylesheet"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="winAuctionPage.js">
-	
 </script>
 <title>Nouvelle vente</title>
 </head>
@@ -26,7 +27,7 @@
 				<div class="form-group">
 					<label for="usr">Description : </label> <input type="text" class="form-control" id="description"
 						onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';">
-					<label for="categories">Catégorie:</label> 
+					<br><label for="categories">Catégorie:</label> 
 						<select name="categories" id="categories" selected="0">
 							<option value="0"></option>
 							<option value="1">Informatique</option>
@@ -47,10 +48,10 @@
 			<br>
 			<div class="form-group">
 				<label>Mise à prix :</label> <input type="number" step="1" value="1">
-				<br> <label for="beginAuction">Début de l'enchère :</label> <input
-					type="date" name="beginAuction"> <label for="endAuction">Fin
+				<br><br> <label for="beginAuction">Début de l'enchère :</label> <input
+					type="date" name="beginAuction"> <br><br><label for="endAuction">Fin
 					de l'enchère :</label> <input type="date" name="endAuction"> <br>
-				<fieldset>
+				<br><fieldset>
 					<legend>Retrait</legend>
 					Rue : <input type="text" name="street" size="25"> <br>
 					Code postal : <input type="text" name="cp" size="18"> <br>
@@ -58,7 +59,7 @@
 				</fieldset>
 
 			</div>
-			<div>
+			<div><br>
 				<input type="submit" value="Ajouter"> 
 				<button type="cancel" onclick="<%=request.getContextPath()%>/ServletListOfAuctions">Annuler</button>
 				<button type="redirect" onclick="<%=request.getContextPath()%>/ServletListOfAuctions">Annuler la vente</button>
