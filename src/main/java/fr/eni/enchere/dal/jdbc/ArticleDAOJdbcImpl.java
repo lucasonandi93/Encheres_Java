@@ -499,6 +499,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")),
 				DAOFactory.getCategoryDAO().selectById(rs.getInt("no_categorie")));
 		
+				System.out.println(DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")));
+		
 		Withdrawal withdrawalOngoing = new Withdrawal(
 				rs.getInt("no_article"),
 				rs.getString("rue"),
