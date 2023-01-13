@@ -56,7 +56,6 @@
 		<ul>
 			<c:forEach var="article" items="${articleList}">
 				<div>
-					<li>
 						<div>
 							<img alt="IMAGE" src="" title="IMAGE">
 							<ul>
@@ -65,11 +64,10 @@
 								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 								<li>Vendeur : 
 									<input type="hidden" name="userProfil" value="${article.getUser().getPseudo()}">
-									<a href="<%=request.getContextPath()%>/ServletProfilPage">${article.getUser().getPseudo()}</a>
+									<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getPseudo()}">${article.getUser().getPseudo()}</a>
 								</li>
 							</ul>
 						</div>
-					</li>
 			
 				</div>
 			</c:forEach>
