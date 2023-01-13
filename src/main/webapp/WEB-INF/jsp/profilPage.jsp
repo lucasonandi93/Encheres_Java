@@ -1,4 +1,5 @@
-
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,23 +16,24 @@
 <br>
 <p>Pseudo : ${userProfil.getPseudo()}</p>
 <br>
-<p>Nom : ${userProfil.getName()</p>
+<p>Nom : ${userProfil.getName()}</p>
 <br>
-<p>Prénom : ${userProfil.getFirstName()</p>
+<p>Prénom : ${userProfil.getFirstName()}</p>
 <br>     
-<p>Email : ${userProfil.getEmail()</p>
+<p>Email : ${userProfil.getEmail()}</p>
 <br>     
-<p>Téléphone : ${userProfil.getPhone()</p>
+<p>Téléphone : ${userProfil.getPhone()}</p>
 <br>     
-<p>Rue : ${userProfil.getStreet()</p>
+<p>Rue : ${userProfil.getStreet()}</p>
 <br>     
-<p>Code postale : ${userProfil.getCp()</p>
+<p>Code postale : ${userProfil.getCp()}</p>
 <br>
-<p>Ville : ${userProfil.getCity()</p>
+<p>Ville : ${userProfil.getCity()}</p>
 <br>
- 
-<input type="submit" value="Modifier"> 
 
-</form>           
+<c:if test="${user.getNoUser() == userProfil }">
+	<input type="submit" value="Modifier"> 
+</c:if>
+            
 </body>
 </html>

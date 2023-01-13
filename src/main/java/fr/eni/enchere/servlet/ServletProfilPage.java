@@ -43,6 +43,9 @@ public class ServletProfilPage extends HttpServlet {
 		
 			request.setAttribute("userProfil", userProfil);
 		
+			System.out.println(request.getAttribute("user"));
+			System.out.println(request.getAttribute("userProfil"));
+			
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

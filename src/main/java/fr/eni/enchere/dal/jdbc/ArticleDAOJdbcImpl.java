@@ -498,9 +498,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		articleOngoing.setSellingPrice( rs.getInt("prix_vente"));
 		User user = DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur"));
 
-		System.out.println("articleBuilder " + rs.getInt("no_utilisateur"));
 		if (user != null)
-			System.out.println(user);
 	
 		articleOngoing.setUser(	DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")));
 		articleOngoing.setCategory( DAOFactory.getCategoryDAO().selectById(rs.getInt("no_categorie")));

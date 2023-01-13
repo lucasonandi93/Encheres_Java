@@ -36,6 +36,15 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	@Override
+	public void init() throws ServletException {
+		User userOngoing = new User();
+		
+		userOngoing.setNoUser(0);
+		
+		super.init();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -70,7 +79,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		}
 		
 		if  (articleList != null) {
-			//System.out.println(articleList);
 			request.setAttribute("articleList", articleList);
 		}
 		
@@ -116,10 +124,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				}
 				
 				request.setAttribute("user", userOngoing);
-				System.out.println("UserConnected");
+				
 			} else {
 				request.setAttribute("user", null);
-				System.out.println("UserDisconnected");
+				
 			}
 		} catch (BusinessException e) {
 			e.printStackTrace();
