@@ -101,7 +101,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					if (request.getParameter("tel") != "" || request.getParameter("tel") != null) {
 						userOngoing.setPhone(request.getParameter("tel"));
 					}
-					
+					 
 					userManager.addData(userOngoing);
 				}else {
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
