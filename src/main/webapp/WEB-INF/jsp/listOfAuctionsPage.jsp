@@ -6,6 +6,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link href="<%=request.getContextPath()%>/css/styleTest.css" rel="stylesheet"> 
 <%-- <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet"> --%>
 <title>Accueil</title>
 </head>
