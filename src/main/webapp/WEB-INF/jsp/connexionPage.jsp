@@ -26,7 +26,7 @@
 	
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<div class="form-group">
-				<br><label for="usr">Identifiant : </label> 
+				<br><br><label for="usr">Identifiant : </label> 
 				<%-- ${sessionScope.pseudo} récupère le pseudo si se souvenir de moi est coché --%>
 				<input type="text" name="pseudo" value="${sessionScope.pseudo}" class="form-control" id="usr" maxlength="30" >
 			</div>
