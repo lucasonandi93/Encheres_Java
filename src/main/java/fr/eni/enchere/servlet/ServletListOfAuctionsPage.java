@@ -70,7 +70,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		}
 		
 		if  (articleList != null) {
-			System.out.println(articleList);
+			//System.out.println(articleList);
 			request.setAttribute("articleList", articleList);
 		}
 		

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
@@ -407,19 +408,19 @@ public class UserDAOJdbcImpl implements UserDAO {
 	 * @throws SQLException
 	 */
 	private User userBuilder(ResultSet rs) throws SQLException{
-		//Retourne une instance de User avec les infos de la BDD
-		return new User(
-				rs.getInt("no_utilisateur"),
-				rs.getString("pseudo"), 
-				rs.getString("nom"),
-				rs.getString("prenom"), 
-				rs.getString("email"),
-				rs.getString("telephone"), 
-				rs.getString("rue"), 
-				rs.getString("code_postal"),
-				rs.getString("ville"),
-				rs.getInt("credit"), 
-				rs.getBoolean("administrateur"));
+		User userOngoing = new User();
 		
+		userOngoing.setNoUser(rs.getInt("no_utilisateur"));
+		userOngoing.setPseudo(rs.getString("pseudo"));
+		userOngoing.setName(rs.getString("nom"));
+		userOngoing.setFirstName(rs.getString("prenom"));
+		userOngoing.setEmail(rs.getString("email"));
+		userOngoing.setPhone(rs.getString("telephone"));
+		userOngoing.setStreet(rs.getString("rue"));
+		userOngoing.setCp(rs.getString("code_postal"));
+		userOngoing.setCity(rs.getString("ville"));
+		userOngoing.setCredit(rs.getInt("credit"));
+		userOngoing.setAdministrator(rs.getBoolean("administrateur"));
+		return userOngoing;
 	}
 }

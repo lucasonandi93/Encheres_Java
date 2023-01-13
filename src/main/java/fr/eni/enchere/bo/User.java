@@ -400,17 +400,21 @@ public class User implements Serializable {
 		builder.append("\n");
 		builder.append("ArticleList=");
 		
-		for (Article article : articleList) {
-			builder.append("\n");
-			builder.append(article);
+		if (articleList != null) {
+			for (Article article : articleList) {
+				builder.append("\n");
+				builder.append(article);
+			}
 		}
 		
 		builder.append("\n");
 		builder.append("AuctionList=");
-		
-		for (Auction auction : auctionList) {
-			builder.append("\n");
-			builder.append(auction);
+
+		if (auctionList != null) {
+			for (Auction auction : auctionList) {
+				builder.append("\n");
+				builder.append(auction);
+			}
 		}
 		
 		builder.append("]");

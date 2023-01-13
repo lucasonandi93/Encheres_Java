@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.User;
 import fr.eni.enchere.bo.Withdrawal;
 import fr.eni.enchere.exceptions.BusinessException;
 
@@ -487,17 +488,22 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	 * @throws BusinessException 
 	 */
 	private Article articleBuilder(ResultSet rs) throws SQLException, BusinessException {
-		Article articleOngoing = new Article(
-				rs.getInt("no_article"),
-				rs.getString("nom_article"),
-				rs.getString("description"),
-				// conversion date sql en LocalDate
-				rs.getDate("date_debut_encheres").toLocalDate(),
-				rs.getDate("date_fin_encheres").toLocalDate(),
-				rs.getInt("prix_initial"),
-				rs.getInt("prix_vente"),
-				DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")),
-				DAOFactory.getCategoryDAO().selectById(rs.getInt("no_categorie")));
+		Article articleOngoing = new Article();
+		articleOngoing.setNoArticle(rs.getInt("no_article"));
+		articleOngoing.setNameArticle(rs.getString("nom_article"));
+		articleOngoing.setDescription(rs.getString("description"));
+		articleOngoing.setAuctionStartDate(rs.getDate("date_debut_encheres").toLocalDate());
+		articleOngoing.setAuctionEndDate (rs.getDate("date_debut_encheres").toLocalDate());
+		articleOngoing.setOriginalPrice(rs.getInt("prix_initial"));
+		articleOngoing.setSellingPrice( rs.getInt("prix_vente"));
+		User user = DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur"));
+
+		System.out.println("articleBuilder " + rs.getInt("no_utilisateur"));
+		if (user != null)
+			System.out.println(user);
+	
+		articleOngoing.setUser(	DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur")));
+		articleOngoing.setCategory( DAOFactory.getCategoryDAO().selectById(rs.getInt("no_categorie")));
 		
 		Withdrawal withdrawalOngoing = new Withdrawal(
 				rs.getInt("no_article"),
