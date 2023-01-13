@@ -21,7 +21,7 @@ public class Article implements Serializable{
 	private int originalPrice;
 	private int sellingPrice;
 	private String saleStatus;
-	private User User;
+	private User user;
 	private Category category;
 	private Withdrawal withdrawal;
 	private List<Auction> listAuction;
@@ -246,7 +246,7 @@ public class Article implements Serializable{
 	 * @return the user
 	 */
 	public User getUser() {
-		return User;
+		return user;
 	}
 
 	/**
@@ -254,7 +254,7 @@ public class Article implements Serializable{
 	 * @param user the user to set
 	 */
 	public void setUser(User user) {
-		User = user;
+		this.user = user;
 	}
 
 	/**
@@ -385,7 +385,6 @@ public class Article implements Serializable{
 		return listAuction;
 	}
 
-	
 	/**
 	 * Méthode qui permet d'afficher l'Article
 	 */

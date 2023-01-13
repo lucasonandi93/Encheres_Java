@@ -11,19 +11,21 @@
 
 	<h3>Détail Vente</h3>
 
+	<p>${articleOngoing.getNameArticle()}</p>
+
 	<p>Description : ${articleOngoing.getDescription()}</p>
 
-	<p>Catégorie :</p>
+	<p>Catégorie : ${articleOngoing.getCategory().()}</p>
 
-	<p>Meilleure offre :</p>
+	<p>Meilleure offre : ${articleOngoing.getSellingPrice()}</p>
 
-	<p>Mise à prix :</p>
+	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
 
-	<p>Fin de l'enchère :</p>
+	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p>
 
-	<p>Retrait :</p>
+	<p>Retrait : </p>
 
-	<p>Vendeur :</p>
+	<p>Vendeur : </p>
 <hr>
 	<p>Ma proposition :</p>
 	<input type="number" step="1" value="1">
