@@ -53,7 +53,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 			if (request.getParameter("content") == null || ("".equals(request.getParameter("content")) && "Toutes".equals(request.getParameter("categories")))) {
 				articleList = articleManager.selectAll();
-				System.out.println(articleList);
 				request.setAttribute("articleList", articleList);
 			} else if (("".equals(request.getParameter("content"))
 					&& !("Toutes".equals(request.getParameter("categories"))))) {
