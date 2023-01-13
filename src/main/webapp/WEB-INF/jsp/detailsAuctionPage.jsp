@@ -11,7 +11,7 @@
 
 	<h3>Détail Vente</h3>
 
-	<p>Description :</p>
+	<p>Description : ${articleOngoing.getDescription()}</p>
 
 	<p>Catégorie :</p>
 

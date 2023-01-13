@@ -38,7 +38,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 		try {
 			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
 			
-			request.setAttribute("article", articleOngoing);
+			request.setAttribute("articleOngoing", articleOngoing);
 		} catch (NumberFormatException | BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
