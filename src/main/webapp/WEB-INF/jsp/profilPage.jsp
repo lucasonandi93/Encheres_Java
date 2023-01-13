@@ -4,39 +4,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="<%=request.getContextPath() %>/css/styleProfilPage.css" rel="stylesheet">
-<title>Insert title here</title>
+<%-- <link href="<%=request.getContextPath() %>/css/styleProfilPage.css" rel="stylesheet"> --%>
+<title>Profil</title>
 </head>
 <body>
 <header><h3>ENI-Enchères</h3></header>
+
+<h1>Mon profil</h1>
 <br>
-Mon profil
-<br><br>
-<form action="" method="post" class="formProfil">
-
+<form action="" method="post">
 <label for="pseudo">Pseudo :</label>
-
+<p id="pseudo" name="pseudo"></p>
+<br>
 <label for="name">Nom :</label>
-       
+<p id="name" name="name"></p>
+<br>
 <label for="firstName">Prénom :</label>
-     
+<p id="firstName" name="firstName"></p>
+<br>     
 <label for="email">Email :</label>       
-     
+<p id="email" name="email"></p>
+<br>     
 <label for="phone">Téléphone :</label>
-     
+<p id="phone" name="phone"></p>
+<br>     
 <label for="street">Rue :</label>
-     
+<p id="street" name="street"></p>
+<br>     
 <label for="cp">Code postal :</label>
-
+<p id="cp" name="cp"></p>
+<br>
 <label for="city">Ville :</label>
-
-<label for="password">Mot de passe :</label>
-       
-<label for="password">Confirmation mot de passe:</label>
+<p id="city" name="city"></p>
+<br>
  
 <input type="submit" value="Modifier"> 
 
-    
 </form>           
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <%-- <link href="<%=request.getContextPath() %>/css/styleProfilPage.css" rel="stylesheet"> --%>
-<title>Insert title here</title>
+<title>Registration</title>
 </head>
 <body>
 <header><h3>ENI-Enchères</h3></header>
