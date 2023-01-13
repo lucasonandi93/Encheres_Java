@@ -99,7 +99,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 							request.getParameter("city"),
 							request.getParameter("password"));
 					if (request.getParameter("tel") != "" || request.getParameter("tel") != null) {
-						userOngoing.setPhone("tel");
+						userOngoing.setPhone(request.getParameter("tel"));
 					}
 					
 					userManager.addData(userOngoing);
