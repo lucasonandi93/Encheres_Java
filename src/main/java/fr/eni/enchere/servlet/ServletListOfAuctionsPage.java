@@ -110,13 +110,13 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		UserManager userManager = new UserManager();
 		HttpSession session = request.getSession();
 		
-		System.out.println(request.getParameter("A"));
+		System.out.println("A");
 		try {
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
-				System.out.println(request.getParameter("B"));
+				System.out.println("B");
 				User userOngoing = new User();
 				if (request.getParameter("name") != null) {
-					System.out.println(request.getParameter("C"));
+					System.out.println("C");
 					userOngoing = new User(request.getParameter("pseudo"),
 							request.getParameter("name"),
 							request.getParameter("firstName"),
@@ -129,12 +129,12 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						userOngoing.setPhone(request.getParameter("tel"));
 					}
 					if (request.getParameter("save") != null || request.getParameter("delete") != null) {
-						System.out.println(request.getParameter("D"));
+						System.out.println("D");
 						userOngoing.setNoUser(((User)session.getAttribute("user")).getNoUser());
 						if (request.getParameter("save") != null) {
 							userManager.updateData(userOngoing);
 						}else if (request.getParameter("delete") != null) {
-							System.out.println(request.getParameter("E"));
+							System.out.println("E");
 							System.out.println("deleted");
 							System.out.println(userOngoing);
 							userManager.deleteData(userOngoing.getNoUser());
