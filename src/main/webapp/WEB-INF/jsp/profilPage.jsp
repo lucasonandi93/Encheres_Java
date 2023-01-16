@@ -40,7 +40,5 @@
 			<input type="submit" value="Modifier">
 		</form>
 	</c:if>
-
-
 </body>
 </html>
