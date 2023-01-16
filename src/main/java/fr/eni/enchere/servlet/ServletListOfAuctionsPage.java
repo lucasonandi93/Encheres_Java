@@ -17,6 +17,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class test
@@ -53,7 +54,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		CategoryManager categoryManager = new CategoryManager();
 		List<Article> articleList = null;
 		List<Category> categoryList = null;
-		User userOngoing = new User();
 		
 		
 		try {
@@ -67,6 +67,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 			String categories = request.getParameter("categories");
 
+			HttpSession session = request.getSession();
+			
 			if (request.getParameter("content") == null || 
 					("".equals(content) &&  "Toutes".equals(categories))) {
 				articleList = articleManager.selectAll();
@@ -83,9 +85,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			
-			userOngoing = userManager.selectById(Integer.parseInt(request.getParameter("userID")));
-			request.setAttribute("user", userOngoing);
-			System.out.println(request.getAttribute("user"));
+			System.out.println(session.getAttribute("user"));
 			
 			
 		} catch (BusinessException e) {
@@ -105,6 +105,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserManager userManager = new UserManager();
+		HttpSession session = request.getSession();
+		
 		System.out.println("doPost");
 		try {
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
@@ -138,11 +140,16 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						// (ici 60 sec x60 min x24h x30 jours = 30 jours)
 						cookie2.setMaxAge(60 * 60 * 24 * 30);
 						response.addCookie(cookie2);
+						
+						userOngoing.setPseudo(request.getParameter("pseudo"));
+						userOngoing.setPseudo(request.getParameter("password"));
+						
 					}
 					
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
+				
 					
-					request.setAttribute("user", userOngoing);
+					session.setAttribute("user", userOngoing);
 				}
 			} else {
 				request.setAttribute("user", null);
