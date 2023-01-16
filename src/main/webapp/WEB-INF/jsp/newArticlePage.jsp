@@ -29,7 +29,7 @@
 				<div class="form-group">
 					<label for="usr">Description : </label> <input type="text" class="form-control" id="description"
 						onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';">
-					<br><label for="categories">Catégorie:</label> 
+					<br><label for="categories">Catégorie :</label> 
 						<select name="categories" id="categories" selected="0">
 							<option value="0"></option>
 							<option value="1">Informatique</option>

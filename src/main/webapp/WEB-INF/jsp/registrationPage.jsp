@@ -33,19 +33,20 @@
 			<label for="firstName">Prénom :</label> <input type="text"
 				id="firstName" name="firstName" required maxlength="30" value="${sessionScope.user.getFirstName()}"> <br>
 			<br> <label for="email">Email :</label> <input type="email"
-				id="email" name="email" required maxlength="50" value="${sessionScope.user.getEmail()}">
+				id="email" name="email" required maxlength="50" value="${sessionScope.user.getEmail()}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 		</div>
 		<br>
 		<div>
 			<label for="phone">Téléphone :</label> <input type="tel" id="phone"
-				name="tel" maxlength="15" value="${sessionScope.user.getPhone()}"> <br> <br> <label
+				name="tel" maxlength="10" value="${sessionScope.user.getPhone()}" onkeypress="return onlyNumberKey(event)"/> <br> <br> <label
 				for="street">Rue :</label> <input type="text" id="street"
 				name="street" required maxlength="30" value="${sessionScope.user.getStreet()}">
 		</div>
+	
 		<br>
 		<div>
-			<label for="cp">Code postal :</label> <input type="text" id="cp"
-				name="cp" required maxlength="5" value="${sessionScope.user.getCp()}"> <br> <br> <label
+			<label for="cp">Code postal :</label> <input type="tel" id="cp"
+				name="cp" required maxlength="5" value="${sessionScope.user.getCp()}" onkeypress="return onlyNumberKey(event)"/> <br> <br> <label
 				for="city">Ville :</label> <input type="text" id="city" name="city"
 				required maxlength="50" value="${sessionScope.user.getCity()}">
 		</div>
@@ -74,6 +75,15 @@
 			<input type="submit" value="Supprimer mon compte" name="delete">
 		</c:if>
 	</form>
-
+	<script>
+        function onlyNumberKey(evt) {
+              
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+    </script>
 </body>
 </html>
