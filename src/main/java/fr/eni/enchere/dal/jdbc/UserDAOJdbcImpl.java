@@ -376,6 +376,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		userOngoing.setStreet(rs.getString("rue"));
 		userOngoing.setCp(rs.getString("code_postal"));
 		userOngoing.setCity(rs.getString("ville"));
+		userOngoing.setPassword(rs.getString("mot_de_passe"));
 		userOngoing.setCredit(rs.getInt("credit"));
 		userOngoing.setAdministrator(rs.getBoolean("administrateur"));
 		return userOngoing;
