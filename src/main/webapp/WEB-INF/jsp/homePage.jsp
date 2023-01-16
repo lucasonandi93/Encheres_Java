@@ -25,7 +25,7 @@
 			<c:otherwise>
 				<a href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
 					- Se connecter</a>
-			</c:otherwise>
+			</c:otherwise> 
 		</c:choose>
 	</header>
 		<div>
