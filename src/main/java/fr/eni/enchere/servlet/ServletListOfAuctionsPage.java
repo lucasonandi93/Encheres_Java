@@ -162,14 +162,17 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				
 					System.out.println(userOngoing);
 					
-					session.setAttribute("user", userOngoing);
+					
+					if (userOngoing.getNoUser() != 0){
+						session.setAttribute("user", userOngoing);
+					}else {
+						session.setAttribute("user", null);
+					}
 				}
 			} else {
 				session.setAttribute("user", null);
 				
 			}
-			
-
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
