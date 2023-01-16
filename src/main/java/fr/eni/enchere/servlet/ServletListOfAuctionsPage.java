@@ -1,7 +1,7 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
-
+ 
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
