@@ -35,7 +35,7 @@
 	<p>Ville : ${userProfil.getCity()}</p>
 	<br>
 
-	<c:if test="${sessionScope.user.getNoUser() == userProfil }">
+	<c:if test="${sessionScope.user.getNoUser() == userProfil.getNoUser() }">
 		<form action="" method="get">
 			<input type="submit" value="Modifier">
 		</form>
