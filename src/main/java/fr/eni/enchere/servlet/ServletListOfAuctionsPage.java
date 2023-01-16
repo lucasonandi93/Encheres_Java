@@ -204,6 +204,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				withdrawalOngoing.setCity(request.getParameter("withdrawalCity"));
 				
 				articleOngoing.setWithdrawal(withdrawalOngoing);
+				articleOngoing.setUser(userManager.selectById(((User)session.getAttribute("user")).getNoUser()));
 				
 				System.out.println(articleOngoing);
 				
