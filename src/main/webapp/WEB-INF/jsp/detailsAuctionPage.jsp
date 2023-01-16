@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +23,12 @@
 
 	<p>Catégorie : ${articleOngoing.getCategory().getWording()}</p>
 
-	<p>Meilleure offre : ${articleOngoing.getSellingPrice()}</p>
+	<p>Meilleure offre : 
+		<%-- si auction > enchère articleOngoing.getSellingPrice()
+		<c:if test="">
+			${articleOngoing.getSellingPrice()}</p>
+		</c:if> --%>
+			
 
 	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
 
@@ -32,7 +39,7 @@
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <hr>
 	<p>Ma proposition :</p>
-	<input type="number" step="1" value="1">
+	<input type="number" min="0" step="1" value="1">
 	
 	<button type="submit" name="auction">Enchérir</button>
 </body>
