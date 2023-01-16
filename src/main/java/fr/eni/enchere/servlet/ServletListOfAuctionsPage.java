@@ -97,14 +97,14 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			                	userOngoing.setPassword(cookie.getValue());
 			                }
 			            }
+			            request.setAttribute("userConnected", userOngoing);
 			        }
-			request.setAttribute("user", userOngoing);
 		
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println(request.getAttribute("user"));
+		System.out.println(request.getAttribute("userConnected"));
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
@@ -152,6 +152,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					}
 					
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
+					
+					request.setAttribute("user", userOngoing);
 				}
 			} else {
 				request.setAttribute("user", null);
