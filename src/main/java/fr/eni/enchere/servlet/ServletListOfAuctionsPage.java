@@ -80,35 +80,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				request.setAttribute("articleList", articleList);
 			}
 			
-			User userOngoing = new User();
-			
-			// récup cookies possible seulement sous forme de tableau
-			Cookie[] cookies = request.getCookies();
-			        if (cookies != null) {
-			            for (Cookie cookie : cookies) {
-			                // viser le cookie recherché
-			                if (cookie.getName().equals("pseudo")) {
-			                    // récup de la valeur du cookie
-			                    userOngoing.setPseudo(cookie.getValue());
-			                   
-			                    
-			                }
-			                if (cookie.getName().equals("password")) {
-			                    // récup de la valeur du cookie
-			                	userOngoing.setPassword(cookie.getValue());
-			                }
-			            }
-			            
-			            userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
-			           
-			            request.setAttribute("userSaved", userOngoing);
-			        }
 		
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(request.getAttribute("userSaved"));
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
