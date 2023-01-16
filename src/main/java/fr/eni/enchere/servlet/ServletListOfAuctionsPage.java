@@ -118,7 +118,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		System.out.println("doPost");
 		try {
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
-				User userOngoing = null;
+				User userOngoing = new User();
 				if (request.getParameter("name") != null) {
 					userOngoing = new User(request.getParameter("pseudo"),
 							request.getParameter("name"),
@@ -149,14 +149,13 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						cookie2.setMaxAge(60 * 60 * 24 * 30);
 						response.addCookie(cookie2);
 						
-						userOngoing.setPseudo(request.getParameter("pseudo"));
-						userOngoing.setPseudo(request.getParameter("password"));
 						
 					}
+					userOngoing.setPseudo(request.getParameter("pseudo"));
+					userOngoing.setPseudo(request.getParameter("password"));
 					
-					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
-				
-					
+					userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
+	
 					session.setAttribute("user", userOngoing);
 				}
 			} else {
