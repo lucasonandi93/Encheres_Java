@@ -168,6 +168,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			
 			if (request.getParameter("save") != null) {
 				userManager.updateData((User) session.getAttribute("user"));
+				System.out.println("updated");
 			}
 		} catch (BusinessException e) {
 			e.printStackTrace();
