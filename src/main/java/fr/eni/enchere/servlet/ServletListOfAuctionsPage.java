@@ -101,6 +101,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		
 		
 		
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
