@@ -83,10 +83,12 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			if  (articleList != null) {
 				request.setAttribute("articleList", articleList);
 			}
-			
+			System.out.println(request.getParameter("deconnexion"));
 			
 			if (request.getParameter("deconnexion") == "true") {
+				
 				session.setAttribute("user", null);
+				
 			}
 			
 			System.out.println(session.getAttribute("user"));
@@ -156,7 +158,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					session.setAttribute("user", userOngoing);
 				}
 			} else {
-				request.setAttribute("user", null);
+				session.setAttribute("user", null);
 				
 			}
 		} catch (BusinessException e) {
