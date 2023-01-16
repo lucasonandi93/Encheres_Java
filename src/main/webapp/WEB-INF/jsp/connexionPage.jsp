@@ -23,7 +23,7 @@
         	<p>${ sessionScope.password } </p>
     	</c:if> --%>
 	
-	
+	  
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<div class="form-group">
 				<br><br><label for="usr">Identifiant : </label> 
