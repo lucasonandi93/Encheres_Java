@@ -65,19 +65,12 @@
 		<br>
 		<c:if test="${sessionScope.user.getNoUser() == null }">
 			<input type="submit" value="Valider" name="validate">
-		</c:if>
-		<c:if test="${sessionScope.user.getNoUser() != null }">
-			<input type="submit" value="Enregistrer" name="save">
-		</c:if>
-	</form>
-
-	<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
-		method="post">
-
-		<c:if test="${sessionScope.user.getNoUser() == null }">
+			<br>
 			<input type="submit" value="Annuler" name="cancel">
 		</c:if>
 		<c:if test="${sessionScope.user.getNoUser() != null }">
+			<input type="submit" value="Enregistrer" name="save">
+			<br>
 			<input type="submit" value="Supprimer mon compte" name="delete">
 		</c:if>
 	</form>

@@ -110,74 +110,72 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		UserManager userManager = new UserManager();
 		HttpSession session = request.getSession();
 		
-		System.out.println("A");
+		String pseudo = request.getParameter("pseudo");
+		String password = request.getParameter("password");
+		
 		try {
-			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
-				System.out.println("B");
-				User userOngoing = new User();
+			User userOngoing = new User();
+			//Connection ou Enregistrement ou Modification ou Suppression
+			if (pseudo != null && password != null) {
+				//Enregistrement ou Modification ou Suppression
 				if (request.getParameter("name") != null) {
-					System.out.println("C");
-					userOngoing = new User(request.getParameter("pseudo"),
+					userOngoing = new User(pseudo,
 							request.getParameter("name"),
 							request.getParameter("firstName"),
 							request.getParameter("email"),
 							request.getParameter("street"),
 							request.getParameter("cp"),
 							request.getParameter("city"),
-							request.getParameter("password"));
+							password);
 					if (request.getParameter("tel") != "" || request.getParameter("tel") != null) {
 						userOngoing.setPhone(request.getParameter("tel"));
 					}
+					//Modification ou Suppression
 					if (request.getParameter("save") != null || request.getParameter("delete") != null) {
-						System.out.println("D");
 						userOngoing.setNoUser(((User)session.getAttribute("user")).getNoUser());
+						//Modification
 						if (request.getParameter("save") != null) {
 							userManager.updateData(userOngoing);
+						//Suppression
 						}else if (request.getParameter("delete") != null) {
-							System.out.println("E");
-							System.out.println("deleted");
-							System.out.println(userOngoing);
 							userManager.deleteData(userOngoing.getNoUser());
 						}
-						
+					//Enregistrement	
 					}else if (request.getParameter("validate") != null) {
 						userManager.addData(userOngoing);
 					}
-					
+				//Connection	
 				}else {
-					
+					//Se souvenir de moi
 					if (request.getParameter("souvenir") != null) {
-						String pseudo = request.getParameter("pseudo");
-						String password = request.getParameter("password");
 						
 						Cookie cookie1 = new Cookie("pseudo", pseudo);
+						// durée de vie du cookie en secondes 
+						// (ici 60 sec x60 min x24h x30 jours = 30 jours)
 						cookie1.setMaxAge(60 * 60 * 24 * 30);
 						response.addCookie(cookie1);
 						
 						Cookie cookie2 = new Cookie("password", password);
-						// durée de vie du cookie en secondes 
-						// (ici 60 sec x60 min x24h x30 jours = 30 jours)
 						cookie2.setMaxAge(60 * 60 * 24 * 30);
 						response.addCookie(cookie2);
 					}
-					userOngoing.setPseudo(request.getParameter("pseudo"));
-					userOngoing.setPseudo(request.getParameter("password"));
 					
-					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
-				
-					System.out.println(userOngoing);
+					userOngoing.setPseudo(pseudo);
+					userOngoing.setPassword(password);
 					
-					
-					if (userOngoing.getNoUser() != 0){
-						session.setAttribute("user", userOngoing);
-					}else {
-						session.setAttribute("user", null);
-					}
+					userOngoing = userManager.selectByPseudoMdp(pseudo, password);
+										
 				}
-			} else {
-				session.setAttribute("user", null);
-				
 			}
+			
+			System.out.println(userOngoing);
+			
+			if (userOngoing.getNoUser() != 0){
+				session.setAttribute("user", userOngoing);
+			}else {
+				session.setAttribute("user", null);
+			}
+			
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
