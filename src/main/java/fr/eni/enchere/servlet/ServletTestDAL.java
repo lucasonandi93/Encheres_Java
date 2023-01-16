@@ -98,160 +98,157 @@ public class ServletTestDAL extends HttpServlet {
 			userDAO.insert(alexandra);
 			userDAO.insert(luca);
 			userDAO.insert(alban);
-//			// Test avec erreur
-//			
-//			// Test de la méthode insert de articleDAO --> OK
-//			articleDAO.insert(pcGamer);
-//			articleDAO.insert(table);
-//			articleDAO.insert(ballon);
-//			articleDAO.insert(slip);
-//			articleDAO.insert(souris);
-//			// Test avec erreur
-//			articleDAO.insert(articleError);
-//			
-//			// Test de la méthode insert de auctionDAO --> OK 
-//			auctionDAO.insert(auction1);
-//			auctionDAO.insert(auction2);
-//			auctionDAO.insert(auction3);
-//			auctionDAO.insert(auction4);
-//			auctionDAO.insert(auction5);
-//			// Test avec erreur
-//			auctionDAO.insert(auctionError);
-//			
-//			// =======================================================================================================================================
-//			System.out.println("============================================================================================");
-//			// METHODES SELECTALL
-//			// Test de la méthode selectall de userDAO --> OK
-//			List<User> userList = userDAO.selectAll();
-//
-//			for (User user : userList) {
-//				System.out.println(user);
-//			}
-//
-//			// Test de la méthode selectall de articleDAO --> OK
-//			List<Article> articleList = articleDAO.selectAll();
-//
-//			for (Article article : articleList) {
-//				System.out.println(article);
-//			}
-//
-//			// Test de la méthode selectall de auctionDAO --> OK
-//			List<Auction> auctionList = auctionDAO.selectAll();
-//
-//			for (Auction auction : auctionList) {
-//				System.out.println(auction);
-//			}
-//
-//			// =======================================================================================================================================
-//
-//			// METHODES UPDATE
-//			// Test de la méthode update de userDAO --> OK
-//			alexandra = new User(52,"BB_Panda", "Boulay", "Alexandra", "alex.boulay@orange.fr", "07-85-66-90-96",
-//					"rue de la foret", "53540", "LAUBRIERES", "quiqui35", 1000, false);
-//			userDAO.update(alexandra);
-//			// Test avec erreur
-//			userDAO.update(userError);
-//			
-//			// Test de la méthode update de articleDAO --> OK
-//			pcGamer = new Article(3, "PC Gamer cassé", "Un super PC fixe avec de grosses performances",
-//					LocalDate.of(2023, 01, 20), LocalDate.of(2023, 02, 01), alexandra, new Category(1, "Informatique"), withdrawal);
-//			articleDAO.update(pcGamer);
-//			// Test avec erreur
-//			articleDAO.update(articleError);
-//			
-//			// Test de la méthode update de auctionDAO --> OK
-//			auction1 = new Auction(2,LocalDate.of(2023, 02, 23), 500, 1, 3);
-//			auctionDAO.update(auction1);
-//			// Test avec erreur
-//			auctionDAO.update(auctionError);
-//			
-//			// =======================================================================================================================================
-//			System.out.println(
-//					"============================================================================================");
-//			// METHDES SELECTBYID
-//			// Test de la méthode selectbyid de userDAO --> OK
-//			User user = userDAO.selectById(52);
-//			System.out.println(user);
-//			// Test avec erreur
-//			User user2 = userDAO.selectById(0);
-//			
-//			// Test de la méthode selectbyid de articleDAO ---> OK
-//			Article article = articleDAO.selectById(3);
-//			System.out.println(article);
-//			// Test avec erreur
-//			Article article2 = articleDAO.selectById(0);
-//			
-//			// Test de la méthode selectbyid de auctionDAO --> OK
-//			Auction auction = auctionDAO.selectById(1);
-//			System.out.println(auction);
-//			// Test avec erreur
-//			Auction auction51 = auctionDAO.selectById(0);
-//			
-//			// =======================================================================================================================================
-//
-//			// METHODES DELETE
-//			// Test de la méthode delete de userDAO --> NON
-//			userDAO.delete(3);
-//			// Test avec erreur
-//
-//			// Test de la méthode delete de articleDAO --> NON
-//			articleDAO.delete(1);
-//			// Test avec erreur
-//
-//			// Test de la méthode delete de auctionDAO --> OK
-//			auctionDAO.delete(1);
-//			// Test avec erreur
-//
-//			// =======================================================================================================================================
-//
-//			// METHODE SELECTBYPSEUDOMDP USER --> OK
-//			User userConnexion = userDAO.selectByPseudoMdp("Iromega", "bidon25");
-//			System.out.println("============================================================================================");
-//			System.out.println(userConnexion);
-//			// =======================================================================================================================================
-//
-//			// METHODE SELECTBYNOCATEGORY ARTICLE
-//			// Test de la méthode selectByNoCategory de articleDAO	-->OK
-//			List<Article> articleListByNoCategory = articleDAO.selectByNoCategory(1);
-//			System.out.println("============================================================================================");
-//			for (Article article21 : articleListByNoCategory) {
-//				System.out.println(article21);
-//			}
-//			// Test avec erreur
-//
-//			// =======================================================================================================================================
-//
-//			// METHODE SELECTBYCHARNAME ARTICLE
-//			// Test de la méthode selectByCharName de articleDAO --> OK
-//			List<Article> articleListCharName = articleDAO.selectByCharName("PC");
-//			System.out.println("============================================================================================");
-//			for (Article article3 : articleListCharName) {
-//				System.out.println(article3);
-//			}
-//			// Test avec erreur
-//
-//			// =======================================================================================================================================
-//
-//			// METHODE SELECTBYCHARNAMEANDNOCATEGORY ARTICLE
-//			// Test de la méthode selectByNoCategoryAndCharName de articleDAO
-//			List<Article> articleListCharNameAndNoCategory = articleDAO.selectByNoCategoryAndCharName(1, "PC");
-//			System.out.println(
-//					"============================================================================================");
-//			for (Article article4 : articleListCharNameAndNoCategory) {
-//				System.out.println(article4);
-//			}
-//			// Test avec erreur
-//
-//			// =======================================================================================================================================
-//
-//			// METHODE SELECTALL CATEGORY
-//			// Test de la méthode selectAll de categoryDAO --> OK
-//			List<Category> categoryList = categoryDAO.selectAll();
-//			System.out.println(
-//					"============================================================================================");
-//			for (Category category : categoryList) {
-//				System.out.println(category);
-//			}
+			// Test avec erreur
+			
+			// Test de la méthode insert de articleDAO --> OK
+			articleDAO.insert(pcGamer);
+			articleDAO.insert(table);
+			articleDAO.insert(ballon);
+			articleDAO.insert(slip);
+			articleDAO.insert(souris);
+			// Test avec erreur
+			articleDAO.insert(articleError);
+			
+			// Test de la méthode insert de auctionDAO --> OK 
+			auctionDAO.insert(auction1);
+			auctionDAO.insert(auction2);
+			auctionDAO.insert(auction3);
+			auctionDAO.insert(auction4);
+			auctionDAO.insert(auction5);
+			// Test avec erreur
+			auctionDAO.insert(auctionError);
+			
+			// =======================================================================================================================================
+			System.out.println("============================================================================================");
+			// METHODES SELECTALL
+			// Test de la méthode selectall de userDAO --> OK
+			List<User> userList = userDAO.selectAll();
+
+			for (User user : userList) {
+				System.out.println(user);
+			}
+
+			// Test de la méthode selectall de articleDAO --> OK
+			List<Article> articleList = articleDAO.selectAll();
+
+			for (Article article : articleList) {
+				System.out.println(article);
+			}
+
+			// Test de la méthode selectall de auctionDAO --> OK
+			List<Auction> auctionList = auctionDAO.selectAll();
+
+			for (Auction auction : auctionList) {
+				System.out.println(auction);
+			}
+
+			// =======================================================================================================================================
+
+			// METHODES UPDATE
+			// Test de la méthode update de userDAO --> OK
+			alexandra = new User(52,"BB_Panda", "Boulay", "Alexandra", "alex.boulay@orange.fr", "07-85-66-90-96",
+					"rue de la foret", "53540", "LAUBRIERES", "quiqui35", 1000, false);
+			userDAO.update(alexandra);
+			// Test avec erreur
+			userDAO.update(userError);
+			
+			// Test de la méthode update de articleDAO --> OK
+			pcGamer = new Article(3, "PC Gamer cassé", "Un super PC fixe avec de grosses performances",
+					LocalDate.of(2023, 01, 20), LocalDate.of(2023, 02, 01), alexandra, new Category(1, "Informatique"), withdrawal);
+			articleDAO.update(pcGamer);
+			// Test avec erreur
+			articleDAO.update(articleError);
+			
+			// Test de la méthode update de auctionDAO --> OK
+			auction1 = new Auction(2,LocalDate.of(2023, 02, 23), 500, 1, 3);
+			auctionDAO.update(auction1);
+			// Test avec erreur
+			auctionDAO.update(auctionError);
+			
+			// =======================================================================================================================================
+			System.out.println(
+					"============================================================================================");
+			// METHDES SELECTBYID
+			// Test de la méthode selectbyid de userDAO --> OK
+			User user = userDAO.selectById(52);
+			System.out.println(user);
+			// Test avec erreur
+			
+			// Test de la méthode selectbyid de articleDAO ---> OK
+			Article article = articleDAO.selectById(3);
+			System.out.println(article);
+			// Test avec erreur
+			
+			// Test de la méthode selectbyid de auctionDAO --> OK
+			Auction auction = auctionDAO.selectById(1);
+			System.out.println(auction);
+			// Test avec erreur
+			
+			// =======================================================================================================================================
+
+			// METHODES DELETE
+			// Test de la méthode delete de userDAO --> NON
+			userDAO.delete(3);
+			// Test avec erreur
+
+			// Test de la méthode delete de articleDAO --> NON
+			articleDAO.delete(1);
+			// Test avec erreur
+
+			// Test de la méthode delete de auctionDAO --> OK
+			auctionDAO.delete(1);
+			// Test avec erreur
+
+			// =======================================================================================================================================
+
+			// METHODE SELECTBYPSEUDOMDP USER --> OK
+			User userConnexion = userDAO.selectByPseudoMdp("Iromega", "bidon25");
+			System.out.println("============================================================================================");
+			System.out.println(userConnexion);
+			// =======================================================================================================================================
+
+			// METHODE SELECTBYNOCATEGORY ARTICLE
+			// Test de la méthode selectByNoCategory de articleDAO	-->OK
+			List<Article> articleListByNoCategory = articleDAO.selectByNoCategory(1);
+			System.out.println("============================================================================================");
+			for (Article article21 : articleListByNoCategory) {
+				System.out.println(article21);
+			}
+			// Test avec erreur
+
+			// =======================================================================================================================================
+
+			// METHODE SELECTBYCHARNAME ARTICLE
+			// Test de la méthode selectByCharName de articleDAO --> OK
+			List<Article> articleListCharName = articleDAO.selectByCharName("PC");
+			System.out.println("============================================================================================");
+			for (Article article3 : articleListCharName) {
+				System.out.println(article3);
+			}
+			// Test avec erreur
+
+			// =======================================================================================================================================
+
+			// METHODE SELECTBYCHARNAMEANDNOCATEGORY ARTICLE
+			// Test de la méthode selectByNoCategoryAndCharName de articleDAO
+			List<Article> articleListCharNameAndNoCategory = articleDAO.selectByNoCategoryAndCharName(1, "PC");
+			System.out.println(
+					"============================================================================================");
+			for (Article article4 : articleListCharNameAndNoCategory) {
+				System.out.println(article4);
+			}
+			// Test avec erreur
+
+			// =======================================================================================================================================
+
+			// METHODE SELECTALL CATEGORY
+			// Test de la méthode selectAll de categoryDAO --> OK
+			List<Category> categoryList = categoryDAO.selectAll();
+			System.out.println(
+					"============================================================================================");
+			for (Category category : categoryList) {
+				System.out.println(category);
+			}
 		} catch (BusinessException e) {
 
 			e.printStackTrace();
