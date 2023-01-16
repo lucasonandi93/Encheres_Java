@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.text.DateFormatter;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.CategoryManager;
