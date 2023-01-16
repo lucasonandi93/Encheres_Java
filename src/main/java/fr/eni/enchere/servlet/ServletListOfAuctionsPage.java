@@ -111,7 +111,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		UserManager userManager = new UserManager();
 		HttpSession session = request.getSession();
 		
-		System.out.println("doPost");
+		System.out.println(request.getParameter("delete"));
 		try {
 			if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
 				User userOngoing = new User();
