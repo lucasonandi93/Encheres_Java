@@ -53,7 +53,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		CategoryManager categoryManager = new CategoryManager();
 		List<Article> articleList = null;
 		List<Category> categoryList = null;
-
+		User userOngoing = new User();
+		
+		
 		try {
 
 			categoryList = categoryManager.selectAll();
@@ -61,9 +63,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 			Category categoryOngoing = categoryManager.selectByName(request.getParameter("categories"));
 
-			 String content = request.getParameter("content");
+			String content = request.getParameter("content");
 
-			 String categories = request.getParameter("categories");
+			String categories = request.getParameter("categories");
 
 			if (request.getParameter("content") == null || 
 					("".equals(content) &&  "Toutes".equals(categories))) {
@@ -80,10 +82,15 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				request.setAttribute("articleList", articleList);
 			}
 			
-		
+			System.out.println(request.getAttribute("user"));
+			
+			
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		
+		
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
