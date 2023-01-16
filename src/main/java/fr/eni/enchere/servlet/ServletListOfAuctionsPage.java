@@ -128,8 +128,13 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					if (request.getParameter("tel") != "" || request.getParameter("tel") != null) {
 						userOngoing.setPhone(request.getParameter("tel"));
 					}
-					 
-					userManager.addData(userOngoing);
+					if (request.getParameter("save") != null) {
+						userOngoing.setNoUser(((User)session.getAttribute("user")).getNoUser());
+						userManager.updateData(userOngoing);
+						System.out.println("updated");
+					}else {
+						userManager.addData(userOngoing);
+					}
 				}else {
 					
 					if (request.getParameter("souvenir") != null) {
@@ -166,19 +171,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				System.out.println("deleted");
 			}
 			
-			if (request.getParameter("save") != null) {
-				User userUpdating = new User(request.getParameter("pseudo"),
-						request.getParameter("name"),
-						request.getParameter("firstName"),
-						request.getParameter("email"),
-						request.getParameter("street"),
-						request.getParameter("cp"),
-						request.getParameter("city"),
-						request.getParameter("password"));
-				userUpdating.setNoUser(((User)session.getAttribute("user")).getNoUser());
-				userManager.updateData(userUpdating);
-				System.out.println("updated");
-			}
+
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
