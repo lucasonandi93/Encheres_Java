@@ -35,7 +35,7 @@
 				<%-- ${sessionScope.password} récupère le password si se souvenir de moi est coché --%>
 				<input type="password" name="password" value="${sessionScope.password}" class="form-control" id="pwd" maxlength="30">
 			</div>
-				<input type="checkbox" id="connexion" name="session"> 
+				<input type="checkbox" id="connexion" name="souvenir"> 
 				<label for="connexion">Se souvenir de moi</label>
 				<input type="submit" name="connexion" value="Connexion"></input>
 		</form>

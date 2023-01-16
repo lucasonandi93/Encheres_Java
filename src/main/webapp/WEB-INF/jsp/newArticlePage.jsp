@@ -22,7 +22,7 @@
 	<!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 
 			value="Upload Files" multiple /> -->
 	<fieldset>
-		<form>
+		<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
 			<div class="form-group">
 				<label for="usr">Article : </label> <input type="text" class="form-control" id="article"> <br>
 				<br>
@@ -62,9 +62,8 @@
 
 			</div>
 			<div><br>
-				<input type="submit" value="Ajouter"> 
-				<button type="cancel" onclick="<%=request.getContextPath()%>/ServletListOfAuctions">Annuler</button>
-				<button type="redirect" onclick="<%=request.getContextPath()%>/ServletListOfAuctions">Annuler la vente</button>
+				<input type="submit" value="Ajouter" name="addArticle"> 
+				<input type="submit" value="Annuler">
 			</div>
 		</form>
 	</fieldset>
