@@ -154,8 +154,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					userOngoing.setPseudo(request.getParameter("pseudo"));
 					userOngoing.setPseudo(request.getParameter("password"));
 					
-					userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
-	
+					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
+				
+					System.out.println(userOngoing);
+					
 					session.setAttribute("user", userOngoing);
 				}
 			} else {
