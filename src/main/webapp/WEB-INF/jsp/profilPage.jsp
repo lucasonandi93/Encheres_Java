@@ -39,8 +39,10 @@
 	<input type="submit" value="Modifier">
 	</form> 
 </c:if>
-  <a href="${pageContext.request.contextPath}/deleteProfile" class="offset-1 col-10 offset-md-1 col-md-3 p-0">
-            <button type="button" class="btn btn-danger btn-block">Supprimer mon compte</button>
-        </a>           
+<form>
+  <a href="${pageContext.request.contextPath}/deleteProfile" class="delete">
+            <button type="button" class="delete">Supprimer mon compte</button>
+        </a>   
+          </form>      
 </body>
 </html>

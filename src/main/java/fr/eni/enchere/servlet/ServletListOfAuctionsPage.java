@@ -104,7 +104,32 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
+		if  (articleList != null) {
+			request.setAttribute("articleList", articleList);
+		}
+		
+		// récup cookies possible seulement sous forme de tableau
+		Cookie[] cookies = request.getCookies();
+		        if (cookies != null) {
+		            for (Cookie cookie : cookies) {
+		                // viser le cookie recherché
+		                if (cookie.getName().equals("pseudo")) {
+		                    // récup de la valeur du cookie
+		                    request.setAttribute("pseudo", cookie.getValue());
+		                   
+		                    System.out.println(request.getAttribute("pseudo"));
+		                }
+		                if (cookie.getName().equals("password")) {
+		                    // récup de la valeur du cookie
+		                    request.setAttribute("password", cookie.getValue());
+		                }
+		            }
+		        }
+		
+=======
 		System.out.println(request.getAttribute("userConnected"));
+>>>>>>> branch 'master' of https://github.com/LucaDUPONT3D/trocenchere.git
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
