@@ -26,7 +26,7 @@
 	  
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<div class="form-group">
-				<br><br><label for="usr">Identifiant : </label> 
+				<label for="usr">Identifiant : </label> 
 				<%-- ${sessionScope.pseudo} récupère le pseudo si se souvenir de moi est coché --%>
 				<input type="text" name="pseudo" value="${userSaved.getPseudo()}" class="form-control" id="usr" maxlength="30" >
 			</div>
@@ -34,10 +34,12 @@
 				<label for="pwd">Mot de passe : </label> 
 				<%-- ${sessionScope.password} récupère le password si se souvenir de moi est coché --%>
 				<input type="password" name="password" value="${userSaved.getPassword()}" class="form-control" id="pwd" maxlength="30">
-			</div>
-				<input type="checkbox" id="connexion" name="souvenir"> 
+			</div><br><br>
+			<div class="form-group"><br><br>
+				<input type="checkbox" id="connexion" name="souvenir" checked>
 				<label for="connexion">Se souvenir de moi</label>
 				<input type="submit" name="connexion" value="Connexion"></input>
+		</div>
 		</form>
 		<a href="<%=request.getContextPath()%>/ServletTestSelectForm" class="forgotPassword">Mot de passe oublié</a> <br>
 		<form action="<%=request.getContextPath()%>/ServletRegistrationPage">

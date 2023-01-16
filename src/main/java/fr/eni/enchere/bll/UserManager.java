@@ -3,12 +3,15 @@
  */
 package fr.eni.enchere.bll;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.dal.jdbc.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
+import fr.eni.enchere.servlet.SessionManagement;
+import jakarta.servlet.RequestDispatcher;
 
 /**
 * Classe en charge de 
@@ -58,7 +61,9 @@ public class UserManager implements Manager<User, Integer>{
 	public void deleteData(Integer id) throws BusinessException {
 		//Appelle la méthode delete de UserDAO et lui passer un ID en paramètre
 		this.userDAO.delete(id);
-	}
+	    }
+	
+	
 
 	/**
 	 * Méthode qui permet de modifier un User de la BDD
