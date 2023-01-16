@@ -132,9 +132,11 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						if (request.getParameter("save") != null) {
 							userManager.updateData(userOngoing);
 						}else if (request.getParameter("delete") != null) {
+							System.out.println("deleted");
+							System.out.println(userOngoing);
 							userManager.deleteData(userOngoing.getNoUser());
 						}
-						System.out.println("updated");
+						
 					}else if (request.getParameter("validate") != null) {
 						userManager.addData(userOngoing);
 					}
