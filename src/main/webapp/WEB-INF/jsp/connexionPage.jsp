@@ -31,7 +31,7 @@
 				<input type="text" name="pseudo" value="${userConnected.pseudo}" class="form-control" id="usr" maxlength="30" >
 			</div>
 			<div class="form-group">
-				<label for="pwd">Mot de passe : </label>
+				<label for="pwd">Mot de passe : </label> 
 				<%-- ${sessionScope.password} récupère le password si se souvenir de moi est coché --%>
 				<input type="password" name="password" value="${userConnected.password}" class="form-control" id="pwd" maxlength="30">
 			</div>
