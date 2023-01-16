@@ -163,6 +163,15 @@ public class UserManager implements Manager<User, Integer>{
 			businessException.addError(CodesResultatBLL.RULE_USER_PASSWORD_ERROR);
 		}
 	}
+
+	public User getUserByPseudo(String pseudo_utilisateur) {
+		return this.getUserByPseudo(pseudo_utilisateur);
+	}
+
+	public void deleteUser(User userToDelete) {
+		
+		
+	}
 	
 
 }
