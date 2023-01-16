@@ -2,14 +2,15 @@ package fr.eni.enchere.servlet;
 
 import java.io.IOException;
 
-
+import fr.eni.enchere.bll.UserManager;
+import fr.eni.enchere.bo.User;
+import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletConnexionPage
@@ -31,16 +32,33 @@ public class ServletConnexionPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		UserManager userManager = new UserManager();
+		User userOngoing = new User();
 		
-//		if (session.getAttribute("pseudo") != null || session.getAttribute("pseudo") != "" && session.getAttribute("password") != null || session.getAttribute("password") != "" ) {
-//			request.setAttribute("pseudo", session.getAttribute("pseudo"));
-//			request.setAttribute("password", session.getAttribute("password"));
-//		}
-		
-		if (request.getAttribute("userSaved") != null) {
-	           
-	            request.setAttribute("userSaved", request.getAttribute("userSaved"));
-		}
+		// récup cookies possible seulement sous forme de tableau
+		Cookie[] cookies = request.getCookies();
+		        if (cookies != null) {
+		            for (Cookie cookie : cookies) {
+		                // viser le cookie recherché
+		                if (cookie.getName().equals("pseudo")) {
+		                    // récup de la valeur du cookie
+		                    userOngoing.setPseudo(cookie.getValue());
+		                }
+		                if (cookie.getName().equals("password")) {
+		                    // récup de la valeur du cookie
+		                	userOngoing.setPassword(cookie.getValue());
+		                }
+		            }
+		            
+		            try {
+						userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
+					} catch (BusinessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		           
+		            request.setAttribute("userSaved", userOngoing);
+		        }
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/connexionPage.jsp").forward(request, response);
 	
