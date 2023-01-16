@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 

@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.exceptions.BusinessException;
 
