@@ -178,6 +178,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				session.setAttribute("user", null);
 			}
 			
+			System.out.println(request.getParameter("addArticle"));
+			
 			if (request.getParameter("addArticle") != null) {
 				DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				

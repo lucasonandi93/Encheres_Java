@@ -10,8 +10,6 @@ import java.io.IOException;
 
 import fr.eni.enchere.bll.UserManager;
 import fr.eni.enchere.bo.User;
-import fr.eni.enchere.dal.jdbc.DAOFactory;
-import fr.eni.enchere.dal.jdbc.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
