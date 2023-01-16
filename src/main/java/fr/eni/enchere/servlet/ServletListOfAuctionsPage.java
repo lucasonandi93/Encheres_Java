@@ -178,8 +178,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			
 			if (userOngoing.getNoUser() != 0){
 				session.setAttribute("user", userOngoing);
-			}else {
-				session.setAttribute("user", null);
 			}
 			
 			if (request.getParameter("addArticle") != null) {
@@ -204,6 +202,11 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				withdrawalOngoing.setCity(request.getParameter("withdrawalCity"));
 				
 				articleOngoing.setWithdrawal(withdrawalOngoing);
+				
+				
+				System.out.println(session.getAttribute("user"));
+				
+				
 				articleOngoing.setUser(userManager.selectById(((User)session.getAttribute("user")).getNoUser()));
 				
 				System.out.println(articleOngoing);
