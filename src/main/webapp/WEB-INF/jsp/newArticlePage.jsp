@@ -27,10 +27,10 @@
 				<br>
 				<div class="form-group">
 					<label for="desc">Description : </label> 
-					<textarea class="form-control" maxlength="300" name="descriptionArticle" id="desc" rows="2"></textarea>
+					<textarea class="form-control" maxlength="300" name="articleDescription" id="desc" rows="2"></textarea>
 						
 					<br><label for="categories">Catégorie:</label> 
-						<select name="categorieArticle" id="categories">
+						<select name="articleCategorie" id="categories">
 							<option value="Toutes">Toutes</option>
 							<c:forEach var="category" items="${categoryList}">
 								<option value="${category.getWording()}">${category.getWording()}</option>
@@ -45,19 +45,21 @@
 			<br>
 			<div class="form-group">
 				<label>Mise à prix :</label> 
-				<input type="number" step="10" value="0" name="valueArticle">
+				<input type="number" step="10" value="0" name="articleOriginalPrice">
 				<br><br> 
 				<label for="beginAuction">Début de l'enchère :</label> 
-				<input type="date" name="startdateArticle" > 
+				<input type="date" name="articleStartDate" > 
 				<br><br>
 				<label for="endAuction">Fin de l'enchère :</label> 
-				<input type="date" name="enddateArticle"> 
+				<input type="date" name="articleEndDate"> 
 				<br><br>
 				<fieldset>
 					<legend>Retrait</legend>
-					Rue : <input type="text" name="streetWithdrawal" value="${sessionScope.user.getStreet()}" size="25" maxlength="30"> <br>
-					Code postal : <input type="text" name="cpWithdrawal" value="${sessionScope.user.getCp()}" size="18" maxlength="15"> <br>
-					Ville : <input type="text" name="cityWithdrawal" value="${sessionScope.user.getCity()}" size="25" maxlength="30">
+					Rue : <input type="text" name="withdrawalStreet" value="${sessionScope.user.getStreet()}" size="25" maxlength="30"> 
+					<br>
+					Code postal : <input type="text" name="withdrawalCp" value="${sessionScope.user.getCp()}" size="18" maxlength="15"> 
+					<br>
+					Ville : <input type="text" name="withdrawalCity" value="${sessionScope.user.getCity()}" size="25" maxlength="30">
 				</fieldset>
 
 			</div>

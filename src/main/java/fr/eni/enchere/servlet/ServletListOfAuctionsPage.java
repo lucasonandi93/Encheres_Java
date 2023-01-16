@@ -1,7 +1,8 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
- 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
@@ -10,6 +11,7 @@ import fr.eni.enchere.bll.UserManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.User;
+import fr.eni.enchere.bo.Withdrawal;
 import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -106,8 +108,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		CategoryManager categoryManager = new CategoryManager();
 		UserManager userManager = new UserManager();
+		ArticleManager articleManager = new ArticleManager();
 		HttpSession session = request.getSession();
 		
 		String pseudo = request.getParameter("pseudo");
@@ -169,14 +172,34 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				}
 			}
 			
-			System.out.println(userOngoing);
-			
 			if (userOngoing.getNoUser() != 0){
 				session.setAttribute("user", userOngoing);
 			}else {
 				session.setAttribute("user", null);
 			}
 			
+			if (request.getParameter("addArticle") != null) {
+				DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				
+				Article articleOngoing = new Article();
+				articleOngoing.setNameArticle(request.getParameter("articleName"));
+				articleOngoing.setDescription(request.getParameter("articleDescription"));
+				articleOngoing.setCategory(categoryManager.selectByName(request.getParameter("articleCategorie")));
+				articleOngoing.setOriginalPrice(Integer.parseInt(request.getParameter("articleOriginalPrice")));
+				LocalDate startDate = LocalDate.parse(request.getParameter("articleStartDate"), formatter);
+				articleOngoing.setAuctionStartDate(startDate);
+				LocalDate endtDate = LocalDate.parse(request.getParameter("articleEndDate"), formatter);
+				articleOngoing.setAuctionEndDate(endtDate);
+				Withdrawal withdrawalOngoing = new Withdrawal();
+				
+				withdrawalOngoing.setStreet(request.getParameter("withdrawalStreet"));
+				withdrawalOngoing.setCp(request.getParameter("withdrawalCp"));
+				withdrawalOngoing.setCity(request.getParameter("withdrawalCity"));
+				
+				articleOngoing.setWithdrawal(withdrawalOngoing);
+				
+				articleManager.addData(articleOngoing);
+			}
 			
 			
 		} catch (BusinessException e) {
