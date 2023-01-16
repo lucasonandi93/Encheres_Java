@@ -17,7 +17,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class test
@@ -75,10 +74,37 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			} else if ((!("".equals(content)) && !("Toutes".equals(categories)))) {
 				articleList = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),content);
 			}
+			
+			if  (articleList != null) {
+				request.setAttribute("articleList", articleList);
+			}
+			
+			User userOngoing = new User();
+			
+			// récup cookies possible seulement sous forme de tableau
+			Cookie[] cookies = request.getCookies();
+			        if (cookies != null) {
+			            for (Cookie cookie : cookies) {
+			                // viser le cookie recherché
+			                if (cookie.getName().equals("pseudo")) {
+			                    // récup de la valeur du cookie
+			                    userOngoing.setPseudo(cookie.getValue());
+			                   
+			                    
+			                }
+			                if (cookie.getName().equals("password")) {
+			                    // récup de la valeur du cookie
+			                	userOngoing.setPassword(cookie.getValue());
+			                }
+			            }
+			            request.setAttribute("userConnected", userOngoing);
+			        }
+		
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 		if  (articleList != null) {
 			request.setAttribute("articleList", articleList);
 		}
@@ -101,6 +127,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		            }
 		        }
 		
+=======
+		System.out.println(request.getAttribute("userConnected"));
+>>>>>>> branch 'master' of https://github.com/LucaDUPONT3D/trocenchere.git
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 
@@ -131,22 +160,25 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					 
 					userManager.addData(userOngoing);
 				}else {
+					
+					if (request.getParameter("souvenir") != null) {
+						String pseudo = request.getParameter("pseudo");
+						String password = request.getParameter("password");
+						
+						Cookie cookie1 = new Cookie("pseudo", pseudo);
+						cookie1.setMaxAge(60 * 60 * 24 * 30);
+						response.addCookie(cookie1);
+						
+						Cookie cookie2 = new Cookie("password", password);
+						// durée de vie du cookie en secondes 
+						// (ici 60 sec x60 min x24h x30 jours = 30 jours)
+						cookie2.setMaxAge(60 * 60 * 24 * 30);
+						response.addCookie(cookie2);
+					}
+					
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
 					
-					String pseudo = request.getParameter("pseudo");
-					String password = request.getParameter("password");
-					
-					Cookie cookie1 = new Cookie("pseudo", pseudo);
-					cookie1.setMaxAge(60 * 60 * 24 * 30);
-					response.addCookie(cookie1);
-					
-					Cookie cookie2 = new Cookie("password", password);
-					// durée de vie du cookie en secondes 
-					// (ici 60 sec x60 min x24h x30 jours = 30 jours)
-					cookie2.setMaxAge(60 * 60 * 24 * 30);
-					response.addCookie(cookie2);
-					
-				request.setAttribute("user", userOngoing);
+					request.setAttribute("user", userOngoing);
 				}
 			} else {
 				request.setAttribute("user", null);
