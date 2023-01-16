@@ -18,7 +18,7 @@
 				<a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage">Enchères</a>
 				<a href="<%=request.getContextPath()%>/ServletNewArticle">Vendre
 					un article</a>
-				<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${user.getNoUser()}">Mon
+				<a href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${sessionScope.user.getNoUser()}">Mon
 					profil</a>
 				<a href="<%=request.getContextPath()%>/ServletListOfAuctionsPage?deconnexion=true" >Deconnexion</a>
 			</c:when>
