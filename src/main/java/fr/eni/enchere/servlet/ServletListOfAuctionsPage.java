@@ -1,9 +1,16 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+
+import javax.swing.text.DateFormatter;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.CategoryManager;
@@ -178,20 +185,21 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				session.setAttribute("user", null);
 			}
 			
-			System.out.println(request.getParameter("addArticle"));
-			
 			if (request.getParameter("addArticle") != null) {
-				DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				
 				Article articleOngoing = new Article();
 				articleOngoing.setNameArticle(request.getParameter("articleName"));
 				articleOngoing.setDescription(request.getParameter("articleDescription"));
 				articleOngoing.setCategory(categoryManager.selectByName(request.getParameter("articleCategorie")));
 				articleOngoing.setOriginalPrice(Integer.parseInt(request.getParameter("articleOriginalPrice")));
-				LocalDate startDate = LocalDate.parse(request.getParameter("articleStartDate"), formatter);
-				articleOngoing.setAuctionStartDate(startDate);
-				LocalDate endtDate = LocalDate.parse(request.getParameter("articleEndDate"), formatter);
-				articleOngoing.setAuctionEndDate(endtDate);
+				Date startDate = formatter.parse(request.getParameter("articleStartDate"));
+				
+				articleOngoing.setAuctionStartDate(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+				Date endtDate = formatter.parse(request.getParameter("articleEndDate"));
+				articleOngoing.setAuctionEndDate(endtDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+				
 				Withdrawal withdrawalOngoing = new Withdrawal();
 				
 				withdrawalOngoing.setStreet(request.getParameter("withdrawalStreet"));
@@ -200,11 +208,13 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				
 				articleOngoing.setWithdrawal(withdrawalOngoing);
 				
+				System.out.println(articleOngoing);
+				
 				articleManager.addData(articleOngoing);
 			}
 			
 			
-		} catch (BusinessException e) {
+		} catch (BusinessException | ParseException e) {
 			e.printStackTrace();
 		}
 		doGet(request, response);
