@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<h3>ENI-Encheres</h3>
+		<%@include file="headerFragment.jsp"%>
 		<c:choose>
 			<c:when test="${ user !=null}">
 				<a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage">Enchères</a>

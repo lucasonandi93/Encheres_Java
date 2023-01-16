@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>ENI-Enchères</header>
+	<header>
+		<%@include file="headerFragment.jsp"%>
+	</header>
 
 	<h3>Nouvelle vente</h3>
 

@@ -14,7 +14,9 @@
 <title>Nouvelle vente</title>
 </head>
 <body>
-	<header>ENI-Enchères</header>
+	<header>
+		<%@include file="headerFragment.jsp"%>
+	</header>
 
 	<h3>Nouvelle vente</h3>
 	<!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 

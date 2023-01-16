@@ -9,7 +9,9 @@
 <title>Registration</title>
 </head>
 <body>
-<header><h3>ENI-Enchères</h3></header>
+	<header>
+		<%@include file="headerFragment.jsp"%>
+	</header>
 <br>
 <h2>Mon profil</h2>
 <br><br>

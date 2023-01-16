@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header>
-		<h3>ENI-Enchères</h3>
+		<%@include file="headerFragment.jsp"%>
 	</header>
 	
 	<main>

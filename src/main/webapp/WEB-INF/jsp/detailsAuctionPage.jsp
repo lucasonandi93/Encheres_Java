@@ -9,7 +9,9 @@
 <title>Détail vente</title>
 </head>
 <body>
-	<header>ENI-Enchères</header>
+	<header>
+		<%@include file="headerFragment.jsp"%>
+	</header>
 
 	<h3>Détail Vente</h3>
 

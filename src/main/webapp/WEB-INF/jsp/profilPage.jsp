@@ -11,7 +11,9 @@
 <title>Profil</title>
 </head>
 <body>
-<header><h3>ENI-Enchères</h3></header>
+	<header>
+		<%@include file="headerFragment.jsp"%>
+	</header>
 
 <h1>Mon profil</h1>
 <br>
