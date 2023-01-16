@@ -50,7 +50,6 @@ public class ServletConnexionPage extends HttpServlet {
 		                	try {
 								userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
 							} catch (BusinessException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 		                }
