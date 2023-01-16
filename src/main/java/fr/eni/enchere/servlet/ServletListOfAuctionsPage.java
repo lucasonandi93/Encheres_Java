@@ -13,6 +13,7 @@ import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -82,6 +83,24 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			request.setAttribute("articleList", articleList);
 		}
 		
+		// récup cookies possible seulement sous forme de tableau
+		Cookie[] cookies = request.getCookies();
+		        if (cookies != null) {
+		            for (Cookie cookie : cookies) {
+		                // viser le cookie recherché
+		                if (cookie.getName().equals("pseudo")) {
+		                    // récup de la valeur du cookie
+		                    request.setAttribute("pseudo", cookie.getValue());
+		                   
+		                    System.out.println(request.getAttribute("pseudo"));
+		                }
+		                if (cookie.getName().equals("password")) {
+		                    // récup de la valeur du cookie
+		                    request.setAttribute("password", cookie.getValue());
+		                }
+		            }
+		        }
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/listOfAuctionsPage.jsp").forward(request, response);
 	}
 
@@ -114,17 +133,21 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				}else {
 					userOngoing = userManager.selectByPseudoMdp(request.getParameter("pseudo"), request.getParameter("password"));
 					
-					if (request.getParameter("session") != null) {
-						// création d'une session
-						HttpSession session = request.getSession();
-						// enregistrement du pseudo et du password dans le contexte de session
-						session.setAttribute("pseudo", request.getParameter("pseudo"));
-						session.setAttribute("password", request.getParameter("password"));
-					}
-				}
-				
+					String pseudo = request.getParameter("pseudo");
+					String password = request.getParameter("password");
+					
+					Cookie cookie1 = new Cookie("pseudo", pseudo);
+					cookie1.setMaxAge(60 * 60 * 24 * 30);
+					response.addCookie(cookie1);
+					
+					Cookie cookie2 = new Cookie("password", password);
+					// durée de vie du cookie en secondes 
+					// (ici 60 sec x60 min x24h x30 jours = 30 jours)
+					cookie2.setMaxAge(60 * 60 * 24 * 30);
+					response.addCookie(cookie2);
+					
 				request.setAttribute("user", userOngoing);
-				
+				}
 			} else {
 				request.setAttribute("user", null);
 				
@@ -132,7 +155,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-
 		doGet(request, response);
 	}
 
