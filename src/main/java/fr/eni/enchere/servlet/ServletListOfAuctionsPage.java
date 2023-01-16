@@ -49,7 +49,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UserManager userManager = new UserManager();
 		ArticleManager articleManager = new ArticleManager();
 		CategoryManager categoryManager = new CategoryManager();
 		List<Article> articleList = null;
@@ -128,13 +127,18 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					if (request.getParameter("tel") != "" || request.getParameter("tel") != null) {
 						userOngoing.setPhone(request.getParameter("tel"));
 					}
-					if (request.getParameter("save") != null) {
+					if (request.getParameter("save") != null || request.getParameter("delete") != null) {
 						userOngoing.setNoUser(((User)session.getAttribute("user")).getNoUser());
-						userManager.updateData(userOngoing);
+						if (request.getParameter("save") != null) {
+							userManager.updateData(userOngoing);
+						}else if (request.getParameter("delete") != null) {
+							userManager.deleteData(userOngoing.getNoUser());
+						}
 						System.out.println("updated");
-					}else {
+					}else if (request.getParameter("validate") != null) {
 						userManager.addData(userOngoing);
 					}
+					
 				}else {
 					
 					if (request.getParameter("souvenir") != null) {
@@ -150,8 +154,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						// (ici 60 sec x60 min x24h x30 jours = 30 jours)
 						cookie2.setMaxAge(60 * 60 * 24 * 30);
 						response.addCookie(cookie2);
-						
-						
 					}
 					userOngoing.setPseudo(request.getParameter("pseudo"));
 					userOngoing.setPseudo(request.getParameter("password"));
