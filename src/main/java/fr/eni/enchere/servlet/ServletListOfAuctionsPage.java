@@ -168,10 +168,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				session.setAttribute("user", null);
 				
 			}
-			if (request.getParameter("delete") != null) {
-				userManager.deleteData(((User) session.getAttribute("user")).getNoUser());
-				System.out.println("deleted");
-			}
 			
 
 		} catch (BusinessException e) {
