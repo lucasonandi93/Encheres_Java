@@ -34,9 +34,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private static final String SQL_SELECT_BY_PSEUDO_MDP = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "
 													+ "ville, mot_de_passe, credit, administrateur "
 													+ "FROM UTILISATEURS WHERE pseudo=? AND mot_de_passe=?";
-	
-	private static final String SQL_SELECT_BY_PSEUDO = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
-			+ "FROM UTILISATEURS WHERE pseudo=?";
+
 	/**
 	 * Constructeur
 	 */
