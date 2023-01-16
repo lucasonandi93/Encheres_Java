@@ -36,11 +36,11 @@
 	<br>
 
 	<c:if test="${sessionScope.user.getNoUser() == userProfil.getNoUser() }">
-		<form action="" method="get">
+		<form action="<%=request.getContextPath()%>/ServletRegistrationPage" method="get">
 			<input type="submit" value="Modifier">
 		</form>
 	</c:if>
-	
+
 
 </body>
 </html>

@@ -1,3 +1,6 @@
+
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,10 +54,14 @@
 	<input type="password" id="password" name="password" required maxlength="30">  
 </div>
 <br>
-<input type="submit" value="Créer"> 
+<c:if test="${sessionScope.user.getNoUser() == null }">
+<input type="submit" value="Valider"> 
+</c:if>
 </form>
+<c:if test="${sessionScope.user.getNoUser() == null }">
 <form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
 	<input type="submit" value="Annuler">    
 </form>
+</c:if>
 </body>
 </html>
