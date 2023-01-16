@@ -139,6 +139,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						//Suppression
 						}else if (request.getParameter("delete") != null) {
 							userManager.deleteData(userOngoing.getNoUser());
+							userOngoing.setNoUser(0);
 						}
 					//Enregistrement	
 					}else if (request.getParameter("validate") != null) {
@@ -175,6 +176,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}else {
 				session.setAttribute("user", null);
 			}
+			
+			
 			
 		} catch (BusinessException e) {
 			e.printStackTrace();
