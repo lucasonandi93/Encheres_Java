@@ -167,7 +167,16 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			if (request.getParameter("save") != null) {
-				userManager.updateData((User) session.getAttribute("user"));
+				User userUpdating = new User(request.getParameter("pseudo"),
+						request.getParameter("name"),
+						request.getParameter("firstName"),
+						request.getParameter("email"),
+						request.getParameter("street"),
+						request.getParameter("cp"),
+						request.getParameter("city"),
+						request.getParameter("password"));
+				userUpdating.setNoUser(((User)session.getAttribute("user")).getNoUser());
+				userManager.updateData(userUpdating);
 				System.out.println("updated");
 			}
 		} catch (BusinessException e) {
