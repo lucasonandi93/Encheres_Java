@@ -108,7 +108,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println(request.getAttribute("userConnected"));
+		System.out.println(request.getAttribute("userSaved"));
 		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
 	}
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,6 +36,11 @@ public class ServletConnexionPage extends HttpServlet {
 //			request.setAttribute("pseudo", session.getAttribute("pseudo"));
 //			request.setAttribute("password", session.getAttribute("password"));
 //		}
+		
+		if (request.getAttribute("userSaved") != null) {
+	           
+	            request.setAttribute("userSaved", request.getAttribute("userSaved"));
+		}
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/connexionPage.jsp").forward(request, response);
 	
