@@ -85,6 +85,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			
+			if (request.getParameter("deconnexion") == "true") {
+				session.setAttribute("user", null);
+			}
+			
 			System.out.println(session.getAttribute("user"));
 			
 			
