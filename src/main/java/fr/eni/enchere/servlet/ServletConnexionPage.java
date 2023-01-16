@@ -47,15 +47,13 @@ public class ServletConnexionPage extends HttpServlet {
 		                if (cookie.getName().equals("password")) {
 		                    // récup de la valeur du cookie
 		                	userOngoing.setPassword(cookie.getValue());
+		                	try {
+								userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
+							} catch (BusinessException e) {
+								e.printStackTrace();
+							}
 		                }
 		            }
-		            
-		            try {
-						userOngoing = userManager.selectByPseudoMdp(userOngoing.getPseudo(), userOngoing.getPassword());
-					} catch (BusinessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 		           
 		            request.setAttribute("userSaved", userOngoing);
 		        }
