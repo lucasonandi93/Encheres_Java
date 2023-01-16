@@ -82,6 +82,9 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				request.setAttribute("articleList", articleList);
 			}
 			
+			
+			userOngoing = userManager.selectById(Integer.parseInt(request.getParameter("userID")));
+			request.setAttribute("user", userOngoing);
 			System.out.println(request.getAttribute("user"));
 			
 			
