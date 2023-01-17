@@ -34,8 +34,8 @@
 	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
-<hr>
 <c:if test="${articleOngoing.getUser().getNoUser() != sessionScope.user.getNoUser() && sessionScope.user.getNoUser() != null}">
+		<hr>
 		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
 			<input type="number" min="0" step="10" value="0" name="auction">
