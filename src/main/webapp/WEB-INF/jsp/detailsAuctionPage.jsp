@@ -42,5 +42,11 @@
 			<input type="submit" name="proposal" value="Enchérir">
 		</form>
 </c:if>
+<c:if test="${articleOngoing.getUser().getNoUser() == sessionScope.user.getNoUser()}">
+	<hr>
+	<form method="post" action="<%=request.getContextPath()%>/ServletRegistrationPage?articleID=${articleOngoing.getNoArticle()}">
+		<input type="submit" name="update" value="Modifier">
+	</form>
+</c:if>
 </body>			
 </html>
