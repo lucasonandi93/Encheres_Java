@@ -45,7 +45,7 @@ public class ServletNewArticle extends HttpServlet {
 			request.setAttribute("categoryList", categoryList);
 			
 			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
-			System.out.println(articleOngoing);
+			System.out.println("A");
 			request.setAttribute("articleOngoing", articleOngoing);
 			
 			request.getRequestDispatcher("/WEB-INF/jsp/newArticlePage.jsp").forward(request, response);

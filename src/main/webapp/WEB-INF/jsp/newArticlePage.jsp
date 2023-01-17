@@ -28,7 +28,7 @@
 			method="post">
 			<div class="form-group">
 				<label for="usr">Article : </label> <input type="text"
-					class="form-control" name="articleName" id="article" value="${articleOngoing.getNameArticle()}"> <br>
+					class="form-control" name="articleName" id="article"> <br>
 				<br>
 				<div class="form-group">
 					<label for="usr">Description : </label> <input type="text"
@@ -78,7 +78,7 @@
 			</div>
 			<div>
 				<br> <input type="submit" value="Ajouter" name="addArticle">
-				<input type="submit" value="Annuler">
+				<input type="submit" value="Annuler" name="cencel"> 
 			</div>
 		</form>
 	</fieldset>
