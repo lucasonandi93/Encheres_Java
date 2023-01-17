@@ -51,7 +51,7 @@
 				<input type="number" step="1" value="0" name="articleOriginalPrice">
 				<br><br> 
 				<label for="beginAuction">Début de l'enchère :</label> 
-				<input type="date" name="articleStartDate"> 
+				<input type="date" name="articleStartDate" min="${localdate.now()}"> 
 				<br><br>
 				<label for="endAuction">Fin de l'enchère :</label> 
 				<input type="date" name="articleEndDate"> <br>
