@@ -35,10 +35,12 @@
 
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <hr>
-	<p>Ma proposition :</p>
+<c:if test="${articleOngoing.getUser().getNoUser() != sessionScope.user.getNoUser() && sessionScope.user.getNoUser() != null}">
+		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
 			<input type="number" min="0" step="10" value="0" name="auction">
 			<input type="submit" name="proposal" value="Enchérir">
 		</form>
+</c:if>
 </body>			
 </html>

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +37,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
 		ArticleManager articleManager = new ArticleManager();
 		AuctionManager auctionManager = new AuctionManager();
 		
@@ -45,7 +47,6 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			
 			List<Auction> auctions = auctionManager.selectByNoArticle(Integer.parseInt(request.getParameter("articleID")));
 		if (!auctions.isEmpty()) {
-			System.out.println("A");
 			Auction auctionOngoing = new Auction();
 			for (Auction auction : auctions) {
 				if(auction.getAuctionAmount()>auctionOngoing.getAuctionAmount()) {
@@ -54,13 +55,15 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			}
 			request.setAttribute("pseudoBestAuction", auctionOngoing.getUser().getPseudo());
 		}else {
-			System.out.println("B");
 			request.setAttribute("pseudoBestAuction", articleOngoing.getUser().getPseudo());
 		}
 		
 		} catch (NumberFormatException | BusinessException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Session User " + session.getAttribute("user"));
+		System.out.println("Article User " + ((Article)request.getAttribute("articleOngoing")).getUser());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailsAuctionPage.jsp");
 		rd.forward(request, response);
