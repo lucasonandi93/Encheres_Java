@@ -138,6 +138,10 @@ public class ArticleManager implements Manager<Article, Integer>{
 		//Appelle la méthode selectById de ArticleDAO  et lui passer un ID en paramètre
 		return this.articleDAO.selectById(id);
 	}
+	public Article selectBySaleStatus(String sale_status) throws BusinessException {
+		
+		return this.articleDAO.selectBySaleStatus(sale_status);
+	}
 
 	/**
 	 * Méthode qui permet vérifier qu'un Article peut être inséré ou modifié 
@@ -192,4 +196,5 @@ public class ArticleManager implements Manager<Article, Integer>{
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_WITHDRAWAL_ERROR);
 		}
 	}
+		
 }
