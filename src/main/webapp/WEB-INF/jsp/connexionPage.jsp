@@ -41,7 +41,7 @@
 				<input type="submit" name="connexion" value="Connexion"></input>
 		</div>
 		</form>
-		<a href="<%=request.getContextPath()%>/ServletTestSelectForm" class="forgotPassword">Mot de passe oublié</a> <br>
+		<a href="<%=request.getContextPath()%>/ServletForgetPassword" class="forgotPassword">Mot de passe oublié</a> <br>
 		<form action="<%=request.getContextPath()%>/ServletRegistrationPage">
 			<input type="submit" value="Créer un compte">
 		</form>
