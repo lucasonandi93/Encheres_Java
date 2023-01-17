@@ -184,7 +184,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			if (request.getParameter("addArticle") != null) {
-				DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				
 				Article articleOngoing = new Article();
 				articleOngoing.setNameArticle(request.getParameter("articleName"));
@@ -206,7 +206,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				withdrawalOngoing.setCity(request.getParameter("withdrawalCity"));
 				
 				articleOngoing.setWithdrawal(withdrawalOngoing);
-				
+				 
 				
 				System.out.println(session.getAttribute("user"));
 				
