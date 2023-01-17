@@ -13,7 +13,7 @@ public class AppliTestBO {
 		Article article5 = new Article( 1, "name", "desc", LocalDate.now(), LocalDate.now(), 1, new User(), new Category(), new Withdrawal());
 		Article article6 = new Article( 1, "name", "desc", LocalDate.now(), LocalDate.now(), 1, 1, new User(), new Category(), new Withdrawal());
 		
-		Auction auction = new Auction(1,1,1);
+		Auction auction = new Auction(1,new User(),new Article());
 		
 		Category category = new Category(1, "wording");
 		

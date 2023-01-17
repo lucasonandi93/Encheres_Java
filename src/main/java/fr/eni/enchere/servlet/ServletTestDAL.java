@@ -61,11 +61,11 @@ public class ServletTestDAL extends HttpServlet {
 		User userError = null;
 		
 		//OK
-		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, 1, 3);
-		Auction auction2 = new Auction(LocalDate.of(2023, 03, 11), 100, 1, 5);
-		Auction auction3 = new Auction(LocalDate.of(2023, 02, 01), 50, 2, 4);
-		Auction auction4 = new Auction(LocalDate.of(2023, 01, 26), 1000, 2, 3);
-		Auction auction5 = new Auction(LocalDate.of(2023, 01, 22), 10, 3, 1);
+		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, new User(), new Article());
+		Auction auction2 = new Auction(LocalDate.of(2023, 03, 11), 100, new User(), new Article());
+		Auction auction3 = new Auction(LocalDate.of(2023, 02, 01), 50, new User(), new Article());
+		Auction auction4 = new Auction(LocalDate.of(2023, 01, 26), 1000, new User(), new Article());
+		Auction auction5 = new Auction(LocalDate.of(2023, 01, 22), 10, new User(), new Article());
 		//ERREUR
 		Auction auctionError = null;
 		
@@ -160,7 +160,7 @@ public class ServletTestDAL extends HttpServlet {
 			articleDAO.update(articleError);
 			
 			// Test de la méthode update de auctionDAO --> OK
-			auction1 = new Auction(2,LocalDate.of(2023, 02, 23), 500, 1, 3);
+			auction1 = new Auction(2,LocalDate.of(2023, 02, 23), 500, new User(), new Article());
 			auctionDAO.update(auction1);
 			// Test avec erreur
 			auctionDAO.update(auctionError);

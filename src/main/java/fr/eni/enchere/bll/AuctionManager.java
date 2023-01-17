@@ -116,17 +116,17 @@ public class AuctionManager implements Manager<Auction, Integer>{
 		ArticleManager articleManager = new ArticleManager();
 		
 		//Vérification que le numéro d'utilisateur est valide (ACHETEUR)
-		if (data.getNoUser()==0) {
+		if (data.getUser()==null) {
 			businessException.addError(CodesResultatBLL.RULE_AUCTION_NO_USER_ERROR);
 		}
 		
 		//Vérification que le numéro d'article est valide
-		if (data.getNoArticle()==0) {
+		if (data.getArticle()==null) {
 			businessException.addError(CodesResultatBLL.RULE_AUCTION_NO_ARTICLE_ERROR);
 		}
 		
 		//Vérification que le montant proposé est supérieur au montant de l'enchère précédente
-		for (Auction auction : articleManager.selectById(data.getNoArticle()).getListAuction()) {
+		for (Auction auction : articleManager.selectById(data.getArticle().getNoArticle()).getListAuction()) {
 			if (auction.getAuctionAmount() >= data.getAuctionAmount()) {
 				businessException.addError(CodesResultatBLL.RULE_AUCTION_AMOUNT_ERROR);
 				break;

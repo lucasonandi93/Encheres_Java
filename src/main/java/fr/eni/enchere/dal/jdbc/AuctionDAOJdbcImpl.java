@@ -47,7 +47,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 				//Déclaration et instanciation d'une Auction
 				Auction auctionOngoing = new Auction();
 					//Sécurité
-					if (rs.getInt("no_enchere") != auctionOngoing.getNoUser()) {
+					if (rs.getInt("no_enchere") != auctionOngoing.getNoAuction()) {
 						//Générer une Auction à partir des infos de la BDD
 						auctionOngoing = auctionBuilder(rs);
 						//Ajouter cette Auction à la liste de Auction
@@ -140,8 +140,8 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 					//Setter les paramètre de la requète SQL
 					pstmt.setDate(1, java.sql.Date.valueOf(auction.getAuctionDate()));
 					pstmt.setInt(2, auction.getAuctionAmount());
-					pstmt.setInt(3, auction.getNoArticle());
-					pstmt.setInt(4, auction.getNoUser());
+					pstmt.setInt(3, auction.getArticle().getNoArticle());
+					pstmt.setInt(4, auction.getUser().getNoUser());
 					//Executer la requête
 					pstmt.executeUpdate();
 					//Récupérer la clé générée dans le ResultSet
@@ -199,8 +199,8 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 				//Setter les paramètre de la requète SQL
 				pstmt.setDate(1, java.sql.Date.valueOf(auction.getAuctionDate()));
 				pstmt.setInt(2, auction.getAuctionAmount());
-				pstmt.setInt(3, auction.getNoArticle());
-				pstmt.setInt(4, auction.getNoUser());
+				pstmt.setInt(3, auction.getArticle().getNoArticle());
+				pstmt.setInt(4, auction.getUser().getNoUser());
 				pstmt.setInt(5, auction.getNoAuction());	
 				//Executer la requête
 				pstmt.executeUpdate();
@@ -280,14 +280,21 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 	 * @param rs
 	 * @return
 	 * @throws SQLException
+	 * @throws BusinessException 
 	 */
-	private Auction auctionBuilder(ResultSet rs) throws SQLException{
-		return new Auction(
-				rs.getInt("no_enchere"),
-				rs.getDate("date_enchere").toLocalDate(), 
-				rs.getInt("montant_enchere"),
-				rs.getInt("no_article"),
-				rs.getInt("no_utilisateur"));
+	private Auction auctionBuilder(ResultSet rs) throws SQLException, BusinessException{
+		
+		ArticleDAO articleDAO = DAOFactory.getArticleDAO();
+		UserDAO userDAO = DAOFactory.getUserDAO();
+		
+		Auction auctionOngoing = new Auction();
+		auctionOngoing.setNoAuction(rs.getInt("no_enchere"));
+		auctionOngoing.setAuctionDate(rs.getDate("date_enchere").toLocalDate());
+		auctionOngoing.setAuctionAmount(rs.getInt("montant_enchere"));
+		auctionOngoing.setArticle(articleDAO.selectById(rs.getInt("no_article")));
+		auctionOngoing.setUser(userDAO.selectById(rs.getInt("no_utilisateur")));
+		
+		return auctionOngoing;
 	}
 
 }

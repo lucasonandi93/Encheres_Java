@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<%@page import="java.util.GregorianCalendar" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,12 +24,8 @@
 
 	<p>Catégorie : ${articleOngoing.getCategory().getWording()}</p>
 
-	<p>Meilleure offre : 
-		<%-- si auction > enchère articleOngoing.getSellingPrice()
-		<c:if test="">
-			${articleOngoing.getSellingPrice()}</p>
-		</c:if> --%>
-			
+	<!-- afficher la meilleure enchère et le nom de l'utilisateur qui l'a faite -->
+	<p>Meilleure offre : ${articleOngoing.getSellingPrice()} pts par ${userOngoing.getName()}</p>		
 
 	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
 
@@ -39,8 +36,9 @@
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <hr>
 	<p>Ma proposition :</p>
-	<input type="number" min="0" step="1" value="1">
-	
-	<button type="submit" name="auction">Enchérir</button>
-</body>
+		<form method="post" action="<%=request.getContextPath()%>/ServletDetailsAuctionPage">
+			<input type="number" min="0" step="1" value="1">
+			<button type="submit" name="auction">Enchérir</button>
+		</form>
+</body>			
 </html>

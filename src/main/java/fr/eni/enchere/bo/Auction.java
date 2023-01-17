@@ -12,8 +12,8 @@ public class Auction implements Serializable{
 	
 	private static final long serialVersionUID = -5398583469104095201L;
 	private int noAuction;
-	private int noUser;
-	private int noArticle;
+	private User user;
+	private Article article;
 	private LocalDate auctionDate;
 	private int auctionAmount;
 	
@@ -27,14 +27,14 @@ public class Auction implements Serializable{
 	/**
 	 * Constructeur
 	 * @param auctionAmount
-	 * @param noUser
-	 * @param noArticle
+	 * @param user
+	 * @param article
 	 */
-	public Auction(int auctionAmount, int noUser, int noArticle) {
+	public Auction(int auctionAmount, User user, Article article) {
 		this();
 		 this.setAuctionAmount(auctionAmount);
-		 this.setNoUser(noUser);
-		 this.setNoArticle(noArticle);
+		 this.setUser(user);
+		 this.setArticle(article);
 	}
 	
 	 /**
@@ -43,8 +43,8 @@ public class Auction implements Serializable{
 	 * @param noArticle
 	 * @param auctionAmount
 	 */
-	public Auction(LocalDate auctionDate, int auctionAmount, int noUser, int noArticle) {
-		 this(auctionAmount, noUser, noArticle);
+	public Auction(LocalDate auctionDate, int auctionAmount, User user, Article article) {
+		 this(auctionAmount, user, article);
 		 this.setAuctionDate(auctionDate);
 	  }
 	
@@ -56,8 +56,8 @@ public class Auction implements Serializable{
 	 * @param noUser
 	 * @param noArticle
 	 */
-	public Auction(int noAuction, LocalDate auctionDate, int auctionAmount, int noUser, int noArticle) {
-		this(auctionDate, auctionAmount, noUser, noArticle);
+	public Auction(int noAuction, LocalDate auctionDate, int auctionAmount, User user, Article article) {
+		this(auctionDate, auctionAmount, user, article);
 		this.setNoAuction(noAuction);
 	}
 	
@@ -77,37 +77,6 @@ public class Auction implements Serializable{
 		this.noAuction = noAuction;
 	}
 
-		/**
-	 * Getter pour noUser
-	 * @return the noUser
-	 */
-	public int getNoUser() {
-		return noUser;
-	}
-
-	/**
-	 * Setter pour noUser
-	 * @param noUser the noUser to set
-	 */
-	public void setNoUser(int noUser) {
-		this.noUser = noUser;
-	}
-
-	/**
-	 * Getter pour noArticle
-	 * @return the noArticle
-	 */
-	public int getNoArticle() {
-		return noArticle;
-	}
-
-	/**
-	 * Setter pour noArticle
-	 * @param noArticle the noArticle to set
-	 */
-	public void setNoArticle(int noArticle) {
-		this.noArticle = noArticle;
-	}
 
 	/**
 	 * Getter pour auctionDate
@@ -141,7 +110,37 @@ public class Auction implements Serializable{
 		this.auctionAmount = auctionAmount;
 	}
 
+	/**
+	 * Getter pour user.
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
 
+	/**
+	 * Setter pour user
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * Getter pour article.
+	 * @return the article
+	 */
+	public Article getArticle() {
+		return article;
+	}
+
+	/**
+	 * Setter pour article
+	 * @param article the article to set
+	 */
+	public void setArticle(Article article) {
+		this.article = article;
+	}
 	
 	/**
 	 * Méthode qui permet d'afficher l'Auction
@@ -149,10 +148,10 @@ public class Auction implements Serializable{
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" - Auction [getNoUser()=");
-		builder.append(getNoUser());
-		builder.append(", getNoArticle()=");
-		builder.append(getNoArticle());
+		builder.append(" - Auction [getUser()=");
+		builder.append(getUser());
+		builder.append(", getArticle()=");
+		builder.append(getArticle());
 		builder.append(", getAuctionDate()=");
 		builder.append(getAuctionDate());
 		builder.append(", getAuctionAmount()=");

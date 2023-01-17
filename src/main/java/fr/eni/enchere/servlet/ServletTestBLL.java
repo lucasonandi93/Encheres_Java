@@ -53,11 +53,11 @@ public class ServletTestBLL extends HttpServlet {
 		User alban = new User("Ferach", "Ferrera", "Alban", "banban.ferach@orange.fr", "06 52 33 29 52",
 				"rue des perdus", "85600", "AMIENS", "leclown", 3000, true);
 
-		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, 1, 2);
-		Auction auction2 = new Auction(LocalDate.of(2023, 03, 11), 100, 1, 5);
-		Auction auction3 = new Auction(LocalDate.of(2023, 02, 01), 50, 2, 4);
-		Auction auction4 = new Auction(LocalDate.of(2023, 01, 26), 1000, 2, 3);
-		Auction auction5 = new Auction(LocalDate.of(2023, 01, 22), 10, 3, 1);
+		Auction auction1 = new Auction(LocalDate.of(2023, 02, 23), 200, new User(), new Article());
+		Auction auction2 = new Auction(LocalDate.of(2023, 03, 11), 100, new User(), new Article());
+		Auction auction3 = new Auction(LocalDate.of(2023, 02, 01), 50, new User(), new Article());
+		Auction auction4 = new Auction(LocalDate.of(2023, 01, 26), 1000, new User(), new Article());
+		Auction auction5 = new Auction(LocalDate.of(2023, 01, 22), 10, new User(), new Article());
 
 		Withdrawal withdrawal = new Withdrawal(1, "rue de la foret", "53540", "LAUBRIERES");
 		Withdrawal withdrawa2 = new Withdrawal(2, "rue du pendu", "35500", "VITRE");
@@ -142,7 +142,7 @@ public class ServletTestBLL extends HttpServlet {
 			// Test avec erreur
 
 			// Test de la méthode update de auctionManager
-			auction1 = new Auction(LocalDate.of(2023, 02, 23), 500, 1, 2);
+			auction1 = new Auction(LocalDate.of(2023, 02, 23), 500, new User(), new Article());
 			auctionManager.updateData(auction1);
 			// Test avec erreur
 
