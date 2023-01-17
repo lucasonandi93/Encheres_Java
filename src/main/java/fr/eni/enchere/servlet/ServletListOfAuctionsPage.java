@@ -124,6 +124,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		try {
+			System.out.println(request.getParameter("filter"));
+			
 			User userOngoing = new User();
 			//Connection ou Enregistrement ou Modification ou Suppression
 			if (pseudo != null && password != null) {

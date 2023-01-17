@@ -385,6 +385,14 @@ public class Article implements Serializable{
 	public List<Auction> getListAuction() {
 		return listAuction;
 	}
+	
+	/**
+	 * Setter pour listAuction
+	 * @param listAuction the listAuction to set
+	 */
+	public void setListAuction(List<Auction> listAuction) {
+		this.listAuction = listAuction;
+	}
 
 	/**
 	 * Méthode qui permet d'afficher l'Article
