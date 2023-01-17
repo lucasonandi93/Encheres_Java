@@ -42,7 +42,7 @@
 				aria-label="Search" name="content" value="">
 			<br><br><br><br>
 			<label for="categories">Catégorie :   </label><select
-				name="categories" id="categories" selected="Toutes">
+				name="categories" id="categories">
 				<option value="Toutes">Toutes</option>
 				<c:forEach var="category" items="${categoryList}">
 					<option value="${category.getWording()}">${category.getWording()}</option>
