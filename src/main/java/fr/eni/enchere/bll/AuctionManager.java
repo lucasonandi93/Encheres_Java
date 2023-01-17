@@ -134,5 +134,14 @@ public class AuctionManager implements Manager<Auction, Integer>{
 		}
 	}
 
-	
+	/**
+	 * Méthode qui permet de sélectionner tous les lignes de la table Auction selon ID Article
+	 * @param noArticle
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Auction> selectByNoArticle(Integer noArticle) throws BusinessException {
+		//Appelle la méthode selectByNoArticle de AuctionDAO
+		return this.auctionDAO.selectByNoArticle(noArticle);
+	}
 }

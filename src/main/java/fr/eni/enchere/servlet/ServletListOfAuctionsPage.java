@@ -10,9 +10,11 @@ import java.util.List;
 
 
 import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bll.AuctionManager;
 import fr.eni.enchere.bll.CategoryManager;
 import fr.eni.enchere.bll.UserManager;
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Auction;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.bo.Withdrawal;
@@ -115,6 +117,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		CategoryManager categoryManager = new CategoryManager();
 		UserManager userManager = new UserManager();
 		ArticleManager articleManager = new ArticleManager();
+		AuctionManager auctionManager = new AuctionManager();
 		HttpSession session = request.getSession();
 		
 		String pseudo = request.getParameter("pseudo");
@@ -181,7 +184,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			if (request.getParameter("addArticle") != null) {
-				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 				
 				Article articleOngoing = new Article();
 				articleOngoing.setNameArticle(request.getParameter("articleName"));
@@ -215,6 +218,30 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				articleManager.addData(articleOngoing);
 			}
 			
+			// si proposition d'enchère
+			if (request.getParameter("auction") != null && Integer.parseInt(request.getParameter("auction")) !=0) {
+				
+				Auction auctionOngoing = new Auction();
+				Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
+				
+				// vérifier qu'elle soit supérieure à l'enchère en cours
+				if(Integer.parseInt(request.getParameter("auction")) > articleOngoing.getSellingPrice()) {
+					//setter tous les attributs nécessaires : montant, ID artcile et ID user
+					auctionOngoing.setAuctionAmount(Integer.parseInt(request.getParameter("auction")));
+					auctionOngoing.setArticle(articleOngoing);
+					auctionOngoing.setUser((User)session.getAttribute("user"));
+					
+					// ajout enchère dans la BDD
+					auctionManager.addData(auctionOngoing);
+					
+					// remplacer valeur enchère en cours par ma proposition dans "meilleure offre"
+					articleOngoing.setSellingPrice(auctionOngoing.getAuctionAmount());
+					// mettre à jour le sellingPrice de l'article
+					articleManager.updateData(articleOngoing);
+					
+					
+				}
+			}
 			
 		} catch (BusinessException | ParseException e) {
 			e.printStackTrace();

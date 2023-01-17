@@ -25,7 +25,7 @@
 	<p>Catégorie : ${articleOngoing.getCategory().getWording()}</p>
 
 	<!-- afficher la meilleure enchère et le nom de l'utilisateur qui l'a faite -->
-	<p>Meilleure offre : ${articleOngoing.getSellingPrice()} pts par ${userOngoing.getName()}</p>		
+	<p>Meilleure offre : ${articleOngoing.getSellingPrice()} pts par ${pseudoBestAuction}</p> 		
 
 	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
 

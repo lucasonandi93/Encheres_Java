@@ -1,6 +1,9 @@
 package fr.eni.enchere.dal.jdbc;
 
+import java.util.List;
+
 import fr.eni.enchere.bo.Auction;
+import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Classe en charge de 
@@ -9,5 +12,5 @@ import fr.eni.enchere.bo.Auction;
  * @version ENI_Encheres - v0.1
  */
 public interface AuctionDAO extends DAO<Auction, Integer>{
-
+	public List <Auction> selectByNoArticle(Integer noArticle)throws BusinessException;
 }
