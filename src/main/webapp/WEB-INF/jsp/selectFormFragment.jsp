@@ -23,3 +23,4 @@
   		<label for="filter">ventes terminées</label>
   	</div>
   </div>
+j'ai besoin que mes sous radio soient cochable uniquement dans la catégorie de la radio cochée : soit achat ou sois vente
