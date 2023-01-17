@@ -10,6 +10,7 @@
 
 <link href="<%=request.getContextPath()%>/css/styleConnexion.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Connexion</title>
 </head>
 <body>
@@ -18,12 +19,6 @@
 	</header>
 	
 	<main>
-		<%-- <c:if test="${ !empty sessionScope.pseudo && !empty sessionScope.password }">
-        	<p>${ sessionScope.pseudo } </p>
-        	<p>${ sessionScope.password } </p>
-    	</c:if> --%>
-	
-	  
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<div class="form-group">
 				<label for="usr">Identifiant : </label> 

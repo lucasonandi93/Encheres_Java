@@ -75,7 +75,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			String categories = request.getParameter("categories");
 
 			HttpSession session = request.getSession();
-			
+
 			if (request.getParameter("content") == null || 
 					("".equals(content) &&  "Toutes".equals(categories))) {
 				articleList = articleManager.selectAll();

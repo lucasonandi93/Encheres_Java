@@ -10,12 +10,12 @@
 <link href="<%=request.getContextPath()%>/css/styleNewArticle.css"
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/javascript" src="winAuctionPage.js">
-	
-</script>
+<script type="text/javascript" src="winAuctionPage.js"></script>
+
 <title>Vente</title>
 </head>
 <body>
+	
 	<header>
 		<%@include file="headerFragment.jsp"%>
 	</header>
