@@ -28,7 +28,7 @@
 			method="post">
 			<div class="form-group">
 				<label for="usr">Article : </label> <input type="text"
-					class="form-control" name="articleName" id="article"> <br>
+					class="form-control" name="articleName" id="article" value="${articleOngoing.getNameArticle()}"> <br>
 				<br>
 				<div class="form-group">
 					<label for="usr">Description : </label> <input type="text"

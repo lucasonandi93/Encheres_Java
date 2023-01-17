@@ -501,7 +501,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		articleOngoing.setDescription(rs.getString("description"));
 		articleOngoing.setAuctionStartDate(rs.getDate("date_debut_encheres").toLocalDate());
 		articleOngoing.setAuctionEndDate (rs.getDate("date_debut_encheres").toLocalDate());
-		articleOngoing.setSaleStatus(rs.getString("etat_vente"));
+		//articleOngoing.setSaleStatus(rs.getString("etat_vente"));
 		articleOngoing.setOriginalPrice(rs.getInt("prix_initial"));
 		articleOngoing.setSellingPrice( rs.getInt("prix_vente"));
 		User user = DAOFactory.getUserDAO().selectById(rs.getInt("no_utilisateur"));
