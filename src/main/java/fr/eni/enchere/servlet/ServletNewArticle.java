@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.CategoryManager;
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.exceptions.BusinessException;
 
@@ -35,11 +37,16 @@ public class ServletNewArticle extends HttpServlet {
 			throws ServletException, IOException {
 		CategoryManager categoryManager = new CategoryManager();
 		List<Category> categoryList = null;
+		ArticleManager articleManager = new ArticleManager();
 		
 		try {
 			
 			categoryList = categoryManager.selectAll();
 			request.setAttribute("categoryList", categoryList);
+			
+			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
+			System.out.println(articleOngoing);
+			request.setAttribute("articleOngoing", articleOngoing);
 			
 			request.getRequestDispatcher("/WEB-INF/jsp/newArticlePage.jsp").forward(request, response);
 		} catch (BusinessException e) {

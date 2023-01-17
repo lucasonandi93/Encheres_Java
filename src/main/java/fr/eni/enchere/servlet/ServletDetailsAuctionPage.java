@@ -54,8 +54,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 					else if(auction.getAuctionAmount()>auctionOngoing.getAuctionAmount()) {
 						auctionOngoing = auction;
 					}
-				}
-				System.out.println(auctionOngoing);				
+				}		
 				request.setAttribute("pseudoBestAuction", auctionOngoing.getUser().getPseudo());
 			}else {
 				request.setAttribute("pseudoBestAuction", articleOngoing.getUser().getPseudo());
@@ -64,9 +63,6 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 		} catch (NumberFormatException | BusinessException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("Session User " + session.getAttribute("user"));
-		System.out.println("Article User " + ((Article)request.getAttribute("articleOngoing")).getUser());
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailsAuctionPage.jsp");
 		rd.forward(request, response);
