@@ -37,7 +37,6 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
 		ArticleManager articleManager = new ArticleManager();
 		AuctionManager auctionManager = new AuctionManager();
 
