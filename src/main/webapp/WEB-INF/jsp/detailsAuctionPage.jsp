@@ -36,9 +36,9 @@
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <hr>
 	<p>Ma proposition :</p>
-		<form method="post" action="<%=request.getContextPath()%>/ServletDetailsAuctionPage">
-			<input type="number" min="0" step="1" value="1">
-			<button type="submit" name="auction">Enchérir</button>
+		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
+			<input type="number" min="0" step="10" value="0" name="auction">
+			<input type="submit" name="proposal" value="Enchérir">
 		</form>
 </body>			
 </html>

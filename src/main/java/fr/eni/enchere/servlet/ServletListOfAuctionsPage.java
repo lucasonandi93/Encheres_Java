@@ -219,27 +219,27 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			// si proposition d'enchère
-			if (request.getParameter("auction") != null && Integer.parseInt(request.getParameter("auction")) !=0) {
-				
-				Auction auctionOngoing = new Auction();
-				Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
-				
-				// vérifier qu'elle soit supérieure à l'enchère en cours
-				if(Integer.parseInt(request.getParameter("auction")) > articleOngoing.getSellingPrice()) {
-					//setter tous les attributs nécessaires : montant, ID artcile et ID user
-					auctionOngoing.setAuctionAmount(Integer.parseInt(request.getParameter("auction")));
-					auctionOngoing.setArticle(articleOngoing);
-					auctionOngoing.setUser((User)session.getAttribute("user"));
+			if (request.getParameter("proposal") != null) {
+				if (request.getParameter("auction") != null && Integer.parseInt(request.getParameter("auction")) !=0) {
+					System.out.println(request.getParameter("articleID"));
+					Auction auctionOngoing = new Auction();
+					Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
 					
-					// ajout enchère dans la BDD
-					auctionManager.addData(auctionOngoing);
-					
-					// remplacer valeur enchère en cours par ma proposition dans "meilleure offre"
-					articleOngoing.setSellingPrice(auctionOngoing.getAuctionAmount());
-					// mettre à jour le sellingPrice de l'article
-					articleManager.updateData(articleOngoing);
-					
-					
+					// vérifier qu'elle soit supérieure à l'enchère en cours
+					if(Integer.parseInt(request.getParameter("auction")) > articleOngoing.getSellingPrice()) {
+						//setter tous les attributs nécessaires : montant, ID artcile et ID user
+						auctionOngoing.setAuctionAmount(Integer.parseInt(request.getParameter("auction")));
+						auctionOngoing.setArticle(articleOngoing);
+						auctionOngoing.setUser((User)session.getAttribute("user"));
+						
+						// ajout enchère dans la BDD
+						auctionManager.addData(auctionOngoing);
+						
+						// remplacer valeur enchère en cours par ma proposition dans "meilleure offre"
+						articleOngoing.setSellingPrice(auctionOngoing.getAuctionAmount());
+						// mettre à jour le sellingPrice de l'article
+						articleManager.updateData(articleOngoing);
+					}
 				}
 			}
 			

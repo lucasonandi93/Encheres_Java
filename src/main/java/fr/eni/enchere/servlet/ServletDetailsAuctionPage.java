@@ -2,22 +2,18 @@ package fr.eni.enchere.servlet;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.AuctionManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Auction;
-import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -48,6 +44,8 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			request.setAttribute("articleOngoing", articleOngoing);
 			
 			List<Auction> auctions = auctionManager.selectByNoArticle(Integer.parseInt(request.getParameter("articleID")));
+		if (!auctions.isEmpty()) {
+			System.out.println("A");
 			Auction auctionOngoing = new Auction();
 			for (Auction auction : auctions) {
 				if(auction.getAuctionAmount()>auctionOngoing.getAuctionAmount()) {
@@ -55,7 +53,11 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 				}
 			}
 			request.setAttribute("pseudoBestAuction", auctionOngoing.getUser().getPseudo());
-			
+		}else {
+			System.out.println("B");
+			request.setAttribute("pseudoBestAuction", articleOngoing.getUser().getPseudo());
+		}
+		
 		} catch (NumberFormatException | BusinessException e) {
 			e.printStackTrace();
 		}
