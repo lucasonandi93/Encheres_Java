@@ -43,11 +43,10 @@ public class ServletNewArticle extends HttpServlet {
 			
 			categoryList = categoryManager.selectAll();
 			request.setAttribute("categoryList", categoryList);
-			
-			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
-			System.out.println("A");
-			request.setAttribute("articleOngoing", articleOngoing);
-			
+			if (request.getParameter("articleID") != null) {
+				Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
+				request.setAttribute("articleOngoing", articleOngoing);
+			}
 			request.getRequestDispatcher("/WEB-INF/jsp/newArticlePage.jsp").forward(request, response);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
