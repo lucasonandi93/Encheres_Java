@@ -188,6 +188,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				articleOngoing.setDescription(request.getParameter("articleDescription"));
 				articleOngoing.setCategory(categoryManager.selectByName(request.getParameter("articleCategorie")));
 				articleOngoing.setOriginalPrice(Integer.parseInt(request.getParameter("articleOriginalPrice")));
+				articleOngoing.setSellingPrice(Integer.parseInt(request.getParameter("articleOriginalPrice")));
 				Date startDate = formatter.parse(request.getParameter("articleStartDate"));
 				
 				articleOngoing.setAuctionStartDate(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());

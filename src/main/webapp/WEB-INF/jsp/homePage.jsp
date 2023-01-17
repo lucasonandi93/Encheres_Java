@@ -41,7 +41,7 @@
 			<input type="search" placeholder="Le nom de l'article contient"
 				aria-label="Search" name="content" value="">
 			<br><br><br><br>
-			<label for="categories">Catégorie : </label>&nbsp;<select
+			<label for="categories">Catégorie :   </label><select
 				name="categories" id="categories" selected="Toutes">
 				<option value="Toutes">Toutes</option>
 				<c:forEach var="category" items="${categoryList}">
