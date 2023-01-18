@@ -64,9 +64,7 @@
 				<li>
 					<div>
 						
-							<img src="${pageContext.request.contextPath}${article.getImageName()}"
-								alt="Image de l'article ${article.getImageName()}"
-								id="photoArticle">
+							<img src="${pageContext.request.contextPath}${article.getImageName()}"alt="Image de l'article ${article.getImageName()}" id="photoArticle">
 
 						<ul>
 							<li><a

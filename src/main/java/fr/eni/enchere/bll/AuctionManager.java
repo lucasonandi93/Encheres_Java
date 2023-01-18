@@ -5,10 +5,12 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Auction;
 import fr.eni.enchere.dal.jdbc.AuctionDAO;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.exceptions.BusinessException;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * Classe en charge de 
@@ -148,5 +150,17 @@ public class AuctionManager implements Manager<Auction, Integer>{
 	public List<Auction> selectByNoUser(Integer noUser) throws BusinessException {
 		//Appelle la méthode selectByNoArticle de AuctionDAO
 		return this.auctionDAO.selectByNoUser(noUser);
+	}
+
+	@Override
+	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
+		// TODO Auto-generated method stub
+		
 	}
 }
