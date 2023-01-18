@@ -68,8 +68,6 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			
 			boolean canMakeProposal = (isStartDate || isAfterStartDate && isBeforeEndDate || isEndDate);
 			
-			System.out.println(canMakeProposal);
-			
 			request.setAttribute("canMakeProposal", canMakeProposal);
 			
 		} catch (NumberFormatException | BusinessException e) {

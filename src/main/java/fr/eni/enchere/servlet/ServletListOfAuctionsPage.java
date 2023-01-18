@@ -193,7 +193,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					Auction auctionOngoing = new Auction();
 					Article articleOngoing = articleManager
 							.selectById(Integer.parseInt(request.getParameter("articleID")));
-
+					
 					// vérifier qu'elle soit supérieure à l'enchère en cours
 					if (Integer.parseInt(request.getParameter("auction")) > articleOngoing.getSellingPrice()) {
 						// setter tous les attributs nécessaires : montant, ID artcile et ID user
@@ -209,6 +209,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						
 						// mettre à jour le sellingPrice de l'article
 						articleManager.updateData(articleOngoing);
+						
+						System.out.println(articleOngoing);
 					}
 				}
 			}
