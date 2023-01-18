@@ -5,10 +5,12 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.dal.jdbc.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * Classe en charge de 
@@ -176,6 +178,18 @@ public class UserManager implements Manager<User, Integer>{
 	
 	public User getUserByEmail(String email) {
 		return userDAO.selectByEmail(email);
+	}
+
+	@Override
+	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
