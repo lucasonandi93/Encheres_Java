@@ -42,6 +42,8 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 		ArticleManager articleManager = new ArticleManager();
 		AuctionManager auctionManager = new AuctionManager();
 
+		HttpSession session = request.getSession();
+		
 		try {
 			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
 			request.setAttribute("articleOngoing", articleOngoing);
@@ -65,11 +67,12 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			boolean isEndDate = (articleOngoing.getAuctionEndDate().equals(LocalDate.now()));
 			boolean isAfterStartDate = (articleOngoing.getAuctionStartDate().isBefore(LocalDate.now()));
 			boolean isBeforeEndDate = (articleOngoing.getAuctionEndDate().isAfter(LocalDate.now()));
-			
-			boolean canMakeProposal = (isStartDate || isAfterStartDate && isBeforeEndDate || isEndDate);
-			
+			boolean isAfterEndDate = (articleOngoing.getAuctionEndDate().isBefore(LocalDate.now()));
+			boolean canMakeProposal = ((isStartDate || isAfterStartDate) && (isBeforeEndDate || isEndDate));
+			boolean isUserConnectedArticle = articleOngoing.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
 			request.setAttribute("canMakeProposal", canMakeProposal);
-			
+			request.setAttribute("isAfterEndDate", isAfterEndDate);
+			request.setAttribute("isUserConnectedArticle", isUserConnectedArticle);
 		} catch (NumberFormatException | BusinessException e) {
 			e.printStackTrace();
 		}

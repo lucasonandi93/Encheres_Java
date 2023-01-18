@@ -17,7 +17,15 @@
 		<%@include file="headerFragment.jsp"%>
 	</header>
 
-	<h3>Détail Vente</h3>
+	<c:if test="${!isAfterEndDate}">
+		<h3>Détail Vente</h3>
+	</c:if>
+	<c:if test="${isAfterEndDate && isUserConnectedArticle}">
+		<h3> à remporté(e) l'enchère</h3>
+	</c:if>
+	<c:if test="${isAfterEndDate && !isUserConnectedArticle}">
+		<h3>Vous avez remporté la vente</h3>
+	</c:if>
 
 	<p>${articleOngoing.getNameArticle()}</p>
 
@@ -37,7 +45,7 @@
 	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
-<c:if test="${articleOngoing.getUser().getNoUser() != sessionScope.user.getNoUser() && sessionScope.user.getNoUser() != null && canMakeProposal}">
+<c:if test="${!isUserConnectedArticle && sessionScope.user.getNoUser() != null && canMakeProposal}">
 		<hr>
 		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
@@ -45,11 +53,18 @@
 			<input type="submit" name="proposal" value="Enchérir">
 		</form>
 </c:if>
-<c:if test="${articleOngoing.getUser().getNoUser() == sessionScope.user.getNoUser()}">
+<c:if test="${isUserConnectedArticle && !isAfterEndDate}">
 	<hr>
 	<form method="post" action="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.getNoArticle()}">
 		<input type="submit" name="update" value="Modifier"> 
 	</form>
 </c:if>
+<c:if test="${isAfterEndDate && isUserConnectedArticle}">
+		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+			<input type="submit" name="deleteArticle" value="Retrait Effectué">
+		</form>
+</c:if>
+
+
 </body>			
 </html>
