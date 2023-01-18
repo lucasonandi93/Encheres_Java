@@ -21,7 +21,7 @@
 		<h3>Détail Vente</h3>
 	</c:if>
 	<c:if test="${isAfterEndDate && isUserConnectedArticle}">
-		<h3> à remporté(e) l'enchère</h3>
+		<h3>${pseudoBestAuction + " à remporté(e) l'enchère"}</h3>
 	</c:if>
 	<c:if test="${isAfterEndDate && !isUserConnectedArticle}">
 		<h3>Vous avez remporté la vente</h3>
