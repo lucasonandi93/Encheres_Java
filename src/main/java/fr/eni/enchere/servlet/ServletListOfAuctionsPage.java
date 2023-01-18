@@ -212,6 +212,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 					}
 				}
 			}
+			
+			if (request.getParameter("deleteArticle") != null) {
+				articleManager.deleteData(Integer.parseInt(request.getParameter("articleID")), request);
+			}
 
 		} catch (BusinessException | ParseException e) {
 			e.printStackTrace();

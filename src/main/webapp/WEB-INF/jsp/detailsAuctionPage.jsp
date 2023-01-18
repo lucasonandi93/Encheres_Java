@@ -60,11 +60,9 @@
 	</form>
 </c:if>
 <c:if test="${isAfterEndDate && isUserConnectedArticle}">
-		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
 			<input type="submit" name="deleteArticle" value="Retrait Effectué">
 		</form>
 </c:if>
-
-
 </body>			
 </html>
