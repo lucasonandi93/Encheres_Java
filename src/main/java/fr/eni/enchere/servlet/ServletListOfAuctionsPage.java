@@ -269,15 +269,21 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			AuctionManager auctionManager = new AuctionManager();
 			
 			List<Auction> listUserConnectedAuctions = auctionManager.selectByNoUser(((User) session.getAttribute("user")).getNoUser());
-			
+
 			List<Article> articleListB = new ArrayList<>();
+
+			List<Integer> articleIDList = new ArrayList<>();
 			
 			for (Auction auction : listUserConnectedAuctions) {
-				Article articleOngoing = articleManager.selectById(auction.getArticle().getNoArticle());
-				if (!(articleListB.contains(articleOngoing))) {
-					System.out.println(articleListB.contains(articleOngoing));
-					articleListB.add(articleOngoing);
+				Integer id = auction.getArticle().getNoArticle();
+				if (!(articleIDList.contains(id))) {
+					articleIDList.add(id);
 				}
+			}
+			
+			for (Integer id : articleIDList) {
+				Article articleOngoing = articleManager.selectById(id);
+				articleListB.add(articleOngoing);
 			}
 			
 			articleList = articleListB;
