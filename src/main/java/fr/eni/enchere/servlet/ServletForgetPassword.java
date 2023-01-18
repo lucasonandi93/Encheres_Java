@@ -53,8 +53,8 @@ public class ServletForgetPassword extends HttpServlet {
 					"enisitedenchere35@gmail.com", 
 					"lqmzxvgumnmcnccd", 
 					request.getParameter("email"),
-					"Voici ton mot de passe", 
-					"Mot de passe : " + user.getPassword()
+					"Récupèration du mot de passe", 
+					"Voici ton mot de passe pour acc: " + user.getPassword()
 					)) 
 			{
 				response.sendRedirect(request.getContextPath() + "/ServletConnexionPage");
