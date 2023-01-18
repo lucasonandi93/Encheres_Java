@@ -1,15 +1,29 @@
 /* Mobile first */
+:root {
+    --primary-color: teal;
+    --secondary-color: #f5f5f5;
+    --body-font: Arial, sans-serif;
+    --label-width: 150px;
+}
+
+header h1 {
+	
+	text-align: center;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--body-font);
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: var(--secondary-color);
 }
 
 header {
-    background-color: teal;
+    background-color: var(--primary-color);
     color: white;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1em;
 }
 
@@ -22,12 +36,25 @@ form {
     width: 80%;
     margin: 2em auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 label {
+    width: var(--label-width);
     text-align: left;
-    width: 20%;
     margin-right: 1em;
+    font-weight: bold;
+}
+
+select {
+    width: 80%;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 input[type="text"], input[type="number"], input[type="date"], input[type="file"] {
@@ -38,15 +65,13 @@ input[type="text"], input[type="number"], input[type="date"], input[type="file"]
     border: 1px solid #ccc;
 }
 
-select {
-    width: 80%;
-    padding: 0.5em;
-}
-
 /* Media Queries */
 @media screen and (max-width: 600px) {
     form {
         width: 60%;
     }
+    label {
+        width: 100%;
+        text-align: center;
+    }
 }
-
