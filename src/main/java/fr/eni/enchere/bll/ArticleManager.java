@@ -152,11 +152,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 		return this.articleDAO.selectById(id);
 	}
 
-	public Article selectBySaleStatus(String sale_status) throws BusinessException {
-
-		return this.articleDAO.selectBySaleStatus(sale_status);
-	}
-
 	/**
 	 * Méthode qui permet vérifier qu'un Article peut être inséré ou modifié
 	 * 

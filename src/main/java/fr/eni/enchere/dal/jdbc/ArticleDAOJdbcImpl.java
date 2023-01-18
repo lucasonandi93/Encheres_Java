@@ -27,7 +27,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article";
 	
 	private static final String SQL_SELECT_BY_ID = 			"SELECT a.no_article, nom_article, description,  date_debut_encheres, date_fin_encheres, "
-															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
+															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville, image "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
 															+ "WHERE a.no_article=?";
@@ -44,28 +44,22 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String SQL_INSERT_TO_WITHDRAWAL = 	"INSERT INTO RETRAITS (no_article, rue, code_postal, ville) values(?,?,?,?)";
 	
 	private static final String SQL_SELECT_BY_NO_CATEGORY = "SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
-															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
+															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville, image "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
 															+ "WHERE no_categorie=?";
 	
 	private static final String SQL_SELECT_BY_CHAR_NAME = 	"SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
-															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
+															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville, image "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
 															+ "WHERE nom_article LIKE ? ";
 	
 	private static final String SQL_SELECT_BY_NO_CATEGORY_AND_CHAR_NAME = "SELECT a.no_article, nom_article, description, date_debut_encheres, date_fin_encheres, "
-															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
+															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville, image "
 															+ "FROM ARTICLES_VENDUS as a "
 															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
 															+ "WHERE no_categorie=? AND nom_article LIKE ? ";
-	
-	private static final String SQL_SELECT_BY_SALE_STATUS = "SELECT a.no_article, nom_article, description,  date_debut_encheres, date_fin_encheres, etat_vente, "
-															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
-															+ "FROM ARTICLES_VENDUS as a "
-															+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
-															+ "WHERE etat_vente=?";
 	
 	
 	/**
@@ -523,44 +517,5 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		
 		return articleOngoing;
 	}
-
-	@Override
-	public Article selectBySaleStatus(String sale_status) throws BusinessException {
-		if(sale_status==null) {
-			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_ID_ARTICLE_NULL);
-			throw businessException;
-		}
-		
-		Article articleOnGoing = new Article();
-		
-		try (Connection cnx=ConnectionProvider.getConnection())
-		{
-			PreparedStatement pstmt = cnx.prepareStatement(SQL_SELECT_BY_SALE_STATUS);
-			pstmt.setString(1, sale_status);
-			ResultSet rs= pstmt.executeQuery();
-			if (rs.next()) {
-				articleOnGoing = articleBuilder(rs);
-			}
-			rs.close();
-			pstmt.close();
-			cnx.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.SELECT_ARTICLE_ID_FAILED);
-			throw businessException;
-		} 
-		return articleOnGoing;	
-	} 
-	
-
-//	"SELECT a.no_article, nom_article, description,  date_debut_encheres, date_fin_encheres, etat_vente, "
-//	+ "prix_initial, prix_vente, no_utilisateur, no_categorie, rue, code_postal, ville "
-//	+ "FROM ARTICLES_VENDUS as a "
-//	+ "INNER JOIN RETRAITS as r on a.no_article=r.no_article "
-//	+ "WHERE etat_vente=?";
-	
-	
 
 }

@@ -23,7 +23,5 @@ public interface ArticleDAO extends DAO<Article, Integer>{
 	public List<Article> selectByCharName (String contents) throws BusinessException;
 	
 	public List<Article> selectByNoCategoryAndCharName (Integer noCategory, String contents) throws BusinessException;
-
-	public Article selectBySaleStatus(String sale_status) throws BusinessException;
 	
 }

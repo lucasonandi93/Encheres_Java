@@ -14,7 +14,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vrobert2022/Downloads/commons-io-2.11.0-bin.zip"/>
-	<classpathentry kind="lib" path="C:/Users/vrobert2022/Downloads/commons-fileupload-1.4-bin.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

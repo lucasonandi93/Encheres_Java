@@ -29,14 +29,6 @@ public class Article implements Serializable {
 	private List<Auction> listAuction;
 	private String imageName;
 
-	public String getImageName() {
-		return imageName;
-	}
-
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
-
 	/**
 	 * Constructeur
 	 */
@@ -450,6 +442,14 @@ public class Article implements Serializable {
 		this.listAuction = listAuction;
 	}
 
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	
 	/**
 	 * Méthode qui permet d'afficher l'Article
 	 */
