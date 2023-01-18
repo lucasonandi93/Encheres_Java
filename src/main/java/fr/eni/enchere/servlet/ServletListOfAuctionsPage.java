@@ -263,10 +263,10 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 	private List<Article> connectedFilter(List<Article> articleList, HttpServletRequest request, HttpSession session)
 			throws BusinessException {
 		
+		ArticleManager articleManager = new ArticleManager();
+		AuctionManager auctionManager = new AuctionManager();
 		
 		if ("mes enchères".equals(request.getParameter("filter")) || "mes enchères remportées".equals(request.getParameter("filter"))) {
-			ArticleManager articleManager = new ArticleManager();
-			AuctionManager auctionManager = new AuctionManager();
 			
 			List<Auction> listUserConnectedAuctions = auctionManager.selectByNoUser(((User) session.getAttribute("user")).getNoUser());
 
@@ -301,12 +301,26 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			boolean isUserConnectedArticle = article.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
 			switch (request.getParameter("filter")) {
 			case "enchères ouvertes":
-				if ((isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate)) {
+				if ((isAfterStartDate || isStartDate) && (isBeforeEndDate || isEndDate)) {
 					articleListConnectedFilter.add(article);
 				}
 				break;
 			case "mes enchères": 
 				if ((isAfterStartDate || isStartDate) && (isBeforeEndDate || isEndDate)) {
+					articleListConnectedFilter.add(article);
+				}
+				break;
+			case "mes enchères remportées": 
+				List<Auction> listArticleAuctions = auctionManager.selectByNoArticle(article.getNoArticle());
+				Auction auctionOngoing = null;
+				for (Auction auction : listArticleAuctions) {
+					if (auctionOngoing == null) {
+						auctionOngoing = auction;
+					}else if(auctionOngoing.getAuctionAmount() < auction.getAuctionAmount()){
+						auctionOngoing = auction;
+					}
+				}
+				if (isAfterEndDate && auctionOngoing.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser()) {
 					articleListConnectedFilter.add(article);
 				}
 				break;
