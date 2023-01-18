@@ -266,7 +266,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 		if ("mes enchères".equals(request.getParameter("filter")) || "mes enchères remportées".equals(request.getParameter("filter"))) {
 			ArticleManager articleManager = new ArticleManager();
 			AuctionManager auctionManager = new AuctionManager();
-
+			
 			List<Auction> listUserConnectedAuctions = auctionManager.selectByNoUser(((User) session.getAttribute("user")).getNoUser());
 			
 			List<Article> articleListB = new ArrayList<>();
@@ -278,9 +278,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 				}
 			}
 			
-			for (Article article : articleListB) {
-				System.out.println(article);
-			}
+			articleList = articleListB;
 		}
 		
 		List<Article> articleListConnectedFilter = new ArrayList<>();
@@ -293,19 +291,21 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			boolean isBeforeEndDate = (article.getAuctionEndDate().isAfter(LocalDate.now()));
 			boolean isAfterEndDate = (article.getAuctionEndDate().isBefore(LocalDate.now()));
 			boolean isUserConnectedArticle = article.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
+			System.out.println(article);
+			System.out.println(isUserConnectedArticle);
 			switch (request.getParameter("filter")) {
 			case "enchères ouvertes":
-				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate) {
+				if ((isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate)) {
 					articleListConnectedFilter.add(article);
 				}
 				break;
 			case "mes enchères": 
-				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate) {
+				if ((isAfterStartDate || isStartDate) && (isBeforeEndDate || isEndDate)) {
 					articleListConnectedFilter.add(article);
 				}
 				break;
 			case "mes ventes en cours":
-				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate && isUserConnectedArticle) {
+				if ((isAfterStartDate || isStartDate) && (isBeforeEndDate || isEndDate) && isUserConnectedArticle) {
 					articleListConnectedFilter.add(article);
 				}
 				break;
