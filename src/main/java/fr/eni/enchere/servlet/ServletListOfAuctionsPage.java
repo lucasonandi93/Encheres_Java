@@ -274,7 +274,8 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			
 			for (Auction auction : listUserConnectedAuctions) {
 				Article articleOngoing = articleManager.selectById(auction.getArticle().getNoArticle());
-				if (!articleListB.contains(articleOngoing)) {
+				if (!(articleListB.contains(articleOngoing))) {
+					System.out.println(articleListB.contains(articleOngoing));
 					articleListB.add(articleOngoing);
 				}
 			}
