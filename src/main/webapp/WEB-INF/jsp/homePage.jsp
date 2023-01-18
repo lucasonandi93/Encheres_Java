@@ -63,9 +63,7 @@
 			<div>
 				<li>
 					<div>
-						
-							<img src="${pageContext.request.contextPath}${article.getImageName()}"alt="Image de l'article ${article.getImageName()}" id="photoArticle">
-
+						<img src="<%=request.getContextPath()%>${article.getImageName()}" alt="Image de l'article ${article.imageName}" id="photoArticle">
 						<ul>
 							<li><a
 								href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>

@@ -214,13 +214,11 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	@Override
 	public void deleteData(Integer id) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		articleDAO.delete(id);
 	}
 
 	@Override
 	public void updateData(Article data) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		articleDAO.update(data);
 	}
 }

@@ -57,6 +57,16 @@ input[type="submit"] {
     margin: 1em;
 }
 
+.btn-modifier {
+	background-color: #4CAF50;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 1em;
+}
+
 .forgotPassword {
     margin-top: 1em;
     text-align: center;

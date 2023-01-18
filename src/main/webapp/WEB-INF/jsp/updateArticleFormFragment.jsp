@@ -1,9 +1,9 @@
-<h3>Nouvelle vente</h3>
+<h3>Modifier Article</h3>
 	<!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 
 			value="Upload Files" multiple /> -->
 	<fieldset>
-		<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
-			method="post">
+		<form action="<%=request.getContextPath()%>/ServletNewArticle" method="post" enctype="multipart/form-data">
+		<input name="articleID" value="${articleOngoing.noArticle}" hidden>
 			<div class="form-group">
 				<label for="usr">Article : </label> <input type="text"
 					class="form-control" name="articleName" id="article" value="${articleOngoing.getNameArticle()}"> <br>
@@ -13,7 +13,7 @@
 						class="form-control" id="description" name="articleDescription"  value="${articleOngoing.getDescription()}">
 					<br> <label for="categories">Catégorie :</label> <select
 						name="articleCategorie" id="categories" >
-						<option value="Toutes">Toutes</option>
+						<option value="${articleOngoing.category.wording}">${articleOngoing.category.wording}</option>
 						<c:forEach var="category" items="${categoryList}"> 
 							<option value="${category.getWording()}">${category.getWording()}</option>
 						</c:forEach>
@@ -22,13 +22,16 @@
 			</div>
 			<br> <label for="avatar">Photo de l'article</label>
 			<div class="avatar">
-				<input type="file" id="photoArticle" name="articlePhoto"
-					accept="image/png, image/jpeg">
+				<input type="file" id="photoArticle" name="photoArticle"
+					accept="image/png, image/jpeg" onchange="onFileSelected(event)">
+					<div id="imageDisplay">
+						<img id="myimage" alt="imageEnchere" src="">
+					</div>
 			</div>
 			<br>
 			<div class="form-group">
-				<label>Mise à prix :</label> <input type="number" step="1" value="0"
-					name="articleOriginalPrice" value="${articleOngoing.getOriginalPrice()}"> <br>
+				<label>Mise à prix :</label> 
+				<input type="number" step="1" name="articleOriginalPrice" value="${articleOngoing.getOriginalPrice()}"> <br>
 				<br> <label for="beginAuction">Début de l'enchère :</label> 
 				<input type="date" name="articleStartDate" id="startDate" required value="${articleOngoing.getAuctionStartDate()}">
 				<script>
@@ -55,8 +58,30 @@
 
 			</div>
 			<div>
-				<br> <input type="submit" value="Ajouter" name="addArticle">
-				<input type="submit" value="Annuler" name="cencel"> 
+				<br> 
+				<input type="submit" value="Enregistrer" name="addArticle">
+				<a href="<%=request.getContextPath() %>/ServletDetailsAuctionPage?articleID=${articleOngoing.noArticle}" >Annulé</a>
 			</div>
 		</form>
 	</fieldset>
+	<form action="<%=request.getContextPath() %>/ServleteDeleteArticle" method="post">
+    	<input type="hidden" name="idArticle" value="${articleOngoing.noArticle}">
+    	<input type="submit" value="Annuler vente" name="cancelSale">
+	</form>
+	
+<script type="text/javascript">
+const imageDisplay = document.getElementById("imageDisplay"); 
+function onFileSelected(event) {
+	var selectedFile = event.target.files[0];
+	var reader = new FileReader();   
+	var imgtag = document.getElementById("myimage");
+	imgtag.title = selectedFile.name;   
+	reader.onload = function(event) {
+		imgtag.src = event.target.result;
+	  };
+	reader.readAsDataURL(selectedFile);
+	displayImageOn();
+	} function displayImageOn() {
+	    imageDisplay.style.display = "block";
+	}
+</script>

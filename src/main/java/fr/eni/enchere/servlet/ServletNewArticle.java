@@ -118,7 +118,13 @@ public class ServletNewArticle extends HttpServlet {
 			String path = uploadImage(request);
 			articleOngoing.setImageName(path);
 			
-			articleManager.addData(articleOngoing);
+			
+			if (request.getParameter("articleID") == null) {
+				articleManager.addData(articleOngoing);
+			} else {
+				articleOngoing.setNoArticle(Integer.valueOf(request.getParameter("articleID")));
+				articleManager.updateData(articleOngoing);
+			}				
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

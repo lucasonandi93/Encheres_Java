@@ -36,7 +36,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 															+ "prix_initial, prix_vente, no_utilisateur, no_categorie, image) values (?,?,?,?,?,?,?,?,?)";
 	
 	private static final String SQL_UPDATE = 				"UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, "
-															+ "prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=? "
+															+ "prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?, image=? "
 															+ "WHERE no_article=?";
 	
 	private static final String SQL_DELETE = 				"DELETE FROM ARTICLES_VENDUS WHERE no_article=?";
@@ -206,7 +206,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			businessException.addError(CodesResultatDAL.INSERT_ARTICLE_NULL);
 			throw businessException;
 		}
-		
 		try(Connection cnx = ConnectionProvider.getConnection())
 		{
 			cnx.setAutoCommit(false);
@@ -225,7 +224,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				pstmt.setInt(6, article.getSellingPrice());
 				pstmt.setInt(7, article.getUser().getNoUser());
 				pstmt.setInt(8, article.getCategory().getNoCategory());
-				pstmt.setInt(9, article.getNoArticle());
+				pstmt.setString(9, article.getImageName());
+				pstmt.setInt(10, article.getNoArticle());
 				
 				pstmt.executeUpdate();
 				pstmt.close();

@@ -32,7 +32,7 @@
 	
 	<p>Début de l'enchère : ${articleOngoing.getAuctionStartDate()}</p>
 
-	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p>
+	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p> 
 
 	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
@@ -47,9 +47,9 @@
 </c:if>
 <c:if test="${articleOngoing.getUser().getNoUser() == sessionScope.user.getNoUser()}">
 	<hr>
-	<form method="post" action="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.getNoArticle()}">
-		<input type="submit" name="update" value="Modifier"> 
-	</form>
+	<div class="btn-modifier">
+		<a href="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.noArticle}" >Modifier</a>
+	</div>
 </c:if>
 </body>			
 </html>
