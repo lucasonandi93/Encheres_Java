@@ -144,4 +144,9 @@ public class AuctionManager implements Manager<Auction, Integer>{
 		//Appelle la méthode selectByNoArticle de AuctionDAO
 		return this.auctionDAO.selectByNoArticle(noArticle);
 	}
+	
+	public List<Auction> selectByNoUser(Integer noUser) throws BusinessException {
+		//Appelle la méthode selectByNoArticle de AuctionDAO
+		return this.auctionDAO.selectByNoUser(noUser);
+	}
 }

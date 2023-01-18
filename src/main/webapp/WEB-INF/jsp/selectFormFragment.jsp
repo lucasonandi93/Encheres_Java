@@ -15,9 +15,9 @@
   	<div>
   		<input type="radio" name="filter" value="mes ventes en cours" id="filter">
   		<label for="filter" >mes ventes en cours</label>
-  		<input type="radio" name="filter" value="ventes non débutées" id="filter">
-  		<label for="filter">ventes non débutées</label>
-  		<input type="radio" name="filter" value="ventes terminées" id="filter">
-  		<label for="filter">ventes terminées</label>
+  		<input type="radio" name="filter" value="mes ventes non débutées" id="filter">
+  		<label for="filter">mes ventes non débutées</label>
+  		<input type="radio" name="filter" value="mes ventes terminées" id="filter">
+  		<label for="filter">mes ventes terminées</label>
   	</div>
   </div>

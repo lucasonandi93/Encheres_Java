@@ -13,4 +13,6 @@ import fr.eni.enchere.exceptions.BusinessException;
  */
 public interface AuctionDAO extends DAO<Auction, Integer>{
 	public List <Auction> selectByNoArticle(Integer noArticle)throws BusinessException;
+	
+	public List <Auction> selectByNoUser (Integer noUser)throws BusinessException;
 }
