@@ -282,7 +282,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			}
 			
 			for (Integer id : articleIDList) {
-				Article articleOngoing = articleManager.selectById(id);
+				Article articleOngoing = articleManager.selectById(id); 
 				articleListB.add(articleOngoing);
 			}
 			
