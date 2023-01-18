@@ -35,13 +35,15 @@
 		<h3>Liste des enchères</h3>
 	</div>
 	<nav>
-		<h4>Filtres :</h4><br>
+		<h4>Filtres :</h4>
+		<br>
 		<form method="post"
 			action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<input type="search" placeholder="Le nom de l'article contient"
-				aria-label="Search" name="content" value="">
-			<br><br><br><br>
-			<label for="categories">Catégorie :   </label><select
+				aria-label="Search" name="content" value=""> <br>
+			<br>
+			<br>
+			<br> <label for="categories">Catégorie : </label><select
 				name="categories" id="categories">
 				<option value="Toutes">Toutes</option>
 				<c:forEach var="category" items="${categoryList}">
@@ -61,7 +63,11 @@
 			<div>
 				<li>
 					<div>
-						<img alt="IMAGE" src="" title="IMAGE">
+						
+							<img src="${pageContext.request.contextPath}${article.getImageName()}"
+								alt="Image de l'article ${article.getImageName()}"
+								id="photoArticle">
+
 						<ul>
 							<li><a
 								href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>
@@ -71,7 +77,8 @@
 							<li>Vendeur : <a
 								href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getNoUser()}">${article.getUser().getPseudo()}</a></li>
 						</ul>
-						<br><hr>
+						<br>
+						<hr>
 					</div>
 				</li>
 			</div>

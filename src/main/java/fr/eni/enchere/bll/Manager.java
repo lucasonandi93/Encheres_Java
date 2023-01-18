@@ -5,7 +5,9 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.exceptions.BusinessException;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * Classe en charge de 
@@ -59,5 +61,21 @@ public interface Manager <T, U>{
 	 * @throws BusinessException
 	 */
 	public void validateData(T data, BusinessException businessException) throws BusinessException;
+
+	/**
+	 * Méthode qui permet de modifier un Article de la BDD
+	 * 
+	 * @param data
+	 * @throws BusinessException
+	 */
+	void updateData(Article data, HttpServletRequest request) throws BusinessException;
+
+	/**
+	 * Méthode qui permet de supprimer un Article de la BDD
+	 * 
+	 * @param data
+	 * @throws BusinessException
+	 */
+	void deleteData(Integer id, HttpServletRequest request) throws BusinessException;
 	
 }
