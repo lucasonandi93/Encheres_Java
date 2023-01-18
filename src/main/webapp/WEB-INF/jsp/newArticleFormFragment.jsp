@@ -21,7 +21,7 @@
 			<div class="form-group">
 				<label for="usr">Description : </label> <input type="text"
 					class="form-control" id="description" name="articleDescription">
-				<br> <label for="categories">Catégorie :</label> <select
+				<br> <label for="categories">Catégorie :</label><select
 					name="articleCategorie" id="categories">
 					<option value="Toutes">Toutes</option>
 					<c:forEach var="category" items="${categoryList}">
