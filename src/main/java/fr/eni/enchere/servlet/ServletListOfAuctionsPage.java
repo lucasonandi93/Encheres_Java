@@ -208,7 +208,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						articleOngoing.setSellingPrice(auctionOngoing.getAuctionAmount());
 						
 						// mettre à jour le sellingPrice de l'article
-						articleManager.updateData(articleOngoing);
+						articleManager.updateData(articleOngoing, request);
 						
 						System.out.println(articleOngoing);
 					}
