@@ -3,21 +3,13 @@
  */
 package fr.eni.enchere.bll;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
-
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.jdbc.ArticleDAO;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.exceptions.BusinessException;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
