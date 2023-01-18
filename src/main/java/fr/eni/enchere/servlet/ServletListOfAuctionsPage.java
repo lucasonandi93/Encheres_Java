@@ -206,6 +206,7 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 
 						// remplacer valeur enchère en cours par ma proposition dans "meilleure offre"
 						articleOngoing.setSellingPrice(auctionOngoing.getAuctionAmount());
+						
 						// mettre à jour le sellingPrice de l'article
 						articleManager.updateData(articleOngoing);
 					}
@@ -291,8 +292,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			boolean isBeforeEndDate = (article.getAuctionEndDate().isAfter(LocalDate.now()));
 			boolean isAfterEndDate = (article.getAuctionEndDate().isBefore(LocalDate.now()));
 			boolean isUserConnectedArticle = article.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
-			System.out.println(article);
-			System.out.println(isUserConnectedArticle);
 			switch (request.getParameter("filter")) {
 			case "enchères ouvertes":
 				if ((isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate)) {
