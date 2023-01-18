@@ -189,7 +189,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			// si proposition d'enchère
 			if (request.getParameter("proposal") != null) {
 				if (request.getParameter("auction") != null && Integer.parseInt(request.getParameter("auction")) != 0) {
-					System.out.println(request.getParameter("articleID"));
 					Auction auctionOngoing = new Auction();
 					Article articleOngoing = articleManager
 							.selectById(Integer.parseInt(request.getParameter("articleID")));
@@ -210,7 +209,6 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 						// mettre à jour le sellingPrice de l'article
 						articleManager.updateData(articleOngoing, request);
 						
-						System.out.println(articleOngoing);
 					}
 				}
 			}
