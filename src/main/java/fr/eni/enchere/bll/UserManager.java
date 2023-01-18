@@ -172,8 +172,10 @@ public class UserManager implements Manager<User, Integer>{
 
 	public void deleteUser(User userToDelete) {
 		
-		
 	}
 	
+	public User getUserByEmail(String email) {
+		return userDAO.selectByEmail(email);
+	}
 
 }
