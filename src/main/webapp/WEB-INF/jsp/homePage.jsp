@@ -66,6 +66,7 @@
 							<li><a
 								href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>
 							<li>Prix : ${article.getSellingPrice()}</li>
+							<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
 							<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 							<!-- ${article.getUser().getPseudo()} -->
 							<li>Vendeur : <a

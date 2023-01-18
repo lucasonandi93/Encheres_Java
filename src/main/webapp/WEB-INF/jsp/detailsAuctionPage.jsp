@@ -29,13 +29,15 @@
 	<p>Meilleure offre : ${articleOngoing.getSellingPrice()} pts par ${pseudoBestAuction}</p> 		
 
 	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
+	
+	<p>Début de l'enchère : ${articleOngoing.getAuctionStartDate()}</p>
 
 	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p>
 
 	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
-<c:if test="${articleOngoing.getUser().getNoUser() != sessionScope.user.getNoUser() && sessionScope.user.getNoUser() != null}">
+<c:if test="${articleOngoing.getUser().getNoUser() != sessionScope.user.getNoUser() && sessionScope.user.getNoUser() != null && canMakeProposal}">
 		<hr>
 		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
@@ -43,8 +45,7 @@
 			<input type="submit" name="proposal" value="Enchérir">
 		</form>
 </c:if>
-<c:if test="${articleOngoing.getUser().getNoUser() == sessionScope.user.getNoUser() && canMakeProposal}">
-<p></p>
+<c:if test="${articleOngoing.getUser().getNoUser() == sessionScope.user.getNoUser()}">
 	<hr>
 	<form method="post" action="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.getNoArticle()}">
 		<input type="submit" name="update" value="Modifier"> 
