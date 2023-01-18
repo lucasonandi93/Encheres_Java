@@ -254,47 +254,74 @@ public class ServletListOfAuctionsPage extends HttpServlet {
 			articleListDeconnectedFilter = articleManager.selectByNoCategoryAndName(categoryOngoing.getNoCategory(),
 					content);
 		}
+		
 
 		return articleListDeconnectedFilter;
 	}
 
 	private List<Article> connectedFilter(List<Article> articleList, HttpServletRequest request, HttpSession session)
 			throws BusinessException {
+		
+		
+		if ("mes enchères".equals(request.getParameter("filter")) || "mes enchères remportées".equals(request.getParameter("filter"))) {
+			ArticleManager articleManager = new ArticleManager();
+			AuctionManager auctionManager = new AuctionManager();
 
+			List<Auction> listUserConnectedAuctions = auctionManager.selectByNoUser(((User) session.getAttribute("user")).getNoUser());
+			
+			List<Article> articleListB = new ArrayList<>();
+			
+			for (Auction auction : listUserConnectedAuctions) {
+				Article articleOngoing = articleManager.selectById(auction.getArticle().getNoArticle());
+				if (!articleListB.contains(articleOngoing)) {
+					articleListB.add(articleOngoing);
+				}
+			}
+			
+			for (Article article : articleListB) {
+				System.out.println(article);
+			}
+		}
+		
 		List<Article> articleListConnectedFilter = new ArrayList<>();
 
-			for (Article article : articleList) {
-				boolean isStartDate = (article.getAuctionStartDate().equals(LocalDate.now()));
-				boolean isEndDate = (article.getAuctionEndDate().equals(LocalDate.now()));
-				boolean isBeforeStartDate = (article.getAuctionStartDate().isAfter(LocalDate.now()));
-				boolean isAfterStartDate = (article.getAuctionStartDate().isBefore(LocalDate.now()));
-				boolean isBeforeEndDate = (article.getAuctionEndDate().isAfter(LocalDate.now()));
-				boolean isAfterEndDate = (article.getAuctionEndDate().isBefore(LocalDate.now()));
-				boolean isUserConnectedArticle = article.getUser().getNoUser() == ((User)session.getAttribute("user")).getNoUser();
-				switch (request.getParameter("filter")) {
-				case "enchères ouvertes":
-					if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate) {
-						articleListConnectedFilter.add(article);
-					}
-					break;
-				case "mes ventes en cours":
-					if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate && isUserConnectedArticle) {
-						articleListConnectedFilter.add(article);
-					}
-					break;
-				case "ventes non débutées":
-					if (isBeforeStartDate && isUserConnectedArticle) {
-						articleListConnectedFilter.add(article);
-					}
-					break;
-				case "ventes terminées":
-					if (isAfterEndDate && isUserConnectedArticle) {
-						articleListConnectedFilter.add(article);
-					}
-					break;
-				default:
-					break;
+		for (Article article : articleList) {
+			boolean isStartDate = (article.getAuctionStartDate().equals(LocalDate.now()));
+			boolean isEndDate = (article.getAuctionEndDate().equals(LocalDate.now()));
+			boolean isBeforeStartDate = (article.getAuctionStartDate().isAfter(LocalDate.now()));
+			boolean isAfterStartDate = (article.getAuctionStartDate().isBefore(LocalDate.now()));
+			boolean isBeforeEndDate = (article.getAuctionEndDate().isAfter(LocalDate.now()));
+			boolean isAfterEndDate = (article.getAuctionEndDate().isBefore(LocalDate.now()));
+			boolean isUserConnectedArticle = article.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
+			switch (request.getParameter("filter")) {
+			case "enchères ouvertes":
+				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate) {
+					articleListConnectedFilter.add(article);
 				}
+				break;
+			case "mes enchères": 
+				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate) {
+					articleListConnectedFilter.add(article);
+				}
+				break;
+			case "mes ventes en cours":
+				if (isAfterStartDate || isStartDate && isBeforeEndDate || isEndDate && isUserConnectedArticle) {
+					articleListConnectedFilter.add(article);
+				}
+				break;
+			case "mes ventes non débutées":
+				if (isBeforeStartDate && isUserConnectedArticle) {
+					articleListConnectedFilter.add(article);
+				}
+				break;
+			case "mes ventes terminées":
+				if (isAfterEndDate && isUserConnectedArticle) {
+					articleListConnectedFilter.add(article);
+				}
+				break;
+			default:
+				break;
+			}
 		}
 
 		return articleListConnectedFilter;

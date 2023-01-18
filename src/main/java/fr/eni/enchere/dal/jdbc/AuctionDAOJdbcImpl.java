@@ -25,6 +25,7 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 	private static final String SQL_UPDATE = "UPDATE ENCHERES SET date_enchere=?, montant_enchere=?, no_article=?, no_utilisateur=? WHERE no_enchere=?";
 	private static final String SQL_DELETE = "DELETE FROM ENCHERES WHERE no_enchere=?";
 	private static final String SQL_SELECT_BY_NO_ARTICLE = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM ENCHERES WHERE no_article=?";
+	private static final String SQL_SELECT_BY_USER = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM ENCHERES WHERE no_utilisateur=?";
 
 	/**
 	 * Constructeur
@@ -349,6 +350,57 @@ public class AuctionDAOJdbcImpl implements AuctionDAO {
 		}
 		// Return la liste de tous les utilisateurs
 		return listAuctions;
+	}
+
+	@Override
+	public List<Auction> selectByNoUser(Integer noUser) throws BusinessException {
+		// Vérification si le paramêtre est valide
+				if (noUser == null || noUser == 0) {
+					BusinessException businessException = new BusinessException();
+					businessException.addError(CodesResultatDAL.INSERT_ID_AUCTION_NULL);
+					throw businessException;
+				}
+
+				// Déclaration d'une liste d'utilisateurs
+				List<Auction> listAuctions = new ArrayList<>();
+				// Déclaration d'un Prepared Statement et initialisation à null
+				PreparedStatement pstmt = null;
+				// Récupération d'une connection à la BDD
+				try (Connection cnx = ConnectionProvider.getConnection()) {
+					// Passage de la requête au Prepared Statement
+					pstmt = cnx.prepareStatement(SQL_SELECT_BY_USER);
+					pstmt.setInt(1, noUser);
+					// Récupération des informations dans un ResultSet
+					ResultSet rs = pstmt.executeQuery();
+					// Boucler tant qu'il y a une ligne suivante
+					while (rs.next()) {
+						// Déclaration et instanciation d'une Auction
+						Auction auctionOngoing = new Auction();
+						// Sécurité
+						if (rs.getInt("no_enchere") != auctionOngoing.getNoAuction()) {
+							// Générer une Auction à partir des infos de la BDD
+							auctionOngoing = auctionBuilder(rs);
+							// Ajouter cette Auction à la liste de Auction
+							listAuctions.add(auctionOngoing);
+						}
+					}
+					// Fermer le ResultSet
+					rs.close();
+					// Fermer le Statement
+					pstmt.close();
+					// Fermer la connection
+					cnx.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					// Déclarer une BusinessException
+					BusinessException businessException = new BusinessException();
+					// Si il y a une erreur, ajouter l'erreur à la BusinessException
+					businessException.addError(CodesResultatDAL.SELECT_LIST_AUCTION_FAILED);
+					// Envoyer l'exception
+					throw businessException;
+				}
+				// Return la liste de tous les utilisateurs
+				return listAuctions;
 	}
 
 }

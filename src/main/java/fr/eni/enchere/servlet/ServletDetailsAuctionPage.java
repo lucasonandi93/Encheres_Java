@@ -9,12 +9,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.AuctionManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Auction;
+import fr.eni.enchere.bo.User;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
@@ -59,6 +61,17 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 				request.setAttribute("pseudoBestAuction", articleOngoing.getUser().getPseudo());
 			}
 
+			boolean isStartDate = (articleOngoing.getAuctionStartDate().equals(LocalDate.now()));
+			boolean isEndDate = (articleOngoing.getAuctionEndDate().equals(LocalDate.now()));
+			boolean isAfterStartDate = (articleOngoing.getAuctionStartDate().isBefore(LocalDate.now()));
+			boolean isBeforeEndDate = (articleOngoing.getAuctionEndDate().isAfter(LocalDate.now()));
+			
+			boolean canMakeProposal = (isStartDate || isAfterStartDate && isBeforeEndDate || isEndDate);
+			
+			System.out.println(canMakeProposal);
+			
+			request.setAttribute("canMakeProposal", canMakeProposal);
+			
 		} catch (NumberFormatException | BusinessException e) {
 			e.printStackTrace();
 		}
