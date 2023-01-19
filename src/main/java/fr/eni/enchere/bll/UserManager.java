@@ -5,12 +5,10 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
-import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.dal.jdbc.DAOFactory;
 import fr.eni.enchere.dal.jdbc.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
-import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Classe en charge d'appeler les méthodes d'UserDAO

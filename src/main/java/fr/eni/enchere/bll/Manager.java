@@ -5,9 +5,7 @@ package fr.eni.enchere.bll;
 
 import java.util.List;
 
-import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.exceptions.BusinessException;
-import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * Interface en charge de transmettre les méthodes CRUD aux différents managers
