@@ -1,0 +1,172 @@
+/* /* A FINIR */
+
+/* Mise en forme générale */
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+/* Mise en forme de l'en-tête */
+header {
+    background-color: teal;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+h1{
+	color : white;
+}
+
+/* Modifie la taille de la police pour les éléments de navigation */
+nav {
+    font-size: 14px;
+    padding: 20px;
+    background-color: #E0E0E0;
+}
+
+label {
+	font-weight: bold;
+}
+
+/* Modifie la taille des images */
+img {
+    width: 30%;
+}
+
+/* Modifie la taille des champs de formulaire */
+input[type="search"], select {
+    width: 20%;
+    text-align: left;
+    
+}
+
+/* Modifie la taille des boutons */
+input[type="submit"], button {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin : 5%;
+}
+
+/* Mise en forme des éléments de la liste */
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+div {
+    margin: 20px;
+}
+
+nav {
+    background-color: #E0E0E0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+nav h4 {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+form input[type="search"] {
+    flex-basis: 100%;
+    margin-right: 20%;
+    margin-left: 20%;
+    padding: 10px;
+    width: 50%;
+}
+
+form select{
+    padding: 10px;
+    margin: 5% 5% 5% 30%;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+li div {
+    flex-basis: 30%;
+    margin-right: 20px;
+}
+
+li img {
+    max-width: 100%;
+}
+
+li ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li ul li {
+    margin-bottom: 10px;
+}
+
+/* /* Responsive pour les éléments de la navigation */
+@media only screen and (min-width: 600px) {
+/* Modifie la taille de la police pour les éléments de navigation */
+	nav {
+	font-size: 16px;
+	} */
+
+/* Modifie la taille des champs de formulaire */
+	input[type="search"], select {
+    	width: 50%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    header h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    header a {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+	h1, h3, h4 {
+	    font-size: 18px;
+	    font-weight: bold;
+    }
+
+    form {
+        flex-wrap: wrap;
+    }
+
+    form input[type="search"], form select, form button {
+        width: 100%;
+        margin: 5% 5% 5% 30%;
+    }
+
+    li {
+        flex-wrap: wrap;
+    }
+
+    li div {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+} 
+ 
