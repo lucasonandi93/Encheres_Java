@@ -6,8 +6,8 @@ package fr.eni.enchere.bll;
 import java.util.List;
 
 import fr.eni.enchere.bo.User;
-import fr.eni.enchere.dal.jdbc.DAOFactory;
-import fr.eni.enchere.dal.jdbc.UserDAO;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**

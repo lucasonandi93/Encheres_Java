@@ -11,6 +11,10 @@ import java.util.List;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.bo.Withdrawal;
+import fr.eni.enchere.dal.ArticleDAO;
+import fr.eni.enchere.dal.CodesResultatDAL;
+import fr.eni.enchere.dal.ConnectionProvider;
+import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**

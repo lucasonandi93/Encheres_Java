@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Auction;
+import fr.eni.enchere.dal.ArticleDAO;
+import fr.eni.enchere.dal.AuctionDAO;
+import fr.eni.enchere.dal.CodesResultatDAL;
+import fr.eni.enchere.dal.ConnectionProvider;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**

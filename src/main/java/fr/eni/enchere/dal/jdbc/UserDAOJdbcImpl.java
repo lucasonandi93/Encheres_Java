@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.User;
+import fr.eni.enchere.dal.CodesResultatDAL;
+import fr.eni.enchere.dal.ConnectionProvider;
+import fr.eni.enchere.dal.UserDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**

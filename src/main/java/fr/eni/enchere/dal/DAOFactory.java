@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.enchere.dal.jdbc;
+package fr.eni.enchere.dal;
 
 import java.lang.reflect.InvocationTargetException;
 

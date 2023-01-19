@@ -1,4 +1,4 @@
-package fr.eni.enchere.dal.jdbc;
+package fr.eni.enchere.dal;
 
 // normalement, on n'écrit pas les erreurs dans la console mais dans un fichier log
 

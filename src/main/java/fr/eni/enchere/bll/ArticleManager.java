@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
-import fr.eni.enchere.dal.jdbc.ArticleDAO;
-import fr.eni.enchere.dal.jdbc.DAOFactory;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.ArticleDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 

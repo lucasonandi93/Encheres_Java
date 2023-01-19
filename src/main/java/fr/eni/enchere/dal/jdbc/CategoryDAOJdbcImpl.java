@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Category;
+import fr.eni.enchere.dal.CategoryDAO;
+import fr.eni.enchere.dal.CodesResultatDAL;
+import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**

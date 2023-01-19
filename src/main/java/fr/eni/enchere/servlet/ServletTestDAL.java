@@ -14,11 +14,11 @@ import fr.eni.enchere.bo.Auction;
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.bo.User;
 import fr.eni.enchere.bo.Withdrawal;
-import fr.eni.enchere.dal.jdbc.ArticleDAO;
-import fr.eni.enchere.dal.jdbc.AuctionDAO;
-import fr.eni.enchere.dal.jdbc.CategoryDAO;
-import fr.eni.enchere.dal.jdbc.DAOFactory;
-import fr.eni.enchere.dal.jdbc.UserDAO;
+import fr.eni.enchere.dal.AuctionDAO;
+import fr.eni.enchere.dal.CategoryDAO;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.UserDAO;
+import fr.eni.enchere.dal.ArticleDAO;
 import fr.eni.enchere.exceptions.BusinessException;
 
 /**
