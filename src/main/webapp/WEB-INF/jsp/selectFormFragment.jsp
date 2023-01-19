@@ -1,6 +1,6 @@
 
   <div>
-  	<legend>Achats</legend>
+  	<legend><strong>Achats</strong></legend>
   	<div>
   		<input type="radio" name="filter" value="enchères ouvertes" id="filter">
   		<label for="filter">enchères ouvertes</label>
@@ -11,7 +11,7 @@
   	</div>
   </div>
   <div>
-  	 <legend>Mes Ventes</legend>
+  	 <legend><strong>Mes Ventes</strong></legend>
   	<div>
   		<input type="radio" name="filter" value="mes ventes en cours" id="filter">
   		<label for="filter" >mes ventes en cours</label>
