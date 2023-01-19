@@ -8,6 +8,7 @@ body {
 	padding: 0;
 	background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../medias/background.jpg");
 	background-size: cover;
+	backdrop-filter: blur(3px);
 }
 
 /* Mise en forme de l'en-tête */
