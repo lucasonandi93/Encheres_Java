@@ -13,13 +13,11 @@ import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * Classe en charge de
- * 
+ * Classe en charge d'appeler les méthodes d'ArticleDAO
  * @author ldupont2022
  * @date 9 janv. 2023 - 15:59:46
  * @version ENI_Encheres - v0.1
  */
-
 public class ArticleManager implements Manager<Article, Integer> {
 
 	private ArticleDAO articleDAO;
@@ -34,7 +32,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet d'ajouter un Article à la BDD
-	 * 
 	 * @param data
 	 * @throws BusinessException
 	 */
@@ -56,11 +53,9 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet de supprimer un Article de la BDD
-	 * 
 	 * @param data
 	 * @throws BusinessException
 	 */
-	@Override
 	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
 		// Appelle la méthode delete de ArticleDAO et lui passer un ID en paramètre
 		this.articleDAO.delete(id);
@@ -68,11 +63,9 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet de modifier un Article de la BDD
-	 * 
 	 * @param data
 	 * @throws BusinessException
 	 */
-	@Override
 	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
 		// Déclarer et instancier une BusinessException
 		BusinessException businessException = new BusinessException();
@@ -90,7 +83,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet de sélectionner tous les lignes de la table Article
-	 * 
 	 * @return
 	 * @throws BusinessException
 	 */
@@ -102,7 +94,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet de sélectionner les article d'une categorie
-	 * 
 	 * @param noCategory
 	 * @return
 	 * @throws BusinessException
@@ -115,7 +106,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 	/**
 	 * Méthode qui permet de sélectionner les article dont le nom comporte une
 	 * chaine de caractère spécifique
-	 * 
 	 * @param contents
 	 * @return
 	 * @throws BusinessException
@@ -128,7 +118,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 	/**
 	 * Méthode qui permet de sélectionner les article d'une categorie dont le nom
 	 * comporte une chaine de caractère spécifique
-	 * 
 	 * @param noCategory
 	 * @param contents
 	 * @return
@@ -141,7 +130,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet de sélectionner un Article avec son ID
-	 * 
 	 * @param id
 	 * @return
 	 * @throws BusinessException
@@ -154,7 +142,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 
 	/**
 	 * Méthode qui permet vérifier qu'un Article peut être inséré ou modifié
-	 * 
 	 * @param data
 	 * @throws BusinessException
 	 */

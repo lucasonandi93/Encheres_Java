@@ -10,7 +10,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
-* Classe en charge de 
+* Interface en charge de transmettre les méthodes CRUD aux différents managers
 * @author ldupont2022
 * @date 9 janv. 2023 - 15:46:58
 * @version ENI_Encheres - v0.1
@@ -62,20 +62,5 @@ public interface Manager <T, U>{
 	 */
 	public void validateData(T data, BusinessException businessException) throws BusinessException;
 
-	/**
-	 * Méthode qui permet de modifier un Article de la BDD
-	 * 
-	 * @param data
-	 * @throws BusinessException
-	 */
-	void updateData(Article data, HttpServletRequest request) throws BusinessException;
-
-	/**
-	 * Méthode qui permet de supprimer un Article de la BDD
-	 * 
-	 * @param data
-	 * @throws BusinessException
-	 */
-	void deleteData(Integer id, HttpServletRequest request) throws BusinessException;
 	
 }
