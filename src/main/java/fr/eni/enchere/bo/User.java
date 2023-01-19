@@ -97,6 +97,18 @@ public class User implements Serializable {
 		this.setAdministrator(administrator);
 	
     }
+    /**
+     * Constructeur
+     * @param noUser
+     * @param pseudo
+     * @param name
+     * @param firstName
+     * @param email
+     * @param street
+     * @param cp
+     * @param city
+     * @param password
+     */
     public User(int noUser, String pseudo, String name, String firstName, String email, String street, String cp, String city, String password) {
 		this(pseudo, name, firstName, email, street, cp, city, password);
 		this.setNoUser(noUser);
@@ -397,26 +409,6 @@ public class User implements Serializable {
 		builder.append(getCredit());
 		builder.append(", isAdministrator()=");
 		builder.append(isAdministrator());
-		builder.append("\n");
-		builder.append("ArticleList=");
-		
-		if (articleList != null) {
-			for (Article article : articleList) {
-				builder.append("\n");
-				builder.append(article);
-			}
-		}
-		
-		builder.append("\n");
-		builder.append("AuctionList=");
-
-		if (auctionList != null) {
-			for (Auction auction : auctionList) {
-				builder.append("\n");
-				builder.append(auction);
-			}
-		}
-		
 		builder.append("]");
 		return builder.toString();
 	}

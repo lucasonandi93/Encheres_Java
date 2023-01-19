@@ -37,16 +37,15 @@ public class Article implements Serializable {
 		this.setSellingPrice(0);
 		this.listAuction = new ArrayList<>();
 	}
-
+	
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
 	 * @param auctionEndDate
-	 * @param noUser
-	 * @param noCategory
+	 * @param user
+	 * @param category
 	 */
 	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,
 			User user, Category category) {
@@ -61,13 +60,12 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
 	 * @param auctionEndDate
-	 * @param noUser
-	 * @param noCategory
+	 * @param user
+	 * @param category
 	 * @param withdrawal
 	 */
 	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,
@@ -78,14 +76,13 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
 	 * @param auctionEndDate
 	 * @param originalPrice
-	 * @param noUser
-	 * @param noCategory
+	 * @param user
+	 * @param category
 	 */
 	public Article(String nameArticle, String description, LocalDate auctionStartDate, LocalDate auctionEndDate,
 			int originalPrice, User user, Category category) {
@@ -95,7 +92,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
@@ -113,7 +109,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
@@ -131,7 +126,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param nameArticle
 	 * @param description
 	 * @param auctionStartDate
@@ -150,7 +144,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param noArticle
 	 * @param nameArticle
 	 * @param description
@@ -168,7 +161,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param noArticle
 	 * @param nameArticle
 	 * @param description
@@ -187,7 +179,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param noArticle
 	 * @param nameArticle
 	 * @param description
@@ -206,7 +197,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Constructeur
-	 * 
 	 * @param noArticle
 	 * @param nameArticle
 	 * @param description
@@ -228,7 +218,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour noArticle
-	 * 
 	 * @return the noArticle
 	 */
 	public int getNoArticle() {
@@ -237,7 +226,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour noArticle
-	 * 
 	 * @param noArticle the noArticle to set
 	 */
 	public void setNoArticle(int noArticle) {
@@ -246,7 +234,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour nameArticle
-	 * 
 	 * @return the nameArticle
 	 */
 	public String getNameArticle() {
@@ -255,7 +242,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour nameArticle
-	 * 
 	 * @param nameArticle the nameArticle to set
 	 */
 	public void setNameArticle(String nameArticle) {
@@ -264,7 +250,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour description
-	 * 
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -273,7 +258,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour user.
-	 * 
 	 * @return the user
 	 */
 	public User getUser() {
@@ -282,7 +266,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour user
-	 * 
 	 * @param user the user to set
 	 */
 	public void setUser(User user) {
@@ -291,7 +274,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour description
-	 * 
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -300,7 +282,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour auctionStartDate
-	 * 
 	 * @return the auctionStartDate
 	 */
 	public LocalDate getAuctionStartDate() {
@@ -309,7 +290,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour auctionStartDate
-	 * 
 	 * @param auctionStartDate the auctionStartDate to set
 	 */
 	public void setAuctionStartDate(LocalDate auctionStartDate) {
@@ -318,7 +298,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour auctionEndDate
-	 * 
 	 * @return the auctionEndDate
 	 */
 	public LocalDate getAuctionEndDate() {
@@ -327,7 +306,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour auctionEndDate
-	 * 
 	 * @param auctionEndDate the auctionEndDate to set
 	 */
 	public void setAuctionEndDate(LocalDate auctionEndDate) {
@@ -336,7 +314,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour originalPrice
-	 * 
 	 * @return the originalPrice
 	 */
 	public int getOriginalPrice() {
@@ -345,7 +322,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour originalPrice
-	 * 
 	 * @param originalPrice the originalPrice to set
 	 */
 	public void setOriginalPrice(int originalPrice) {
@@ -354,7 +330,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour sellingPrice
-	 * 
 	 * @return the sellingPrice
 	 */
 	public int getSellingPrice() {
@@ -363,7 +338,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour sellingPrice
-	 * 
 	 * @param sellingPrice the sellingPrice to set
 	 */
 	public void setSellingPrice(int sellingPrice) {
@@ -372,7 +346,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour saleStatus
-	 * 
 	 * @return the saleStatus
 	 */
 	public String getSaleStatus() {
@@ -381,7 +354,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour saleStatus
-	 * 
 	 * @param saleStatus the saleStatus to set
 	 */
 	public void setSaleStatus(String saleStatus) {
@@ -390,7 +362,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour category
-	 * 
 	 * @return the category
 	 */
 	public Category getCategory() {
@@ -399,7 +370,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour category
-	 * 
 	 * @param category the category to set
 	 */
 	public void setCategory(Category category) {
@@ -408,7 +378,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour withdrawal
-	 * 
 	 * @return the withdrawal
 	 */
 	public Withdrawal getWithdrawal() {
@@ -417,7 +386,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour withdrawal
-	 * 
 	 * @param withdrawal the withdrawal to set
 	 */
 	public void setWithdrawal(Withdrawal withdrawal) {
@@ -426,7 +394,6 @@ public class Article implements Serializable {
 
 	/**
 	 * Getter pour listAuction
-	 * 
 	 * @return the listAuction
 	 */
 	public List<Auction> getListAuction() {
@@ -435,17 +402,24 @@ public class Article implements Serializable {
 
 	/**
 	 * Setter pour listAuction
-	 * 
 	 * @param listAuction the listAuction to set
 	 */
 	public void setListAuction(List<Auction> listAuction) {
 		this.listAuction = listAuction;
 	}
 
+	/**
+	 * Méthode qui permet
+	 * @return the imageName
+	 */
 	public String getImageName() {
 		return imageName;
 	}
 
+	/**
+	 * Méthode qui permet
+	 * @param imageName
+	 */
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
@@ -479,14 +453,6 @@ public class Article implements Serializable {
 		builder.append("\n");
 		builder.append("Withdrawal=");
 		builder.append(getWithdrawal());
-		builder.append("\n");
-		builder.append("ListAuction=");
-
-		for (Auction auction : this.getListAuction()) {
-			builder.append("\n");
-			builder.append(auction);
-		}
-
 		builder.append("]");
 		return builder.toString();
 	}
