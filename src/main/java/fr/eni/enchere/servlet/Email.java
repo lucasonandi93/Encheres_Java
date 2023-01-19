@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Email {
 	public static boolean send(String from, String pwd, String to, String sub, String msg) {
-		// Propri�t�s
+		// Propriétés
 		Properties prop = new Properties();
 		prop.put("mail.smtp.ssl.protocols","TLSv1.2");
 		prop.put("mail.smtp.host", "smtp.gmail.com");

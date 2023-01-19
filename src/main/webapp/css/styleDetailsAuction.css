@@ -26,6 +26,20 @@ form {
     align-items: center;
 }
 
+h2{
+	text-align: center;
+}
+
+#profil{
+    width: 50%;
+    margin: 2% 20%;
+    padding-left: 60px;
+    border-style: groove;
+    border-width: 4px;
+    border-radius: 5px;
+    background-color: white;
+}
+
 .form-group {
     display: flex;
     flex-wrap: wrap;

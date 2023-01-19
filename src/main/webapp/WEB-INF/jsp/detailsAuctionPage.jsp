@@ -18,7 +18,8 @@
 	</header>
 
 	<c:if test="${!isAfterEndDate}">
-		<h3>Détail Vente</h3>
+		<h2>Détail Vente</h2>
+		
 	</c:if>
 	<c:if test="${isAfterEndDate && isUserConnectedArticle}">
 		<h3>${pseudoBestAuction + " à remporté(e) l'enchère"}</h3>
@@ -26,7 +27,7 @@
 	<c:if test="${isAfterEndDate && !isUserConnectedArticle}">
 		<h3>Vous avez remporté la vente</h3>
 	</c:if>
-
+<div id="profil">
 	<p>${articleOngoing.getNameArticle()}</p>
 
 	<p>Description : ${articleOngoing.getDescription()}</p>
@@ -47,11 +48,13 @@
 	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
 <c:if test="${!isUserConnectedArticle && sessionScope.user.getNoUser() != null && canMakeProposal}">
 		<hr>
+		</div>
 		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
 			<input type="number" min="0" step="10" value="0" name="auction">
 			<input type="submit" name="proposal" value="Enchérir">
 		</form>
+		
 </c:if>
 <c:if test="${isUserConnectedArticle && !isAfterEndDate}">
 	<hr>

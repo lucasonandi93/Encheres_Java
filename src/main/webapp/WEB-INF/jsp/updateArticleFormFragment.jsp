@@ -2,6 +2,7 @@
 	<!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 
 			value="Upload Files" multiple /> -->
 	<fieldset>
+	<div id="background">
 		<form action="<%=request.getContextPath()%>/ServletNewArticle" method="post" enctype="multipart/form-data">
 		<input name="articleID" value="${articleOngoing.noArticle}" hidden>
 			<div class="form-group">
@@ -55,7 +56,7 @@
 					<br> Ville : <input type="text" name="withdrawalCity"
 						value="${sessionScope.user.getCity() }" size="25" maxlength="30">
 				</fieldset>
-
+</div>
 			</div>
 			<div>
 				<br> 
