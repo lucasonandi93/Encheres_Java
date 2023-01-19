@@ -179,17 +179,4 @@ public class UserManager implements Manager<User, Integer>{
 	public User getUserByEmail(String email) {
 		return userDAO.selectByEmail(email);
 	}
-
-	@Override
-	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -151,16 +151,4 @@ public class AuctionManager implements Manager<Auction, Integer>{
 		//Appelle la méthode selectByNoArticle de AuctionDAO
 		return this.auctionDAO.selectByNoUser(noUser);
 	}
-
-	@Override
-	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
 }

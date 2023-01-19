@@ -60,7 +60,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 	 * @param data
 	 * @throws BusinessException
 	 */
-	@Override
 	public void deleteData(Integer id, HttpServletRequest request) throws BusinessException {
 		// Appelle la méthode delete de ArticleDAO et lui passer un ID en paramètre
 		this.articleDAO.delete(id);
@@ -72,7 +71,6 @@ public class ArticleManager implements Manager<Article, Integer> {
 	 * @param data
 	 * @throws BusinessException
 	 */
-	@Override
 	public void updateData(Article data, HttpServletRequest request) throws BusinessException {
 		// Déclarer et instancier une BusinessException
 		BusinessException businessException = new BusinessException();

@@ -62,20 +62,5 @@ public interface Manager <T, U>{
 	 */
 	public void validateData(T data, BusinessException businessException) throws BusinessException;
 
-	/**
-	 * Méthode qui permet de modifier un Article de la BDD
-	 * 
-	 * @param data
-	 * @throws BusinessException
-	 */
-	void updateData(Article data, HttpServletRequest request) throws BusinessException;
-
-	/**
-	 * Méthode qui permet de supprimer un Article de la BDD
-	 * 
-	 * @param data
-	 * @throws BusinessException
-	 */
-	void deleteData(Integer id, HttpServletRequest request) throws BusinessException;
 	
 }
