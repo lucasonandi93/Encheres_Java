@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+h1 {
+	width: 100%;
+	text-align: center;
+}
+
+a {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+img{
+	width : 100px;
+	margin:auto;
+}
+
+@media only screen and (max-width: 600px) {
+	
+	h1 {
+		width: 100%;
+		text-align: center;
+	}
+	a {
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+	}
+}

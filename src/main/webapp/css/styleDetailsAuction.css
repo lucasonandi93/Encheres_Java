@@ -48,7 +48,7 @@ input[type="text"], input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: teal;
     color: white;
     padding: 0.5em 1em;
     border-radius: 5px;
@@ -58,7 +58,7 @@ input[type="submit"] {
 }
 
 .btn-modifier {
-	background-color: #4CAF50;
+	background-color:teal;
     color: white;
     padding: 0.5em 1em;
     border-radius: 5px;
