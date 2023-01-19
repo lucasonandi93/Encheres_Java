@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="<%=request.getContextPath()%>/css/styleProfil.css"
-	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/styleProfilPage.css"
+	type="text/css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profil</title>
 </head>
@@ -19,21 +19,21 @@
 	<h2>Mon profil</h2>
 	<div id="profil">	
 		<br>
-		<p>Pseudo : <span>${userProfil.getPseudo()}</span></p>
+		<p><strong>Pseudo : </strong><span>${userProfil.getPseudo()}</span></p>
 		<br>
-		<p>Nom : <span>${userProfil.getName()}</span></p>
+		<p><strong>Nom : </strong><span>${userProfil.getName()}</span></p>
 		<br>
-		<p>Prénom : <span>${userProfil.getFirstName()}</span></p>
+		<p><strong>Prénom : </strong><span>${userProfil.getFirstName()}</span></p>
 		<br>
-		<p>Email : <span>${userProfil.getEmail()}</span></p>
+		<p><strong>Email : </strong><span>${userProfil.getEmail()}</span></p>
 		<br>
-		<p>Téléphone : <span>${userProfil.getPhone()}</span></p>
+		<p><strong>Téléphone : </strong><span>${userProfil.getPhone()}</span></p>
 		<br>
-		<p>Rue : <span>${userProfil.getStreet()}</span></p>
+		<p><strong>Rue : </strong><span>${userProfil.getStreet()}</span></p>
 		<br>
-		<p>Code postale : <span>${userProfil.getCp()}</span></p>
+		<p><strong>Code postale : </strong><span>${userProfil.getCp()}</span></p>
 		<br>
-		<p>Ville : <span>${userProfil.getCity()}</span></p>
+		<p><strong>Ville : </strong><span>${userProfil.getCity()}</span></p>
 		<br>
 	</div>
 
