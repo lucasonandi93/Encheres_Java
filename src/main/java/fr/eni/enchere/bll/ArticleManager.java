@@ -13,7 +13,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * Classe en charge d'appeler les méthodes de ArticleDAO
+ * Classe en charge d'appeler les méthodes d'ArticleDAO
  * @author ldupont2022
  * @date 9 janv. 2023 - 15:59:46
  * @version ENI_Encheres - v0.1
