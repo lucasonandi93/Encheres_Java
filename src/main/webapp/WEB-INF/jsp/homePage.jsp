@@ -50,7 +50,8 @@
 					<option value="${category.getWording()}">${category.getWording()}</option>
 				</c:forEach>
 			</select>
-
+			<br>
+			<br>
 			<c:if test="${ user !=null}">
 				<%@include file="selectFormFragment.jsp"%>
 			</c:if>

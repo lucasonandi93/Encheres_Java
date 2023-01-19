@@ -22,7 +22,7 @@ header {
 	background-color: var(--primary-color);
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 1em;
 }
@@ -59,6 +59,7 @@ select {
 
 input[type="text"], input[type="number"], input[type="date"], input[type="file"] {
     width: 80%;
+    color : teal;
     padding: 0.5em;
     margin: 0.5em;
     border-radius: 5px;
@@ -74,4 +75,5 @@ input[type="text"], input[type="number"], input[type="date"], input[type="file"]
         width: 100%;
         text-align: center;
     }
+   
 }
