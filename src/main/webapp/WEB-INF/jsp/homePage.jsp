@@ -34,6 +34,7 @@
 	<div>
 		<h3>Liste des enchères</h3>
 	</div>
+	
 	<nav>
 		<h4>Filtres :</h4>
 		<br>
@@ -59,11 +60,12 @@
 			<button type="submit">Rechercher</button>
 		</form>
 	</nav>
+	
 	<ul>
 		<c:forEach var="article" items="${articleList}">
-			<div>
+			<div class="container">
 				<li>
-					<div>
+					<div class="auction-item">
 						<img src="<%=request.getContextPath()%>${article.getImageName()}" alt="Image de l'article ${article.imageName}" id="photoArticle">
 						<ul>
 							<li><a

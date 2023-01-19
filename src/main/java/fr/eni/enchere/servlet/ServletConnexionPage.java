@@ -59,7 +59,6 @@ public class ServletConnexionPage extends HttpServlet {
 		        }
 		
 		request.getRequestDispatcher("/WEB-INF/jsp/connexionPage.jsp").forward(request, response);
-	
 	}
 
 	/**
@@ -69,5 +68,4 @@ public class ServletConnexionPage extends HttpServlet {
 		
 		doGet(request, response);
 	}
-
 }
