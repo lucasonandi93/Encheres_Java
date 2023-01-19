@@ -19,8 +19,7 @@
 	<header>
 		<%@include file="headerFragment.jsp"%>
 	</header>
-
-	<c:if test="${articleOngoing != null }">
+		<c:if test="${articleOngoing != null }">
 		<%@include file="updateArticleFormFragment.jsp"%>
 	</c:if>
 	

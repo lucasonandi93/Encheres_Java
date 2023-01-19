@@ -18,8 +18,8 @@
 	<br>
 	<h2>Mon profil</h2>
 	<br>
-	<br>
-	<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
+	<div class="white">
+		<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
 		method="post">
 
 		<div>
@@ -75,6 +75,7 @@
 			<input type="submit" value="Supprimer mon compte" name="delete">
 		</c:if>
 	</form>
+	</div>
 	<script>
         function onlyNumberKey(evt) {
               

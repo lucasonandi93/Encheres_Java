@@ -26,6 +26,7 @@ header a{
 	text-decoration:none;
 }
 
+
 a{
 	color: black;
 	text-decoration:none;
@@ -39,6 +40,7 @@ a:hover{
 .listeArticle{
 	
 	display: flex;
+	align-content : flex-start;
 	width: 100%;
 }
 
@@ -60,11 +62,7 @@ h1{
 }
 
 /* Modifie la taille de la police pour les éléments de navigation */
-nav {
-    font-size: 14px;
-    padding: 20px;
-    background-color: #E0E0E0;
-}
+
 
 label {
 	font-weight: bold;
@@ -101,7 +99,8 @@ div {
 }
 
 nav {
-    background-color: #E0E0E0;
+	font-size: 14px;
+    background-color:#f5f5f5;
     padding: 20px;
     margin-bottom: 20px;
 }

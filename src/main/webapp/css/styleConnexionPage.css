@@ -23,13 +23,18 @@ header h1{
 
 main {
 	margin: 2em;
+	background-color:  #f5f5f5;
+	border-radius: 20px;
 }
 
 form {
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
+}
+
+.registration{
+	height: 100px;
 }
 
 .form-control {
@@ -67,7 +72,6 @@ input[type="submit"]:hover {
 .forgotPassword {
   text-decoration: underline; /* souligne le texte des liens */
   color: blue; /* définit la couleur du texte des liens */
-  margin: 2% 30%;
   white-space: nowrap;
   
 }

@@ -52,6 +52,13 @@ label {
     font-weight: bold;
 }
 
+.flex{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 select {
     width: 80%;
     padding: 0.5em;
@@ -97,6 +104,10 @@ input[type="text"], input[type="number"], input[type="date"], input[type="file"]
     border: 1px solid #ccc;
 }
 
+fieldset {
+	background-color:  #f5f5f5;
+	width: 400px;
+}
 /* Media Queries */
 @media screen and (max-width: 600px) {
     form {

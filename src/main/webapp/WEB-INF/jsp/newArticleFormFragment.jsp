@@ -1,4 +1,6 @@
-<h3>Nouvelle vente</h3>
+<div class="flex">
+<h2>Nouvelle vente</h2>
+</div>
 <!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 
 			value="Upload Files" multiple /> -->
 		<!--
@@ -11,8 +13,8 @@
 			<input type="file" id="photoArticle" name="photoArticle" accept="image/png, image/jpeg" required>
 			<input type="submit" value="Ajouter" name="addArticle">
 		</form>-->
-		  
-<fieldset>
+<div class="flex">
+	<fieldset>
 	<form action="<%=request.getContextPath()%>/ServletNewArticle" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="usr">Article : </label> <input type="text"
@@ -65,8 +67,12 @@
 		</div>
 		<div>
 			<br> <input type="submit" value="Ajouter" name="addArticle">
-			<input type="submit" value="Annuler" name="cencel">
+			<a
+				href="<%=request.getContextPath() %>/ServletListOfAuctionsPage">
+					<input type="button" value="Annuler">
+			</a>
 		</div>
 	</form>
 	
 </fieldset>
+</div>

@@ -19,6 +19,12 @@ header {
     padding: 20px;
 }
 
+.white{
+	background-color:  #f5f5f5;
+	border-radius: 20px;
+	padding-top: 10px;
+}
+
 h1 {
 	/* width: 100%; */
 	text-align: center;

@@ -32,7 +32,7 @@
 		</c:choose>
 	</header>
 	<div>
-		<h3>Liste des enchères</h3>
+		<h2>Liste des enchères</h2>
 	</div>
 
 	<nav>
@@ -41,14 +41,14 @@
 		<form method="post"
 			action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<input type="search" placeholder="Le nom de l'article contient"
-				aria-label="Search" name="content" value=""> <br> <br>
-			<br> <br> <label for="categories">Catégorie : </label><select
-				name="categories" id="categories">
+				aria-label="Search" name="content" value=""> <br> <label
+				for="categories">Catégorie : </label><select name="categories"
+				id="categories">
 				<option value="Toutes">Toutes</option>
 				<c:forEach var="category" items="${categoryList}">
 					<option value="${category.getWording()}">${category.getWording()}</option>
 				</c:forEach>
-			</select> <br> <br>
+			</select> <br>
 			<c:if test="${ user !=null}">
 				<%@include file="selectFormFragment.jsp"%>
 			</c:if>
@@ -73,7 +73,7 @@
 						<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
 						<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 						<!-- ${article.getUser().getPseudo()} -->
-						<li>Vendeur :
+						<li>Vendeur : &ensp;
 							<h4>
 								<a
 									href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getNoUser()}">${article.getUser().getPseudo()}</a>

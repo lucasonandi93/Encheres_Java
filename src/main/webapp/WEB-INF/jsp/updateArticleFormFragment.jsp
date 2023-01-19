@@ -1,4 +1,4 @@
-<h3>Modifier Article</h3>
+<h2>Modifier Article</h2>
 <!-- <input type="file" onchange="submitForm()" class="multiple" name="files" id="fileUploadBox" 
 			value="Upload Files" multiple /> -->
 <fieldset>

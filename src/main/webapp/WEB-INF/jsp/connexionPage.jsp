@@ -42,12 +42,13 @@
 					checked> <label for="connexion">Se souvenir de moi</label>
 				<input type="submit" name="connexion" value="Connexion"></input>
 			</div>
+			<br>
+			<a href="<%=request.getContextPath()%>/ServletForgetPassword"
+			class="forgotPassword">Mot de passe oublié</a> <br>
 		</form>
 		
-		<a href="<%=request.getContextPath()%>/ServletForgetPassword"
-			class="forgotPassword">Mot de passe oublié</a> <br>
 			
-		<form action="<%=request.getContextPath()%>/ServletRegistrationPage">
+		<form action="<%=request.getContextPath()%>/ServletRegistrationPage" class="registration">
 			<input type="submit" value="Créer un compte">
 		</form>
 		
