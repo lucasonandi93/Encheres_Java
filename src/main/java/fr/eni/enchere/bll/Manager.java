@@ -10,7 +10,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
-* Classe en charge de 
+* Interface en charge de transmettre les méthodes CRUD aux différents managers
 * @author ldupont2022
 * @date 9 janv. 2023 - 15:46:58
 * @version ENI_Encheres - v0.1
