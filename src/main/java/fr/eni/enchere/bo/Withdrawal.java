@@ -3,31 +3,36 @@ package fr.eni.enchere.bo;
 import java.io.Serializable;
 
 /**
-* POJO Withdrawal
-* @author ldupont2022
-* @date 10 janv. 2023 - 10:49:33
-* @version ENI_Encheres - v0.1
-*/
-public class Withdrawal implements Serializable{
+ * POJO Withdrawal
+ * 
+ * @author ldupont2022
+ * @date 10 janv. 2023 - 10:49:33
+ * @version ENI_Encheres - v0.1
+ */
+
+public class Withdrawal implements Serializable {
 
 	private static final long serialVersionUID = 2981037157673879720L;
 	private int noArticle;
 	private String street;
 	private String cp;
 	private String city;
-	 
-	 /**
+
+	/**
 	 * Constructeur
 	 */
-	public Withdrawal(){}
-	 
-	 /**
+
+	public Withdrawal() {
+	}
+
+	/**
 	 * Constructeur
 	 * @param noArticle
 	 * @param street
 	 * @param cp
 	 * @param city
 	 */
+
 	public Withdrawal(int noArticle, String street, String cp, String city) {
 		this.setNoArticle(noArticle);
 		this.setStreet(street);
@@ -35,10 +40,11 @@ public class Withdrawal implements Serializable{
 		this.setCity(city);
 	}
 
-	    /**
+	/**
 	 * Getter pour noArticle
 	 * @return the noArticle
 	 */
+
 	public int getNoArticle() {
 		return noArticle;
 	}
@@ -47,6 +53,7 @@ public class Withdrawal implements Serializable{
 	 * Setter pour noArticle
 	 * @param noArticle the noArticle to set
 	 */
+
 	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
@@ -55,6 +62,7 @@ public class Withdrawal implements Serializable{
 	 * Getter pour street
 	 * @return the street
 	 */
+
 	public String getStreet() {
 		return street;
 	}
@@ -63,6 +71,7 @@ public class Withdrawal implements Serializable{
 	 * Setter pour street
 	 * @param street the street to set
 	 */
+
 	public void setStreet(String street) {
 		this.street = street;
 	}
@@ -79,6 +88,7 @@ public class Withdrawal implements Serializable{
 	 * Setter pour cp
 	 * @param cp the cp to set
 	 */
+
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
@@ -87,6 +97,7 @@ public class Withdrawal implements Serializable{
 	 * Getter pour city
 	 * @return the city
 	 */
+
 	public String getCity() {
 		return city;
 	}
@@ -95,14 +106,15 @@ public class Withdrawal implements Serializable{
 	 * Setter pour city
 	 * @param city the city to set
 	 */
+
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	
 	/**
 	 * Méthode qui permet d'afficher le Withdrawal
 	 */
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -117,6 +129,4 @@ public class Withdrawal implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
-} 
+}
