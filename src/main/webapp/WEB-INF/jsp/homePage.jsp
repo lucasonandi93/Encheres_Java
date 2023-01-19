@@ -26,19 +26,21 @@
 					href="<%=request.getContextPath()%>/ServletListOfAuctionsPage?deconnexion=true">Déconnexion</a>
 			</c:when>
 			<c:otherwise>
-				<a class="article-link-hover" href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
+				<a class="article-link-hover"
+					href="<%=request.getContextPath()%>/ServletConnexionPage">S'inscrire
 					- Se connecter</a>
 			</c:otherwise>
 		</c:choose>
 	</header>
-	<div>
-		<h2>Liste des enchères</h2>
-	</div>
-
 	<nav>
 		<div class="space-evenly padding-top-bottom-20px">
-			<form method="post"	action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" class="filter-form">
+			<form method="post"
+				action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
+				class="filter-form">
 				<div class="justify-content-center margin-left-right-10px">
+					<div class="margin-left-right-50px">
+						<h2>Liste des enchères</h2>
+					</div>
 					<select name="categories" id="categories">
 						<option value="" selected disabled hidden>Catégories</option>
 						<c:forEach var="category" items="${categoryList}">
@@ -47,7 +49,8 @@
 					</select>
 				</div>
 				<div class="justify-content-center margin-left-right-10px">
-					<input type="search" placeholder="Le nom de l'article contient" aria-label="Search" name="content" value="">
+					<input type="search" placeholder="Le nom de l'article contient"
+						aria-label="Search" name="content" value="">
 				</div>
 				<c:if test="${ user !=null}">
 					<%@include file="selectFormFragment.jsp"%>
@@ -62,25 +65,29 @@
 	<div class="list-article margin-left-right-50px">
 		<c:forEach var="article" items="${articleList}">
 			<div>
-				<form action="<%=request.getContextPath()%>/ServletDetailsAuctionPage" method="get">
-				<input type="hidden" value="${article.getNoArticle()}" name="articleID">
+				<form
+					action="<%=request.getContextPath()%>/ServletDetailsAuctionPage"
+					method="get">
+					<input type="hidden" value="${article.getNoArticle()}"
+						name="articleID">
 					<button class="btn-article" type="submit">
-						<img src="<%=request.getContextPath()%>${article.getImageName()}" alt="Image de l'article ${article.imageName}" id="photoArticle">
-							<ul>
-								<li>
-									<h3>${article.getNameArticle()}</h3>
-								</li>
-								<li>Prix : ${article.getSellingPrice()}</li>
-								<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
-								<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-							</ul>
+						<img src="<%=request.getContextPath()%>${article.getImageName()}"
+							alt="Image de l'article ${article.imageName}" id="photoArticle">
+						<ul>
+							<li>
+								<h3>${article.getNameArticle()}</h3>
+							</li>
+							<li>Prix : ${article.getSellingPrice()}</li>
+							<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
+							<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
+						</ul>
 					</button>
 				</form>
 				<form action="<%=request.getContextPath()%>/ServletProfilPage">
-				<input type="hidden" name="userProfil" value="${article.getUser().getNoUser()}">
-				<button class="btn-vendeur" type="submit">
-					Vendeur : ${article.getUser().getPseudo()}
-				</button>
+					<input type="hidden" name="userProfil"
+						value="${article.getUser().getNoUser()}">
+					<button class="btn-vendeur" type="submit">Vendeur :
+						${article.getUser().getPseudo()}</button>
 				</form>
 			</div>
 		</c:forEach>
