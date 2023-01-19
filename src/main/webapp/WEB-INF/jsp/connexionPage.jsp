@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Bootstrap core CSS -->
 
-<link href="<%=request.getContextPath()%>/css/styleConnexion.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/styleConnexionPage.css"
+	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Connexion</title>
@@ -17,29 +17,40 @@
 	<header>
 		<%@include file="headerFragment.jsp"%>
 	</header>
-	
+
 	<main>
-		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+		<form method="post"
+			action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
+
 			<div class="form-group">
-				<label for="usr">Identifiant : </label> 
-				<%-- ${sessionScope.pseudo} récupère le pseudo si se souvenir de moi est coché --%>
-				<input type="text" name="pseudo" value="${userSaved.getPseudo()}" class="form-control" id="usr" maxlength="30" >
+				<label for="usr">Identifiant : </label> <input type="text"
+					name="pseudo" value="${userSaved.getPseudo()}" class="form-control"
+					id="usr" maxlength="30">
 			</div>
+
 			<div class="form-group">
-				<label for="pwd">Mot de passe : </label> 
-				<%-- ${sessionScope.password} récupère le password si se souvenir de moi est coché --%>
-				<input type="password" name="password" value="${userSaved.getPassword()}" class="form-control" id="pwd" maxlength="30">
-			</div><br><br>
-			<div class="form-group"><br><br>
-				<input type="checkbox" id="connexion" name="souvenir" checked>
-				<label for="connexion">Se souvenir de moi</label>
+				<label for="pwd">Mot de passe : </label> <input type="password"
+					name="password" value="${userSaved.getPassword()}"
+					class="form-control" id="pwd" maxlength="30">
+			</div>
+			<br>
+			<br>
+
+			<div class="form-group">
+				<br>
+				<br> <input type="checkbox" id="connexion" name="souvenir"
+					checked> <label for="connexion">Se souvenir de moi</label>
 				<input type="submit" name="connexion" value="Connexion"></input>
-		</div>
+			</div>
 		</form>
-		<a href="<%=request.getContextPath()%>/ServletForgetPassword" class="forgotPassword">Mot de passe oublié</a> <br>
+		
+		<a href="<%=request.getContextPath()%>/ServletForgetPassword"
+			class="forgotPassword">Mot de passe oublié</a> <br>
+			
 		<form action="<%=request.getContextPath()%>/ServletRegistrationPage">
 			<input type="submit" value="Créer un compte">
 		</form>
+		
 	</main>
 </body>
 </html>

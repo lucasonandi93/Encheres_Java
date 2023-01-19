@@ -1,0 +1,71 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+}
+
+header {
+    background-color: teal;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+header h1{
+	text-align: center;
+}
+
+main {
+	margin: 2em;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.form-control {
+  width: 50%; /* définit la largeur des champs de saisie */
+  padding: 12px 20px; /* ajoute de l'espacement intérieur aux champs de saisie */
+  margin: 8px 0; /* ajoute de l'espacement extérieur aux champs de saisie */
+  box-sizing: border-box; /* assure que les dimensions incluent l'espacement */
+  border: 2px solid #ccc; /* ajoute une bordure aux champs de saisie */
+  border-radius: 4px; /* rend les bords des champs de saisie arrondis */
+}
+
+label {
+  font-weight: bold; /* met en gras le texte des étiquettes */
+}
+
+.connexion{
+  text-align: center;
+}
+
+input[type="submit"] {
+  width: 100%; /* définit la largeur des boutons */
+  background-color: teal; /* définit la couleur de fond des boutons */
+  color: white; /* définit la couleur du texte des boutons */
+  padding: 14px 20px; /* ajoute de l'espacement intérieur aux boutons */
+  margin: 10% 2%; /* ajoute de l'espacement extérieur aux boutons */
+  border: none; /* retire la bordure des boutons */
+  border-radius: 4px; /* rend les bords des boutons arrondis */
+  cursor: pointer; /* change l'apparence du curseur lorsque la souris est sur les boutons */
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(62, 4, 95); /* change la couleur de fond des boutons lorsque la souris est dessus */
+}
+
+.forgotPassword {
+  text-decoration: underline; /* souligne le texte des liens */
+  color: blue; /* définit la couleur du texte des liens */
+  margin: 2% 30%;
+  white-space: nowrap;
+  
+}
+
