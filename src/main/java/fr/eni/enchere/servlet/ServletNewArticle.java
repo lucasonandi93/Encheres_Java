@@ -37,7 +37,7 @@ import jakarta.servlet.http.Part;
 public class ServletNewArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final int TAILLE_TAMPON = 10240;
-	private static final String CHEMIN_FICHIER = "/Images/";
+	private static final String CHEMIN_FICHIER = "/medias/";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,7 +51,7 @@ public class ServletNewArticle extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		File uploFile = new File(getServletContext().getRealPath("/Images"));
+		File uploFile = new File(getServletContext().getRealPath("/medias/"));
 		if ( !uploFile.exists()) uploFile.mkdir();
 	}
 

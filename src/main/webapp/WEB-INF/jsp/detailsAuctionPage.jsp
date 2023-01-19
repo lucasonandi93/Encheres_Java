@@ -28,24 +28,24 @@
 		<h3>Vous avez remporté la vente</h3>
 	</c:if>
 <div id="profil">
-	<p>${articleOngoing.getNameArticle()}</p>
+	<p><b>${articleOngoing.getNameArticle()}</b></p><hr>
 
-	<p>Description : ${articleOngoing.getDescription()}</p>
+	<p><b>Description :</b> ${articleOngoing.getDescription()}</p>
 
-	<p>Catégorie : ${articleOngoing.getCategory().getWording()}</p>
+	<p><b>Catégorie : </b>${articleOngoing.getCategory().getWording()}</p>
 
 	<!-- afficher la meilleure enchère et le nom de l'utilisateur qui l'a faite -->
-	<p>Meilleure offre : ${articleOngoing.getSellingPrice()} pts par ${pseudoBestAuction}</p> 		
+	<p><b>Meilleure offre :</b> ${articleOngoing.getSellingPrice()} pts par ${pseudoBestAuction}</p> 		
 
-	<p>Mise à prix : ${articleOngoing.getOriginalPrice()}</p>
+	<p><b>Mise à prix :</b> ${articleOngoing.getOriginalPrice()}</p>
 	
-	<p>Début de l'enchère : ${articleOngoing.getAuctionStartDate()}</p>
+	<p><b>Début de l'enchère :</b> ${articleOngoing.getAuctionStartDate()}</p>
 
-	<p>Fin de l'enchère : ${articleOngoing.getAuctionEndDate()}</p> 
+	<p><b>Fin de l'enchère :</b> ${articleOngoing.getAuctionEndDate()}</p> 
 
-	<p>Retrait : ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
+	<p><b>Retrait :</b> ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
-	<p>Vendeur : ${articleOngoing.getUser().getPseudo()}</p>
+	<p><b>Vendeur :</b> ${articleOngoing.getUser().getPseudo()}</p>
 <c:if test="${!isUserConnectedArticle && sessionScope.user.getNoUser() != null && canMakeProposal}">
 		<hr>
 		</div>
@@ -58,8 +58,8 @@
 </c:if>
 <c:if test="${isUserConnectedArticle && !isAfterEndDate}">
 	<hr>
-	<div class="btn-modifier">
-		<a href="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.noArticle}" >Modifier</a>
+	<div>
+		<a href="<%=request.getContextPath()%>/ServletNewArticle?articleID=${articleOngoing.noArticle}" ><input type="button" value="Modifier"></a>
 	</div>
 </c:if>
 <c:if test="${isAfterEndDate && isUserConnectedArticle}">

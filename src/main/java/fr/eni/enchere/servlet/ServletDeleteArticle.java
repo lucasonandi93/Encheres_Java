@@ -33,9 +33,8 @@ public class ServletDeleteArticle extends HttpServlet {
 	        int idArticle = Integer.parseInt(request.getParameter("idArticle"));
 	        ArticleManager articleManager = new ArticleManager();
 	        try {
-				articleManager.deleteData(idArticle);
+				articleManager.deleteData(idArticle, request);
 			} catch (BusinessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	        response.sendRedirect("ServletListOfAuctionsPage");

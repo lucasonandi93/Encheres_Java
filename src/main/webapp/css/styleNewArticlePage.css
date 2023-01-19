@@ -60,6 +60,34 @@ select {
     border: 1px solid #ccc;
 }
 
+input[type="submit"] {
+    background-color: teal;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 1em;
+}
+
+.centrer{
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	}
+
+input[type="button"] {
+    background-color: teal;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 1em;
+}
+
 input[type="text"], input[type="number"], input[type="date"], input[type="file"] {
     width: 80%;
     color : teal;
