@@ -65,21 +65,25 @@
 
 				</fieldset>
 			</div>
+			<input type="submit" value="Enregistrer" name="addArticle"> <b>
+				<a
+				href="<%=request.getContextPath() %>/ServletDetailsAuctionPage?articleID=${articleOngoing.noArticle}">
+					<input type="button" value="Annuler">
+			</a>
+			</b>
+		</form>
 	</div>
 </fieldset>
 
 <br>
 <div class="centrer">
-<input type="submit" value="Enregistrer" name="addArticle">
-<b>
-<a href="<%=request.getContextPath() %>/ServletDetailsAuctionPage?articleID=${articleOngoing.noArticle}">
-	<input type="button" value="Annuler"></a></b>
 
-<form action="<%=request.getContextPath()%>/ServletDeleteArticle"
-	method="post">
-	<input type="hidden" name="idArticle" value="${articleOngoing.noArticle}">
-	<input type="submit" value="Annuler vente" name="cancelSale"> 	
-</form>
+	<form action="<%=request.getContextPath()%>/ServletDeleteArticle"
+		method="post">
+		<input type="hidden" name="idArticle"
+			value="${articleOngoing.noArticle}"> <input type="submit"
+			value="Annuler vente" name="cancelSale">
+	</form>
 
 </div>
 <script type="text/javascript">

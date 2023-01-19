@@ -13,7 +13,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 /**
  * Servlet implementation class ServletDeleteArticle
  */
-@WebServlet("/ServleteDeleteArticle")
+@WebServlet("/ServletDeleteArticle")
 public class ServletDeleteArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,6 +29,7 @@ public class ServletDeleteArticle extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ici");
 		if(request.getParameter("cancelSale") != null){
 	        int idArticle = Integer.parseInt(request.getParameter("idArticle"));
 	        ArticleManager articleManager = new ArticleManager();

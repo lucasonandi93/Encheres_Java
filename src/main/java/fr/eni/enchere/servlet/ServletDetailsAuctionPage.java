@@ -27,39 +27,42 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @throws ServletException 
+	 * @throws ServletException
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ServletDetailsAuctionPage() throws ServletException {
 		super();
-	} 
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		ArticleManager articleManager = new ArticleManager();
 		AuctionManager auctionManager = new AuctionManager();
 
 		HttpSession session = request.getSession();
-		
+
 		try {
 			Article articleOngoing = articleManager.selectById(Integer.parseInt(request.getParameter("articleID")));
 			request.setAttribute("articleOngoing", articleOngoing);
 
-			List<Auction> auctions = auctionManager.selectByNoArticle(Integer.parseInt(request.getParameter("articleID")));
+			List<Auction> auctions = auctionManager
+					.selectByNoArticle(Integer.parseInt(request.getParameter("articleID")));
 			if (!auctions.isEmpty()) {
 				Auction auctionOngoing = null;
 				for (Auction auction : auctions) {
 					if (auctionOngoing == null)
 						auctionOngoing = auction;
-					else if(auction.getAuctionAmount()>auctionOngoing.getAuctionAmount()) {
+					else if (auction.getAuctionAmount() > auctionOngoing.getAuctionAmount()) {
 						auctionOngoing = auction;
 					}
-				}		
+				}
 				request.setAttribute("pseudoBestAuction", auctionOngoing.getUser().getPseudo());
-			}else {
+			} else {
 				request.setAttribute("pseudoBestAuction", articleOngoing.getUser().getPseudo());
 			}
 
@@ -69,7 +72,11 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			boolean isBeforeEndDate = (articleOngoing.getAuctionEndDate().isAfter(LocalDate.now()));
 			boolean isAfterEndDate = (articleOngoing.getAuctionEndDate().isBefore(LocalDate.now()));
 			boolean canMakeProposal = ((isStartDate || isAfterStartDate) && (isBeforeEndDate || isEndDate));
-			boolean isUserConnectedArticle = articleOngoing.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
+			boolean isUserConnectedArticle = false;
+			if (((User) session.getAttribute("user")) != null) {
+				isUserConnectedArticle = articleOngoing.getUser()
+						.getNoUser() == ((User) session.getAttribute("user")).getNoUser();
+			}
 			request.setAttribute("canMakeProposal", canMakeProposal);
 			request.setAttribute("isAfterEndDate", isAfterEndDate);
 			request.setAttribute("isUserConnectedArticle", isUserConnectedArticle);
@@ -82,9 +89,11 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 }

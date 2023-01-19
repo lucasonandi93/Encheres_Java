@@ -19,6 +19,40 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    }
+
+header a{
+	color: white;
+	text-decoration:none;
+}
+
+a{
+	color: black;
+	text-decoration:none;
+}
+
+a:hover{
+	
+	font-size: large;
+}
+
+.listeArticle{
+	
+	display: flex;
+	width: 100%;
+}
+
+.articleContainer{
+	
+
+	display: flex;
+	border-color: teal;
+	border: 10px;
+	border-radius: 20px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #f5f5f5;
+	width: 30%;
 }
 
 h1{
@@ -38,7 +72,7 @@ label {
 
 /* Modifie la taille des images */
 img {
-    width: 30%;
+    width: 100px;
 }
 
 /* Modifie la taille des champs de formulaire */

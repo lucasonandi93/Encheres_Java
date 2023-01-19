@@ -34,25 +34,21 @@
 	<div>
 		<h3>Liste des enchères</h3>
 	</div>
-	
+
 	<nav>
 		<h4>Filtres :</h4>
 		<br>
 		<form method="post"
 			action="<%=request.getContextPath()%>/ServletListOfAuctionsPage">
 			<input type="search" placeholder="Le nom de l'article contient"
-				aria-label="Search" name="content" value=""> <br>
-			<br>
-			<br>
-			<br> <label for="categories">Catégorie : </label><select
+				aria-label="Search" name="content" value=""> <br> <br>
+			<br> <br> <label for="categories">Catégorie : </label><select
 				name="categories" id="categories">
 				<option value="Toutes">Toutes</option>
 				<c:forEach var="category" items="${categoryList}">
 					<option value="${category.getWording()}">${category.getWording()}</option>
 				</c:forEach>
-			</select>
-			<br>
-			<br>
+			</select> <br> <br>
 			<c:if test="${ user !=null}">
 				<%@include file="selectFormFragment.jsp"%>
 			</c:if>
@@ -60,29 +56,33 @@
 			<button type="submit">Rechercher</button>
 		</form>
 	</nav>
-	
-	<ul>
+
+	<div class="listArticle">
 		<c:forEach var="article" items="${articleList}">
-			<div class="container">
-				<li>
-					<div class="auction-item">
-						<img src="<%=request.getContextPath()%>${article.getImageName()}" alt="Image de l'article ${article.imageName}" id="photoArticle">
-						<ul>
-							<li><a
-								href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a></li>
-							<li>Prix : ${article.getSellingPrice()}</li>
-							<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
-							<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
-							<!-- ${article.getUser().getPseudo()} -->
-							<li>Vendeur : <a
-								href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getNoUser()}">${article.getUser().getPseudo()}</a></li>
-						</ul>
-						<br>
-						<hr>
-					</div>
-				</li>
+			<div class="articleContainer">
+
+				<div class="auction-item">
+					<img src="<%=request.getContextPath()%>${article.getImageName()}"
+						alt="Image de l'article ${article.imageName}" id="photoArticle">
+					<ul>
+						<li><h3>
+								<a
+									href="<%=request.getContextPath()%>/ServletDetailsAuctionPage?articleID=${article.getNoArticle()}">${article.getNameArticle()}</a>
+							</h3></li>
+						<li>Prix : ${article.getSellingPrice()}</li>
+						<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
+						<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
+						<!-- ${article.getUser().getPseudo()} -->
+						<li>Vendeur :
+							<h4>
+								<a
+									href="<%=request.getContextPath()%>/ServletProfilPage?userProfil=${article.getUser().getNoUser()}">${article.getUser().getPseudo()}</a>
+							</h4>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</c:forEach>
-	</ul>
+	</div>
 </body>
 </html>
