@@ -40,7 +40,6 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		ArticleManager articleManager = new ArticleManager();
 		AuctionManager auctionManager = new AuctionManager();
 
@@ -74,8 +73,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			boolean canMakeProposal = ((isStartDate || isAfterStartDate) && (isBeforeEndDate || isEndDate));
 			boolean isUserConnectedArticle = false;
 			if (((User) session.getAttribute("user")) != null) {
-				isUserConnectedArticle = articleOngoing.getUser()
-						.getNoUser() == ((User) session.getAttribute("user")).getNoUser();
+				isUserConnectedArticle = articleOngoing.getUser().getNoUser() == ((User) session.getAttribute("user")).getNoUser();
 			}
 			request.setAttribute("canMakeProposal", canMakeProposal);
 			request.setAttribute("isAfterEndDate", isAfterEndDate);

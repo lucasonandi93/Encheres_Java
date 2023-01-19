@@ -19,12 +19,9 @@
 	<h2>Mon profil</h2>
 	<br>
 	<div class="white">
-		<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage"
-		method="post">
-
+		<form action="<%=request.getContextPath()%>/ServletListOfAuctionsPage" method="post">
 		<div>
-			<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"
-				name="pseudo" required maxlength="30" value="${sessionScope.user.getPseudo()}"> <br> <br> <label
+			<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"	name="pseudo" required maxlength="30" value="${sessionScope.user.getPseudo()}"> <br> <br> <label
 				for="name">Nom :</label> <input type="text" id="name" name="name"
 				required maxlength="30" value="${sessionScope.user.getName()}">
 		</div>

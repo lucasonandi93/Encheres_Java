@@ -13,13 +13,15 @@ body {
 
 /* Mise en forme de l'en-tête */
 header {
+	width: 100%;
+	border-radius: 0 0 10px 10px;
     background-color: teal;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    }
+}
 
 header a{
 	color: white;
@@ -32,29 +34,62 @@ a{
 	text-decoration:none;
 }
 
-a:hover{
-	
-	font-size: large;
+.list-article{
+	display: grid;
+	grid-gap: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 50px;
 }
 
-.listeArticle{
-	
-	display: flex;
-	align-content : flex-start;
+.btn-article{
+	width: 100%;
+	border-radius: 20px 20px 0 0;
+}
+
+.btn-vendeur{
+	padding: 15px;
+	width: 100%;
+    border-radius: 0 0 20px 20px;
+    border-top: 0;
+}
+
+.margin-left-right-10px {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.margin-left-right-50px {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.padding-top-bottom-20px {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.width-100 {
 	width: 100%;
 }
 
-.articleContainer{
-	
-
+.justify-content-center {
 	display: flex;
-	border-color: teal;
-	border: 10px;
-	border-radius: 20px;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	background-color: #f5f5f5;
-	width: 30%;
+    align-items: center;
+}
+
+.display-grid {
+	display: grid;
+	grid-template-rows: repeat(3,1fr);
+}
+
+.space-evenly {
+	justify-content: space-evenly;
+    display: flex;
+    margin: 0px;
+}
+
+.filter-form {
+	display: flex;
 }
 
 h1{
@@ -73,20 +108,6 @@ img {
     width: 100px;
 }
 
-/* Modifie la taille des champs de formulaire */
-input[type="search"], select {
-    width: 20%;
-    text-align: left;
-    
-}
-
-/* Modifie la taille des boutons */
-input[type="submit"], button {
-    padding: 8px 16px;
-    font-size: 14px;
-    margin : 5%;
-}
-
 /* Mise en forme des éléments de la liste */
 ul {
 	list-style: none;
@@ -94,40 +115,14 @@ ul {
 	margin: 0;
 }
 
-div {
-    margin: 20px;
-}
+
 
 nav {
 	font-size: 14px;
     background-color:#f5f5f5;
-    padding: 20px;
-    margin-bottom: 20px;
+    opacity: 85%;
 }
 
-nav h4 {
-    margin: 0;
-}
-
-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
-}
-
-form input[type="search"] {
-    flex-basis: 100%;
-    margin-right: 20%;
-    margin-left: 20%;
-    padding: 10px;
-    width: 50%;
-}
-
-form select{
-    padding: 10px;
-    margin: 5% 15% 5% 30%;
-}
 
 li {
     display: flex;
@@ -154,20 +149,46 @@ li ul li {
     margin-bottom: 10px;
 }
 
-/* /* Responsive pour les éléments de la navigation */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 901px) {
 /* Modifie la taille de la police pour les éléments de navigation */
 	nav {
 	font-size: 16px;
-	} */
+	}
+	
+	.list-article{
+		display: grid;
+		grid-gap: 50px;
+	    grid-template-columns: repeat(4, 1fr);
+	    margin-top: 50px;
+	}
+}
 
-/* Modifie la taille des champs de formulaire */
-	input[type="search"], select {
-    	width: 50%;
+/* /* Responsive pour les éléments de la navigation */
+@media only screen and (max-width: 900px) {
+/* Modifie la taille de la police pour les éléments de navigation */
+	nav {
+	font-size: 16px;
+	}
+	
+	.list-article{
+		display: grid;
+		grid-gap: 50px;
+	    grid-template-columns: repeat(3, 1fr);
+	    margin-top: 50px;
 	}
 }
 
 @media only screen and (max-width: 600px) {
+	
+	.list-article{
+		display: grid;
+		grid-gap: 50px;
+	    grid-template-columns: repeat(2, 1fr);
+	    margin-top: 50px;
+	}
+	
+	
+	
     header {
         flex-wrap: wrap;
     }
@@ -192,11 +213,6 @@ li ul li {
         flex-wrap: wrap;
     }
 
-    form input[type="search"], form select, form button {
-        width: 100%;
-        margin: 5% 5% 5% 30%;
-    }
-
     li {
         flex-wrap: wrap;
     }
@@ -206,4 +222,13 @@ li ul li {
         margin-bottom: 20px;
     }
 } 
- 
+
+@media only screen and (max-width: 420px) {
+	
+	.list-article{
+		display: grid;
+		grid-gap: 50px;
+	    grid-template-columns: repeat(1, 1fr);
+	    margin-top: 50px;
+	}
+}
