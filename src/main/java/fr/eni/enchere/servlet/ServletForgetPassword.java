@@ -62,7 +62,6 @@ public class ServletForgetPassword extends HttpServlet {
 				request.setAttribute("error", "Erreur lors de l'envoi de l'email!!!");
 				doGet(request, response);
 			}
-
 		}
 	}
 }

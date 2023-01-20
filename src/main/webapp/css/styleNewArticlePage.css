@@ -11,6 +11,15 @@ header h1 {
 	text-align: center;
 }
 
+  header {
+        flex-wrap: wrap;
+    }
+
+    header h1 {
+        width: 100%;
+        text-align: center;
+    }
+
 body {
     font-family: var(--body-font);
     margin: 0;
@@ -34,6 +43,9 @@ header {
 header a{
 	color: white;
 	text-decoration:none;
+	 width: 100%;
+        text-align: center;
+     
 }
 
 h3 {

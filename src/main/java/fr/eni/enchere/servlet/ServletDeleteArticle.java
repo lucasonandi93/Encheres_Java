@@ -29,7 +29,6 @@ public class ServletDeleteArticle extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ici");
 		if(request.getParameter("cancelSale") != null){
 	        int idArticle = Integer.parseInt(request.getParameter("idArticle"));
 	        ArticleManager articleManager = new ArticleManager();

@@ -82,8 +82,7 @@ public class ServletDetailsAuctionPage extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailsAuctionPage.jsp");
-		rd.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/detailsAuctionPage.jsp").forward(request, response);
 	}
 
 	/**

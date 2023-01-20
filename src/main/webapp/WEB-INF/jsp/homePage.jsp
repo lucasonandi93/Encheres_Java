@@ -42,7 +42,7 @@
 						<h2>Liste des enchères</h2>
 					</div>
 					<select name="categories" id="categories">
-						<option value="" selected disabled hidden>Catégories</option>
+						<option value="Toutes" selected >Toutes</option>
 						<c:forEach var="category" items="${categoryList}">
 							<option value="${category.getWording()}">${category.getWording()}</option>
 						</c:forEach>
@@ -77,7 +77,7 @@
 							<li>
 								<h3>${article.getNameArticle()}</h3>
 							</li>
-							<li>Prix : ${article.getSellingPrice()}</li>
+							<li>Prix : ${article.getSellingPrice()} pts</li>
 							<li>Début de l'enchère : ${article.getAuctionStartDate()}</li>
 							<li>Fin de l'enchère : ${article.getAuctionEndDate()}</li>
 						</ul>

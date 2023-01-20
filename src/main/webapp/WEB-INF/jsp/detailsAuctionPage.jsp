@@ -22,10 +22,10 @@
 		
 	</c:if>
 	<c:if test="${isAfterEndDate && isUserConnectedArticle}">
-		<h3>${pseudoBestAuction + " à remporté(e) l'enchère"}</h3>
+		<h2>${pseudoBestAuction} à remporté(e) l'enchère</h2>
 	</c:if>
 	<c:if test="${isAfterEndDate && !isUserConnectedArticle}">
-		<h3>Vous avez remporté la vente</h3>
+		<h2>Vous avez remporté la vente</h2>
 	</c:if>
 <div id="profil">
 	<p><b>${articleOngoing.getNameArticle()}</b></p><hr>
@@ -37,7 +37,7 @@
 	<!-- afficher la meilleure enchère et le nom de l'utilisateur qui l'a faite -->
 	<p><b>Meilleure offre :</b> ${articleOngoing.getSellingPrice()} pts par ${pseudoBestAuction}</p> 		
 
-	<p><b>Mise à prix :</b> ${articleOngoing.getOriginalPrice()}</p>
+	<p><b>Mise à prix :</b> ${articleOngoing.getOriginalPrice()} pts</p>
 	
 	<p><b>Début de l'enchère :</b> ${articleOngoing.getAuctionStartDate()}</p>
 

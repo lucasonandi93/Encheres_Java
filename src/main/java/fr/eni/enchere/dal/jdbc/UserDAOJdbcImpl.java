@@ -306,11 +306,11 @@ public class UserDAOJdbcImpl implements UserDAO {
 	@Override
 	public User selectByPseudoMdp(String pseudo, String mdp) throws BusinessException {
 		// Vérification si le paramêtre est valide
-		if (pseudo == null || "".equals(pseudo) || mdp == null || "".equals(mdp)) {
-			BusinessException businessException = new BusinessException();
-			businessException.addError(CodesResultatDAL.INSERT_PSEUDO_MDP_USER_NULL);
-			throw businessException;
-		}
+//		if (pseudo == null || "".equals(pseudo) || mdp == null || "".equals(mdp)) {
+//			BusinessException businessException = new BusinessException();
+//			businessException.addError(CodesResultatDAL.INSERT_PSEUDO_MDP_USER_NULL);
+//			throw businessException;
+//		}
 		// Déclaration d'un Prepared Statement et initialisation à null
 		PreparedStatement pstmt = null;
 		// Déclaration et instanciation d'un User

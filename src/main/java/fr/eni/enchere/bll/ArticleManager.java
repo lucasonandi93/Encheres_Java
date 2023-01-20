@@ -161,7 +161,7 @@ public class ArticleManager implements Manager<Article, Integer> {
 		}
 
 		// Vérification que la date de début d'enchère de l'article est valide
-		if (data.getAuctionStartDate().isBefore(LocalDate.now()) || data.getAuctionStartDate() == null) {
+		if (data.getAuctionStartDate() == null) {
 			businessException.addError(CodesResultatBLL.RULE_ARTICLE_START_DATE_ERROR);
 		}
 

@@ -15,7 +15,6 @@
 <title>Vente</title>
 </head>
 <body>
-	
 	<header>
 		<%@include file="headerFragment.jsp"%>
 	</header>
@@ -26,6 +25,5 @@
 	<c:if test="${articleOngoing == null }">
 		<%@include file="newArticleFormFragment.jsp"%>
 	</c:if>
-	
 </body>
 </html>

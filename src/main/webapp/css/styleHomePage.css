@@ -102,6 +102,7 @@ label {
 
 /* Modifie la taille des images */
 img {
+	height: 100px;
     width: 100px;
 }
 
