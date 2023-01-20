@@ -1,6 +1,13 @@
 -- dataset for categories
+--SET IDENTITY_INSERT [ [ database_name . ] schema_name . ] table_name { ON | OFF }
 
-INSERT INTO CATEGORIES (libelle) VALUES 'Informatique';
-INSERT INTO CATEGORIES (libelle) VALUES 'Ameublement';
-INSERT INTO CATEGORIES (libelle) VALUES 'Vêtement';
-INSERT INTO CATEGORIES (libelle) VALUES 'Sport&Loisirs';
+SET IDENTITY_INSERT CATEGORIES ON;
+
+INSERT INTO CATEGORIES (no_categories, libelle) 
+VALUES 
+(1, 'Informatique'),
+(2, 'Ameublement'),
+(3, 'VÃªtement'),
+(4, 'Sport&Loisirs');
+
+SET IDENTITY_INSERT CATEGORIES OFF;
