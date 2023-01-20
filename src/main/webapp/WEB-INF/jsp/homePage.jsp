@@ -16,7 +16,7 @@
 		<%@include file="headerFragment.jsp"%>
 		<c:choose>
 			<c:when test="${ sessionScope.user !=null}">
-				<a href="<%=request.getContextPath()%>/ServletDetailsAuctionPage">Enchères</a>
+				<a href="<%=request.getContextPath()%>/ServletListOfAuctionsPage">Enchères</a>
 				<a href="<%=request.getContextPath()%>/ServletNewArticle">Vendre
 					un article</a>
 				<a

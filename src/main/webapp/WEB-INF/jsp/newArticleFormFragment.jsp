@@ -13,7 +13,7 @@
 			<input type="file" id="photoArticle" name="photoArticle" accept="image/png, image/jpeg" required>
 			<input type="submit" value="Ajouter" name="addArticle">
 		</form>-->
-<div class="flex padding-top-bottom-20px">
+<div class="flex padding-top-bottom-20px centrer">
 	<fieldset>
 	<form action="<%=request.getContextPath()%>/ServletNewArticle" method="post" enctype="multipart/form-data">
 		<div class="form-group">
