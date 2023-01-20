@@ -15,6 +15,13 @@ header {
     padding: 1em;
 }
 
+.img {
+	height: 300px;
+    width: 300px;
+    
+}
+
+
 main {
     margin: 2em;
 }
@@ -33,11 +40,16 @@ h2{
 #profil{
     width: 50%;
     margin: 2% 20%;
-    padding-left: 60px;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
     border-style: groove;
     border-width: 4px;
     border-radius: 5px;
     background-color: white;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
 }
 
 .form-group {

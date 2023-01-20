@@ -71,7 +71,7 @@
 					<input type="hidden" value="${article.getNoArticle()}"
 						name="articleID">
 					<button class="btn-article" type="submit">
-						<img src="<%=request.getContextPath()%>${article.getImageName()}"
+						<img class="margin-top-10px" src="<%=request.getContextPath()%>${article.getImageName()}"
 							alt="Image de l'article ${article.imageName}" id="photoArticle">
 						<ul>
 							<li>

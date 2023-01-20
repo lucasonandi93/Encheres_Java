@@ -28,6 +28,7 @@
 		<h2>Vous avez remporté la vente</h2>
 	</c:if>
 <div id="profil">
+<div>
 	<p><b>${articleOngoing.getNameArticle()}</b></p><hr>
 
 	<p><b>Description :</b> ${articleOngoing.getDescription()}</p>
@@ -46,9 +47,14 @@
 	<p><b>Retrait :</b> ${articleOngoing.getWithdrawal().getStreet()}	${articleOngoing.getWithdrawal().getCp()}	${articleOngoing.getWithdrawal().getCity()}</p>
 
 	<p><b>Vendeur :</b> ${articleOngoing.getUser().getPseudo()}</p>
+	</div>
+	<div>
+	 <img class="img" src="<%=request.getContextPath()%>${articleOngoing.getImageName()}"
+							alt="Image de l'article ${article.imageName}" id="photoArticle">
+	</div>
+	</div>
 <c:if test="${!isUserConnectedArticle && sessionScope.user.getNoUser() != null && canMakeProposal}">
 		<hr>
-		</div>
 		<p>Ma proposition :</p>
 		<form method="post" action="<%=request.getContextPath()%>/ServletListOfAuctionsPage?articleID=${articleOngoing.getNoArticle()}">
 			<input type="number" min="0" step="10" value="0" name="auction">
