@@ -10,7 +10,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Classe en charge d'appeler les méthodes de CategoryDAO
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 11 janv. 2023 - 13:18:20
  * @version trocenchere - v0.1
  */

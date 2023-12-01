@@ -10,7 +10,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Classe en charge d'appeler les méthodes d'AuctionDAO
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 9 janv. 2023 - 15:57:21
  * @version ENI_Encheres - v0.1
  */
