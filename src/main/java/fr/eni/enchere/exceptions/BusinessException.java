@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
 * Classe en charge de recenser l'ensemble des erreurs (par leur code) pouvant survenir lors d'un traitement quel que soit la couche à l'origine.
-* @author ldupont2022
+* @author lucasonandi93
 * @date 9 janv. 2023 - 14:34:09
 * @version ENI_Encheres - v0.1
 */

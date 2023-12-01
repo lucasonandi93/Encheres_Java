@@ -9,7 +9,7 @@ import fr.eni.enchere.config.Settings;
 
 /**
  * Classe en charge de créer une factory pour la DAO
- * @author slamire2022
+ * @author lucasonandi93
  * @date 9 janv. 2023 - 14:38:30
  * @version ENI_Encheres - v0.1
  */

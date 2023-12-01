@@ -12,7 +12,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Classe en charge d'appeler les méthodes d'UserDAO
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 9 janv. 2023 - 15:52:52
  * @version ENI_Encheres - v0.1
  */

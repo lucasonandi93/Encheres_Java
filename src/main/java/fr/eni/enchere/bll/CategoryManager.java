@@ -2,9 +2,7 @@
  * 
  */
 package fr.eni.enchere.bll;
-
 import java.util.List;
-
 import fr.eni.enchere.bo.Category;
 import fr.eni.enchere.dal.CategoryDAO;
 import fr.eni.enchere.dal.DAOFactory;

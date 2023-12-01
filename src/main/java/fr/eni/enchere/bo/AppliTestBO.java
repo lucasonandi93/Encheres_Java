@@ -1,7 +1,5 @@
 package fr.eni.enchere.bo;
-
 import java.time.LocalDate;
-
 public class AppliTestBO {
 
 	public static void main(String[] args) {

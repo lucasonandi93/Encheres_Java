@@ -10,7 +10,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 
 /**
  * Interface en charge de transmettre les méthodes spécifiques à la classe CategoryDAOJdbcImpl
- * @author slamire2022
+ * @author lucasonandi93
  * @date 11 janv. 2023 - 09:20:14
  * @version ENI_Encheres - v0.1
  */

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * POJO Withdrawal
  * 
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 10 janv. 2023 - 10:49:33
  * @version ENI_Encheres - v0.1
  */

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * POJO Article
  * 
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 10 janv. 2023 - 10:16:02
  * @version ENI_Encheres - v0.1
  */

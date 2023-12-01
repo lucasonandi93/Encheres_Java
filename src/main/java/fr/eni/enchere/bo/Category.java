@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * POJE Category
  * 
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 10 janv. 2023 - 10:37:47
  * @version ENI_Encheres - v0.1
  */

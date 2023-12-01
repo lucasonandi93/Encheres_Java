@@ -7,7 +7,7 @@ import fr.eni.enchere.exceptions.BusinessException;
 
 /**
 * Interface en charge de transmettre les méthodes CRUD
-* @author ldupont2022
+* @author lucasonandi93
 * @date 10 janv. 2023 - 14:15:01
 * @version ENI_Encheres - v0.1
 * @param <T>

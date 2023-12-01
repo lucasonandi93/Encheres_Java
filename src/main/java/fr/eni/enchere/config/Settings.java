@@ -5,7 +5,7 @@ import java.util.Properties;
 
 /**
 * Classe en charge de récupérer les différentes congiguration d'implémentation
-* @author ldupont2022
+* @author lucasonandi93
 * @date 19 janv. 2023 - 09:37:11
 * @version trocenchere - v0.1
 */

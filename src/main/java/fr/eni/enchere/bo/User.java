@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
 * POJO User
-* @author ldupont2022
+* @author lucasonandi93
 * @date 10 janv. 2023 - 10:41:16
 * @version ENI_Encheres - v0.1
 */

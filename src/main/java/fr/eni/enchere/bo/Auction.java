@@ -6,7 +6,7 @@ import java.time.LocalDate;
 /**
  * POJO Auction
  * 
- * @author ldupont2022
+ * @author lucasonandi93
  * @date 10 janv. 2023 - 10:34:15
  * @version ENI_Encheres - v0.1
  */
